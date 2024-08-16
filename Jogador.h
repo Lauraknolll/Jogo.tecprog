@@ -8,4 +8,5 @@ class Jogador : public Personagem
         Jogador();
         ~Jogador();
         void executar();
+        //função movimentar
 };

@@ -3,7 +3,7 @@
 Gerenciador::GerenciadorGrafico* Gerenciador::GerenciadorGrafico::pInstanciaGG = nullptr; 
 
 Gerenciador::GerenciadorGrafico::GerenciadorGrafico() :
-    janela(new sf::RenderWindow(sf::VideoMode(800.0f, 600.0f), "Jogo"))
+    janela(new sf::RenderWindow(sf::VideoMode(800.0f, 600.0f), "Jogo")), MapaTexturas()
 {
 
 }

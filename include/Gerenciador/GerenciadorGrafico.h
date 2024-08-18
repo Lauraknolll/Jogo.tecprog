@@ -1,4 +1,5 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 
 namespace Gerenciador
@@ -7,23 +8,27 @@ namespace Gerenciador
     {
         private:
             sf::RenderWindow *janela;
+            std::map<const char*, sf::Texture*> MapaTexturas;
 
-            //usando o padrão Singleton para que haja apenas uma instancia do gerenciador grafico
+
+            //Usando o padrão de projeto Singleton para que haja apenas uma instancia do gerenciador gráfico
             static GerenciadorGrafico* pInstanciaGG;
-            GerenciadorGrafico(); //constutora privada
+            GerenciadorGrafico(); //Constutora privada
         public:
             ~GerenciadorGrafico();
-            //parte do Singleton
+            //Parte do Singleton
             static GerenciadorGrafico* getGerenciadorGrafico(); 
-            //retorna a janela
+            //Retorna a janela
             sf::RenderWindow* getJanela(); 
             void limpaJanela();
-            //chama o draw
+            //Chama o draw
             void desenhaEntidade(sf::RectangleShape corpo); 
-            //chama o display
+            //Chama o display
             void monstraEntidade(); 
             void fecharJanela();
             const bool verificarJanelaAberta();
-            //faltam métodos pra setar texturas
+            //Retorna a textura 
+            sf::Texture* carregaTextura(const char* caminho);
+
     };
 }

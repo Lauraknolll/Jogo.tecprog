@@ -1,4 +1,4 @@
-#include "GerenciadorGrafico.h"
+#include "include/Gerenciador/GerenciadorGrafico"
 
 Gerenciador::GerenciadorGrafico* Gerenciador::GerenciadorGrafico::pInstanciaGG = nullptr; 
 
@@ -10,6 +10,7 @@ Gerenciador::GerenciadorGrafico::GerenciadorGrafico() :
 
 Gerenciador::GerenciadorGrafico::~GerenciadorGrafico()
 {
+    //tem que deketar as coisas do mapa tbm
     if(janela)
     {
         delete janela;
@@ -19,11 +20,11 @@ Gerenciador::GerenciadorGrafico::~GerenciadorGrafico()
 
 Gerenciador::GerenciadorGrafico* Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()
 {
-    if(pInstanciaGG == nullptr) //primeira  vez que o método é chamado
+    if(pInstanciaGG == nullptr) /*  primeira  vez que o método é chamado */
     {
         pInstanciaGG = new GerenciadorGrafico();
     }
-    return pInstanciaGG; //todas as outras vezes
+    return pInstanciaGG; /* todas as outras vezes  */
 }
 
 sf::RenderWindow* Gerenciador::GerenciadorGrafico::getJanela()
@@ -54,6 +55,32 @@ void Gerenciador::GerenciadorGrafico::desenhaEntidade(sf::RectangleShape corpo)
 void Gerenciador::GerenciadorGrafico::monstraEntidade()
 {
     janela->display();
+}
+
+sf::Texture* Gerenciador::GerenciadorGrafico::carregaTextura(const char* caminho)
+{
+    /*  Tenta encontrar se a textura já existe no mapa */
+    std::map<const char*, sf::Texture*>::iterator it;
+    for(it = MapaTextura.begin(); it != MapaTexturas.end(); it++)
+    {
+        if(!strcmp(it->first, caminho))
+        {
+            return it->second;
+        }
+    }
+    
+    /*  Se não existe cria uma nova */
+    sf::Texture* textura = new sf::Texture();
+
+    if(!textura->loadFromFile(caminho))
+    {
+        std::cout << "Erro ao abrir o arquivo" << caminho << std::endl;
+        exit(1);
+    }
+
+    MapaTexturas.insert(std::pair<const char*, sf::Texture*>(caminho, textura));
+
+    return textura;
 }
 
 

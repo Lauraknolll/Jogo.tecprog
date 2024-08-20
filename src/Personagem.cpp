@@ -1,5 +1,5 @@
 #pragma once
-#include "Personagem.h"
+#include "../include/Personagem.h"
 
 Personagem::Personagem() :
     Entidade()

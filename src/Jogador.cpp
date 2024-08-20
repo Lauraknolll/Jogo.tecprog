@@ -1,5 +1,5 @@
 #pragma once
-#include "Jogador.h"
+#include "../include/Jogador.h"
 
 Jogador::Jogador()
 {

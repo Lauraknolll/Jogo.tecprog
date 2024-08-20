@@ -1,4 +1,4 @@
-#include "include/Gerenciador/GerenciadorEventos"
+#include "../../include/Gerenciador/GerenciadorEventos.h"
 
 Gerenciador::GerenciadorEvento* Gerenciador::GerenciadorEvento::pInstanciaGE = nullptr;
 

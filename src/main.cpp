@@ -1,13 +1,13 @@
 #include <SFML/Graphics.hpp>
-#include "GerenciadorGrafico.h"
+#include "../include/Gerenciador/GerenciadorGrafico.h"
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    /*
+    
     sf::RenderWindow janela(sf::VideoMode(800, 600), "Jogo");
-
+/*
     while(janela.isOpen())
     {
         sf::Event evento;
@@ -19,9 +19,9 @@ int main()
             }
         }
     }
-    /*
-    /*
-    Gerenciador::GerenciadorGrafico* pGGrafico;
+    */
+    
+    Gerenciador::GerenciadorGrafico* pGGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
     while(pGGrafico->verificarJanelaAberta())
     {
         sf::Event evento;
@@ -36,7 +36,7 @@ int main()
         pGGrafico->limpaJanela();
         pGGrafico->monstraEntidade();
     }
-    */
+    
    
     return 0;
 }

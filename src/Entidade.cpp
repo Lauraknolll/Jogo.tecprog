@@ -1,5 +1,5 @@
 #pragma once
-#include "Entidade.h"
+#include "../include/Entidade.h"
 
 Entidade::Entidade() :
     Ente()

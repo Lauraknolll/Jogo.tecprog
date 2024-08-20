@@ -1,4 +1,4 @@
-#include "include/Gerenciador/GerenciadorGrafico"
+#include "../../include/Gerenciador/GerenciadorGrafico.h"
 
 Gerenciador::GerenciadorGrafico* Gerenciador::GerenciadorGrafico::pInstanciaGG = nullptr; 
 
@@ -61,7 +61,7 @@ sf::Texture* Gerenciador::GerenciadorGrafico::carregaTextura(const char* caminho
 {
     /*  Tenta encontrar se a textura já existe no mapa */
     std::map<const char*, sf::Texture*>::iterator it;
-    for(it = MapaTextura.begin(); it != MapaTexturas.end(); it++)
+    for(it = MapaTexturas.begin(); it != MapaTexturas.end(); it++)
     {
         if(!strcmp(it->first, caminho))
         {

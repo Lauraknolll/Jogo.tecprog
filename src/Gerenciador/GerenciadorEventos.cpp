@@ -10,7 +10,7 @@ Gerenciador::GerenciadorEventos::~GerenciadorEvento()
 {
 }
 
-Gerenciador::GerenciadorEvento* Gerenciador:GerenciadorEvento::getGerenciadorEventos()
+Gerenciador::GerenciadorEvento* Gerenciador::GerenciadorEvento::getGerenciadorEventos()
 {
     if(pInstanciaGE == pullptr) /*  primeira  vez que o método é chamado */
     {

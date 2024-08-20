@@ -1,7 +1,10 @@
+#include "Gerenciador/GerenciadorGrafico.h"
+
 class Ente
 {
     protected:
         int id;
+        GerenciadorGrafico* gG;
     public:
         Ente();
         ~Ente();

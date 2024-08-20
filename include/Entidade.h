@@ -1,4 +1,5 @@
 #include "Ente.h"
+#include "Colisao.h"
 
 class Entidade : public Ente
 {

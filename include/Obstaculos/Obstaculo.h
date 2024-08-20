@@ -1,4 +1,5 @@
 #include "../Entidade.h"
+#include "../Colisao.h"
 
 namespace Obstaculos{
     class Obstaculo : public Entidade
@@ -6,7 +7,7 @@ namespace Obstaculos{
     protected:
         
     public:
-        Obstaculo(float x = 0, float y = 0, float w = 0, float h = 0);
+        Obstaculo(float x = 0, float y = 0, float w = 0, float h = 0, Colisao c);
         ~Obstaculo();
 
         virtual void executar(const float dt) = 0;

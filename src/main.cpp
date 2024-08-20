@@ -22,6 +22,9 @@ int main()
     */
     
     Gerenciador::GerenciadorGrafico* pGGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
+
+    
+
     while(pGGrafico->verificarJanelaAberta())
     {
         sf::Event evento;

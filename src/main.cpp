@@ -17,7 +17,7 @@ int main()
     while(pGGrafico->verificarJanelaAberta())
     {
         sf::Event evento;
-        Jogador* jogador;
+        //Jogador* jogador;
         while(pGGrafico->getJanela()->pollEvent(evento))
         {
             sf::RectangleShape body(sf::Vector2f(100.f, 100.f));
@@ -28,7 +28,7 @@ int main()
             }   
 
             pGGrafico->limpaJanela();
-            pGGrafico->desenhaEntidade(jogador->corpo);
+            pGGrafico->desenhaEntidade(body);
             pGGrafico->monstraEntidade();
         }
     }

@@ -14,11 +14,11 @@ Obstaculos::Plataforma::~Plataforma()
 void Obstaculos::Plataforma::imprimir()
 {
     sf::RectangleShape y;
-    //r.setTexture((*gG)[5]);
+    r.setTexture((*gG)[5]);
     r.setPosition(x, y);
     r.setSize(sf::Vector2f(w,h));
-    //gG->getJanela();
-    //gG->desenhaEntidade(r);
+    gG->getJanela();
+    gG->desenhaEntidade(r);
 }
 
 int const Obstaculos::Plataforma::getTipo()

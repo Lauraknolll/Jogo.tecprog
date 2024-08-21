@@ -1,4 +1,5 @@
 #include "Ente.h"
+#include "Colisao.h"
 #include <SFML/Graphics.hpp>
 
 class Entidade : public Ente

@@ -11,3 +11,8 @@ Entidade::~Entidade()
 {
     
 }
+
+void Entidade::salvar()
+{
+
+}

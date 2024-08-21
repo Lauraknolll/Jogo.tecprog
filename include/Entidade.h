@@ -5,7 +5,7 @@
 
 class Entidade : public Ente
 {
-    public: //absurdo porém só pra teste
+    protected: //absurdo porém só pra teste
         float x;
         float y;
         sf::RectangleShape corpo;

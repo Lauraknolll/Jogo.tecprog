@@ -1,14 +1,15 @@
 #include "../Entidade.h"
 #include "../Colisao.h"
 #include "../Gerenciador/GerenciadorGrafico.h"
+#include "../CoordTl.h"
 
 namespace Obstaculos{
-    class Obstaculo /*: public Entidade*/
+    class Obstaculo : public Entidade
     {
     protected:
-        
+        int w, h;
     public:
-        Obstaculo(float x = 0, float y = 0, float w = 0, float h = 0);
+        Obstaculo(float x = 0, float y = 0, float ww = 0, float hh = 0);
         ~Obstaculo();
 
         virtual void executar(const float dt) = 0;

@@ -31,7 +31,7 @@ int main()
             }   
 
             pGGrafico.limpaJanela();
-            //plat->imprimir(pGGrafico);
+            plat->imprimir(pGGrafico);
             //pGGrafico->desenhaEntidade(body);
             pGGrafico.monstraEntidade();
         }

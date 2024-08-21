@@ -13,13 +13,13 @@ Obstaculos::Plataforma::~Plataforma()
 
 void Obstaculos::Plataforma::imprimir(Gerenciador::GerenciadorGrafico &gG)
 {
-    sf::RectangleShape r;
+    //sf::RectangleShape r;
     //r.setTexture((*gG)[5]);
-    r.setFillColor(sf::Color::Blue);
+    corpo.setFillColor(sf::Color::Blue);
     //r.setPosition(x, y);
-    //r.setSize(sf::Vector2f(100.0,100.0));
+    //r.setSize(sf::Vector2f(w,y));
     gG.getJanela();
-    gG.desenhaEntidade(r);
+    gG.desenhaEntidade(corpo);
 }
 
 /*int const Obstaculos::Plataforma::getTipo()

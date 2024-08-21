@@ -4,7 +4,7 @@
 
 #include "../Obstaculos/Obstaculo.h"
 #include "../Jogador.h"
-
+/*
 using namespace Obstaculos;
 
 
@@ -29,3 +29,4 @@ public:
 };
 
 }
+*/

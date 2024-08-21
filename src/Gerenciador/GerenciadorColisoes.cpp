@@ -1,5 +1,5 @@
 #include "../../include/Gerenciador/GerenciadorColisoes.h"
-
+/*
 GerenciadorColisoes::GerenciadorColisoes(): jog()
 {
   jog = NULL;
@@ -249,4 +249,4 @@ void GerenciadorColisoes::limpagCOL()
   obst.clear();
   jog = NULL;
   jog2 = NULL;
-}
+}*/

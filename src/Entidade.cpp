@@ -1,8 +1,8 @@
 #pragma once
 #include "../include/Entidade.h"
 
-Entidade::Entidade(float xx, float yy) :
-    Ente(), x(xx), y(yy), corpo(sf::Vector2f(10.f, 10.f))
+Entidade::Entidade(float xx, float yy, float ww, float hh) :
+    Ente(), x(xx), y(yy), corpo(sf::Vector2f(ww, hh))
 {
     corpo.setFillColor(sf::Color::Blue);
 }

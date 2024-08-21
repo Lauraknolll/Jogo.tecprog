@@ -11,7 +11,7 @@ class Entidade : public Ente
         sf::RectangleShape corpo;
 
     public:
-        Entidade(float xx = 0, float yy = 0);
+        Entidade(float xx = 0, float yy = 0, float ww = 10.0, float hh = 10.0);
         ~Entidade();
         virtual void executar() = 0;
         virtual void salvar(); //tem que ser virtual pura

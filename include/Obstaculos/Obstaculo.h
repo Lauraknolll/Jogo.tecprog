@@ -8,7 +8,7 @@ namespace Obstaculos{
     protected:
         Gerenciador::GerenciadorGrafico *gG;
     public:
-        Obstaculo(float x = 0, float y = 0, float w = 0, float h = 0, Colisao c);
+        Obstaculo(float x = 0, float y = 0, float w = 0, float h = 0);
         ~Obstaculo();
 
         virtual void executar(const float dt) = 0;

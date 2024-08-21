@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Gerenciador/GerenciadorGrafico.h"
 
 class Ente

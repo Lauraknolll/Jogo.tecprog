@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "../include/Gerenciador/GerenciadorGrafico.h"
 #include "../include/Gerenciador/GerenciadorEventos.h"
-#include "../include/Jogador.h"
+//#include "../include/Jogador.h"
 #include "../include/Obstaculos/Plataforma.h"
 
 #include <iostream>

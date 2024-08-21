@@ -1,12 +1,12 @@
 #pragma once
 
 
-namespace Entidades
-{
+//namespace Entidades
+//{
   class Entidade;
-}
+//}
 
-using namespace Entidades;
+//using namespace Entidades;
 
 namespace ClassesAuxiliares
 {

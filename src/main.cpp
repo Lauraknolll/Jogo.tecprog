@@ -20,23 +20,15 @@ int main()
         Jogador* jogador;
         while(pGGrafico->getJanela()->pollEvent(evento))
         {
+            sf::RectangleShape body(sf::Vector2f(100.f, 100.f));
+            body.setFillColor(sf::Color::Blue);
             if(evento.type == sf::Event::Closed)
             {
                 pGGrafico->fecharJanela();
             }   
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            {
-                jogador->andaPraDireta();
-            }
-
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            {
-                jogador->andaPraEsquerda();
-            }
-            pGGrafico->desenhaEntidade(jogador->getcorpo());
-            pGGrafico->monstraEntidade();
             pGGrafico->limpaJanela();
+            pGGrafico->desenhaEntidade(jogador->corpo);
             pGGrafico->monstraEntidade();
         }
     }

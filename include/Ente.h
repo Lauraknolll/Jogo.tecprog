@@ -4,7 +4,7 @@ class Ente
 {
     protected:
         int id;
-        GerenciadorGrafico* gG;
+        //GerenciadorGrafico* pG;
     public:
         Ente();
         ~Ente();

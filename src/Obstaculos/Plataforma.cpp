@@ -11,15 +11,15 @@ Obstaculos::Plataforma::~Plataforma()
 
 }
 
-void Obstaculos::Plataforma::imprimir()
+void Obstaculos::Plataforma::imprimir(Gerenciador::GerenciadorGrafico &gG)
 {
     sf::RectangleShape r;
     //r.setTexture((*gG)[5]);
     r.setFillColor(sf::Color::Blue);
-    r.setPosition(x, y);
-    r.setSize(sf::Vector2f(100,100));
-    gG->getJanela();
-    gG->desenhaEntidade(r);
+    //r.setPosition(x, y);
+    //r.setSize(sf::Vector2f(100.0,100.0));
+    gG.getJanela();
+    gG.desenhaEntidade(r);
 }
 
 /*int const Obstaculos::Plataforma::getTipo()

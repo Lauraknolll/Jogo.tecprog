@@ -13,7 +13,7 @@ Obstaculos::Plataforma::~Plataforma()
 
 void Obstaculos::Plataforma::imprimir(Gerenciador::GerenciadorGrafico &gG)
 {
-    //sf::RectangleShape r;
+    
     //r.setTexture((*gG)[5]);
     corpo.setFillColor(sf::Color::Blue);
     //r.setPosition(x, y);

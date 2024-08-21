@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
     
-    sf::RenderWindow janela(sf::VideoMode(800, 600), "Jogo");
+    //sf::RenderWindow janela(sf::VideoMode(800, 600), "Jogo");
     
     Gerenciador::GerenciadorGrafico* pGGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
     //Gerenciador::GerenciadorEvento* pGEvento = Gerenciador::GerenciadorEvento::getGerenciadorEventos();

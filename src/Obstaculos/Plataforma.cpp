@@ -20,13 +20,10 @@ void Obstaculos::Plataforma::executar(float dt)
 
 void Obstaculos::Plataforma::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
-    
+    sf::RectangleShape body(sf::Vector2f(100.f, 100.f));
+    body.setFillColor(sf::Color::Blue);
     //r.setTexture((*gG)[5]);
-    corpo.setFillColor(sf::Color::Blue);
-    corpo.setPosition(x, y);
-    corpo.setSize(sf::Vector2f(w,y));
-    gG->getJanela();
-    gG->desenhaEntidade(corpo);
+    gG->desenhaEntidade(body);
 }
 
 const int Obstaculos::Plataforma::getTipo() const

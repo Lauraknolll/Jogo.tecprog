@@ -8,5 +8,7 @@ class Jogador : public Personagem
         Jogador();
         ~Jogador();
         void executar();
-        //função movimentar
+        void andaPraDireta();
+        void andaPraEsquerda();
+        sf::RectangleShape getcorpo();
 };

@@ -2,22 +2,27 @@
 
 Gerenciador::GerenciadorEvento* Gerenciador::GerenciadorEvento::pInstanciaGE = nullptr;
 
-Gerenciador::GerenciadorEventos::GerenciadorEvento() 
+Gerenciador::GerenciadorEvento::GerenciadorEvento() 
 {
 }
 
-Gerenciador::GerenciadorEventos::~GerenciadorEvento()
+Gerenciador::GerenciadorEvento::~GerenciadorEvento()
 {
 }
 
 Gerenciador::GerenciadorEvento* Gerenciador::GerenciadorEvento::getGerenciadorEventos()
 {
-    if(pInstanciaGE == pullptr) /*  primeira  vez que o método é chamado */
+    if(pInstanciaGE == nullptr) /*  primeira  vez que o método é chamado */
     {
-        pIntanciaGE = new GerenciadorEventos();
+        pInstanciaGE = new GerenciadorEvento();
     }
     return pInstanciaGE; /* todas as outras vezes  */
 }
+
+//void Gerenciador::GerenciadorEvento::setJogador(Jogador jog)
+//{
+    //jogador = &jog;
+//}
 
 void Gerenciador::GerenciadorEvento::executar()
 {
@@ -27,6 +32,16 @@ void Gerenciador::GerenciadorEvento::executar()
         if(evento.type == sf::Event::Closed)
         {
             pGGrafico->fecharJanela();
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            //jogador->andaPraDireta();
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            //jogador->andaPraEsquerda();
         }
     }
 }

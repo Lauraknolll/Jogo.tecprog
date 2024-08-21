@@ -8,9 +8,6 @@
 
 //using namespace Entidades;
 
-namespace ClassesAuxiliares
-{
-
 class Colisao
 {
 private:
@@ -31,7 +28,6 @@ public:
   const int getY() const;
 };
 
-}
 
 bool colidindo(Entidade *e1, Entidade *e2);
 int direcaoColisao(Entidade *e1, Entidade *e2);

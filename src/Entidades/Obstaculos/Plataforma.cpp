@@ -3,22 +3,22 @@
 #include "../../../include/Entidades/Obstaculos/Plataforma.h"
 #include "../../../include/Gerenciador/GerenciadorGrafico.h"
 
-Plataforma::Plataforma(float x, float y): Obstaculo(x, y)
+Obstaculos::Plataforma::Plataforma(float x, float y): Obstaculo(x, y)
 {
 
 }
 
-Plataforma::~Plataforma()
+Obstaculos::Plataforma::~Plataforma()
 {
 
 }
 
-void Plataforma::executar(float dt)
+void Obstaculos::Plataforma::executar(float dt)
 {
 
 }
 
-void Plataforma::imprimir(Gerenciador::GerenciadorGrafico *gG)
+void Obstaculos::Plataforma::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
     //sf::RectangleShape r(sf::Vector2f(100.f, 100.f));
     //r.setFillColor(sf::Color::Blue);
@@ -26,17 +26,17 @@ void Plataforma::imprimir(Gerenciador::GerenciadorGrafico *gG)
     gG->desenhaEntidade(corpo);
 }
 
-const int Plataforma::getTipo() const
+const int Obstaculos::Plataforma::getTipo() const
 {
     return 0;
 }
 
-void Plataforma::colide(Entidade* outraEntidade, CoordF intersepta)
+void Obstaculos::Plataforma::colide(Entidades::Entidade* outraEntidade, CoordF intersepta)
 {
 
 }
 
-void Plataforma::obstacular(Personagem* pP, int dir)
+void Obstaculos::Plataforma::obstacular(Personagens::Personagem* pP, int dir)
 {
 
 }

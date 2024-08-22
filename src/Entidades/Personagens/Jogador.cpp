@@ -1,32 +1,32 @@
 #pragma once
 #include "../../../include/Entidades/Personagens/Jogador.h"
 
-Jogador::Jogador()
+Personagens::Jogador::Jogador()
 {
 
 }
 
-Jogador::~Jogador()
+Personagens::Jogador::~Jogador()
 {
 
 }
 
-void Jogador::executar()
+void Personagens::Jogador::executar()
 {
     
 }
 
-void Jogador::andaPraDireta()
+void Personagens::Jogador::andaPraDireta()
 {
     corpo.move(0.1f, 0.f);
 }
 
-void Jogador::andaPraEsquerda()
+void Personagens::Jogador::andaPraEsquerda()
 {
     corpo.move(-0.1f, 0.f);
 }
 
-sf::RectangleShape Jogador::getcorpo()
+sf::RectangleShape Personagens::Jogador::getcorpo()
 {
     return corpo;
 }

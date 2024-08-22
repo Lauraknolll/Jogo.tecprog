@@ -7,19 +7,19 @@
 
 
 
-    GerenciadorColisoes::GerenciadorColisoes(Lista::ListaEntidade* movingEntities, Lista::ListaEntidade* staticEntities/*, States::Level* plvl*/) :
+    Gerenciador::GerenciadorColisoes::GerenciadorColisoes(Lista::ListaEntidade* movingEntities, Lista::ListaEntidade* staticEntities/*, States::Level* plvl*/) :
     movingEntities(movingEntities),
     staticEntities(staticEntities)/*,
     plvl(plvl) */{ }
 
-    GerenciadorColisoes::~GerenciadorColisoes() {
+    Gerenciador::GerenciadorColisoes::~GerenciadorColisoes() {
         movingEntities = nullptr;
         staticEntities = nullptr;
     }
 
-    void GerenciadorColisoes::colide() {
-        Entidade* ent1 = nullptr;
-        Entidade* ent2 = nullptr;
+    void Gerenciador::GerenciadorColisoes::colide() {
+        Entidades::Entidade* ent1 = nullptr;
+        Entidades::Entidade* ent2 = nullptr;
         CoordF intersect;
         CoordF centerDistance;
         int i, j;

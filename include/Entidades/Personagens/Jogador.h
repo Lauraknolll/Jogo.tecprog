@@ -1,9 +1,12 @@
 #include "Personagem.h"
 
-class Jogador : public Personagem
+namespace Personagens
 {
+    class Jogador : public Personagem
+    {
     private:
         int pontos;
+
     public:
         Jogador();
         ~Jogador();
@@ -11,4 +14,5 @@ class Jogador : public Personagem
         void andaPraDireta();
         void andaPraEsquerda();
         sf::RectangleShape getcorpo();
-};
+    };
+}

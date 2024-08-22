@@ -4,9 +4,11 @@
 
 #include <SFML/Graphics.hpp>
 
-class Entidade : public Ente
+namespace Entidades
 {
-    protected: 
+    class Entidade : public Ente
+    {
+    protected:
         float x;
         float y;
         float w, h;
@@ -18,6 +20,7 @@ class Entidade : public Ente
         virtual void executar();
         CoordF getPosicao() const;
         CoordF getTamanho() const;
-        virtual void colide(Entidade* outraEntidade, CoordF intersepta) = 0;
-        //virtual void salvar(); //tem que ser virtual pura
-};
+        virtual void colide(Entidade *outraEntidade, CoordF intersepta) = 0;
+        // virtual void salvar(); //tem que ser virtual pura
+    };
+}

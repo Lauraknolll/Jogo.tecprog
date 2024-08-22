@@ -1,12 +1,18 @@
 #pragma once
 #include "../Entidade.h"
 
-class Personagem : public Entidade
+
+
+namespace Personagens
 {
+    class Personagem : public Entidades::Entidade
+    {
     protected:
         int num_vidas;
+
     public:
         Personagem();
         ~Personagem();
         virtual void executar() = 0;
-};
+    };
+}

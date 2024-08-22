@@ -1,7 +1,7 @@
 #pragma once
 #include "../../include/Entidades/Entidade.h"
 
-Entidade::Entidade(float xx, float yy, float ww, float hh) :
+Entidades::Entidade::Entidade(float xx, float yy, float ww, float hh) :
     Ente(), x(xx), y(yy), w(ww), h(hh), corpo(sf::Vector2f(w, h))
 {
     corpo.setFillColor(sf::Color::Blue);
@@ -9,21 +9,21 @@ Entidade::Entidade(float xx, float yy, float ww, float hh) :
     
 }
 
-Entidade::~Entidade()
+Entidades::Entidade::~Entidade()
 {
     
 }
-void Entidade::executar()
+void Entidades::Entidade::executar()
 {
 
 }
-CoordF Entidade::getPosicao() const
+CoordF Entidades::Entidade::getPosicao() const
 {
     CoordF posicao = CoordF(x, y);
     return posicao;
 }
 
-CoordF Entidade::getTamanho() const
+CoordF Entidades::Entidade::getTamanho() const
 {
     CoordF tamanho = CoordF(w, h);
     return tamanho;

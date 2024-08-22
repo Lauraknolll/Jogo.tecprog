@@ -1,13 +1,13 @@
 #pragma once
 #include "../../../include/Entidades/Personagens/Personagem.h"
 
-Personagem::Personagem() :
+Personagens::Personagem::Personagem() :
     Entidade()
 {
 
 }
 
-Personagem::~Personagem()
+Personagens::Personagem::~Personagem()
 {
 
 }

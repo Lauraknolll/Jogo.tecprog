@@ -25,8 +25,8 @@ void Jogo::executar()
 
         while(pGGrafico->getJanela()->pollEvent(evento))
         {   
-            Plataforma* plat = new Plataforma(300.0, 200.0);
-            Lava* lav = new Lava();
+            Obstaculos::Plataforma* plat = new Obstaculos::Plataforma(300.0, 200.0);
+            Obstaculos::Lava* lav = new Obstaculos::Lava();
             
             
             if(evento.type == sf::Event::Closed)

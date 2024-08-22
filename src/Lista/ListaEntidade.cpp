@@ -8,26 +8,26 @@ namespace Lista {
         list.clear();
     }
 
-    void ListaEntidade::addEntidade(Entidade* pEntidade) {
+    void ListaEntidade::addEntidade(Entidades::Entidade* pEntidade) {
         if (pEntidade == nullptr)
             std::cout << "Pointer to Entidade nullptr on addEntidade" << std::endl;
 
         list.push(pEntidade);
     }
 
-    Entidade* ListaEntidade::removeEntidade(Entidade* pEntidade) {
+    Entidades::Entidade* ListaEntidade::removeEntidade(Entidades::Entidade* pEntidade) {
         if (pEntidade == nullptr)
             std::cout << "Pointer to Entidade nullptr on removeEntidade" << std::endl;
 
         return list.pop(pEntidade);
     }
 
-    Entidade* ListaEntidade::removeEntidade(unsigned int index) {
+    Entidades::Entidade* ListaEntidade::removeEntidade(unsigned int index) {
         return list.pop(index);
     }
 
-    void ListaEntidade::deleteEntidade(Entidade* pEntidade) {
-        Entidade* tmp = nullptr;
+    void ListaEntidade::deleteEntidade(Entidades::Entidade* pEntidade) {
+        Entidades::Entidade* tmp = nullptr;
 
         tmp = list.pop(pEntidade);
 
@@ -36,7 +36,7 @@ namespace Lista {
     }
 
     void ListaEntidade::deleteEntidade(unsigned int index) {
-        Entidade* tmp = nullptr;
+        Entidades::Entidade* tmp = nullptr;
 
         tmp = list.pop(index);
 
@@ -48,7 +48,7 @@ namespace Lista {
         return list.getSize();
     }
 
-    Entidade* ListaEntidade::operator[](int index) {
+    Entidades::Entidade* ListaEntidade::operator[](int index) {
         return list[index];
     }
 

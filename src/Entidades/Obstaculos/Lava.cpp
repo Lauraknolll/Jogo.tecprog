@@ -4,22 +4,22 @@
 
 #define DANO_LAVA 10
 
-Lava::Lava(float x, float y):
+Obstaculos::Lava::Lava(float x, float y):
 Obstaculo(x, y)
 {
     corpo.setFillColor(sf::Color::Red);
 }
 
-Lava::~Lava()
+Obstaculos::Lava::~Lava()
 {
 
 }
 
-void Lava::imprimir(Gerenciador::GerenciadorGrafico* gG){
+void Obstaculos::Lava::imprimir(Gerenciador::GerenciadorGrafico* gG){
     gG->desenhaEntidade(corpo);
 }
 
-unsigned int Lava::tomarDano() const
+unsigned int Obstaculos::Lava::tomarDano() const
 {
     return DANO_LAVA;
 }

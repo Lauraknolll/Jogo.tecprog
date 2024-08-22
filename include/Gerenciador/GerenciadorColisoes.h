@@ -7,8 +7,8 @@ namespace States {
     class Level;
 } // namespace States
 
-
-
+namespace Gerenciador
+{
     class GerenciadorColisoes {
     private:
         Lista::ListaEntidade* movingEntities;
@@ -24,5 +24,6 @@ namespace States {
 
         //void clear();
     };
+}
 
  // namespace Managers

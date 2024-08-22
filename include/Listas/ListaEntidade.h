@@ -4,26 +4,26 @@
 namespace Lista{
     class ListaEntidade{
         private:
-        Lista<Entidade> list;
+        Lista<Entidades::Entidade> list;
 
         public:
             ListaEntidade();
 
             ~ListaEntidade();
 
-            void addEntidade(Entidade* pEntidade);
+            void addEntidade(Entidades::Entidade* pEntidade);
 
-            Entidade* removeEntidade(Entidade* pEntidade);
+            Entidades::Entidade* removeEntidade(Entidades::Entidade* pEntidade);
 
-            Entidade* removeEntidade(unsigned int index);
+            Entidades::Entidade* removeEntidade(unsigned int index);
 
-            void deleteEntidade(Entidade* pEntidade);
+            void deleteEntidade(Entidades::Entidade* pEntidade);
 
             void deleteEntidade(unsigned int index);
 
             unsigned int getSize();
 
-            Entidade* operator[](int index);
+            Entidades::Entidade* operator[](int index);
 
             void cleanList();
     };

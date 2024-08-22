@@ -5,8 +5,9 @@
 #include "../../Gerenciador/GerenciadorGrafico.h"
 #include "../../CoordTl.h"
 
-
-    class Obstaculo : public Entidade
+namespace Obstaculos
+{
+    class Obstaculo : public Entidades::Entidade
     {
     protected:
     public:
@@ -16,7 +17,7 @@
         virtual void executar(const float dt);
         virtual void imprimir(Gerenciador::GerenciadorGrafico *gG);
         virtual int const getTipo() const;
-        virtual void colide(Entidade* outraEntidade, CoordF intercesao) { }
-        //virtual void obstacular(Personagem* pP, int dir) = 0;
+        virtual void colide(Entidade *outraEntidade, CoordF intercesao) {}
+        // virtual void obstacular(Personagem* pP, int dir) = 0;
     };
-    
+}

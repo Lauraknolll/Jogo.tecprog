@@ -29,10 +29,6 @@ CoordF Entidade::getTamanho() const
     return tamanho;
 }
 
-void Entidade::colide(Entidade* outraEntidade, CoordF intersepta)
-{
-    
-}
 /*void Entidade::salvar()
 {
 

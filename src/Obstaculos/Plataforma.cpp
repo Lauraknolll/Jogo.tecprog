@@ -31,6 +31,11 @@ const int Plataforma::getTipo() const
     return 0;
 }
 
+void Plataforma::colide(Entidade* outraEntidade, CoordF intersepta)
+{
+
+}
+
 void Plataforma::obstacular(Personagem* pP, int dir)
 {
 

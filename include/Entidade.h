@@ -18,6 +18,6 @@ class Entidade : public Ente
         virtual void executar();
         CoordF getPosicao() const;
         CoordF getTamanho() const;
-        void colide(Entidade* outraEntidade, CoordF intersepta);
+        virtual void colide(Entidade* outraEntidade, CoordF intersepta) = 0;
         //virtual void salvar(); //tem que ser virtual pura
 };

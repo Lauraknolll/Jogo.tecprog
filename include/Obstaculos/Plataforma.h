@@ -12,5 +12,6 @@
             virtual void executar(float dt);
             virtual void imprimir(Gerenciador::GerenciadorGrafico *gG);
             virtual const int getTipo() const;
+            virtual void colide(Entidade* outraEntidade, CoordF intersepta);
             void obstacular(Personagem* pP, int dir);
     };

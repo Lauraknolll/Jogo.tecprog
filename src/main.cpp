@@ -5,6 +5,7 @@
 #include "../include/Gerenciador/GerenciadorEventos.h"
 #include "../include/Jogador.h"
 #include "../include/Obstaculos/Plataforma.h"
+#include "../include/Obstaculos/Lava.h"
 
 #include <iostream>
 using namespace std;
@@ -25,6 +26,7 @@ int main()
         while(pGGrafico->getJanela()->pollEvent(evento))
         {   
             Plataforma* plat = new Plataforma(300.0, 200.0);
+            Lava* lav = new Lava();
             
             
             if(evento.type == sf::Event::Closed)
@@ -34,6 +36,7 @@ int main()
 
             pGGrafico->limpaJanela();
             plat->imprimir(pGGrafico);
+            lav->imprimir(pGGrafico);
             //pGGrafico->desenhaEntidade(body);
             pGGrafico->monstraEntidade();
         }

@@ -11,7 +11,7 @@ namespace Obstaculos
         public:
             Plataforma(float x = 0, float y = 0);
             ~Plataforma();
-            virtual void executar(float dt);
+            void executar();
             virtual void imprimir(Gerenciador::GerenciadorGrafico *gG);
             virtual const int getTipo() const;
             virtual void colide(Entidade* outraEntidade, CoordF intersepta);

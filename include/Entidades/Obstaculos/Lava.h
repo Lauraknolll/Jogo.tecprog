@@ -10,6 +10,7 @@ namespace Obstaculos
     public:
         Lava(float x = 0.f, float y = 0.f);
         ~Lava();
+        void executar();
         void imprimir(Gerenciador::GerenciadorGrafico *gG);
         unsigned int tomarDano() const;
     };

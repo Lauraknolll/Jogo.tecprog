@@ -14,7 +14,7 @@ namespace Obstaculos
         Obstaculo(float x = 0.f, float y = 0.f, float ww = 100.f, float hh = 100.f);
         ~Obstaculo();
 
-        virtual void executar(const float dt);
+        virtual void executar();
         virtual void imprimir(Gerenciador::GerenciadorGrafico *gG);
         virtual int const getTipo() const;
         virtual void colide(Entidade *outraEntidade, CoordF intercesao) {}

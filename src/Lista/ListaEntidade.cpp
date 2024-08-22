@@ -56,4 +56,18 @@ namespace Lista {
         list.clear();
     }
 
+    void ListaEntidade::percorrer()
+    {
+        int tam = list.getSize();
+        Entidades::Entidade* paux = nullptr;
+        for(int i = 0; i < tam; i++)
+        {
+            paux = list.operator[](i);
+            if(paux)
+            {
+                paux->executar();
+            }
+        }
+    }
+
 } // namespace List

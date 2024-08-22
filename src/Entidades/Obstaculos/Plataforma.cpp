@@ -11,7 +11,7 @@ Obstaculos::Plataforma::~Plataforma()
 
 }
 
-void Obstaculos::Plataforma::executar(float dt)
+void Obstaculos::Plataforma::executar()
 {
 
 }

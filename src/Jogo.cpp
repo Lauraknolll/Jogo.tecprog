@@ -18,9 +18,10 @@ void Jogo::executar()
     pGEvento->setJogador(jog);
     Personagens::InimigoFacil* ini1 = new Personagens::InimigoFacil();
     Personagens::InimigoMedio* ini2 = new Personagens::InimigoMedio();
-    //ini2->setJogador(jog);
+    ini2->setJogador(jog);
     Obstaculos::Plataforma *plat = new Obstaculos::Plataforma(300.0, 200.0);
     Obstaculos::Lava *lav = new Obstaculos::Lava();
+    Lista::ListaEntidade ListaDeEntidades;
 
     /*  Colocando eles na lista para utilizar o polimorfismo    */
     Entidades::Entidade* e1 = static_cast<Entidades::Entidade*>(jog);
@@ -29,8 +30,11 @@ void Jogo::executar()
     Entidades::Entidade* e4 = static_cast<Entidades::Entidade*>(plat);
     Entidades::Entidade* e5 = static_cast<Entidades::Entidade*>(lav);
 
-
-
+    ListaDeEntidades.addEntidade(e1);
+    ListaDeEntidades.addEntidade(e2);
+    ListaDeEntidades.addEntidade(e3);
+    ListaDeEntidades.addEntidade(e4);
+    ListaDeEntidades.addEntidade(e5);
 
     while (pGGrafico->verificarJanelaAberta())
     {
@@ -38,6 +42,8 @@ void Jogo::executar()
 
         pGEvento->executar(evento); //faz a verificação dos eventos
         pGGrafico->limpaJanela();
+
+        ListaDeEntidades.percorrer();
         
         pGGrafico->desenhaEntidade(jog->getcorpo());
         pGGrafico->desenhaEntidade(ini1->getCorpo());

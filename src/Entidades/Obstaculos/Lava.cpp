@@ -13,6 +13,11 @@ Obstaculos::Lava::~Lava()
 
 }
 
+void Obstaculos::Lava::executar()
+{
+
+}
+
 void Obstaculos::Lava::imprimir(Gerenciador::GerenciadorGrafico* gG){
     gG->desenhaEntidade(corpo);
 }

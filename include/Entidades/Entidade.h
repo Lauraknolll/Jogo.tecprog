@@ -18,7 +18,7 @@ namespace Entidades
     public:
         Entidade(float xx = 0, float yy = 0, float ww = 10.0, float hh = 10.0);
         ~Entidade();
-        virtual void executar();
+        virtual void executar() = 0;
         CoordF getPosicao() const;
         CoordF getTamanho() const;
         virtual void colide(Entidade *outraEntidade, CoordF intersepta) = 0; 

@@ -8,6 +8,7 @@
 #include "Entidades/Personagens/InimigoMedio.h"
 #include "Entidades/Obstaculos/Plataforma.h"
 #include "Entidades/Obstaculos/Lava.h"
+#include "Listas/ListaEntidade.h"
 
 
 #include <iostream>

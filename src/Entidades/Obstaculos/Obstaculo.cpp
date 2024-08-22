@@ -11,7 +11,7 @@ Obstaculos::Obstaculo::~Obstaculo()
 
 }
 
-void Obstaculos::Obstaculo::executar(const float dt)
+void Obstaculos::Obstaculo::executar()
 {
     
 }

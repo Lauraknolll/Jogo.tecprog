@@ -26,5 +26,7 @@ namespace Lista{
             Entidades::Entidade* operator[](int index);
 
             void cleanList();
+
+            void percorrer();
     };
 }

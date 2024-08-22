@@ -24,7 +24,7 @@ int main()
 
         while(pGGrafico->getJanela()->pollEvent(evento))
         {   
-            Plataforma* plat = new Plataforma();
+            Plataforma* plat = new Plataforma(300.0, 200.0);
             
             
             if(evento.type == sf::Event::Closed)

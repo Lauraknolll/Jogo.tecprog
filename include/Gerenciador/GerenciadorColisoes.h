@@ -1,32 +1,28 @@
 #pragma once
 
-#include "GerenciadorGrafico.h"
+#include "../Entidade.h"
+#include "../Listas/ListaEntidade.h"
 
-#include "../Obstaculos/Obstaculo.h"
-#include "../Jogador.h"
-/*
-using namespace Obstaculos;
+namespace States {
+    class Level;
+} // namespace States
 
 
-namespace Gerenciadores
-{
 
-class GerenciadorColisoes
-{
-private:
-  Jogador* jog;
-  Jogador* jog2;
-  //std::list<Projetil> proj;
-  //std::list<Obstaculo> obst;
-public:
-  GerenciadorColisoes();
-  ~GerenciadorColisoes();
-  void executar();
-  void incluir(Jogador j);
-  //void incluir(Projetil* p);
-  void incluir(Obstaculo* o);
-  void limpagCOL();
-};
+    class GerenciadorColisoes {
+    private:
+        Lista::ListaEntidade* movingEntities;
+        Lista::ListaEntidade* staticEntities;
+        States::Level* plvl;
 
-}
-*/
+    public:
+        GerenciadorColisoes(Lista::ListaEntidade* movingEntities, Lista::ListaEntidade* staticEntities/*, States::Level* plvl*/);
+
+        ~GerenciadorColisoes();
+
+        void colide();
+
+        //void clear();
+    };
+
+ // namespace Managers

@@ -20,6 +20,11 @@ Gerenciador::GerenciadorEvento* Gerenciador::GerenciadorEvento::getGerenciadorEv
     return pInstanciaGE; /* todas as outras vezes  */
 }
 
+void Gerenciador::GerenciadorEvento::setGerenciadosGrafico(GerenciadorGrafico* pGG)
+{
+    pGGrafico = pGG;
+}
+
 void Gerenciador::GerenciadorEvento::setJogador(Personagens::Jogador* jog)
 {
     pontJog1 = jog;

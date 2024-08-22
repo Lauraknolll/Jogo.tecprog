@@ -5,6 +5,7 @@ Entidade::Entidade(float xx, float yy, float ww, float hh) :
     Ente(), x(xx), y(yy), w(ww), h(hh), corpo(sf::Vector2f(w, h))
 {
     corpo.setFillColor(sf::Color::Blue);
+    corpo.setPosition(sf::Vector2f(x, y));
     
 }
 

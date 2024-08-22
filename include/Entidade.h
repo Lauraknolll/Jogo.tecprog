@@ -5,14 +5,14 @@
 
 class Entidade : public Ente
 {
-    public: //absurdo porém só pra teste
+    protected: 
         float x;
         float y;
         sf::RectangleShape corpo;
 
     public:
-        Entidade(float xx = 0, float yy = 0, float ww = 10.0, float hh = 10.0);
+        Entidade(float xx = 0, float yy = 0, float w = 10.0, float h = 10.0);
         ~Entidade();
-        virtual void executar() = 0;
-        virtual void salvar(); //tem que ser virtual pura
+        virtual void executar();
+        //virtual void salvar(); //tem que ser virtual pura
 };

@@ -1,7 +1,9 @@
+#pragma once
+
 #include <SFML/Graphics.hpp>
 #include "../include/Gerenciador/GerenciadorGrafico.h"
 #include "../include/Gerenciador/GerenciadorEventos.h"
-//#include "../include/Jogador.h"
+#include "../include/Jogador.h"
 #include "../include/Obstaculos/Plataforma.h"
 
 #include <iostream>
@@ -22,10 +24,9 @@ int main()
 
         while(pGGrafico->getJanela()->pollEvent(evento))
         {   
-            Obstaculos::Plataforma* plat;
-
-            sf::RectangleShape body(sf::Vector2f(100.f, 100.f));
-            body.setFillColor(sf::Color::Blue);
+            Plataforma* plat = new Plataforma();
+            
+            
             if(evento.type == sf::Event::Closed)
             {
                 pGGrafico->fecharJanela();
@@ -35,7 +36,6 @@ int main()
             plat->imprimir(pGGrafico);
             //pGGrafico->desenhaEntidade(body);
             pGGrafico->monstraEntidade();
-            printf("%f", plat->x);
         }
     }
     

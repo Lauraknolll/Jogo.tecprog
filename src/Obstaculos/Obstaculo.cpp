@@ -1,12 +1,25 @@
 #include "../../include/Obstaculos/Obstaculo.h"
 
-Obstaculos::Obstaculo::Obstaculo(float xxx, float y, float ww, float hh): 
+Obstaculo::Obstaculo(float xxx, float y, float ww, float hh): 
 Entidade(xxx, y, ww, hh)
 {
 
 }
 
-Obstaculos::Obstaculo::~Obstaculo()
+Obstaculo::~Obstaculo()
 {
 
+}
+
+void Obstaculo::executar(const float dt)
+{
+    
+}
+void Obstaculo::imprimir(Gerenciador::GerenciadorGrafico *gG)
+{
+    
+}
+int const Obstaculo::getTipo() const
+{
+    return 0;
 }

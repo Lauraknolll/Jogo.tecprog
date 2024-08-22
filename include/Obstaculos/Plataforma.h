@@ -3,7 +3,7 @@
 #include "Obstaculo.h"
 #include "../Personagem.h"
 
-namespace Obstaculos{
+
     class Plataforma : public Obstaculo{
         private:
         public:
@@ -14,4 +14,3 @@ namespace Obstaculos{
             virtual const int getTipo() const;
             void obstacular(Personagem* pP, int dir);
     };
-}

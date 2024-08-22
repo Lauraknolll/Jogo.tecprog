@@ -49,3 +49,8 @@ const sf::RectangleShape Personagens::InimigoMedio::getCorpo()
 {
     return corpo;
 }
+
+void Personagens::InimigoMedio::colide(Entidades::Entidade *outraEntidade, CoordF intersepta)
+{
+
+}

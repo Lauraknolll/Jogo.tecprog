@@ -12,5 +12,6 @@ namespace Personagens
         Personagem();
         ~Personagem();
         virtual void executar() = 0;
+        virtual void colide(Entidade *outraEntidade, CoordF intersepta) = 0; 
     };
 }

@@ -18,5 +18,6 @@ namespace Personagens
             void executar();
             void persegueJogador(sf::Vector2f posJog, sf::Vector2f posIni);
             const sf::RectangleShape getCorpo();
+            void colide(Entidade *outraEntidade, CoordF intersepta); 
     };
 }

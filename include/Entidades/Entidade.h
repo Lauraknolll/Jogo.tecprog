@@ -21,7 +21,7 @@ namespace Entidades
         virtual void executar();
         CoordF getPosicao() const;
         CoordF getTamanho() const;
-        virtual void colide(Entidade *outraEntidade, CoordF intersepta); 
+        virtual void colide(Entidade *outraEntidade, CoordF intersepta) = 0; 
         // virtual void salvar(); //tem que ser virtual pura
     };
 }

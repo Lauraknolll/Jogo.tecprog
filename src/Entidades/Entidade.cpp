@@ -28,6 +28,8 @@ CoordF Entidades::Entidade::getTamanho() const
     return tamanho;
 }
 
+
+
 /*void Entidade::salvar()
 {
 

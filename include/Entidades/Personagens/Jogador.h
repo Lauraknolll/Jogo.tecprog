@@ -15,5 +15,6 @@ namespace Personagens
         void andaPraDireta();
         void andaPraEsquerda();
         const sf::RectangleShape getcorpo();
+        void colide(Entidade *outraEntidade, CoordF intersepta); 
     };
 }

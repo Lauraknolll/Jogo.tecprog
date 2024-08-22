@@ -30,3 +30,8 @@ const sf::RectangleShape Personagens::Jogador::getcorpo()
 {
     return corpo;
 }
+
+void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, CoordF intersepta)
+{
+
+}

@@ -1,3 +1,9 @@
 *.exe
 *.o
 *.dll
+*.a
+*.hpp
+*.inl
+*.gch
+*.cmake
+*.vscode

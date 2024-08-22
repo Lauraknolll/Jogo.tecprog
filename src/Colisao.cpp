@@ -1,5 +1,5 @@
 #include "../include/Colisao.h"
-#include "../include/Entidade.h"
+#include "../include/Entidades/Entidade.h"
 
 Colisao::Colisao(int x, int y, int w, int h)
 {

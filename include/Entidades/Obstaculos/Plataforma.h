@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Obstaculo.h"
-#include "../Personagem.h"
+#include "../Personagens/Personagem.h"
 
 
     class Plataforma : public Obstaculo{

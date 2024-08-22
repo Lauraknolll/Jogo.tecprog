@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../include/Obstaculos/Lava.h"
+#include "../../../include/Entidades/Obstaculos/Lava.h"
 
 #define DANO_LAVA 10
 

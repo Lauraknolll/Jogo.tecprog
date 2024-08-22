@@ -1,5 +1,5 @@
 #pragma once
-#include "../include/Entidade.h"
+#include "../../include/Entidades/Entidade.h"
 
 Entidade::Entidade(float xx, float yy, float ww, float hh) :
     Ente(), x(xx), y(yy), w(ww), h(hh), corpo(sf::Vector2f(w, h))

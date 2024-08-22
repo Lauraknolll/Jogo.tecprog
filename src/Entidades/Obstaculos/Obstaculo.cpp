@@ -1,4 +1,4 @@
-#include "../../include/Obstaculos/Obstaculo.h"
+#include "../../../include/Entidades/Obstaculos/Obstaculo.h"
 
 Obstaculo::Obstaculo(float xxx, float y, float ww, float hh): 
 Entidade(xxx, y, ww, hh)

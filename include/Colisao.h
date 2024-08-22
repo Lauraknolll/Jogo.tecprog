@@ -1,6 +1,5 @@
 #pragma once
 
-
 //namespace Entidades
 //{
   class Entidade;

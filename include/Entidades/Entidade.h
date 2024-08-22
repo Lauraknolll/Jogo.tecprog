@@ -1,6 +1,6 @@
 #pragma once
-#include "Ente.h"
-#include "CoordTl.h"
+#include "../Ente.h"
+#include "../CoordTl.h"
 
 #include <SFML/Graphics.hpp>
 

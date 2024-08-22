@@ -1,9 +1,9 @@
 #pragma once
 
 #include "../Entidade.h"
-#include "../Colisao.h"
-#include "../Gerenciador/GerenciadorGrafico.h"
-#include "../CoordTl.h"
+#include "../../Colisao.h"
+#include "../../Gerenciador/GerenciadorGrafico.h"
+#include "../../CoordTl.h"
 
 
     class Obstaculo : public Entidade

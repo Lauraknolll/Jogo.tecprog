@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../include/Obstaculos/Plataforma.h"
-#include "../../include/Gerenciador/GerenciadorGrafico.h"
+#include "../../../include/Entidades/Obstaculos/Plataforma.h"
+#include "../../../include/Gerenciador/GerenciadorGrafico.h"
 
 Plataforma::Plataforma(float x, float y): Obstaculo(x, y)
 {

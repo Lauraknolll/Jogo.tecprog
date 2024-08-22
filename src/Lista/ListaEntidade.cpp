@@ -56,7 +56,7 @@ namespace Lista {
         list.clear();
     }
 
-    void ListaEntidade::percorrer()
+    void ListaEntidade::percorrerLista()
     {
         int tam = list.getSize();
         Entidades::Entidade* paux = nullptr;
@@ -66,6 +66,20 @@ namespace Lista {
             if(paux)
             {
                 paux->executar();
+            }
+        }
+    }
+
+    void ListaEntidade::desenharEntidades(Gerenciador::GerenciadorGrafico* pGG)
+    {
+        int tam = list.getSize();
+        Entidades::Entidade* paux = nullptr;
+        for(int i = 0; i < tam; i++)
+        {
+            paux = list.operator[](i);
+            if(paux)
+            {
+                paux->imprimir(pGG);
             }
         }
     }

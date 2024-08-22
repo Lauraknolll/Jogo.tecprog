@@ -3,7 +3,8 @@
 Personagens::Jogador::Jogador() :
     Personagem()
 {
-
+    corpo.setFillColor(sf::Color::Blue);
+    corpo.setOrigin(sf::Vector2f(-100.0f, -400.0f));
 }
 
 Personagens::Jogador::~Jogador()
@@ -29,6 +30,11 @@ void Personagens::Jogador::andaPraEsquerda()
 const sf::RectangleShape Personagens::Jogador::getcorpo()
 {
     return corpo;
+}
+
+void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
+{
+    gG->desenhaEntidade(corpo);
 }
 
 void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, CoordF intersepta)

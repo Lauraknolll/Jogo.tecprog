@@ -14,6 +14,7 @@ namespace Personagens
             void executar();
             void moveAleatorio();
             const sf::RectangleShape getCorpo();
+            void imprimir(Gerenciador::GerenciadorGrafico *gG);
             void colide(Entidade *outraEntidade, CoordF intersepta); 
     };
 }

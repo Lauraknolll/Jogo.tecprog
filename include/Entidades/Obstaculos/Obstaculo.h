@@ -15,7 +15,7 @@ namespace Obstaculos
         ~Obstaculo();
 
         virtual void executar();
-        virtual void imprimir(Gerenciador::GerenciadorGrafico *gG);
+        virtual void imprimir(Gerenciador::GerenciadorGrafico *gG) = 0;
         virtual int const getTipo() const;
         virtual void colide(Entidade *outraEntidade, CoordF intercesao) {}
         // virtual void obstacular(Personagem* pP, int dir) = 0;

@@ -43,14 +43,8 @@ void Jogo::executar()
         pGEvento->executar(evento); //faz a verificação dos eventos
         pGGrafico->limpaJanela();
 
-        ListaDeEntidades.percorrer();
-        
-        pGGrafico->desenhaEntidade(jog->getcorpo());
-        pGGrafico->desenhaEntidade(ini1->getCorpo());
-        pGGrafico->desenhaEntidade(ini2->getCorpo());
-
-        plat->imprimir(pGGrafico);
-        lav->imprimir(pGGrafico);
+        ListaDeEntidades.percorrerLista(); //faz todos os elementos da lista executarem
+        ListaDeEntidades.desenharEntidades(pGGrafico); //desenha todos os elementos da lista
         pGGrafico->monstraEntidade();
     }
 }

@@ -14,6 +14,7 @@ namespace Personagens
             Inimigo();
             ~Inimigo();
             virtual void executar() = 0;
+            virtual void imprimir(Gerenciador::GerenciadorGrafico *gG) = 0;
             virtual void colide(Entidade *outraEntidade, CoordF intersepta) = 0;
     };
 }

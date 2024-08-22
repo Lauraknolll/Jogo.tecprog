@@ -33,11 +33,11 @@ void Personagens::InimigoMedio::executar()
 
 void Personagens::InimigoMedio::persegueJogador(sf::Vector2f posJog, sf::Vector2f posIni)
 {
-    float tempo = relogio.getElapsedTime().asSeconds();
+    //float tempo = relogio.getElapsedTime().asSeconds();
 
     if((posJog.x - posIni.x) > 0.0f)
     {
-        corpo.move((velocidade.x * tempo), 0.0f);
+        corpo.move((velocidade.x), 0.0f);
     }
     else
     {
@@ -48,6 +48,11 @@ void Personagens::InimigoMedio::persegueJogador(sf::Vector2f posJog, sf::Vector2
 const sf::RectangleShape Personagens::InimigoMedio::getCorpo()
 {
     return corpo;
+}
+
+void Personagens::InimigoMedio::imprimir(Gerenciador::GerenciadorGrafico *gG)
+{
+    gG->desenhaEntidade(corpo);
 }
 
 void Personagens::InimigoMedio::colide(Entidades::Entidade *outraEntidade, CoordF intersepta)

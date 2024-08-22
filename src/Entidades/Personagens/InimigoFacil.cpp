@@ -63,6 +63,11 @@ const sf::RectangleShape Personagens::InimigoFacil::getCorpo()
     return corpo;
 }
 
+void Personagens::InimigoFacil::imprimir(Gerenciador::GerenciadorGrafico *gG)
+{
+    gG->desenhaEntidade(corpo);
+}
+
 void Personagens::InimigoFacil::colide(Entidades::Entidade *outraEntidade, CoordF intersepta)
 {
 

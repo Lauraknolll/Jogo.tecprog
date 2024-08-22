@@ -27,6 +27,8 @@ namespace Lista{
 
             void cleanList();
 
-            void percorrer();
+            void percorrerLista();
+
+            void desenharEntidades(Gerenciador::GerenciadorGrafico* pGG);
     };
 }

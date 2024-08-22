@@ -1,11 +1,19 @@
-all: main.o GerenciadorGrafico.o
-	g++ main.o GerenciadorGrafico.o -o main -L "C:\Users\samsu\OneDrive\Documentos\SFML-2.6.1\lib" -lsfml-graphics -lsfml-window -lsfml-system
+all: compile link execute
 
-main.o: src\main.cpp
-	g++ -c src\main.cpp -I "C:\Users\samsu\OneDrive\Documentos\SFML-2.6.1\include"
+compile:
+	g++ -c src/Entidades/Personagens/*.cpp src/Entidades/Obstaculos/*.cpp src/Entidades/*.cpp src/Gerenciador/*.cpp src/Lista/*.cpp src/*.cpp -I "C:\Users\samsu\OneDrive\Documentos\SFML-2.6.1\include"
 
-GerenciadorGrafico.o: src\Gerenciador\GerenciadorGrafico.cpp
-	g++ -c src\Gerenciador\GerenciadorGrafico.cpp -I "C:\Users\samsu\OneDrive\Documentos\SFML-2.6.1\include"
+link:
+	g++ *.o -Wall -o main -L "C:\Users\samsu\OneDrive\Documentos\SFML-2.6.1\lib" -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 
-clean:
-	rm	-f	*.o	main
+execute: 
+	./main
+	cls
+
+clear-windows:
+	del *.o
+	cls
+
+clear-linux:
+	rm -rf *.o
+	clear

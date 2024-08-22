@@ -1,5 +1,3 @@
-#pragma once
-
 #include "../../../include/Entidades/Obstaculos/Plataforma.h"
 #include "../../../include/Gerenciador/GerenciadorGrafico.h"
 

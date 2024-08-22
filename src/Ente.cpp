@@ -1,4 +1,3 @@
-#pragma once
 #include "../include/Ente.h"
 
 Ente::Ente()

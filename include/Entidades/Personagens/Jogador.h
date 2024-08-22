@@ -1,3 +1,4 @@
+#pragma once 
 #include "Personagem.h"
 
 namespace Personagens
@@ -13,6 +14,6 @@ namespace Personagens
         void executar();
         void andaPraDireta();
         void andaPraEsquerda();
-        sf::RectangleShape getcorpo();
+        const sf::RectangleShape getcorpo();
     };
 }

@@ -1,5 +1,3 @@
-#pragma once
-
 #include "../include/Jogo.h"
 
 int main()

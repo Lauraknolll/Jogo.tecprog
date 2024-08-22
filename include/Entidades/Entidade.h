@@ -13,6 +13,7 @@ namespace Entidades
         float y;
         float w, h;
         sf::RectangleShape corpo;
+        sf::Vector2f velocidade;
 
     public:
         Entidade(float xx = 0, float yy = 0, float ww = 10.0, float hh = 10.0);
@@ -20,7 +21,7 @@ namespace Entidades
         virtual void executar();
         CoordF getPosicao() const;
         CoordF getTamanho() const;
-        virtual void colide(Entidade *outraEntidade, CoordF intersepta) = 0;
+        virtual void colide(Entidade *outraEntidade, CoordF intersepta); 
         // virtual void salvar(); //tem que ser virtual pura
     };
 }

@@ -2,7 +2,8 @@
 
 Gerenciador::GerenciadorEvento* Gerenciador::GerenciadorEvento::pInstanciaGE = nullptr;
 
-Gerenciador::GerenciadorEvento::GerenciadorEvento() 
+Gerenciador::GerenciadorEvento::GerenciadorEvento() :
+    pontJog1(nullptr)
 {
 }
 
@@ -19,14 +20,13 @@ Gerenciador::GerenciadorEvento* Gerenciador::GerenciadorEvento::getGerenciadorEv
     return pInstanciaGE; /* todas as outras vezes  */
 }
 
-//void Gerenciador::GerenciadorEvento::setJogador(Jogador jog)
-//{
-    //jogador = &jog;
-//}
-
-void Gerenciador::GerenciadorEvento::executar()
+void Gerenciador::GerenciadorEvento::setJogador(Personagens::Jogador* jog)
 {
-    sf::Event evento;
+    pontJog1 = jog;
+}
+
+void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
+{
     while(pGGrafico->getJanela()->pollEvent(evento))
     {
         if(evento.type == sf::Event::Closed)
@@ -36,12 +36,12 @@ void Gerenciador::GerenciadorEvento::executar()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            //jogador->andaPraDireta();
+            pontJog1->andaPraDireta();
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            //jogador->andaPraEsquerda();
+            pontJog1->andaPraEsquerda();
         }
     }
 }

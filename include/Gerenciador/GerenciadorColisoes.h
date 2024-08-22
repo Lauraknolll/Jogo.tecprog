@@ -11,12 +11,13 @@ namespace Gerenciador
 {
     class GerenciadorColisoes {
     private:
-        Lista::ListaEntidade* movingEntities;
-        Lista::ListaEntidade* staticEntities;
-        States::Level* plvl;
+        Lista::ListaEntidade* Jogador;
+        Lista::ListaEntidade* Obstaculos;
+        Lista::ListaEntidade* Inimigos;
+        //States::Level* plvl;
 
     public:
-        GerenciadorColisoes(Lista::ListaEntidade* movingEntities, Lista::ListaEntidade* staticEntities/*, States::Level* plvl*/);
+        GerenciadorColisoes(Lista::ListaEntidade* Jogador1, Lista::ListaEntidade* Obstaculos1, Lista::ListaEntidade* Inimigos1/*, States::Level* plvl*/);
 
         ~GerenciadorColisoes();
 

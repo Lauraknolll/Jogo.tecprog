@@ -7,3 +7,4 @@
 *.gch
 *.cmake
 *.vscode
+Makefile

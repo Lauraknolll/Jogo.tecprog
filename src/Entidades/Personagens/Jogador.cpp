@@ -4,7 +4,7 @@ Personagens::Jogador::Jogador() :
     Personagem()
 {
     corpo.setFillColor(sf::Color::Blue);
-    corpo.setOrigin(sf::Vector2f(-100.0f, -400.0f));
+    corpo.setPosition(200.0, 340.0);
     velocidade.x = 1.0f;
     velocidade.y = 0.0f;
 }

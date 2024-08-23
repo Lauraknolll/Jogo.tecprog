@@ -1,6 +1,5 @@
 #include "../../../include/Entidades/Personagens/Jogador.h"
-#include <iostream>
-using namespace std;
+#define VELJOG 1.f
 
 Personagens::Jogador::Jogador() :
     Personagem()
@@ -23,13 +22,13 @@ void Personagens::Jogador::executar()
 
 void Personagens::Jogador::andaPraDireta()
 {
-    corpo.move(sf::Vector2f(velocidade.x, 0.0f));
+    corpo.move(sf::Vector2f(VELJOG, 0.0f));
     x = corpo.getPosition().x;
 }
 
 void Personagens::Jogador::andaPraEsquerda()
 {
-    corpo.move(sf::Vector2f(-velocidade.x, 0.0f));
+    corpo.move(sf::Vector2f(-VELJOG, 0.0f));
     x = corpo.getPosition().x;
 }
 
@@ -55,7 +54,7 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
             x -= intersecao.x;
             corpo.setPosition(x, corpo.getPosition().y);
         }
-        velocidade.x = 0.0f;
+        //velocidade.x = 0.0f;
     }
 
     else // colisao em y
@@ -70,6 +69,6 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
             y -= intersecao.y;
             corpo.setPosition(corpo.getPosition().x, y);
         }
-        velocidade.y = 0.0f;
+        //velocidade.y = 0.0f;
     }
 }

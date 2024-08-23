@@ -7,7 +7,6 @@ namespace Personagens
     {
     private:
         int pontos;
-
     public:
         Jogador();
         ~Jogador();

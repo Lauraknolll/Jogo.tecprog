@@ -5,6 +5,8 @@ Personagens::Jogador::Jogador() :
 {
     corpo.setFillColor(sf::Color::Blue);
     corpo.setOrigin(sf::Vector2f(-100.0f, -400.0f));
+    velocidade.x = 1.0f;
+    velocidade.y = 0.0f;
 }
 
 Personagens::Jogador::~Jogador()
@@ -20,17 +22,15 @@ void Personagens::Jogador::executar()
 void Personagens::Jogador::andaPraDireta()
 {
     corpo.move(sf::Vector2f(velocidade.x, 0.0f));
+    x = corpo.getPosition().x;
 }
 
 void Personagens::Jogador::andaPraEsquerda()
 {
     corpo.move(sf::Vector2f(-velocidade.x, 0.0f));
+    x = corpo.getPosition().x;
 }
 
-const sf::RectangleShape Personagens::Jogador::getcorpo()
-{
-    return corpo;
-}
 
 void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
@@ -43,6 +43,7 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, CoordF int
 
     if(intersecao.x > intersecao.y) // colisao em x
     {
+        x = corpo.getPosition().x;
         if(x < posicaoOutro.x)
         {
             x += intersecao.x;

@@ -22,13 +22,13 @@ void Personagens::InimigoMedio::setJogador(Personagens::Jogador* pJ)
 
 void Personagens::InimigoMedio::executar()
 {
-    sf::Vector2f posicaoJogador = jogador->getcorpo().getPosition();
+    //sf::Vector2f posicaoJogador = jogador->getcorpo().getPosition();
     sf::Vector2f posicaoInimigo = corpo.getPosition();
 
-    if(fabs(posicaoJogador.x - posicaoInimigo.x) <= RAIO_PERSEGUIR_X)
-    {
-        persegueJogador(posicaoJogador, posicaoInimigo);
-    }
+    //if(fabs(posicaoJogador.x - posicaoInimigo.x) <= RAIO_PERSEGUIR_X)
+    //{
+     //   persegueJogador(posicaoJogador, posicaoInimigo);
+    //}
 }
 
 void Personagens::InimigoMedio::persegueJogador(sf::Vector2f posJog, sf::Vector2f posIni)

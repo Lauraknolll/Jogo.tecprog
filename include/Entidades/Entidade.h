@@ -31,6 +31,7 @@ namespace Entidades
         virtual void executar() = 0;
         CoordF getPosicao() const;
         CoordF getTamanho() const;
+        sf::RectangleShape getCorpo();
         virtual void imprimir(Gerenciador::GerenciadorGrafico *gG) = 0;
         virtual void colide(Entidade *outraEntidade, CoordF intersecao) = 0; 
         // virtual void salvar(); //tem que ser virtual pura

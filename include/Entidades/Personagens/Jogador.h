@@ -8,6 +8,7 @@ namespace Personagens
     {
     private:
         int pontos;
+        bool podePular;
     public:
         Jogador(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
         ~Jogador();

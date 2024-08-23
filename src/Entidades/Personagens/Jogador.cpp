@@ -5,6 +5,8 @@
 Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
     Personagem(xx, yy, ww, hh, Entidades::jogador)
 {
+    podePular = false;
+
     corpo.setFillColor(sf::Color::Blue);
     //corpo.setPosition(200.0, 340.0);
     velocidade.x = 1.0f;
@@ -36,7 +38,11 @@ void Personagens::Jogador::andaPraEsquerda()
 
 void Personagens::Jogador::pular()
 {
-    velocidade.y = -sqrt(2.0f*GRAVIDADE*10.0f);
+    if(podePular){
+        velocidade.y = -sqrt(2.0f*GRAVIDADE*100.0f);
+        podePular = false;
+    }
+   
 }
 
 
@@ -77,6 +83,7 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
             corpo.setPosition(corpo.getPosition().x, y);
         }
         velocidade.y = 0.0f;
+        podePular = true;
     }
 }
 

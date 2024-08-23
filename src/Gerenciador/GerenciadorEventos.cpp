@@ -38,20 +38,13 @@ void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
         {
             pGGrafico->fecharJanela();
         }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        if(evento.type == sf::Event::KeyPressed)
         {
-            pontJog1->andaPraDireta();
+            pontJog1->tratarEventoPrecionar(evento);
         }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if(evento.type == sf::Event::KeyReleased)
         {
-            pontJog1->andaPraEsquerda();
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        {
-            pontJog1->pular();
+            pontJog1->tratarEventoSoltar(evento);
         }
     }
 }

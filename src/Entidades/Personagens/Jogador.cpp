@@ -1,15 +1,14 @@
 #include "../../../include/Entidades/Personagens/Jogador.h"
 #define VELJOG 1.f
-#define GRAVIDADE 0.00001f
+#define GRAVIDADE 0.00005f
 
 Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
-    Personagem(xx, yy, ww, hh, Entidades::jogador)
+    Personagem(xx, yy, ww, hh, Entidades::jogador), podePular(false), podeAndarDireita(true), podeAndarEsquerda(true)
 {
-    podePular = false;
 
     corpo.setFillColor(sf::Color::Blue);
     //corpo.setPosition(200.0, 340.0);
-    velocidade.x = 1.0f;
+    velocidade.x = 0.0f;
     velocidade.y = 0.0f;
 }
 
@@ -23,7 +22,7 @@ void Personagens::Jogador::executar()
     corpo.setFillColor(sf::Color::Magenta);
     atualizar();
 }
-
+/*
 void Personagens::Jogador::andaPraDireta()
 {
     corpo.move(sf::Vector2f(VELJOG, 0.0f));
@@ -35,14 +34,67 @@ void Personagens::Jogador::andaPraEsquerda()
     corpo.move(sf::Vector2f(-VELJOG, 0.0f));
     x = corpo.getPosition().x;
 }
-
+*/
 void Personagens::Jogador::pular()
 {
     if(podePular){
-        velocidade.y = -sqrt(2.0f*GRAVIDADE*100.0f);
+        velocidade.y = -sqrt(2.0f*GRAVIDADE*200.0f);
         podePular = false;
     }
    
+}
+
+void Personagens::Jogador::tratarEventoPrecionar(const sf::Event &e) {
+    if(e.type == sf::Event::KeyPressed){
+        switch (e.key.code)
+        {
+            case sf::Keyboard::D:
+                if(podeAndarDireita){
+                    podeAndarDireita = false;
+                    velocidade.x += 0.1;
+                }
+                break;
+            
+            case sf::Keyboard::A:
+                if(podeAndarEsquerda){
+                    podeAndarEsquerda = false;
+                    velocidade.x -= 0.1;
+                }
+                break;
+            
+            case sf::Keyboard::W:
+                pular();
+                break;
+            
+            
+            default:
+                break;
+        }
+    }
+}
+
+void Personagens::Jogador::tratarEventoSoltar(const sf::Event &e){
+        if(e.type == sf::Event::KeyReleased){
+        switch (e.key.code)
+        {
+            case sf::Keyboard::D:
+                if(!podeAndarDireita){
+                    podeAndarDireita = true;
+                    velocidade.x -= 0.1;
+                }
+                break;
+            
+            case sf::Keyboard::A:
+                if(!podeAndarEsquerda){
+                    podeAndarEsquerda = true;
+                    velocidade.x += 0.1;
+                }   
+                break;
+            
+            default:
+                break;
+        }
+    }
 }
 
 
@@ -91,5 +143,5 @@ void Personagens::Jogador::atualizar()
 {
     velocidade.y += GRAVIDADE;
     y = corpo.getPosition().y;
-    corpo.move(sf::Vector2f(0.f, velocidade.y));
+    corpo.move(sf::Vector2f(velocidade.x, velocidade.y));
 }

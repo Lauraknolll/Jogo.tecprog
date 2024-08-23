@@ -1,6 +1,8 @@
 #include "../../../include/Entidades/Personagens/Jogador.h"
+
 #define VELJOG 1.f
 #define GRAVIDADE 0.00005f
+#define VELOCIDADE_JOGADOR 0.1f
 
 Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
     Personagem(xx, yy, ww, hh, Entidades::jogador), podePular(false), podeAndarDireita(true), podeAndarEsquerda(true)
@@ -51,14 +53,14 @@ void Personagens::Jogador::tratarEventoPrecionar(const sf::Event &e) {
             case sf::Keyboard::D:
                 if(podeAndarDireita){
                     podeAndarDireita = false;
-                    velocidade.x += 0.1;
+                    velocidade.x += VELOCIDADE_JOGADOR;
                 }
                 break;
             
             case sf::Keyboard::A:
                 if(podeAndarEsquerda){
                     podeAndarEsquerda = false;
-                    velocidade.x -= 0.1;
+                    velocidade.x -= VELOCIDADE_JOGADOR;
                 }
                 break;
             
@@ -80,14 +82,14 @@ void Personagens::Jogador::tratarEventoSoltar(const sf::Event &e){
             case sf::Keyboard::D:
                 if(!podeAndarDireita){
                     podeAndarDireita = true;
-                    velocidade.x -= 0.1;
+                    velocidade.x -= VELOCIDADE_JOGADOR;
                 }
                 break;
             
             case sf::Keyboard::A:
                 if(!podeAndarEsquerda){
                     podeAndarEsquerda = true;
-                    velocidade.x += 0.1;
+                    velocidade.x += VELOCIDADE_JOGADOR;
                 }   
                 break;
             
@@ -106,6 +108,9 @@ void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
 {
     sf::Vector2f posicaoOutro = outraEntidade->getCorpo().getPosition();
+    /*if(outraEntidade->getID() == ){
+
+    }*/
 
     if(intersecao.x > intersecao.y) // colisao em x
     {

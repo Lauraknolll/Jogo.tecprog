@@ -34,6 +34,11 @@ void Personagens::Jogador::andaPraEsquerda()
     x = corpo.getPosition().x;
 }
 
+void Personagens::Jogador::pular()
+{
+    velocidade.y = -sqrt(2.0f*GRAVIDADE*10.0f);
+}
+
 
 void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {

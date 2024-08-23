@@ -1,5 +1,6 @@
 #pragma once 
 #include "Personagem.h"
+#include "math.h"
 
 namespace Personagens
 {
@@ -13,6 +14,7 @@ namespace Personagens
         void executar();
         void andaPraDireta();
         void andaPraEsquerda();
+        void pular();
         void atualizar();
         void imprimir(Gerenciador::GerenciadorGrafico *gG);
         void colide(Entidade *outraEntidade, sf::Vector2f intersecao); 

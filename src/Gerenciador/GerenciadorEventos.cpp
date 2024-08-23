@@ -48,5 +48,10 @@ void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
         {
             pontJog1->andaPraEsquerda();
         }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
+            pontJog1->pular();
+        }
     }
 }

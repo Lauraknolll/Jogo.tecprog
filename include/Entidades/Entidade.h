@@ -6,12 +6,22 @@
 
 namespace Entidades
 {
+
+    enum ID
+    {
+        jogador = 0,
+        plataforma,
+        inimigoFacil,
+        inimigoMedio
+    };
+
     class Entidade : public Ente
     {
     protected:
         float x;
         float y;
         float w, h;
+        ID id;
         sf::RectangleShape corpo;
         sf::Vector2f velocidade;
 
@@ -22,7 +32,7 @@ namespace Entidades
         CoordF getPosicao() const;
         CoordF getTamanho() const;
         virtual void imprimir(Gerenciador::GerenciadorGrafico *gG) = 0;
-        virtual void colide(Entidade *outraEntidade, CoordF intersepta) = 0; 
+        virtual void colide(Entidade *outraEntidade, CoordF intersecao) = 0; 
         // virtual void salvar(); //tem que ser virtual pura
     };
 }

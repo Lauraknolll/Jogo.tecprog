@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Gerenciador/GerenciadorGrafico.h"
 #include "Gerenciador/GerenciadorEventos.h"
+#include "Gerenciador/GerenciadorColisoes.h"
 #include "Entidades/Personagens/Jogador.h"
 #include "Entidades/Personagens/InimigoFacil.h"
 #include "Entidades/Personagens/InimigoMedio.h"

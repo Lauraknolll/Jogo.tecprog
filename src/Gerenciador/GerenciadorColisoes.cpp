@@ -7,13 +7,14 @@
 
 
 
-    Gerenciador::GerenciadorColisoes::GerenciadorColisoes(Lista::ListaEntidade* Jogador1, Lista::ListaEntidade* Obstaculos1, Lista::ListaEntidade* Inimigos1/*, States::Level* plvl*/) :
-    Jogador(Jogador1),
-    Obstaculos(Obstaculos1),
-    Inimigos(Inimigos1)/*,
+    Gerenciador::GerenciadorColisoes::GerenciadorColisoes(Lista::ListaEntidade* Jogador1, Lista::ListaEntidade* Obstaculos1/*, Lista::ListaEntidade* Inimigos1, States::Level* plvl*/) :
+        Jogador(Jogador1),
+        Obstaculos(Obstaculos1)
+        /*Inimigos(Inimigos1),
     plvl(plvl) */{ }
 
-    Gerenciador::GerenciadorColisoes::~GerenciadorColisoes() {
+    Gerenciador::GerenciadorColisoes::~GerenciadorColisoes() 
+    {
         Jogador = nullptr;
         Obstaculos = nullptr;
     }
@@ -22,43 +23,49 @@
         Entidades::Entidade* ent1 = nullptr;
         Entidades::Entidade* ent2 = nullptr;
         Entidades::Entidade* ent3 = nullptr;
-        CoordF intersect;
-        CoordF centerDistance;
+        CoordF intersecao;
+        CoordF distanciaEntreCentros;
         int i, j;
 
         /* Collide non-moving entities with moving entities */
-        for (i = 0; i < Obstaculos->getSize(); i++) {
-            for (j = 0; j < Jogador->getSize(); j++) {
+        for (i = 0; i < Obstaculos->getSize(); i++) 
+        {
+            for (j = 0; j < Jogador->getSize(); j++) 
+            {
                 ent1 = (*Obstaculos)[i];
                 ent2 = (*Jogador)[j];
 
-                centerDistance.x = ent2->getPosicao().x - ent1->getPosicao().x;
-                centerDistance.y = ent2->getPosicao().y - ent1->getPosicao().y;
+                distanciaEntreCentros.x = ent2->getPosicao().x - ent1->getPosicao().x;
+                distanciaEntreCentros.y = ent2->getPosicao().y - ent1->getPosicao().y;
 
-                intersect.x = fabs(centerDistance.x) - (ent1->getTamanho().x / 2.0f + ent2->getTamanho().x / 2.0f);
-                intersect.y = fabs(centerDistance.y) - (ent1->getTamanho().y / 2.0f + ent2->getTamanho().y / 2.0f);
+                intersecao.x = fabs(distanciaEntreCentros.x) - (ent1->getTamanho().x / 2.0f + ent2->getTamanho().x / 2.0f);
+                intersecao.y = fabs(distanciaEntreCentros.y) - (ent1->getTamanho().y / 2.0f + ent2->getTamanho().y / 2.0f);
 
-                if (intersect.x < 0.0f && intersect.y < 0.0f) { // Condition to collide...
-                    ent2->colide(ent1, intersect);
+                if (intersecao.x < 0.0f && intersecao.y < 0.0f) 
+                { // Condition to collide...
+                    ent2->colide(ent1, intersecao);
                 }
             }
         }
 
         /* Collide moving entities with moving entities - diagonally */
-        for (i = 0; i < Jogador->getSize(); i++) {
-            for (j = i + 1; j < Jogador->getSize(); j++) {
+        for (i = 0; i < Jogador->getSize(); i++) 
+        {
+            for (j = i + 1; j < Jogador->getSize(); j++) 
+            {
                 ent1 = (*Jogador)[i];
                 ent2 = (*Jogador)[j];
 
-                centerDistance.x = ent2->getPosicao().x - ent1->getPosicao().x;
-                centerDistance.y = ent2->getPosicao().y - ent1->getPosicao().y;
+                distanciaEntreCentros.x = ent2->getPosicao().x - ent1->getPosicao().x;
+                distanciaEntreCentros.y = ent2->getPosicao().y - ent1->getPosicao().y;
 
-                intersect.x = fabs(centerDistance.x) - (ent1->getTamanho().x / 2.0f + ent2->getTamanho().x / 2.0f);
-                intersect.y = fabs(centerDistance.y) - (ent1->getTamanho().y / 2.0f + ent2->getTamanho().y / 2.0f);
+                intersecao.x = fabs(distanciaEntreCentros.x) - (ent1->getTamanho().x / 2.0f + ent2->getTamanho().x / 2.0f);
+                intersecao.y = fabs(distanciaEntreCentros.y) - (ent1->getTamanho().y / 2.0f + ent2->getTamanho().y / 2.0f);
 
-                if (intersect.x < 0.0f && intersect.y < 0.0f) { // Condition to collide...
-                    ent2->colide(ent1, intersect);
-                    ent1->colide(ent2, intersect);
+                if (intersecao.x < 0.0f && intersecao.y < 0.0f) 
+                { // Condition to collide...
+                    ent2->colide(ent1, intersecao);
+                    ent1->colide(ent2, intersecao);
                 }
             }
         }
@@ -84,4 +91,3 @@
         }
     }
 */
- // namespace Manager

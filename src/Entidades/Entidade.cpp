@@ -1,7 +1,7 @@
 #include "../../include/Entidades/Entidade.h"
 
-Entidades::Entidade::Entidade(float xx, float yy, float ww, float hh) :
-    Ente(), x(xx), y(yy), w(ww), h(hh)
+Entidades::Entidade::Entidade(float xx, float yy, float ww, float hh, ID idd) :
+    Ente(), x(xx), y(yy), w(ww), h(hh), id(idd)
 {
     corpo.setSize(sf::Vector2f(w, h));
     corpo.setFillColor(sf::Color::Blue);

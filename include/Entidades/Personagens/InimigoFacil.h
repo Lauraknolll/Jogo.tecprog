@@ -9,7 +9,7 @@ namespace Personagens
         private:
             short movimentoale;
         public:
-            InimigoFacil();
+            InimigoFacil(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
             ~InimigoFacil();
             void executar();
             void moveAleatorio();

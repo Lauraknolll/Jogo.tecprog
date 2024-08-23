@@ -1,10 +1,10 @@
 #include "../../../include/Entidades/Personagens/InimigoFacil.h"
 
-Personagens::InimigoFacil::InimigoFacil() :
-    Inimigo()
+Personagens::InimigoFacil::InimigoFacil(float xx, float yy, float ww, float hh) :
+    Inimigo(xx, yy, ww, hh, Entidades::inimigoFacil)
 {
     corpo.setFillColor(sf::Color::Red);
-    corpo.setOrigin(sf::Vector2f(-150.0f, -400.0f));
+    //corpo.setOrigin(sf::Vector2f(-150.0f, -400.0f));
     movimentoale = rand()%1;
 }
 

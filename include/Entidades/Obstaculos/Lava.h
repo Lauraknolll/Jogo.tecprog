@@ -8,7 +8,7 @@ namespace Obstaculos
     {
     private:
     public:
-        Lava(float x = 0.f, float y = 0.f);
+        Lava(float x = 0.f, float y = 0.f, float ww = 100.f, float hh = 100.f);
         ~Lava();
         void executar();
         void imprimir(Gerenciador::GerenciadorGrafico *gG);

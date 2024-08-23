@@ -9,8 +9,10 @@ namespace Entidades
 
     enum ID
     {
-        jogador = 0,
+        vazio = 0,
+        jogador,
         plataforma,
+        lava,
         inimigoFacil,
         inimigoMedio
     };
@@ -26,7 +28,7 @@ namespace Entidades
         sf::Vector2f velocidade;
 
     public:
-        Entidade(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
+        Entidade(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0, ID idd = vazio);
         ~Entidade();
         virtual void executar() = 0;
         CoordF getPosicao() const;

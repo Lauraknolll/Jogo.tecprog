@@ -1,7 +1,8 @@
 #include "../../../include/Entidades/Obstaculos/Plataforma.h"
 #include "../../../include/Gerenciador/GerenciadorGrafico.h"
 
-Obstaculos::Plataforma::Plataforma(float x, float y): Obstaculo(x, y)
+Obstaculos::Plataforma::Plataforma(float x, float y, float ww, float hh): 
+Obstaculo(x, y, ww, hh, Entidades::plataforma)
 {
 
 }

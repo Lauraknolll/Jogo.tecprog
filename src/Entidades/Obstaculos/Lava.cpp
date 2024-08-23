@@ -2,8 +2,8 @@
 
 #define DANO_LAVA 10
 
-Obstaculos::Lava::Lava(float x, float y):
-Obstaculo(x, y)
+Obstaculos::Lava::Lava(float x, float y, float ww, float hh):
+Obstaculo(x, y, ww, hh, Entidades::lava)
 {
     corpo.setFillColor(sf::Color::Red);
 }

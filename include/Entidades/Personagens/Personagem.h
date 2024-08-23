@@ -9,7 +9,7 @@ namespace Personagens
         int num_vidas;
 
     public:
-        Personagem();
+        Personagem(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0, Entidades::ID id = Entidades::vazio);
         ~Personagem();
         virtual void executar() = 0;
         virtual void imprimir(Gerenciador::GerenciadorGrafico *gG) = 0;

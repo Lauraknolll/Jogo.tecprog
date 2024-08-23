@@ -1,11 +1,11 @@
 #include "../../../include/Entidades/Personagens/Jogador.h"
 #define VELJOG 1.f
 
-Personagens::Jogador::Jogador() :
-    Personagem()
+Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
+    Personagem(xx, yy, ww, hh, Entidades::jogador)
 {
     corpo.setFillColor(sf::Color::Blue);
-    corpo.setPosition(200.0, 340.0);
+    //corpo.setPosition(200.0, 340.0);
     velocidade.x = 1.0f;
     velocidade.y = 0.0f;
 }

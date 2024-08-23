@@ -11,7 +11,7 @@ namespace Obstaculos
     {
     protected:
     public:
-        Obstaculo(float x = 0.f, float y = 0.f, float ww = 100.f, float hh = 100.f);
+        Obstaculo(float xxx = 0.f, float y = 0.f, float ww = 100.f, float hh = 100.f, Entidades::ID id = Entidades::vazio);
         ~Obstaculo();
 
         virtual void executar();

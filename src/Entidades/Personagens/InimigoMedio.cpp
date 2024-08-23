@@ -1,10 +1,10 @@
 #include "../../../include/Entidades/Personagens/InimigoMedio.h"
 
-Personagens::InimigoMedio::InimigoMedio() :
-    Inimigo()
+Personagens::InimigoMedio::InimigoMedio(float xx, float yy, float ww, float hh) :
+    Inimigo(xx, yy, ww, hh, Entidades::inimigoMedio)
 {
     corpo.setFillColor(sf::Color::Yellow);
-    corpo.setOrigin(sf::Vector2f(-150.0f, -400.0f));
+    //corpo.setOrigin(sf::Vector2f(-150.0f, -400.0f));
 }
 
 Personagens::InimigoMedio::~InimigoMedio()

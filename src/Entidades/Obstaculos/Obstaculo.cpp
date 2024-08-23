@@ -1,7 +1,7 @@
 #include "../../../include/Entidades/Obstaculos/Obstaculo.h"
 
-Obstaculos::Obstaculo::Obstaculo(float xxx, float y, float ww, float hh): 
-Entidade(xxx, y, ww, hh)
+Obstaculos::Obstaculo::Obstaculo(float xxx, float y, float ww, float hh, Entidades::ID id): 
+Entidade(xxx, y, ww, hh, id)
 {
 
 }

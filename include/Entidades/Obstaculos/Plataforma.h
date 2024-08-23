@@ -9,7 +9,7 @@ namespace Obstaculos
     {
         private:
         public:
-            Plataforma(float x = 0, float y = 0);
+            Plataforma(float x = 0.f, float y = 0.f, float ww = 100.f, float hh = 100.f);
             ~Plataforma();
             void executar();
             virtual void imprimir(Gerenciador::GerenciadorGrafico *gG);

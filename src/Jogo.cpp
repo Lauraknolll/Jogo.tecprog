@@ -14,7 +14,7 @@ void Jogo::executar()
     Gerenciador::GerenciadorGrafico *pGGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
     Gerenciador::GerenciadorEvento *pGEvento = Gerenciador::GerenciadorEvento::getGerenciadorEventos();
     pGEvento->setGerenciadosGrafico(pGGrafico);
-    Personagens::Jogador* jog = new Personagens::Jogador();
+    Personagens::Jogador* jog = new Personagens::Jogador(200.0, 340.0);
     pGEvento->setJogador(jog);
     Personagens::InimigoFacil* ini1 = new Personagens::InimigoFacil();
     //Personagens::InimigoMedio* ini2 = new Personagens::InimigoMedio();
@@ -34,6 +34,7 @@ void Jogo::executar()
 
     ListaEntidades->addEntidade(e1);
     ListaPlataforma->addEntidade(e4);
+    ListaPlataforma->addEntidade(e5);
     
 
     Gerenciador::GerenciadorColisoes* pGColisoes = new Gerenciador::GerenciadorColisoes(ListaEntidades, ListaPlataforma);

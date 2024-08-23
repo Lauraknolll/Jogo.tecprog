@@ -48,12 +48,12 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
         if(x < posicaoOutro.x)
         {
             x += intersecao.x;
-            corpo.setPosition(x, y);
+            corpo.setPosition(x, corpo.getPosition().y);
         }
         else
         {
             x -= intersecao.x;
-            corpo.setPosition(x, y);
+            corpo.setPosition(x, corpo.getPosition().y);
         }
         velocidade.x = 0.0f;
     }
@@ -63,12 +63,12 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
         if(y < posicaoOutro.y)
         {
             y += intersecao.y;
-            corpo.setPosition(x, y);
+            corpo.setPosition(corpo.getPosition().x, y);
         }
         else
         {
             y -= intersecao.y;
-            corpo.setPosition(x, y);
+            corpo.setPosition(corpo.getPosition().x, y);
         }
         velocidade.y = 0.0f;
     }

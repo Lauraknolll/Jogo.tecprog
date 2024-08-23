@@ -78,5 +78,6 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
 void Personagens::Jogador::atualizar()
 {
     velocidade.y += GRAVIDADE;
+    y = corpo.getPosition().y;
     corpo.move(sf::Vector2f(0.f, velocidade.y));
 }

@@ -69,9 +69,10 @@ using namespace std;
 
                 if(num.x < 0.0f && num.y < 0.0f)
                 {
-                    cout << "Entrou" << endl; 
-                    cout << ent1->getPosicao().x << " " << ent1->getPosicao().y << endl;
-                    cout << ent2->getPosicao().x << " " << ent2->getPosicao().y << endl;
+                    //cout << "Entrou" << endl; 
+                    //cout << ent1->getPosicao().x << " " << ent1->getPosicao().y << endl;
+                    //cout << ent2->getPosicao().x << " " << ent2->getPosicao().y << end
+                    ent2->colide(ent1, num);
                 }
             }
         } 

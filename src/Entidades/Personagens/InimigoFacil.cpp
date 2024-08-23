@@ -68,7 +68,7 @@ void Personagens::InimigoFacil::imprimir(Gerenciador::GerenciadorGrafico *gG)
     gG->desenhaEntidade(corpo);
 }
 
-void Personagens::InimigoFacil::colide(Entidades::Entidade *outraEntidade, CoordF intersecao)
+void Personagens::InimigoFacil::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
 {
 
 }

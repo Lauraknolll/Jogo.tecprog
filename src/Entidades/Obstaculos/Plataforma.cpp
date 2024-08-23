@@ -29,7 +29,7 @@ const int Obstaculos::Plataforma::getTipo() const
     return 0;
 }
 
-void Obstaculos::Plataforma::colide(Entidades::Entidade* outraEntidade, CoordF intersecao)
+void Obstaculos::Plataforma::colide(Entidades::Entidade* outraEntidade, sf::Vector2f intersecao)
 {
 
 }

@@ -1,4 +1,6 @@
 #include "../../../include/Entidades/Personagens/Jogador.h"
+#include <iostream>
+using namespace std;
 
 Personagens::Jogador::Jogador() :
     Personagem()
@@ -37,13 +39,12 @@ void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
     gG->desenhaEntidade(corpo);
 }
 
-void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, CoordF intersecao)
+void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
 {
-    CoordF posicaoOutro = outraEntidade->getPosicao();
+    sf::Vector2f posicaoOutro = outraEntidade->getCorpo().getPosition();
 
     if(intersecao.x > intersecao.y) // colisao em x
     {
-        x = corpo.getPosition().x;
         if(x < posicaoOutro.x)
         {
             x += intersecao.x;

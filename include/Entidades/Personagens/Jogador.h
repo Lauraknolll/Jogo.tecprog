@@ -15,6 +15,6 @@ namespace Personagens
         void andaPraDireta();
         void andaPraEsquerda();
         void imprimir(Gerenciador::GerenciadorGrafico *gG);
-        void colide(Entidade *outraEntidade, CoordF intersecao); 
+        void colide(Entidade *outraEntidade, sf::Vector2f intersecao); 
     };
 }

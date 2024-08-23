@@ -29,6 +29,11 @@ CoordF Entidades::Entidade::getTamanho() const
     return tamanho;
 }
 
+Entidades::ID Entidades::Entidade::getID()
+{
+    return id;
+}
+
 sf::RectangleShape Entidades::Entidade::getCorpo()
 {
     return corpo;

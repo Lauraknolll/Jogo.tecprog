@@ -1,5 +1,6 @@
 #include "../../../include/Entidades/Personagens/Jogador.h"
 #define VELJOG 1.f
+#define GRAVIDADE 0.00001f
 
 Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
     Personagem(xx, yy, ww, hh, Entidades::jogador)
@@ -18,6 +19,7 @@ Personagens::Jogador::~Jogador()
 void Personagens::Jogador::executar()
 {
     corpo.setFillColor(sf::Color::Magenta);
+    atualizar();
 }
 
 void Personagens::Jogador::andaPraDireta()
@@ -69,6 +71,12 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
             y -= intersecao.y;
             corpo.setPosition(corpo.getPosition().x, y);
         }
-        //velocidade.y = 0.0f;
+        velocidade.y = 0.0f;
     }
+}
+
+void Personagens::Jogador::atualizar()
+{
+    velocidade.y += GRAVIDADE;
+    corpo.move(sf::Vector2f(0.f, velocidade.y));
 }

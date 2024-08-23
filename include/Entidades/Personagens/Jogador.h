@@ -13,6 +13,7 @@ namespace Personagens
         void executar();
         void andaPraDireta();
         void andaPraEsquerda();
+        void atualizar();
         void imprimir(Gerenciador::GerenciadorGrafico *gG);
         void colide(Entidade *outraEntidade, sf::Vector2f intersecao); 
     };

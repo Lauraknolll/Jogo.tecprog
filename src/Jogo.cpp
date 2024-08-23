@@ -19,7 +19,7 @@ void Jogo::executar()
     Personagens::InimigoFacil* ini1 = new Personagens::InimigoFacil();
     //Personagens::InimigoMedio* ini2 = new Personagens::InimigoMedio();
     //ini2->setJogador(jog);
-    Obstaculos::Plataforma *plat = new Obstaculos::Plataforma(300.0, 340.0);
+    Obstaculos::Plataforma *plat = new Obstaculos::Plataforma(100.0, 500.0, 600.0, 25.0);
     Obstaculos::Lava *lav = new Obstaculos::Lava();
     Lista::ListaEntidade* ListaEntidades = new Lista::ListaEntidade();
     Lista::ListaEntidade* ListaPlataforma = new Lista::ListaEntidade();

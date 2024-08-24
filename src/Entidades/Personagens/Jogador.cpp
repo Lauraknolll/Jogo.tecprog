@@ -153,17 +153,16 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
     }
     else if(outraEntidade->getID() == Entidades::ID::inimigoFacil)
     {
-            num_vidas--;
+        num_vidas--;
     }
     else if(outraEntidade->getID() == Entidades::ID::inimigoMedio)
     {
-            num_vidas -= 2;
+        num_vidas -= 2;
     }
 }
 
 void Personagens::Jogador::atualizar()
 {
-    //std::cout << "Jogador" << num_vidas << std::endl;
     velocidade.y += GRAVIDADE;
     y = corpo.getPosition().y;
     corpo.move(sf::Vector2f(velocidade.x, velocidade.y));

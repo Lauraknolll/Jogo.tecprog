@@ -23,7 +23,7 @@ void Jogo::executar()
 
     pGEvento->setGerenciadosGrafico(pGGrafico);
     pGEvento->setJogador(jog);
-    ini2->setJogador(jog);
+    ini2->setJogador(jog);    
 
     /* Criando Listas */
     Lista::ListaEntidade* ListaJogadores = new Lista::ListaEntidade();

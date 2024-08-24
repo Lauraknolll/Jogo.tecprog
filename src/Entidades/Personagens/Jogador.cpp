@@ -1,32 +1,29 @@
 #include "../../../include/Entidades/Personagens/Jogador.h"
-#include <iostream>
 
-#define VELOCIDADE_JOGADOR 0.2f
-#define GRAVIDADE 0.00005f
-#define VIDAS_JOGADOR 10000
+#define VELJOG 1.f
+#define GRAVIDADE 0.00001f
+#define VELOCIDADE_JOGADOR 0.0001f
 
-Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) : 
-    Personagem(xx, yy, ww, hh, Entidades::jogador), podePular(false), podeAndarDireita(true), podeAndarEsquerda(true)
+Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
+    Personagem(xx, yy, ww, hh, Entidades::jogador), pPular(false), andando(false), emEsquerda(false), lentidao(1)
 {
-    num_vidas = VIDAS_JOGADOR;
-    corpo.setFillColor(sf::Color::Magenta);
+
+    corpo.setFillColor(sf::Color::Blue);
     velocidade.x = 0.0f;
     velocidade.y = 0.0f;
 }
 
 Personagens::Jogador::~Jogador()
 {
+
 }
 
 void Personagens::Jogador::executar()
 {
+    corpo.setFillColor(sf::Color::Magenta);
     atualizar();
 }
 
-int Personagens::Jogador::getNumVidas()
-{
-    return num_vidas;
-}
 
 /*
 void Personagens::Jogador::andaPraDireta()
@@ -43,72 +40,54 @@ void Personagens::Jogador::andaPraEsquerda()
 */
 void Personagens::Jogador::pular()
 {
-    if (podePular)
-    {
-        velocidade.y = -sqrt(2.0f * GRAVIDADE * 200.0f);
-        podePular = false;
+    if(pPular){
+        velocidade.y = -sqrt(2.0f*GRAVIDADE*100.0f);
+        pPular = false;
     }
+   
 }
 
-void Personagens::Jogador::tratarEventoPressionar(const sf::Event &e)
-{
-    if (e.type == sf::Event::KeyPressed)
-    {
+void Personagens::Jogador::tratarEventoPressionar(const sf::Event &e) {
+    if(e.type == sf::Event::KeyPressed){
         switch (e.key.code)
         {
-        case sf::Keyboard::D:
-            if (podeAndarDireita)
-            {
-                podeAndarDireita = false;
-                velocidade.x += VELOCIDADE_JOGADOR;
-            }
-            break;
-
-        case sf::Keyboard::A:
-            if (podeAndarEsquerda)
-            {
-                podeAndarEsquerda = false;
-                velocidade.x -= VELOCIDADE_JOGADOR;
-            }
-            break;
-
-        case sf::Keyboard::W:
-            pular();
-            break;
-
-        default:
-            break;
+            case sf::Keyboard::D:
+                andar(false);
+                break;
+            
+            case sf::Keyboard::A:
+                andar(true);
+                break;
+            
+            case sf::Keyboard::W:
+                pular();
+                break;
+            
+            
+            default:
+                break;
         }
     }
 }
 
-void Personagens::Jogador::tratarEventoSoltar(const sf::Event &e)
-{
-    if (e.type == sf::Event::KeyReleased)
-    {
+void Personagens::Jogador::tratarEventoSoltar(const sf::Event &e){
+        if(e.type == sf::Event::KeyReleased){
         switch (e.key.code)
         {
-        case sf::Keyboard::D:
-            if (!podeAndarDireita)
-            {
-                podeAndarDireita = true;
-                velocidade.x -= VELOCIDADE_JOGADOR;
-            }
-            break;
-
-        case sf::Keyboard::A:
-            if (!podeAndarEsquerda)
-            {
-                podeAndarEsquerda = true;
-                velocidade.x += VELOCIDADE_JOGADOR;
-            }
-            break;
-
-        default:
-            break;
+            case sf::Keyboard::D:
+                pararAndar();
+                break;
+            
+            case sf::Keyboard::A:
+                pararAndar();
+                break;
+            
+            default:
+                break;
         }
     }
 }
+
 
 void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
@@ -117,53 +96,116 @@ void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 
 void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
 {
-    sf::Vector2f posicaoOutro = outraEntidade->getCorpo().getPosition();
-    if (outraEntidade->getID() == Entidades::ID::plataforma)
+    switch (outraEntidade->getID())
     {
-        if (intersecao.x > intersecao.y) // colisao em x
-        {
-            if (x < posicaoOutro.x)
-            {
-                x += intersecao.x;
-                corpo.setPosition(x, corpo.getPosition().y);
-            }
-            else
-            {
-                x -= intersecao.x;
-                corpo.setPosition(x, corpo.getPosition().y);
-            }
-            // velocidade.x = 0.0f;
-        }
-
-        else // colisao em y
-        {
-            if (y < posicaoOutro.y)
-            {
-                y += intersecao.y;
-                corpo.setPosition(corpo.getPosition().x, y);
-            }
-            else
-            {
-                y -= intersecao.y;
-                corpo.setPosition(corpo.getPosition().x, y);
-            }
-            velocidade.y = 0.0f;
-            podePular = true;
-        }
-    }
-    else if(outraEntidade->getID() == Entidades::ID::inimigoFacil)
-    {
-        num_vidas--;
-    }
-    else if(outraEntidade->getID() == Entidades::ID::inimigoMedio)
-    {
-        num_vidas -= 2;
+    case Entidades::plataforma:
+            moveColisao(outraEntidade, intersecao);
+        break;
+    
+    default:
+        break;
     }
 }
 
 void Personagens::Jogador::atualizar()
 {
+    if (andando) {
+        if (emEsquerda)
+            velocidade.x -= VELOCIDADE_JOGADOR * lentidao;
+        else
+            velocidade.x += VELOCIDADE_JOGADOR * lentidao;
+        //velocidade.x *= lentidao;
+    } 
+    else
+        velocidade.x *= 0.05;
+    
     velocidade.y += GRAVIDADE;
-    y = corpo.getPosition().y;
+
     corpo.move(sf::Vector2f(velocidade.x, velocidade.y));
+    
+
+    cooldownDano += 1;
+}
+
+const bool Personagens::Jogador::estaNaEsquerda() const
+{
+    return emEsquerda;
+}
+void Personagens::Jogador::setEsquerda(const bool esquerda)
+{
+    emEsquerda = esquerda;
+}
+void Personagens::Jogador::setEsquerda()
+{
+    emEsquerda = velocidade.x >= 0.0f ? false : true;
+}
+
+void Personagens::Jogador::andar(bool esquerda)
+{
+    andando = true;
+    setEsquerda(esquerda);
+}
+void Personagens::Jogador::pararAndar()
+{
+    andando = false;
+}
+unsigned int Personagens::Jogador::getPontos() const
+{
+    return pontos;
+}
+/*
+void Personagens::Jogador::incrementaPontos(unsigned int pont) {
+    this->pontos += pont;
+}*/
+
+void Personagens::Jogador::moveColisao(Entidades::Entidade* outraEnt, sf::Vector2f intersecao)
+{
+    sf::Vector2f posicaoOutro = outraEnt->getCorpo().getPosition();
+    /*if(outraEntidade->getID() == ){
+
+    }*/
+
+    if(intersecao.x > intersecao.y) // colisao em x
+    {
+        if(x < posicaoOutro.x)
+        {
+            x = corpo.getPosition().x;
+            x += intersecao.x;
+            corpo.setPosition(x, corpo.getPosition().y);
+            //printf("x1 %f\n", intersecao.x);
+        }
+        else
+        {
+            x = corpo.getPosition().x;
+            x -= intersecao.x;
+            corpo.setPosition(x, corpo.getPosition().y);
+            //printf("x2 %f\n", intersecao.x);
+        }
+        velocidade.x = 0.0f;
+    }
+
+    else // colisao em y
+    {
+        if(y < posicaoOutro.y)
+        {
+            y = corpo.getPosition().y;
+            //printf("y1 %f\n", intersecao.y);
+            y += intersecao.y;
+            corpo.setPosition(corpo.getPosition().x, y);
+        }
+        else
+        {
+            y = corpo.getPosition().y;
+            //printf("y2 %f\n", intersecao.y);
+            y -= intersecao.y;
+            corpo.setPosition(corpo.getPosition().x, y);
+        }
+        velocidade.y = 0.0f;
+        pPular = true;
+    }
+}
+
+
+int Personagens::Jogador::getNumVidas(){
+    return 10;
 }

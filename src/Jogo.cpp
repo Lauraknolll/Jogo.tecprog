@@ -16,6 +16,7 @@ void Jogo::executar()
     
     /* Criando entidades */
     Personagens::Jogador* jog = new Personagens::Jogador(200.0, 340.0);
+    
     Personagens::InimigoFacil* ini1 = new Personagens::InimigoFacil(125.0, 450.0);
     Personagens::InimigoMedio* ini2 = new Personagens::InimigoMedio(125.0, 450.0);
     Obstaculos::Plataforma *plat = new Obstaculos::Plataforma(100.0, 500.0, 600.0, 25.0);

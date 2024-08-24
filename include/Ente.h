@@ -6,10 +6,11 @@ class Ente
 {
     protected:
         int id;
-        //GerenciadorGrafico* pG;
+        static Gerenciador::GerenciadorGrafico* pGGrafico;
     public:
         Ente();
-        ~Ente();
+        virtual ~Ente();
         virtual void executar() = 0;
         void desenhar();
 };
+

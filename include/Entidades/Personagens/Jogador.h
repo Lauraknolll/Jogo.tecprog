@@ -39,6 +39,6 @@ namespace Personagens
         unsigned int getPontos() const;
 
         void moveColisao(Entidades::Entidade* outraEnt, sf::Vector2f intersecao);
-        virtual int getNumVidas();
+        int getNumVidas();
     };
 }

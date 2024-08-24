@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Entidades/Entidade.h"
+#include "../Entidades/Personagens/Personagem.h"
 #include "../Listas/ListaEntidade.h"
 
 namespace States {
@@ -23,6 +24,6 @@ namespace Gerenciador
 
         void colide();
 
-        //void clear();
+        void clear();
     };
 }

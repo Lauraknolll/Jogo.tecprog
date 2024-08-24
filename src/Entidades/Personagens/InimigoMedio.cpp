@@ -1,10 +1,12 @@
 #include "../../../include/Entidades/Personagens/InimigoMedio.h"
 
-#define VELOCIDADE_INIM 0.05f
+#define VELOCIDADE_INIM 0.01f
+#define VIDAS_INIM 10000
 
 Personagens::InimigoMedio::InimigoMedio(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::inimigoMedio)
 {
+    num_vidas = VIDAS_INIM;
     corpo.setFillColor(sf::Color::Yellow);
     velocidade.x = 0.0f;
     velocidade.y = 0.0f;
@@ -59,11 +61,19 @@ void Personagens::InimigoMedio::imprimir(Gerenciador::GerenciadorGrafico *gG)
 
 void Personagens::InimigoMedio::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
 {
-
+    if(outraEntidade->getID() == Entidades::ID::jogador)
+    {
+        num_vidas--;
+    }
 }
 
 void Personagens::InimigoMedio::atualizarPosicao()
 {
     x = corpo.getPosition().x;
     y = corpo.getPosition().y;
+}
+
+int Personagens::InimigoMedio::getNumVidas()
+{
+    return num_vidas;
 }

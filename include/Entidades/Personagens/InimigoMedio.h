@@ -17,6 +17,7 @@ namespace Personagens
             void setJogador(Jogador* pJ);
             void executar();
             void atualizarPosicao();
+            int getNumVidas();
             void persegueJogador(sf::Vector2f posJog, sf::Vector2f posIni);
             const sf::RectangleShape getCorpo();
             void imprimir(Gerenciador::GerenciadorGrafico *gG);

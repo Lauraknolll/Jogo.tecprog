@@ -1,29 +1,32 @@
 #include "../../../include/Entidades/Personagens/Jogador.h"
+#include <iostream>
 
-#define VELJOG 1.f
+#define VELOCIDADE_JOGADOR 0.2f
 #define GRAVIDADE 0.00005f
-#define VELOCIDADE_JOGADOR 0.1f
+#define VIDAS_JOGADOR 10000
 
-Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
+Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) : 
     Personagem(xx, yy, ww, hh, Entidades::jogador), podePular(false), podeAndarDireita(true), podeAndarEsquerda(true)
 {
-
-    corpo.setFillColor(sf::Color::Blue);
+    num_vidas = VIDAS_JOGADOR;
+    corpo.setFillColor(sf::Color::Magenta);
     velocidade.x = 0.0f;
     velocidade.y = 0.0f;
 }
 
 Personagens::Jogador::~Jogador()
 {
-
 }
 
 void Personagens::Jogador::executar()
 {
-    corpo.setFillColor(sf::Color::Magenta);
     atualizar();
 }
 
+int Personagens::Jogador::getNumVidas()
+{
+    return num_vidas;
+}
 
 /*
 void Personagens::Jogador::andaPraDireta()
@@ -40,66 +43,72 @@ void Personagens::Jogador::andaPraEsquerda()
 */
 void Personagens::Jogador::pular()
 {
-    if(podePular){
-        velocidade.y = -sqrt(2.0f*GRAVIDADE*200.0f);
+    if (podePular)
+    {
+        velocidade.y = -sqrt(2.0f * GRAVIDADE * 200.0f);
         podePular = false;
     }
-   
 }
 
-void Personagens::Jogador::tratarEventoPressionar(const sf::Event &e) {
-    if(e.type == sf::Event::KeyPressed){
+void Personagens::Jogador::tratarEventoPressionar(const sf::Event &e)
+{
+    if (e.type == sf::Event::KeyPressed)
+    {
         switch (e.key.code)
         {
-            case sf::Keyboard::D:
-                if(podeAndarDireita){
-                    podeAndarDireita = false;
-                    velocidade.x += VELOCIDADE_JOGADOR;
-                }
-                break;
-            
-            case sf::Keyboard::A:
-                if(podeAndarEsquerda){
-                    podeAndarEsquerda = false;
-                    velocidade.x -= VELOCIDADE_JOGADOR;
-                }
-                break;
-            
-            case sf::Keyboard::W:
-                pular();
-                break;
-            
-            
-            default:
-                break;
+        case sf::Keyboard::D:
+            if (podeAndarDireita)
+            {
+                podeAndarDireita = false;
+                velocidade.x += VELOCIDADE_JOGADOR;
+            }
+            break;
+
+        case sf::Keyboard::A:
+            if (podeAndarEsquerda)
+            {
+                podeAndarEsquerda = false;
+                velocidade.x -= VELOCIDADE_JOGADOR;
+            }
+            break;
+
+        case sf::Keyboard::W:
+            pular();
+            break;
+
+        default:
+            break;
         }
     }
 }
 
-void Personagens::Jogador::tratarEventoSoltar(const sf::Event &e){
-        if(e.type == sf::Event::KeyReleased){
+void Personagens::Jogador::tratarEventoSoltar(const sf::Event &e)
+{
+    if (e.type == sf::Event::KeyReleased)
+    {
         switch (e.key.code)
         {
-            case sf::Keyboard::D:
-                if(!podeAndarDireita){
-                    podeAndarDireita = true;
-                    velocidade.x -= VELOCIDADE_JOGADOR;
-                }
-                break;
-            
-            case sf::Keyboard::A:
-                if(!podeAndarEsquerda){
-                    podeAndarEsquerda = true;
-                    velocidade.x += VELOCIDADE_JOGADOR;
-                }   
-                break;
-            
-            default:
-                break;
+        case sf::Keyboard::D:
+            if (!podeAndarDireita)
+            {
+                podeAndarDireita = true;
+                velocidade.x -= VELOCIDADE_JOGADOR;
+            }
+            break;
+
+        case sf::Keyboard::A:
+            if (!podeAndarEsquerda)
+            {
+                podeAndarEsquerda = true;
+                velocidade.x += VELOCIDADE_JOGADOR;
+            }
+            break;
+
+        default:
+            break;
         }
     }
 }
-
 
 void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
@@ -109,44 +118,52 @@ void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
 {
     sf::Vector2f posicaoOutro = outraEntidade->getCorpo().getPosition();
-    /*if(outraEntidade->getID() == ){
-
-    }*/
-
-    if(intersecao.x > intersecao.y) // colisao em x
+    if (outraEntidade->getID() == Entidades::ID::plataforma)
     {
-        if(x < posicaoOutro.x)
+        if (intersecao.x > intersecao.y) // colisao em x
         {
-            x += intersecao.x;
-            corpo.setPosition(x, corpo.getPosition().y);
+            if (x < posicaoOutro.x)
+            {
+                x += intersecao.x;
+                corpo.setPosition(x, corpo.getPosition().y);
+            }
+            else
+            {
+                x -= intersecao.x;
+                corpo.setPosition(x, corpo.getPosition().y);
+            }
+            // velocidade.x = 0.0f;
         }
-        else
+
+        else // colisao em y
         {
-            x -= intersecao.x;
-            corpo.setPosition(x, corpo.getPosition().y);
+            if (y < posicaoOutro.y)
+            {
+                y += intersecao.y;
+                corpo.setPosition(corpo.getPosition().x, y);
+            }
+            else
+            {
+                y -= intersecao.y;
+                corpo.setPosition(corpo.getPosition().x, y);
+            }
+            velocidade.y = 0.0f;
+            podePular = true;
         }
-        //velocidade.x = 0.0f;
     }
-
-    else // colisao em y
+    else if(outraEntidade->getID() == Entidades::ID::inimigoFacil)
     {
-        if(y < posicaoOutro.y)
-        {
-            y += intersecao.y;
-            corpo.setPosition(corpo.getPosition().x, y);
-        }
-        else
-        {
-            y -= intersecao.y;
-            corpo.setPosition(corpo.getPosition().x, y);
-        }
-        velocidade.y = 0.0f;
-        podePular = true;
+            num_vidas--;
+    }
+    else if(outraEntidade->getID() == Entidades::ID::inimigoMedio)
+    {
+            num_vidas -= 2;
     }
 }
 
 void Personagens::Jogador::atualizar()
 {
+    //std::cout << "Jogador" << num_vidas << std::endl;
     velocidade.y += GRAVIDADE;
     y = corpo.getPosition().y;
     corpo.move(sf::Vector2f(velocidade.x, velocidade.y));

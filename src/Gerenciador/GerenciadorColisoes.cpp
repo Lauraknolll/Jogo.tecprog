@@ -95,12 +95,28 @@ using namespace std;
             }
         }
 
-        //clear();
+        clear();
     }
 
     /* Function to deallocate entities after collision */
-    /*void GerenciadorColisoes::clear() {
-        Entities::MovingEntity* pAux = nullptr;
+    void Gerenciador::GerenciadorColisoes::clear() 
+    {
+        Personagens::Personagem* paux = nullptr;
+        for(int i = 0; i < Inimigos->getSize(); i++)
+        {
+            paux = static_cast<Personagens::Personagem*>((*Inimigos)[i]);
+            if(paux != nullptr)
+            {
+                if(paux->getNumVidas() <= 0)
+                {
+                    Inimigos->deleteEntidade(paux);
+                    i--;
+                    if(i < 0)
+                        i = -1;
+                }
+            }
+        }
+        /*Entities::MovingEntity* pAux = nullptr;
         for (int i = 0; i < Jogador->getSize(); i++) {
             pAux = static_cast<Entities::MovingEntity*>((*Jogador)[i]);
             if (pAux != nullptr) {
@@ -113,6 +129,6 @@ using namespace std;
                         i = -1;
                 }
             }
-        }
+        }*/
     }
-*/
+

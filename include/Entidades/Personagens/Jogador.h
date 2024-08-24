@@ -18,6 +18,7 @@ namespace Personagens
         void andaPraDireta();
         void andaPraEsquerda();
         void pular();
+        int getNumVidas();
         void tratarEventoPressionar(const sf::Event &e);
         void tratarEventoSoltar(const sf::Event &e);
         void atualizar();

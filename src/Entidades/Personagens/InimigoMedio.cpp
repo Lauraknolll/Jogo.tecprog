@@ -1,10 +1,13 @@
 #include "../../../include/Entidades/Personagens/InimigoMedio.h"
 
+#define VELOCIDADE_INIM 0.05f
+
 Personagens::InimigoMedio::InimigoMedio(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::inimigoMedio)
 {
     corpo.setFillColor(sf::Color::Yellow);
-    //corpo.setOrigin(sf::Vector2f(-150.0f, -400.0f));
+    velocidade.x = 0.0f;
+    velocidade.y = 0.0f;
 }
 
 Personagens::InimigoMedio::~InimigoMedio()
@@ -22,26 +25,25 @@ void Personagens::InimigoMedio::setJogador(Personagens::Jogador* pJ)
 
 void Personagens::InimigoMedio::executar()
 {
-    //sf::Vector2f posicaoJogador = jogador->getcorpo().getPosition();
+    sf::Vector2f posicaoJogador = jogador->getCorpo().getPosition();
     sf::Vector2f posicaoInimigo = corpo.getPosition();
+    atualizarPosicao();
 
-    //if(fabs(posicaoJogador.x - posicaoInimigo.x) <= RAIO_PERSEGUIR_X)
-    //{
-     //   persegueJogador(posicaoJogador, posicaoInimigo);
-    //}
+    if(fabs(posicaoJogador.x - posicaoInimigo.x) <= RAIO_PERSEGUIR_X)
+    {
+        persegueJogador(posicaoJogador, posicaoInimigo);
+    }
 }
 
 void Personagens::InimigoMedio::persegueJogador(sf::Vector2f posJog, sf::Vector2f posIni)
 {
-    //float tempo = relogio.getElapsedTime().asSeconds();
-
-    if((posJog.x - posIni.x) > 0.0f)
+   if((posJog.x - posIni.x) > 0.0f)
     {
-        corpo.move((velocidade.x), 0.0f);
+        corpo.move(VELOCIDADE_INIM, 0.0f);
     }
-    else
+    else 
     {
-        corpo.move(-velocidade.x, 0.0f);
+        corpo.move(-VELOCIDADE_INIM, 0.0f);
     }
 }
 
@@ -58,4 +60,10 @@ void Personagens::InimigoMedio::imprimir(Gerenciador::GerenciadorGrafico *gG)
 void Personagens::InimigoMedio::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
 {
 
+}
+
+void Personagens::InimigoMedio::atualizarPosicao()
+{
+    x = corpo.getPosition().x;
+    y = corpo.getPosition().y;
 }

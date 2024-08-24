@@ -40,7 +40,7 @@ void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
         }
         if(evento.type == sf::Event::KeyPressed)
         {
-            pontJog1->tratarEventoPrecionar(evento);
+            pontJog1->tratarEventoPressionar(evento);
         }
         if(evento.type == sf::Event::KeyReleased)
         {

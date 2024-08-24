@@ -9,7 +9,6 @@ Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
 {
 
     corpo.setFillColor(sf::Color::Blue);
-    //corpo.setPosition(200.0, 340.0);
     velocidade.x = 0.0f;
     velocidade.y = 0.0f;
 }
@@ -24,6 +23,8 @@ void Personagens::Jogador::executar()
     corpo.setFillColor(sf::Color::Magenta);
     atualizar();
 }
+
+
 /*
 void Personagens::Jogador::andaPraDireta()
 {
@@ -46,7 +47,7 @@ void Personagens::Jogador::pular()
    
 }
 
-void Personagens::Jogador::tratarEventoPrecionar(const sf::Event &e) {
+void Personagens::Jogador::tratarEventoPressionar(const sf::Event &e) {
     if(e.type == sf::Event::KeyPressed){
         switch (e.key.code)
         {

@@ -17,7 +17,7 @@ namespace Gerenciador
         //States::Level* plvl;
 
     public:
-        GerenciadorColisoes(Lista::ListaEntidade* Jogador1, Lista::ListaEntidade* Obstaculos1/*, Lista::ListaEntidade* Inimigos1, States::Level* plvl*/);
+        GerenciadorColisoes(Lista::ListaEntidade* Jogador1, Lista::ListaEntidade* Obstaculos1, Lista::ListaEntidade* Inimigos1/*, States::Level* plvl*/);
 
         ~GerenciadorColisoes();
 

@@ -18,7 +18,7 @@ namespace Personagens
         void andaPraDireta();
         void andaPraEsquerda();
         void pular();
-        void tratarEventoPrecionar(const sf::Event &e);
+        void tratarEventoPressionar(const sf::Event &e);
         void tratarEventoSoltar(const sf::Event &e);
         void atualizar();
         void imprimir(Gerenciador::GerenciadorGrafico *gG);

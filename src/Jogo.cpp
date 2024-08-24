@@ -16,14 +16,14 @@ void Jogo::executar()
     
     /* Criando entidades */
     Personagens::Jogador* jog = new Personagens::Jogador(200.0, 340.0);
-    
+    Personagens::Jogador* jog2 = new Personagens::Jogador(200.0, 350.0);
     Personagens::InimigoFacil* ini1 = new Personagens::InimigoFacil(125.0, 450.0);
     Personagens::InimigoMedio* ini2 = new Personagens::InimigoMedio(125.0, 450.0);
     Obstaculos::Plataforma *plat = new Obstaculos::Plataforma(100.0, 500.0, 600.0, 25.0);
     Obstaculos::Lava *lav = new Obstaculos::Lava();
 
     pGEvento->setGerenciadosGrafico(pGGrafico);
-    pGEvento->setJogador(jog);
+    pGEvento->setJogador(jog, jog2);
     ini2->setJogador(jog);    
 
     /* Criando Listas */
@@ -38,8 +38,10 @@ void Jogo::executar()
     Entidades::Entidade* e3 = static_cast<Entidades::Entidade*>(ini2);
     Entidades::Entidade* e4 = static_cast<Entidades::Entidade*>(plat);
     Entidades::Entidade* e5 = static_cast<Entidades::Entidade*>(lav);
+    Entidades::Entidade* e6 = static_cast<Entidades::Entidade*>(jog2);
 
     ListaJogadores->addEntidade(e1);
+    ListaJogadores->addEntidade(e6);
     ListaInimigos->addEntidade(e2);
     ListaInimigos->addEntidade(e3);
     ListaPlataforma->addEntidade(e4);

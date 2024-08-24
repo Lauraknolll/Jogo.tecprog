@@ -48,7 +48,7 @@ void Personagens::Jogador::pular()
 }
 
 void Personagens::Jogador::tratarEventoPressionar(const sf::Event &e) {
-    if(e.type == sf::Event::KeyPressed){
+    /*if(e.type == sf::Event::KeyPressed){
         switch (e.key.code)
         {
             case sf::Keyboard::D:
@@ -67,11 +67,11 @@ void Personagens::Jogador::tratarEventoPressionar(const sf::Event &e) {
             default:
                 break;
         }
-    }
+    }*/
 }
 
 void Personagens::Jogador::tratarEventoSoltar(const sf::Event &e){
-        if(e.type == sf::Event::KeyReleased){
+       /* if(e.type == sf::Event::KeyReleased){
         switch (e.key.code)
         {
             case sf::Keyboard::D:
@@ -85,7 +85,7 @@ void Personagens::Jogador::tratarEventoSoltar(const sf::Event &e){
             default:
                 break;
         }
-    }
+    }*/
 }
 
 

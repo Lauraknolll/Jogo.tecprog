@@ -10,7 +10,8 @@ namespace Gerenciador
     {
         private:
         GerenciadorGrafico* pGGrafico;
-        Personagens::Jogador* pontJog1;
+        Personagens::Jogador* pontJogador1;
+        Personagens::Jogador* pontJogador2;
         /* Usando o padrão de projeto Singleton para que haja apenas uma instancia do gerenciador gráfico */
         static GerenciadorEvento* pInstanciaGE;
         GerenciadorEvento();
@@ -20,7 +21,7 @@ namespace Gerenciador
         //void setJogador(Jogador jog);
         static GerenciadorEvento* getGerenciadorEventos();
         void setGerenciadosGrafico(GerenciadorGrafico* pGG);
-        void setJogador(Personagens::Jogador* jog);
+        void setJogador(Personagens::Jogador* jogador1, Personagens::Jogador* jogador2 = nullptr);
         void executar(sf::Event evento);
     };
 }

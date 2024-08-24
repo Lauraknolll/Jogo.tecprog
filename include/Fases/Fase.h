@@ -1,3 +1,4 @@
+#pragma once
 #include "../Ente.h"
 #include "../Gerenciador/GerenciadorColisoes.h"
 

@@ -6,7 +6,7 @@ class Ente
 {
     protected:
         int id;
-        static Gerenciador::GerenciadorGrafico* pGGrafico;
+        //static Gerenciador::GerenciadorGrafico* pGGrafico;
     public:
         Ente();
         virtual ~Ente();

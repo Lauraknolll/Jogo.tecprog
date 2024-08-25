@@ -40,5 +40,7 @@ namespace Personagens
 
         void moveColisao(Entidades::Entidade* outraEnt, sf::Vector2f intersecao);
         int getNumVidas();
+
+        void recebaDano(const int dano);
     };
 }

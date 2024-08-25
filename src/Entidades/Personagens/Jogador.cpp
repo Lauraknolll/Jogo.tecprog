@@ -3,11 +3,13 @@
 #define VELJOG 1.f
 #define GRAVIDADE 0.00001f
 #define VELOCIDADE_JOGADOR 0.0001f
+#define COOLDOWN_DANO 100.f
 
 Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
     Personagem(xx, yy, ww, hh, Entidades::jogador), pPular(false), andando(false), emEsquerda(false), lentidao(1)
 {
-
+    num_vidas = 50;
+    cooldownDano = 0;
     corpo.setFillColor(sf::Color::Blue);
     velocidade.x = 0.0f;
     velocidade.y = 0.0f;
@@ -100,6 +102,12 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
     {
     case Entidades::plataforma:
             moveColisao(outraEntidade, intersecao);
+        break;
+    case Entidades::inimigoFacil:
+            recebaDano(1);
+        break;
+    case Entidades::inimigoMedio:
+            recebaDano(2);
         break;
     
     default:
@@ -207,5 +215,16 @@ void Personagens::Jogador::moveColisao(Entidades::Entidade* outraEnt, sf::Vector
 
 
 int Personagens::Jogador::getNumVidas(){
-    return 10;
+    return num_vidas;
+}
+
+void Personagens::Jogador::recebaDano(const int dano)
+{
+    //printf("%d\n", dano);
+    if (cooldownDano > COOLDOWN_DANO) {
+        num_vidas -= dano;
+        /*if (num_vidas <= 0)
+            active = false;*/
+        cooldownDano = 0;
+    }
 }

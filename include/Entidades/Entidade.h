@@ -31,8 +31,8 @@ namespace Entidades
         Entidade(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0, ID idd = vazio);
         virtual ~Entidade();
         virtual void executar() = 0;
-        CoordF getPosicao() const;
-        CoordF getTamanho() const;
+        sf::Vector2f getPosicao() const;
+        sf::Vector2f getTamanho() const;
         ID getID();
         sf::RectangleShape getCorpo();
         virtual void imprimir(Gerenciador::GerenciadorGrafico *gG) = 0;

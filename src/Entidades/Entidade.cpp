@@ -17,15 +17,15 @@ void Entidades::Entidade::executar()
 {
 
 }
-CoordF Entidades::Entidade::getPosicao() const
+sf::Vector2f Entidades::Entidade::getPosicao() const
 {
-    Coord posicao = CoordF(corpo.getPosition().x, corpo.getPosition().y);
+    sf::Vector2f posicao = sf::Vector2f(corpo.getPosition().x, corpo.getPosition().y);
     return posicao;
 }
 
-CoordF Entidades::Entidade::getTamanho() const
+sf::Vector2f Entidades::Entidade::getTamanho() const
 {
-    CoordF tamanho = CoordF(corpo.getSize().x, corpo.getSize().y);
+    sf::Vector2f tamanho = sf::Vector2f(corpo.getSize().x, corpo.getSize().y);
     return tamanho;
 }
 

@@ -2,7 +2,7 @@
 
 #define VELJOG 1.f
 #define GRAVIDADE 0.00001f
-#define VELOCIDADE_JOGADOR 0.0001f
+#define VELOCIDADE_JOGADOR 0.00001f
 #define COOLDOWN_DANO 100.f
 
 Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :

@@ -10,7 +10,7 @@ namespace Gerenciador
     {
         private:
             sf::RenderWindow *janela;
-            std::map<const char*, sf::Texture*> MapaTexturas;
+            std::map<std::string, sf::Texture*> MapaTexturas;
 
 
             //Usando o padrão de projeto Singleton para que haja apenas uma instancia do gerenciador gráfico
@@ -30,7 +30,7 @@ namespace Gerenciador
             void fecharJanela();
             const bool verificarJanelaAberta();
             //Retorna a textura 
-            sf::Texture* carregaTextura(const char* caminho);
+            sf::Texture* carregaTextura(std::string caminho);
 
     };
 }

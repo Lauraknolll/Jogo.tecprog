@@ -57,13 +57,13 @@ void Gerenciador::GerenciadorGrafico::monstraEntidade()
     janela->display();
 }
 
-sf::Texture* Gerenciador::GerenciadorGrafico::carregaTextura(const char* caminho)
+sf::Texture* Gerenciador::GerenciadorGrafico::carregaTextura(std::string caminho)
 {
     /*  Tenta encontrar se a textura já existe no mapa */
-    std::map<const char*, sf::Texture*>::iterator it;
+    std::map<std::string, sf::Texture*>::iterator it;
     for(it = MapaTexturas.begin(); it != MapaTexturas.end(); it++)
     {
-        if(!strcmp(it->first, caminho))
+        if(it->first == caminho)
         {
             return it->second;
         }
@@ -78,7 +78,7 @@ sf::Texture* Gerenciador::GerenciadorGrafico::carregaTextura(const char* caminho
         exit(1);
     }
 
-    MapaTexturas.insert(std::pair<const char*, sf::Texture*>(caminho, textura));
+    MapaTexturas.insert(std::pair<std::string, sf::Texture*>(caminho, textura));
 
     return textura;
 }

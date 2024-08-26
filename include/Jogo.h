@@ -4,6 +4,7 @@
 #include "Gerenciador/GerenciadorGrafico.h"
 #include "Gerenciador/GerenciadorEventos.h"
 #include "Fases/Fase.h"
+#include "Tilemap.h"
 
 
 #include <iostream>
@@ -15,6 +16,7 @@ class Jogo
         Gerenciador::GerenciadorGrafico* pontGGrafico;
         Gerenciador::GerenciadorEvento* pontGEvento;
         Fases::Fase* pontFaseProv;
+        Tilemap* abrir_mapa;
     public:
         Jogo();
         ~Jogo();

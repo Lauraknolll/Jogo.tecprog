@@ -1,10 +1,12 @@
 #include "../include/Jogo.h"
+#define CAMINHO_MAPA "mapa.json"
 
 Jogo::Jogo() :
     pontGGrafico(Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()),
     pontGEvento(Gerenciador::GerenciadorEvento::getGerenciadorEventos()),
     pontFaseProv(new Fases::Fase())
 {
+    abrir_mapa = new Tilemap(CAMINHO_MAPA);
     pontGEvento->setGerenciadosGrafico(pontGGrafico);
 }
 

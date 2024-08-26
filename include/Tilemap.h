@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "json.hpp"
@@ -19,7 +19,7 @@
 
 */
 
-class Entidade;
+/*class Entidade;
 
 class Tilemap{
     private:
@@ -33,4 +33,4 @@ class Tilemap{
         void carregarMapa(std::string mapJson, std::string caminhoImagem);
         Entidade* criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
         void criarMapa(std::vector<Entidade*>* entidades, sf::Texture* textura_mapa);
-};
+};*/

@@ -1,10 +1,10 @@
-#include "../include/Tilemap.h"
+//#include "../include/Tilemap.h"
 
 //#include "caminho/até/entidade.hpp"
 //#include "classe/diversa/que/vc quer construir.hpp
 
 
-Tilemap::Tilemap(std::string mapJson)
+/*Tilemap::Tilemap(std::string mapJson)
 {
     carregarMapa(mapJson);
 }
@@ -31,9 +31,9 @@ Entidade* Tilemap::criarEntidade(sf::Vector2f posicao, sf::Vector2f tamanho, int
     }*/
      /*- ASSIM POR DIANTE PARA CADA TIPO DE ENTIDADE QUE VC NECESSITA CRIAR
     */
-}
+//}
 
-void Tilemap::carregarMapa(std::string mapJson, std::string caminhoImagem="") {
+/*void Tilemap::carregarMapa(std::string mapJson, std::string caminhoImagem="") {
     std::ifstream arquivo(mapJson);
     
     if(!arquivo.is_open()){
@@ -78,7 +78,7 @@ void Tilemap::criarMapa(std::vector<Entidade*>* entidades, sf::Texture* textura_
     }*/
 
     //loop de entidades com tamanho variável em X
-    for(int y = 0; y < height; y++)
+    /*for(int y = 0; y < height; y++)
     {
         for(int x = 0; x < width; x++)
         {
@@ -102,4 +102,4 @@ void Tilemap::criarMapa(std::vector<Entidade*>* entidades, sf::Texture* textura_
         }
     }
 
-}
+}*/

@@ -1,7 +1,7 @@
 #include "../../../include/Entidades/Personagens/InimigoMedio.h"
 
 #define VELOCIDADE_INIM 0.025f
-#define VIDAS_INIM 10000
+#define VIDAS_INIM 3000
 
 Personagens::InimigoMedio::InimigoMedio(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::inimigoMedio)

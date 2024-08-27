@@ -1,5 +1,5 @@
 #include "../include/Jogo.h"
-#define CAMINHO_MAPA "mapa.json"
+#define CAMINHO_MAPA "mapaJogo1.json"
 
 Jogo::Jogo() :
     pontGGrafico(Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()),

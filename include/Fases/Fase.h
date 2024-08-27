@@ -8,6 +8,7 @@
 #include "../Entidades/Personagens/InimigoMedio.h"
 #include "../Entidades/Obstaculos/Plataforma.h"
 #include "../Entidades/Obstaculos/Lava.h"
+#include "../Tilemap.h"
 
 namespace Fases
 {
@@ -19,6 +20,8 @@ namespace Fases
             Lista::ListaEntidade* ListaObstaculos;
             Gerenciador::GerenciadorColisoes* pGColisoes;
             Personagens::Jogador* jog; //a fins de que o inimigo precisa conhecer o jogador, mas tem que pensar num jeito melhor
+        
+            Tilemap* gerador_mapa;
         public:
             Fase();
             ~Fase();

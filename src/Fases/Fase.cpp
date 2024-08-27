@@ -1,4 +1,5 @@
 #include "../../include/Fases/Fase.h"
+#define CAMINHO_MAPA "src/mapaJogo1.json"
 
 Fases::Fase::Fase() :
     Ente(), ListaJogadores(), ListaInimigos(), ListaObstaculos(), pGColisoes(nullptr)
@@ -7,6 +8,12 @@ Fases::Fase::Fase() :
     ListaInimigos = new Lista::ListaEntidade();
     ListaObstaculos = new Lista::ListaEntidade();
     pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
+
+    std::string caminho = CAMINHO_MAPA;
+
+    std::cout << caminho;
+
+    gerador_mapa = new Tilemap(caminho);
 }
 
 Fases::Fase::~Fase()
@@ -79,7 +86,10 @@ void Fases::Fase::executar()
 void Fases::Fase::cria()
 {
     /* enquanto não tem as fases filhas */
-    criarJogadores();
+    /*criarJogadores();
     criarInimigos();
-    criarPLataformas();
+    criarPLataformas();*/
+
+    gerador_mapa->criarMapa(ListaJogadores, ListaInimigos, ListaObstaculos);
+    printf("entrou aqui");
 }

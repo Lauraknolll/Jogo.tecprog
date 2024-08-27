@@ -1,4 +1,4 @@
-/*#pragma once
+#pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "json.hpp"
@@ -6,7 +6,9 @@
 #include <fstream>
 #include <string>
 #include "Gerenciador/GerenciadorGrafico.h"
-
+#include "Gerenciador/GerenciadorEventos.h"
+#include "Entidades/Entidade.h"
+#include "Listas/ListaEntidade.h"
 
 
 /*
@@ -19,18 +21,19 @@
 
 */
 
-/*class Entidade;
+class Entidade;
 
 class Tilemap{
     private:
         nlohmann::json mapa; // mapa.json  
         Gerenciador::GerenciadorGrafico* textura_mapa;
+        Gerenciador::GerenciadorEvento* pGEvento; 
 
     public:
-        Tilemap(std::string mapJson);
+        Tilemap(std::string mapJson, std::string caminhoImagem = "");
         ~Tilemap();
 
         void carregarMapa(std::string mapJson, std::string caminhoImagem);
-        Entidade* criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
-        void criarMapa(std::vector<Entidade*>* entidades, sf::Texture* textura_mapa);
-};*/
+        Entidades::Entidade* criarEntidade (sf::Vector2f posicao, sf::Vector2f tamanho, int tipo);
+        void criarMapa(Lista::ListaEntidade* jogador, Lista::ListaEntidade* inimigo, Lista::ListaEntidade* obstaculo/*, sf::Texture* textura_mapa*/);
+};

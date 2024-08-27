@@ -87,6 +87,7 @@ void Tilemap::criarMapa(Lista::ListaEntidade* jogador, Lista::ListaEntidade* ini
             }
         }
     }*/
+    int mult;
     Entidades::Entidade* ent ;
     //loop de entidades com tamanho variável em X
     for(int y = 0; y < height-3; y++)
@@ -96,11 +97,13 @@ void Tilemap::criarMapa(Lista::ListaEntidade* jogador, Lista::ListaEntidade* ini
             
             long int tileId = mapa["layers"][0]["data"][indice];
             printf("%d", tileId);
+            mult = 1;
+            
             if(tileId != 0){
-               int mult = 1;
                 while(tileId == mapa["layers"][0]["data"][++indice]){
                     mult++;
                 }
+               
                 sf::Vector2f posicao(x*sizeTiled, y*sizeTiled);
                 
                 x += mult - 1;
@@ -130,8 +133,9 @@ void Tilemap::criarMapa(Lista::ListaEntidade* jogador, Lista::ListaEntidade* ini
             else{
                 indice++;
             }
+            printf("\n");
+            mult = 0;
         }
-        printf("\n");
     }
 
 }

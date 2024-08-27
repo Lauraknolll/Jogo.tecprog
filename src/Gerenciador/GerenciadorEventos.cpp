@@ -62,6 +62,10 @@ void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
                 pontJogador1->pular();
                 break;
 
+            case sf::Keyboard::S:
+                pontJogador1->atacar();
+                break;
+
             case sf::Keyboard::L:
                 pontJogador2->andar(false);
                 break;
@@ -72,6 +76,10 @@ void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
 
             case sf::Keyboard::O:
                 pontJogador2->pular();
+                break;
+
+            case sf::Keyboard::K:
+                pontJogador2->atacar();
                 break;
 
             default:
@@ -91,12 +99,20 @@ void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
                 pontJogador1->pararAndar();
                 break;
 
+            case sf::Keyboard::S:
+                pontJogador1->paraAtacar();
+                break;
+
             case sf::Keyboard::L:
                 pontJogador2->pararAndar();
                 break;
 
             case sf::Keyboard::J:
                 pontJogador2->pararAndar();
+                break;
+
+            case sf::Keyboard::K:
+                pontJogador2->paraAtacar();
                 break;
 
             default:

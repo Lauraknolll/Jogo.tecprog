@@ -25,7 +25,8 @@ namespace Gerenciador
             sf::RenderWindow* getJanela(); 
             void limpaJanela();
             //Chama o draw
-            void desenhaEntidade(sf::RectangleShape corpo); 
+            void desenhaEntidade(sf::RectangleShape corpo);
+            void desenhaTexto(sf::Text texto); 
             //Chama o display
             void monstraEntidade(); 
             void fecharJanela();

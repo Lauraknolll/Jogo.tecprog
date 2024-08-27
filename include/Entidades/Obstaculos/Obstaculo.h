@@ -1,9 +1,7 @@
 #pragma once
 
 #include "../Entidade.h"
-#include "../../Colisao.h"
 #include "../../Gerenciador/GerenciadorGrafico.h"
-#include "../../CoordTl.h"
 
 namespace Obstaculos
 {

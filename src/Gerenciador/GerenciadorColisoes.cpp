@@ -1,6 +1,6 @@
 #include "../../include/Gerenciador/GerenciadorColisoes.h"
 
-#include "../../include/CoordTl.h"
+
 #include <iostream>
 using namespace std;
 //#include "Entities/MovingEntity.h"

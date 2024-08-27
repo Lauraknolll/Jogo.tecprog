@@ -35,6 +35,15 @@ Entidades::Entidade* Tilemap::criarEntidade(sf::Vector2f posicao, sf::Vector2f t
         case (1) : //plataforma sprite 1
             return new Obstaculos::Plataforma(x, y, w, h);
             break;
+        case (2) : //plataforma sprite 1
+            return new Obstaculos::Lava(x, y, w, h);
+            break;
+        case (3) : //plataforma sprite 1
+            return new Personagens::InimigoFacil(x, y, w, h);
+            break;
+        case (4) : //plataforma sprite 1
+            return new Personagens::InimigoMedio(x, y, w, h);
+            break;
         
     }
      /*- ASSIM POR DIANTE PARA CADA TIPO DE ENTIDADE QUE VC NECESSITA CRIAR
@@ -92,7 +101,7 @@ void Tilemap::criarMapa(Lista::ListaEntidade* jogador, Lista::ListaEntidade* ini
     //loop de entidades com tamanho variável em X
     for(int y = 0; y < height-3; y++)
     {
-        for(int x = 0; x < width-1; x++)
+        for(int x = 0; x < width; x++)
         {   
             
             long int tileId = mapa["layers"][0]["data"][indice];
@@ -101,16 +110,15 @@ void Tilemap::criarMapa(Lista::ListaEntidade* jogador, Lista::ListaEntidade* ini
             
             if(tileId != 0){
                 int mult = 1;
-                while(tileId == mapa["layers"][0]["data"][++indice]){
+                int cond = x+1;
+                while(tileId == mapa["layers"][0]["data"][++indice] && (cond) < (width)){
                     mult++;
+                    cond++;
                 }
                
                 sf::Vector2f posicao(x*sizeTiled, y*sizeTiled);
                 
                 x += mult - 1;
-                if (x >= width) {
-                    break;
-                }
 
                 sf::Vector2f tamanho(sizeTiled*mult, sizeTiled);
                 ent = criarEntidade(posicao, tamanho, tileId);
@@ -118,13 +126,21 @@ void Tilemap::criarMapa(Lista::ListaEntidade* jogador, Lista::ListaEntidade* ini
                 {
                 case (Entidades::jogador):
                     pGEvento->setJogador(static_cast<Personagens::Jogador*>(ent));
-                    textura_mapa->centralizarCamera(sf::Vector2f(ent->getPosicao().x, 300.0));
+                    //textura_mapa->centralizarCamera(sf::Vector2f(ent->getPosicao().x, 300.0));
                     jogador->addEntidade(ent);
                     break;
                 case (Entidades::plataforma):
                     obstaculo->addEntidade(ent);
                     break;
-                
+                case (Entidades::lava):
+                    obstaculo->addEntidade(ent);
+                    break;
+                case (Entidades::inimigoFacil):
+                    inimigo->addEntidade(ent);
+                    break;
+                case (Entidades::inimigoMedio):
+                    inimigo->addEntidade(ent);
+                    break;
                 default:
                     break;
                 }

@@ -101,7 +101,12 @@ void Fases::Fase::executar()
     ListaObstaculos->desenharEntidades(pontGrafico);
 
     pGColisoes->colide();
-    //pontGrafico->centralizarCamera(sf::Vector2f(((jog1->getPosicao().x)), 300.0));
+    if(ListaJogadores->getSize() > 1){
+            pontGrafico->centralizarCamera(sf::Vector2f(((ListaJogadores->operator[](0)->getPosicao().x) + (ListaJogadores->operator[](1)->getPosicao().x))/2, 300.0));
+
+    }else{
+      pontGrafico->centralizarCamera(sf::Vector2f(((ListaJogadores->operator[](0)->getPosicao().x)), 300.0));
+    }
 }
 
 void Fases::Fase::cria()

@@ -94,4 +94,3 @@ void Gerenciador::GerenciadorGrafico::centralizarCamera(sf::Vector2f centro)
 
 
 
-

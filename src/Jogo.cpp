@@ -37,11 +37,14 @@ void Jogo::executar()
     {
         sf::Event evento;
 
-        pontGEvento->executar(evento); //faz a verificação dos eventos
+        pontGEvento->executar(evento); 
+        //faz a verificação dos eventos
+        //printf("Funciona depois daqui");
         pontGGrafico->limpaJanela();
-
+        //printf("Funciona depois daqui");
         pontFaseProv->executar();
-        
+        //printf("Funciona depois daqui");
         pontGGrafico->monstraEntidade();
+        //printf("Funciona depois daqui");
     }
 }

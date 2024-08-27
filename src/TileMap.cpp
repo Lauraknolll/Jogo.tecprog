@@ -87,7 +87,7 @@ void Tilemap::criarMapa(Lista::ListaEntidade* jogador, Lista::ListaEntidade* ini
             }
         }
     }*/
-    int mult;
+    
     Entidades::Entidade* ent ;
     //loop de entidades com tamanho variável em X
     for(int y = 0; y < height-3; y++)
@@ -96,10 +96,11 @@ void Tilemap::criarMapa(Lista::ListaEntidade* jogador, Lista::ListaEntidade* ini
         {   
             
             long int tileId = mapa["layers"][0]["data"][indice];
-            printf("%d", tileId);
-            mult = 1;
+            //printf("%d", tileId);
+            
             
             if(tileId != 0){
+                int mult = 1;
                 while(tileId == mapa["layers"][0]["data"][++indice]){
                     mult++;
                 }
@@ -117,6 +118,7 @@ void Tilemap::criarMapa(Lista::ListaEntidade* jogador, Lista::ListaEntidade* ini
                 {
                 case (Entidades::jogador):
                     pGEvento->setJogador(static_cast<Personagens::Jogador*>(ent));
+                    textura_mapa->centralizarCamera(sf::Vector2f(ent->getPosicao().x, 300.0));
                     jogador->addEntidade(ent);
                     break;
                 case (Entidades::plataforma):
@@ -133,9 +135,9 @@ void Tilemap::criarMapa(Lista::ListaEntidade* jogador, Lista::ListaEntidade* ini
             else{
                 indice++;
             }
-            printf("\n");
-            mult = 0;
+            
         }
+        //printf("\n");
     }
 
 }

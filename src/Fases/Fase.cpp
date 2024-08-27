@@ -101,12 +101,12 @@ void Fases::Fase::executar()
     ListaObstaculos->desenharEntidades(pontGrafico);
 
     pGColisoes->colide();
-    pontGrafico->centralizarCamera(sf::Vector2f(((jog1->getPosicao().x + jog2->getPosicao().x)/2), 300.0));
+    //pontGrafico->centralizarCamera(sf::Vector2f(((jog1->getPosicao().x)), 300.0));
 }
 
 void Fases::Fase::cria()
 {
     /* enquanto não tem as fases filhas */
     gerador_mapa->criarMapa(ListaJogadores, ListaInimigos, ListaObstaculos);
-    printf("entrou aqui");
+    //printf("entrou aqui");
 }

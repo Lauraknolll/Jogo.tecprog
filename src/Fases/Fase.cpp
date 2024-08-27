@@ -1,4 +1,5 @@
 #include "../../include/Fases/Fase.h"
+#define CAMINHO_MAPA "src/mapaJogo1.json"
 
 Fases::Fase::Fase() : Ente(), ListaJogadores(), ListaInimigos(), ListaObstaculos(), pGColisoes(nullptr)
 {
@@ -6,6 +7,12 @@ Fases::Fase::Fase() : Ente(), ListaJogadores(), ListaInimigos(), ListaObstaculos
     ListaInimigos = new Lista::ListaEntidade();
     ListaObstaculos = new Lista::ListaEntidade();
     pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
+
+    std::string caminho = CAMINHO_MAPA;
+
+    std::cout << caminho;
+
+    gerador_mapa = new Tilemap(caminho);
 }
 
 Fases::Fase::~Fase()
@@ -94,14 +101,17 @@ void Fases::Fase::executar()
     ListaObstaculos->desenharEntidades(pontGrafico);
 
     pGColisoes->colide();
-    pontGrafico->centralizarCamera(sf::Vector2f(((jog1->getPosicao().x + jog2->getPosicao().x)/2), 300.0));
+    if(ListaJogadores->getSize() > 1){
+            pontGrafico->centralizarCamera(sf::Vector2f(((ListaJogadores->operator[](0)->getPosicao().x) + (ListaJogadores->operator[](1)->getPosicao().x))/2, 300.0));
+
+    }else{
+      pontGrafico->centralizarCamera(sf::Vector2f(((ListaJogadores->operator[](0)->getPosicao().x)), 300.0));
+    }
 }
 
 void Fases::Fase::cria()
 {
     /* enquanto não tem as fases filhas */
-    criarJogadores();
-    criarInimigosFaceis();
-    criarInimigosMedios();
-    criarPLataformas();
+    gerador_mapa->criarMapa(ListaJogadores, ListaInimigos, ListaObstaculos);
+    //printf("entrou aqui");
 }

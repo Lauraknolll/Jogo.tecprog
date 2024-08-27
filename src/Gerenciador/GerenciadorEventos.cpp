@@ -3,7 +3,7 @@
 Gerenciador::GerenciadorEvento *Gerenciador::GerenciadorEvento::pInstanciaGE = nullptr;
 
 Gerenciador::GerenciadorEvento::GerenciadorEvento() :
-    pontJogador1(nullptr), pontJogador2(nullptr)
+    tem_jogador(false), pontJogador1(nullptr), pontJogador2(nullptr)
 {
 }
 
@@ -27,13 +27,19 @@ void Gerenciador::GerenciadorEvento::setGerenciadosGrafico(GerenciadorGrafico *p
 
 void Gerenciador::GerenciadorEvento::setJogador(Personagens::Jogador *jogador1, Personagens::Jogador *jogador2)
 {
-    if (jogador1)
+    /*if (jogador1)
     {
         pontJogador1 = jogador1;
     }
     if (jogador2)
     {
         pontJogador2 = jogador2;
+    }*/
+    if(!tem_jogador){
+        pontJogador1 = jogador1;
+        tem_jogador = true;
+    }else{
+        pontJogador2 = jogador1;
     }
 }
 

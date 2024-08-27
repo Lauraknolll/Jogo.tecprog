@@ -9,6 +9,8 @@ namespace Gerenciador
     class GerenciadorEvento
     {
         private:
+        bool tem_jogador;
+
         GerenciadorGrafico* pGGrafico;
         Personagens::Jogador* pontJogador1;
         Personagens::Jogador* pontJogador2;

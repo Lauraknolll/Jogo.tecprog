@@ -41,7 +41,7 @@ void Jogo::executar()
         pontGGrafico->limpaJanela();
 
         pontFaseProv->executar();
-
+        
         pontGGrafico->monstraEntidade();
     }
 }

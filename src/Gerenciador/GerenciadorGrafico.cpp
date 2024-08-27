@@ -3,9 +3,9 @@
 Gerenciador::GerenciadorGrafico* Gerenciador::GerenciadorGrafico::pInstanciaGG = nullptr; 
 
 Gerenciador::GerenciadorGrafico::GerenciadorGrafico() :
-    janela(new sf::RenderWindow(sf::VideoMode(800.0f, 600.0f), "Jogo")), MapaTexturas()
-{
-
+    janela(new sf::RenderWindow(sf::VideoMode(800.0f, 600.0f), "Jogo")), MapaTexturas(), camera(sf::Vector2f(800.0, 600.0), sf::Vector2f(1200.0, 800.0))
+{   
+    janela->setView(camera);
 }
 
 Gerenciador::GerenciadorGrafico::~GerenciadorGrafico()
@@ -83,6 +83,11 @@ sf::Texture* Gerenciador::GerenciadorGrafico::carregaTextura(std::string caminho
     return textura;
 }
 
+void Gerenciador::GerenciadorGrafico::centralizarCamera(sf::Vector2f centro)
+{
+    camera.setCenter(centro.x, centro.y);
+    janela->setView(camera);
+}
 
 
 

@@ -18,12 +18,14 @@ namespace Fases
             Lista::ListaEntidade* ListaInimigos;
             Lista::ListaEntidade* ListaObstaculos;
             Gerenciador::GerenciadorColisoes* pGColisoes;
-            Personagens::Jogador* jog; //a fins de que o inimigo precisa conhecer o jogador, mas tem que pensar num jeito melhor
+            Personagens::Jogador* jog1; //a fins de que o inimigo precisa conhecer o jogador, mas tem que pensar num jeito melhor
+            Personagens::Jogador* jog2;
         public:
             Fase();
             ~Fase();
             void criarJogadores();
-            void criarInimigos();
+            void criarInimigosFaceis();
+            void criarInimigosMedios();
             void criarPLataformas();
             void cria();
             void executar();

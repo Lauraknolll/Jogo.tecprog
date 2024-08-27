@@ -1,12 +1,12 @@
 #include "../../../include/Entidades/Personagens/Jogador.h"
 
 #define VELJOG 1.f
-#define GRAVIDADE 0.00001f
-#define VELOCIDADE_JOGADOR 0.00001f
+#define GRAVIDADE 0.0001f
+#define VELOCIDADE_JOGADOR 0.0001f
 #define COOLDOWN_DANO 100.f
 
 Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
-    Personagem(xx, yy, ww, hh, Entidades::jogador), pPular(false), andando(false), emEsquerda(false), lentidao(1)
+    Personagem(xx, yy, ww, hh, Entidades::jogador), pPular(false), andando(false), emEsquerda(false), lentidao(1), Atacando(false)
 {
     num_vidas = 50;
     cooldownDano = 0;
@@ -43,7 +43,7 @@ void Personagens::Jogador::andaPraEsquerda()
 void Personagens::Jogador::pular()
 {
     if(pPular){
-        velocidade.y = -sqrt(2.0f*GRAVIDADE*100.0f);
+        velocidade.y = -sqrt(2.0f*GRAVIDADE*150.0f);
         pPular = false;
     }
    
@@ -227,4 +227,19 @@ void Personagens::Jogador::recebaDano(const int dano)
             active = false;*/
         cooldownDano = 0;
     }
+}
+
+void Personagens::Jogador::atacar()
+{
+    Atacando = true;
+}
+
+void Personagens::Jogador::paraAtacar()
+{
+    Atacando = false;
+}
+
+const bool Personagens::Jogador::estaAtacando()
+{
+    return Atacando;
 }

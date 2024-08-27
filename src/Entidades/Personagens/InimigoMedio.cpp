@@ -1,6 +1,6 @@
 #include "../../../include/Entidades/Personagens/InimigoMedio.h"
 
-#define VELOCIDADE_INIM 0.01f
+#define VELOCIDADE_INIM 0.025f
 #define VIDAS_INIM 10000
 
 Personagens::InimigoMedio::InimigoMedio(float xx, float yy, float ww, float hh) :
@@ -63,7 +63,10 @@ void Personagens::InimigoMedio::colide(Entidades::Entidade *outraEntidade, sf::V
 {
     if(outraEntidade->getID() == Entidades::ID::jogador)
     {
-        num_vidas--;
+        if((static_cast<Jogador*>(outraEntidade))->estaAtacando())
+        {
+            num_vidas--;
+        }
     }
 }
 

@@ -10,6 +10,7 @@ namespace Gerenciador
     {
         private:
             sf::RenderWindow *janela;
+            sf::View camera;
             std::map<std::string, sf::Texture*> MapaTexturas;
 
 
@@ -31,6 +32,6 @@ namespace Gerenciador
             const bool verificarJanelaAberta();
             //Retorna a textura 
             sf::Texture* carregaTextura(std::string caminho);
-
+            void centralizarCamera(sf::Vector2f centro);
     };
 }

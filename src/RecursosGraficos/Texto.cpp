@@ -1,22 +1,26 @@
 #include "../../include/RecursosGraficos/Texto.h"
 
-#define TEXTo_SIZE 24
+#define TEXTO_SIZE 24
+#define CAMINHO_FONTE "arial.ttf"
 
-
+// Inicialização do membro estático
 Gerenciador::GerenciadorGrafico* Texto::pGraphicM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
 
 Texto::Texto(sf::Vector2f position, std::string info, const char* path) :
-info(info) {
+    info(info) 
+{
     texto.setString(info);
+    texto.setString("imprimir");
 
-    //texto.setFont(*pGraphicM->loadFont(path));
+     sf::Font font;
+    if (!font.loadFromFile(CAMINHO_FONTE)) {  // Certifique-se de que o caminho está correto
+        std::cerr << "Erro ao carregar a fonte" << std::endl;
+    }
+    //texto.setFont(font);
 
-    texto.setCharacterSize(TEXTo_SIZE);
-
+    texto.setCharacterSize(TEXTO_SIZE);
     setAlinhamentoTexto(TextoAlignment::esquerda);
-
-    texto.setPosition(sf::Vector2f(position.x, position.y));
-
+    texto.setPosition(position);
     texto.setFillColor(sf::Color::White);
 }
 
@@ -28,7 +32,7 @@ void Texto::setTextoInfo(std::string info) {
 }
 
 void Texto::setPosicao(sf::Vector2f position) {
-    texto.setPosition(sf::Vector2f(position.x, position.y));
+    texto.setPosition(position);
 }
 
 void Texto::setCorTexto(const unsigned int R, const unsigned int G, const unsigned int B) {
@@ -40,18 +44,19 @@ void Texto::setTamanhoFont(const unsigned int size) {
 }
 
 void Texto::setAlinhamentoTexto(TextoAlignment option) {
+    // Ajusta a origem para o alinhamento correto
     switch (option) {
     case TextoAlignment::esquerda:
         texto.setOrigin(0, 0);
         break;
     case TextoAlignment::centro:
-        texto.setOrigin(getTamanho().x / 2, getTamanho().y);
+        texto.setOrigin(getTamanho().x / 2, getTamanho().y / 2);
         break;
     case TextoAlignment::direita:
-        texto.setOrigin(getTamanho().x, 0);
+        texto.setOrigin(getTamanho().x, getTamanho().y);
         break;
     default:
-        texto.setOrigin(getTamanho().x / 2, getTamanho().y);
+        texto.setOrigin(0, 0); // Caso inesperado, pode ser ajustado conforme necessário
         break;
     }
 }
@@ -70,5 +75,5 @@ std::string Texto::getInfo() const {
 }
 
 sf::Vector2f Texto::getPosicao() const {
-    return sf::Vector2f(texto.getPosition().x, texto.getPosition().y);
+    return texto.getPosition();
 }

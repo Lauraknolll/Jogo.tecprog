@@ -19,6 +19,7 @@ void Estados::GerenciadorEstado::changeAtualEstado(EstadoID id)
 {
     ultEstadoID = atualEstadoID;
     atualEstadoID = id;
+    
     mapaEstado[atualEstadoID]->resetEstado();
 }
 
@@ -39,7 +40,7 @@ Estados::EstadoID Estados::GerenciadorEstado::getAtualEstadoID() const
 
 void Estados::GerenciadorEstado::inserirEstado(Estado* pEstado)
 {
-    //mapaEstado.insert(pEstado->getID(), pEstado);
+    mapaEstado.insert(std::make_pair(pEstado->getID(), pEstado));
 }
 
 Estados::EstadoID Estados::GerenciadorEstado::getUltEstadoID() const

@@ -1,16 +1,22 @@
+#ifndef MENU_H
+#define MENU_H
+
 #pragma once
 
 #include "Estados.h"
 #include "../Controle/ControleMenu.h"
 #include "../RecursosGraficos/Botao.h"
 #include "../Gerenciador/GerenciadorGrafico.h"
-#include "../Jogo.h"
 #include <vector>
+
+namespace Estados{
+    class Jogo;
+}
 
 namespace Menus {
     class Menu: public Estados::Estado {
     protected:
-        Jogo* pJogo;
+        Estados::Jogo* pJogo;
 
         Texto titulo;
 
@@ -23,7 +29,7 @@ namespace Menus {
         bool ativo;
 
     public:
-        Menu(Jogo* jog = nullptr);
+        Menu(Estados::Jogo* jog = nullptr);
 
         virtual ~Menu();
 
@@ -41,3 +47,5 @@ namespace Menus {
     };
 
 } // namespace Menus
+
+#endif

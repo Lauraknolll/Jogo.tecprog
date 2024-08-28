@@ -10,6 +10,7 @@ Fases::Fase::Fase() :
     mapa = CAMINHO_MAPA;
 
     carregarMapa(mapa);
+    printf("iniciou");
 }
 
 Fases::Fase::~Fase()
@@ -99,9 +100,7 @@ void Fases::Fase::criarMapa(std::string caminho_mapa)
     int sizeTiled = mapa["tilewidth"]; //tamhno do tile
     int width = mapa["width"];
     int height = mapa["height"]; // altura do mapa
-
-    printf("Altura: %d, Largura: %d, Tamanho: %d", height, width, sizeTiled);
-
+    
     int indice = 0;
     
     Entidades::Entidade* ent ;
@@ -111,7 +110,7 @@ void Fases::Fase::criarMapa(std::string caminho_mapa)
         for(int x = 0; x < width; x++)
         {   
             long int tileId = mapa["layers"][0]["data"][indice];
-            printf("%d", tileId);
+            //printf("%d", tileId);
             if(tileId != 0){
                 int mult = 1;
                 int cond = x+1;
@@ -142,7 +141,7 @@ void Fases::Fase::criarMapa(std::string caminho_mapa)
                 indice++;
             }
         }
-        printf("\n");
+        //printf("\n");
     }
 
 }

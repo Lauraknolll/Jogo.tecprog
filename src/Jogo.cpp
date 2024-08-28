@@ -1,7 +1,7 @@
 #include "../include/Jogo.h"
 #define CAMINHO_MAPA "mapaJogo1.json"
 
-Jogo::Jogo() :
+Estados::Jogo::Jogo() :
     pontGGrafico(Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()),
     pontGEvento(Gerenciador::GerenciadorEvento::getGerenciadorEventos()),
     pontFaseProv(new Fases::Fase())
@@ -10,7 +10,7 @@ Jogo::Jogo() :
     pontGEvento->setGerenciadosGrafico(pontGGrafico);
 }
 
-Jogo::~Jogo()
+Estados::Jogo::~Jogo()
 {
     if(pontGGrafico != nullptr)
     {
@@ -29,7 +29,7 @@ Jogo::~Jogo()
     }
 }
 
-void Jogo::executar()
+void Estados::Jogo::executar()
 {
     pontFaseProv->cria(); // cria todo mundo
 

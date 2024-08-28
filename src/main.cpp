@@ -2,7 +2,7 @@
 
 int main()
 {
-    Jogo jogo;
+    Estados::Jogo jogo;
     jogo.executar();
     
     return 0;

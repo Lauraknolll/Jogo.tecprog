@@ -3,7 +3,7 @@
 Gerenciador::GerenciadorEvento *Gerenciador::GerenciadorEvento::pInstanciaGE = nullptr;
 
 Gerenciador::GerenciadorEvento::GerenciadorEvento() :
-    tem_jogador(false), pontJogador1(nullptr), pontJogador2(nullptr)
+    tem_jogador(false), pontJogador1(nullptr), pontJogador2(nullptr), pInputM(Gerenciador::GerenciadorInput::getInstance())
 {
 }
 
@@ -22,7 +22,6 @@ Gerenciador::GerenciadorEvento *Gerenciador::GerenciadorEvento::getGerenciadorEv
 
 void Gerenciador::GerenciadorEvento::setGerenciadosGrafico(GerenciadorGrafico *pGG)
 {
-    printf("setou jogador");
     pGGrafico = pGG;
 }
 
@@ -46,6 +45,22 @@ void Gerenciador::GerenciadorEvento::setJogador(Personagens::Jogador *jogador1, 
 
 void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
 {
+    /*while (pGGrafico->getJanela()->pollEvent(evento))
+    {
+        if (evento.type == sf::Event::Closed)
+        {
+            pGGrafico->fecharJanela();
+        }
+        if (evento.type == sf::Event::KeyPressed)
+        {
+            pInputM->lidarTeclaPrecionada(evento.key.code);
+        }
+        if (evento.type == sf::Event::KeyReleased)
+        {
+            pInputM->lidarTeclaSolta(evento.key.code);
+        }
+    }*/
+
     while (pGGrafico->getJanela()->pollEvent(evento))
     {
         if (evento.type == sf::Event::Closed)

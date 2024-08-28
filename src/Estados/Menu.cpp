@@ -1,66 +1,69 @@
 #include "../../include/Estados/Menu.h"
-
 #include "../../include/Gerenciador/GerenciadorGrafico.h"
-
-#define BACKGROUND_MENU "./assets/Background/BrickBackground.png"
+#include "../../include/Jogo.h"
 
 namespace Menus {
-    Menu::Menu(Jogo* jog) :
+
+    Menu::Menu(Estados::Jogo* jog) :
+    Estado(static_cast<Estados::GerenciadorEstado*>(jog), Estados::EstadoID::mainMenu),
     pJogo(jog),
     selected(0),
     min(0),
     max(2),
     controle(this),
-    ativo(false) {
-        Gerenciador::GerenciadorGrafico* GM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
-
-        Botao* bt = NULL;
-
+    ativo(false)
+    {
+        // Armazene o GerenciadorGrafico em uma variável local
+        auto* GM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
         float w, h;
-        w = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()->getJanela()->getSize().x;
-        h = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()->getJanela()->getSize().y;
 
-        titulo.setTextoInfo("DESERT");
+        // Obtenha o tamanho da janela
+        w = GM->getJanela()->getSize().x;
+        h = GM->getJanela()->getSize().y;
+
+        // Configuração do título
+        titulo.setTextoInfo("JOGO");
         titulo.setTamanhoFont(140);
-        titulo.setCorTexto(77.6, 68.2, 44.3);
+        titulo.setCorTexto(77.6f, 68.2f, 44.3f); // Use f para literais de ponto flutuante
         titulo.setAlinhamentoTexto(TextoAlignment::centro);
+        titulo.setPosicao(sf::Vector2f(w / 2.0f, h / 2.0f));
 
-        titulo.setPosicao(sf::Vector2f(w/2.0, h/2.0));
+        // Adicione botões
+        Botao* bt = nullptr;
 
-        bt = new Botao(sf::Vector2f(w/2.0, h/2.0), "PLAY GAME");
+        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f), "PLAY GAME");
         bt->selecionar(true);
         vectorOfBotaos.push_back(bt);
 
-        bt = new Botao(sf::Vector2f(w/2.0, h/2.0 + 100), "LEADERBOARD");
+        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 100), "LEADERBOARD");
         vectorOfBotaos.push_back(bt);
 
-        bt = new Botao(sf::Vector2f(w/2.0, h/2.0 + 200), "SETTINGS");
+        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 200), "SETTINGS");
         vectorOfBotaos.push_back(bt);
-
-        bt = new Botao(sf::Vector2f(w/2.0, h/2.0 + 300), "EXIT GAME");
-        vectorOfBotaos.push_back(bt);
-
     }
 
     Menu::~Menu() {
-        Botao* bt = NULL;
-        while (vectorOfBotaos.size() != 0) {
-            bt = vectorOfBotaos.back();
-            delete (bt);
+        // Limpeza dos botões
+        printf("limpou o menu");
+        
+        while (!vectorOfBotaos.empty()) {
+            Botao* bt = vectorOfBotaos.back();
+            delete bt;
             vectorOfBotaos.pop_back();
         }
         vectorOfBotaos.clear();
     }
 
     void Menu::atualizar() {
+        auto* GM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
         float w, h;
-        w = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()->getJanela()->getSize().x;
-        h = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()->getJanela()->getSize().y;
-        Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()->centralizarCamera(sf::Vector2f(w/2.0, h/2.0));
+        w = GM->getJanela()->getSize().x;
+        h = GM->getJanela()->getSize().y;
+        GM->centralizarCamera(sf::Vector2f(w / 2.0f, h / 2.0f));
         ativo = true;
     }
-    void Menu::executar()
-    {
+
+    void Menu::executar() {
         if (ativo) {
             ativo = false;
             switch (selected) {
@@ -73,33 +76,31 @@ namespace Menus {
             case 2:
                 changeEstado(Estados::EstadoID::mainMenu);
                 break;
-            case 3:
-                //pJogo->endGame();
-                break;
             default:
                 break;
             }
         }
     }
 
-    void Menu::render()
-    {   
+    void Menu::render() {   
         atualizar();
-        //Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()
-        for (it = vectorOfBotaos.begin(); it != vectorOfBotaos.end(); ++it)
+
+        // Declare o iterador aqui
+        for (auto it = vectorOfBotaos.begin(); it != vectorOfBotaos.end(); ++it) {
             (*it)->render();
+        }
         titulo.render();
     }
 
-    void Menu::resetEstado()
-    {
-        vectorOfBotaos[selected]->selecionar(false);
-        selected = 0;
-        vectorOfBotaos[selected]->selecionar(true);
-        titulo.setPosicao(sf::Vector2f(titulo.getPosicao().x, 0.0f - titulo.getTamanho().y / 2));
+    void Menu::resetEstado() {
+        if (!vectorOfBotaos.empty()) {
+            vectorOfBotaos[selected]->selecionar(false);
+            selected = 0;
+            vectorOfBotaos[selected]->selecionar(true);
+            titulo.setPosicao(sf::Vector2f(titulo.getPosicao().x, 0.0f - titulo.getTamanho().y / 2));
+        }
     }
 
-    /* Make the menu selection go Down */
     void Menu::selecionarBaixo() {
         if (ativo) {
             vectorOfBotaos[selected]->selecionar(false);
@@ -110,7 +111,6 @@ namespace Menus {
         }
     }
 
-    /* Make the menu selection go Up */
     void Menu::selecionarCima() {
         if (ativo) {
             vectorOfBotaos[selected]->selecionar(false);

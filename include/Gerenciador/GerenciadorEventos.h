@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GerenciadorGrafico.h"
+#include "GerenciadorInput.h"
 #include "../Entidades/Personagens/Jogador.h"
 
 
@@ -10,6 +11,8 @@ namespace Gerenciador
     {
         private:
         bool tem_jogador;
+
+        Gerenciador::GerenciadorInput* pInputM;
 
         GerenciadorGrafico* pGGrafico;
         Personagens::Jogador* pontJogador1;

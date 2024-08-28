@@ -5,13 +5,11 @@ Fases::Fase::Fase() :
     Ente(), ListaJogadores(), ListaInimigos(), ListaObstaculos(), pGColisoes(nullptr)
 {
     Lista_Entidades = new Lista::ListaEntidade();
-    pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
+    pGColisoes = NULL;
+    pEventos = Gerenciador::GerenciadorEvento::getGerenciadorEventos();
+    mapa = CAMINHO_MAPA;
 
-    std::string caminho = CAMINHO_MAPA;
-
-    std::cout << caminho;
-
-    gerador_mapa = new Tilemap(caminho);
+    carregarMapa(mapa);
 }
 
 Fases::Fase::~Fase()
@@ -27,88 +25,124 @@ Fases::Fase::~Fase()
     Lista_Entidades->cleanList();
 }
 
-void Fases::Fase::criarJogadores()
+void Fases::Fase::criarJogadores(sf::Vector2f posicao, sf::Vector2f tamanho)
 {
-    Personagens::Jogador *jogador1 = new Personagens::Jogador(200.0, 340.0);
-    jog1 = jogador1;
-    Personagens::Jogador *jogador2 = new Personagens::Jogador(200.0, 350.0);
-    jog2 = jogador2;
-    // Como tem o sigleton então é o msm da principal
-    Gerenciador::GerenciadorEvento *pGEvento = Gerenciador::GerenciadorEvento::getGerenciadorEventos();
-    Gerenciador::GerenciadorGrafico *pGGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
-
-    /*se for selecionado apenas um jogador no menu
-    pGEvento->setJogador(jogador1);
-    ListaJogadores->addEntidade(jogador1); */
-
-    /* se for selecionado dois jogadores no menu*/
-    if ((jogador1 != nullptr) && (jogador2 != nullptr)) // mudar dps pra se for nulo ai msg de erro
-    {
-        pGEvento->setJogador(jogador1, jogador2);
-        ListaJogadores.push_back(static_cast<Entidades::Entidade *>(jogador1));
-        ListaJogadores.push_back(static_cast<Entidades::Entidade *>(jogador2));
-    }
+    Personagens::Jogador* jog = new Personagens::Jogador(posicao.x, posicao.y, tamanho.x, tamanho.y);
+    pEventos->setJogador(jog);
+    ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
+    Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
 }
 
-void Fases::Fase::criarInimigosFaceis()
+void Fases::Fase::criarInimigosFaceis(sf::Vector2f posicao, sf::Vector2f tamanho)
 {
-    for (int i = 0; i < 3; i++)
-    {
-        Personagens::InimigoFacil *ini1 = new Personagens::InimigoFacil(400.0 + 100*i, 450.0);
-
-        if (ini1 != nullptr)
-        {
-            ListaInimigos.push_back(static_cast<Entidades::Entidade *>(ini1));
-        }
-    }
+    Personagens::InimigoFacil* ent = new Personagens::InimigoFacil(posicao.x, posicao.y, tamanho.x, tamanho.y);
+    ListaInimigos.push_back(static_cast<Entidades::Entidade*>(ent));
+    Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(ent));
 }
 
-void Fases::Fase::criarInimigosMedios()
+void Fases::Fase::criarInimigosMedios(sf::Vector2f posicao, sf::Vector2f tamanho)
 {
-    for (int i = 0; i < 2; i++)
-    {
-        Personagens::InimigoMedio *ini1 = new Personagens::InimigoMedio(300.0 + 100*i, 450.0);
-        if (ini1 != NULL)
-        {
-            ListaInimigos.push_back(static_cast<Entidades::Entidade *>(ini1));
-            ini1->setJogador(jog1);
-        }
+    Personagens::InimigoMedio* ent = new Personagens::InimigoMedio(posicao.x, posicao.y, tamanho.x, tamanho.y);
+    ListaInimigos.push_back(static_cast<Entidades::Entidade*>(ent));
+    Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(ent));
     }
-}
 
-void Fases::Fase::criarPLataformas()
+void Fases::Fase::criarPLataformas(sf::Vector2f posicao, sf::Vector2f tamanho)
 {
-    Obstaculos::Plataforma *plataforma = new Obstaculos::Plataforma(100.0, 500.0, 1500.0, 25.0);
-    if (plataforma != nullptr)
-    {
-        ListaObstaculos.push_back(static_cast<Entidades::Entidade *>(plataforma));
-    }
-    Obstaculos::Plataforma *plataforma2 = new Obstaculos::Plataforma(500.0, 375.0, 500.0, 25.0);
-    if (plataforma2 != nullptr)
-    {
-        ListaObstaculos.push_back(static_cast<Entidades::Entidade *>(plataforma2));
-    }
+    Obstaculos::Plataforma* ent  = new Obstaculos::Plataforma(posicao.x, posicao.y, tamanho.x, tamanho.y);
+    ListaObstaculos.push_back(static_cast<Entidades::Entidade*>(ent));
+    Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(ent));
 }
 
 void Fases::Fase::executar()
 {
     Gerenciador::GerenciadorGrafico *pontGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
+    
     Lista_Entidades->percorrerLista();
     Lista_Entidades->desenharEntidades(pontGrafico);
-
-
-    pGColisoes->colide();
-    if(ListaJogadoresgetSize() > 1){
-            pontGrafico->centralizarCamera(sf::Vector2f(((ListaJogadores->operator[](0)->getPosicao().x) + (ListaJogadores->operator[](1)->getPosicao().x))/2, 300.0));
-
-    }else{
-      pontGrafico->centralizarCamera(sf::Vector2f(((ListaJogadores->operator[](0)->getPosicao().x)), 300.0));
+    list<Entidades::Entidade*>::iterator it;
+    Entidades::Entidade* ent;
+    for( it = ListaJogadores.begin(); it != ListaJogadores.end(); it++){
+        if(static_cast<Personagens::Jogador*>(*it)){
+            ent = *it;
+            pontGrafico->centralizarCamera(ent->getPosicao());
+        }
     }
+    
+    pGColisoes->colide();
 }
 
 void Fases::Fase::cria()
 {
-    /* enquanto não tem as fases filhas */
-    gerador_mapa->criarMapa(ListaJogadores, ListaInimigos, ListaObstaculos);
-    //printf("entrou aqui");
+
+    criarMapa(CAMINHO_MAPA);
+    pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
+
+}
+
+void Fases::Fase::carregarMapa(std::string mapJson) {
+    std::ifstream arquivo(mapJson);
+    
+    if(!arquivo.is_open()){
+        std::cerr << "Erro ao abrir o mapa (caminho mapa)" << std::endl;
+        return;
+    }
+
+    arquivo >> mapa;
+    arquivo.close();
+    printf("oi");
+}
+
+void Fases::Fase::criarMapa(std::string caminho_mapa)
+{
+    // Pega as informações do mapa
+    int sizeTiled = mapa["tilewidth"]; //tamhno do tile
+    int width = mapa["width"];
+    int height = mapa["height"]; // altura do mapa
+
+    printf("Altura: %d, Largura: %d, Tamanho: %d", height, width, sizeTiled);
+
+    int indice = 0;
+    
+    Entidades::Entidade* ent ;
+    //loop de entidades com tamanho variável em X
+    for(int y = 0; y < height-3; y++)
+    {
+        for(int x = 0; x < width; x++)
+        {   
+            long int tileId = mapa["layers"][0]["data"][indice];
+            printf("%d", tileId);
+            if(tileId != 0){
+                int mult = 1;
+                int cond = x+1;
+                while(tileId == mapa["layers"][0]["data"][++indice] && (cond) < (width)){
+                    mult++;
+                    cond++;
+                }
+               
+                sf::Vector2f posicao(x*sizeTiled, y*sizeTiled);
+                
+                x += mult - 1;
+
+                sf::Vector2f tamanho(sizeTiled*mult, sizeTiled);
+                
+                switch (tileId)
+                {
+                case(-1):
+                    criarJogadores(posicao, tamanho);
+                break;
+                case(1):
+                    criarPLataformas(posicao, tamanho);
+                break;
+                default:
+                    break;
+                }
+            }
+            else{
+                indice++;
+            }
+        }
+        printf("\n");
+    }
+
 }

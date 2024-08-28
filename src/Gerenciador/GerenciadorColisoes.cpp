@@ -5,6 +5,7 @@ using namespace std;
 // #include "Entities/MovingEntity.h"
 // #include "States/Level.h"
 #include "math.h"
+#include "../../include/Entidades/Personagens/Jogador.h"
 
 Gerenciador::GerenciadorColisoes::GerenciadorColisoes(list<Entidades::Entidade *> Jogador1, list<Entidades::Entidade *> Obstaculos1, vector<Entidades::Entidade *> Inimigos1 /*, States::Level* plvl*/) :
     Jogadores(Jogador1), Obstaculos(Obstaculos1), Inimigos(Inimigos1) /*,  plvl(plvl) */ {}
@@ -43,6 +44,7 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresObstaculos()
             sf::Vector2f distanciaEntreCentros(
                 fabs((pos1.x + tam1.x / 2.0f) - (pos2.x + tam2.x / 2.0f)),
                 fabs((pos1.y + tam1.y / 2.0f) - (pos2.y + tam2.y / 2.0f)));
+            //printf("Distancia entre centros: %f\n", distanciaEntreCentros.y);
 
             sf::Vector2f somaMetadeRetangulo(tam1.x / 2.0f + tam2.x / 2.0f, tam1.y / 2.0f + tam2.y / 2.0f);
             sf::Vector2f intersecao = sf::Vector2f(distanciaEntreCentros.x - somaMetadeRetangulo.x, distanciaEntreCentros.y - somaMetadeRetangulo.y);
@@ -50,7 +52,8 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresObstaculos()
             /*  Condição pra colisão*/
             if (intersecao.x < 0.0f && intersecao.y < 0.0f)
             {
-                ent1->colide(ent2, intersecao);
+                //printf("entrou");
+                static_cast<Personagens::Jogador*>(ent1)->colide(ent2, intersecao);
             }
         }
     }
@@ -100,15 +103,19 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresInimigos()
 void Gerenciador::GerenciadorColisoes::colide()
 {
 
+    tratarColisoesJogadoresObstaculos();
+    tratarColisoesJogadoresInimigos();
 
-
-
-    clear();
+    
 }
 
-/* Function to deallocate entities after collision
+// Function to deallocate entities after collision
 void Gerenciador::GerenciadorColisoes::clear()
 {
+    Jogadores.clear();
+    Inimigos.clear();
+    Obstaculos.clear();
+    /*list<Entidades::Entidade *>::iterator it1;
     Personagens::Personagem* paux = nullptr;
     for(int i = 0; i < Inimigos.size(); i++)
     {
@@ -117,25 +124,25 @@ void Gerenciador::GerenciadorColisoes::clear()
         {
             if(paux->getNumVidas() <= 0)
             {
-                Inimigos.erase(i);
+                Inimigos.erase();
                 i--;
                 if(i < 0)
                     i = -1;
             }
         }
     }*/
-/*Entities::MovingEntity* pAux = nullptr;
-for (int i = 0; i < Jogador->getSize(); i++) {
-    pAux = static_cast<Entities::MovingEntity*>((*Jogador)[i]);
-    if (pAux != nullptr) {
-        if (!pAux->isActive()) {
-            if (pAux->getId() != Entities::ID::coin)
-                plvl->coinBomb(pAux->getPosition());
-            Jogador->deleteEntity(pAux);
-            i--;
-            if (i < 0)
-                i = -1;
+//Entities::MovingEntity* pAux = nullptr;
+    /*for (int i = 0; i < Jogador->getSize(); i++) {
+        pAux = static_cast<Entities::MovingEntity*>((*Jogador)[i]);
+        if (pAux != nullptr) {
+            if (!pAux->isActive()) {
+                if (pAux->getId() != Entities::ID::coin)
+                    plvl->coinBomb(pAux->getPosition());
+                Jogador->deleteEntity(pAux);
+                i--;
+                if (i < 0)
+                    i = -1;
+            }
         }
-    }
-}*/
-//}
+    }*/
+}

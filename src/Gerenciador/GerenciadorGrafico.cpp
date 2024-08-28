@@ -54,7 +54,7 @@ void Gerenciador::GerenciadorGrafico::desenhaEntidade(sf::RectangleShape corpo)
 
 void Gerenciador::GerenciadorGrafico::desenhaTexto(sf::Text texto)
 {
-
+    janela->draw(texto);
 }
 
 void Gerenciador::GerenciadorGrafico::monstraEntidade()

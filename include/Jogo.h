@@ -15,6 +15,7 @@ class Jogo
     private:
         Gerenciador::GerenciadorGrafico* pontGGrafico;
         Gerenciador::GerenciadorEvento* pontGEvento;
+        Gerenciador::GerenciadorColisoes* pColisao;
         Fases::Fase* pontFaseProv;
         //Tilemap* abrir_mapa;
     public:

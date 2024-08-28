@@ -172,6 +172,7 @@ void Personagens::Jogador::moveColisao(Entidades::Entidade* outraEnt, sf::Vector
     /*if(outraEntidade->getID() == ){
 
     }*/
+   //printf("\nx: %f | Y: %f", intersecao.x, intersecao.y);
 
     if(intersecao.x > intersecao.y) // colisao em x
     {

@@ -22,6 +22,7 @@ Gerenciador::GerenciadorEvento *Gerenciador::GerenciadorEvento::getGerenciadorEv
 
 void Gerenciador::GerenciadorEvento::setGerenciadosGrafico(GerenciadorGrafico *pGG)
 {
+    printf("setou jogador");
     pGGrafico = pGG;
 }
 

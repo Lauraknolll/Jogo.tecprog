@@ -18,7 +18,7 @@ namespace Fases
     class Fase : public Ente
     {   
         protected:
-            list<Entidades::Entidade*> ListaJogadores;
+            /*list<Entidades::Entidade*> ListaJogadores;
             list<Entidades::Entidade*> ListaObstaculos;
             vector<Entidades::Entidade*> ListaInimigos;
             Lista::ListaEntidade* Lista_Entidades;
@@ -26,17 +26,14 @@ namespace Fases
             Gerenciador::GerenciadorEvento* pEventos;
             Personagens::Jogador* jog1;
             Personagens::Jogador* jog2;
-            nlohmann::json mapa; 
+            nlohmann::json mapa; */
            
         public:
             Fase();
             ~Fase();
-            void criarJogadores(sf::Vector2f posicao, sf::Vector2f tamanho);
-            void criarInimigosMedios(sf::Vector2f posicao, sf::Vector2f tamanho); //vai ficar
-            void criarPLataformas(sf::Vector2f posicao, sf::Vector2f tamanho); //vai ficar
             void cria();
             void executar();
-            void carregarMapa(std::string mapJson);
+            void gerenciarColisoes();
             void criarMapa(std::string caminho_mapa);
             void percorrerMapa(); //função que vai ser chamada a cada criação
     };

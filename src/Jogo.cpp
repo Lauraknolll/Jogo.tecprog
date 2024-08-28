@@ -4,7 +4,7 @@
 Estados::Jogo::Jogo() :
     pontGGrafico(Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()),
     pontGEvento(Gerenciador::GerenciadorEvento::getGerenciadorEventos()),
-    pontFaseProv(new Fases::Fase())
+    pontFaseProv(new Fases::Fase1())
 {
     pontGEvento->setGerenciadosGrafico(pontGGrafico);
 }

@@ -10,7 +10,9 @@ namespace Fases
         public:
             Fase2();
             ~Fase2();
-            void criarInimigosDificeis();
-            void criarObstaculosDificeis();
+            void criarInimigosDificeis(sf::Vector2f posicao, sf::Vector2f tamanho);
+            void criarObstaculosDificeis(sf::Vector2f posicao, sf::Vector2f tamanho);
+            void criarInimigosMedios(sf::Vector2f posicao, sf::Vector2f tamanho);
+            void criarObstaculosMedios(sf::Vector2f posicao, sf::Vector2f tamanho);
     };
 }

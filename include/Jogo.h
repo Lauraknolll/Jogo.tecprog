@@ -4,7 +4,7 @@
 #include "Gerenciador/GerenciadorGrafico.h"
 #include "Gerenciador/GerenciadorEventos.h"
 #include "Gerenciador/GerenciadorEstados.h"
-#include "Fases/Fase.h"
+#include "Fases/Fase1.h"
 #include "Estados/Estados.h"
 #include "Controle/ControleMenu.h"
 #include "Controle/ControleJogador.h"
@@ -23,7 +23,7 @@ namespace Estados
         Gerenciador::GerenciadorColisoes *pColisao;
         Gerenciador::GerenciadorInput *pInput;
         Controle::MenuControle *control_menu;
-        Fases::Fase *pontFaseProv;
+        Fases::Fase1 *pontFaseProv;
         Estados::Estado *estado;
 
     public:

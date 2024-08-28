@@ -31,5 +31,6 @@ namespace Lista{
             void percorrerLista();
 
             void desenharEntidades(Gerenciador::GerenciadorGrafico* pGG);
+
     };
 }

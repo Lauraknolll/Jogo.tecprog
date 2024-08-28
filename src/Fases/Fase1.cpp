@@ -10,7 +10,6 @@ Fases::Fase1::Fase1() :
     mapa = CAMINHO_MAPA_FASE1;
 
     carregarMapa(mapa);
-    printf("iniciou");
 }
 
 Fases::Fase1::~Fase1()
@@ -24,14 +23,16 @@ void Fases::Fase1::criarJogadores()
 {
     Personagens::Jogador* jog;
     sf::Vector2f posi(0,0);
-    int *x, *y, *indice;
-    *x = 0;
-    *y = 0;
-    *indice = 0;
-    while(posi != sf::Vector2f(-1, -1)){
-        posi = lerMapa(CAMINHO_MAPA_FASE1, x, y, indice, -1);
-        if(posi != sf::Vector2f(-1, -1)){
-            jog = new Personagens::Jogador(posi.x, posi.y);
+    int x = 0, y = 0, indice = 0;
+
+    while (posi != sf::Vector2f(-1, -1))
+    {
+        posi = lerMapa(CAMINHO_MAPA_FASE1, &x, &y, &indice, -1);
+        
+        if (posi != sf::Vector2f(-1, -1))
+        {
+            //std::cout << "Criando jogador em: (" << posi.x << ", " << posi.y << ")" << std::endl;
+            jog = new Personagens::Jogador(posi.x, posi.y, 32, 32);
             pEventos->setJogador(jog);
             ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
@@ -43,14 +44,16 @@ void Fases::Fase1::criarPlataformas()
 {
     Obstaculos::Plataforma* plat;
     sf::Vector2f posi(0,0);
-    int *x, *y, *indice;
-    *x = 0;
-    *y = 0;
-    *indice = 0;
-    while(posi != sf::Vector2f(-1, -1)){
-        posi = lerMapa(CAMINHO_MAPA_FASE1, x, y, indice, -1);
-        if(posi != sf::Vector2f(-1, -1)){
-            plat = new Obstaculos::Plataforma(posi.x, posi.y, 32, 32);
+    int x = 0, y = 0, indice = 0;
+
+    while (posi != sf::Vector2f(-1, -1))
+    {
+        posi = lerMapa(CAMINHO_MAPA_FASE1, &x, &y, &indice, 1);
+        
+        if (posi != sf::Vector2f(-1, -1))
+        {
+            //std::cout << "Criando plataforma em: (" << posi.x << ", " << posi.y << ")" << std::endl;
+            plat = new Obstaculos::Plataforma(posi.x, posi.y, 32*y, 32);
             ListaObstaculos.push_back(static_cast<Entidades::Entidade*>(plat));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(plat));
         }

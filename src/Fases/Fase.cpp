@@ -32,47 +32,64 @@ void Fases::Fase::carregarMapa(std::string mapJson) {
 
 
 
-sf::Vector2f Fases::Fase::lerMapa(std::string caminho_mapa, int* xx, int* yy, int* indice, int num_entidade)
+sf::Vector2f Fases::Fase::lerMapa(std::string caminho_mapa, int* xx, int* yy, int* indice, long int num_entidade)
 {
-    //Pega as informações do mapa
-    int sizeTiled = mapa["tilewidth"]; //tamhno do tile
+    // Pega as informações do mapa
+    int sizeTiled = mapa["tilewidth"]; // Tamanho do tile
     int width = mapa["width"];
-    int height = mapa["height"]; // altura do mapa
+    int height = mapa["height"]; // Altura do mapa
+    int cont = 0;
     
-    Entidades::Entidade* ent ;
-    //loop de entidades com tamanho variável em X
-    for(*yy; *yy < height-3; *yy++)
+    Entidades::Entidade* ent;
+
+    // Loop de entidades com tamanho variável em X
+    for (int y = 0; y < height - 3; ++y)
     {
-        for(*xx; *xx < width; *xx++)
-        {   
+        for (int x = 0; x < width; ++x)
+        {
+            //printf("\nindice:%d", (*indice));
+            
+            
             long int tileId = mapa["layers"][0]["data"][*indice];
-            //printf("%d", tileId);
-            if(tileId != 0){
-                int mult = 1;
-                int cond = (*xx)+1;
-                while(tileId == mapa["layers"][0]["data"][++(*indice)] && (cond) < (width)){
-                    mult++;
-                    cond++;
-                }
-               
-                sf::Vector2f posicao((*xx)*sizeTiled, (*yy)*sizeTiled);
+            
+            if(cont == *indice){
+                 if (tileId != 0)
+                {
+                    //std::cout << "Processando: x=" << x << ", y=" << y << std::endl;
+                    
+                    int mult = 1;
+                    int cond = x + 1;
+                    while (tileId == mapa["layers"][0]["data"][++(*indice)] && cond < width)
+                    {
+                        
+                        ++mult;
+                        ++cond;
+                    }
+                    //std::cout << "Processando: id=" << tileId << ", num=" << num_entidade << std::endl;
                 
-                *xx += mult - 1;
+                    sf::Vector2f posicao(x * sizeTiled, y * sizeTiled);
+                    *yy = mult;
 
-                sf::Vector2f tamanho(sizeTiled*mult, sizeTiled);
+                    sf::Vector2f tamanho(sizeTiled * mult, sizeTiled);
 
-                if(tileId == num_entidade){
-                    return posicao;
+                    if (tileId == num_entidade)
+                    {
+                        return posicao;
+                    }
                 }
-                
-                
+                else
+                {
+                    ++(*indice);
+                }
             }
-            else{
-                (*indice)++;
-            }
+            cont++;
         }
-        return sf::Vector2f(-1, -1);
         
     }
 
+    
+
+
+    //std::cout << "Entidade não encontrada." << std::endl;
+    return sf::Vector2f(-1, -1);
 }

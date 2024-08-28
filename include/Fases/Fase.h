@@ -35,7 +35,7 @@ namespace Fases
             void executar();
             void gerenciarColisoes();
             void carregarMapa(std::string mapJson);
-            sf::Vector2f lerMapa(std::string caminho_mapa, int* x, int* y, int* indice, int num_entidade);
+            sf::Vector2f lerMapa(std::string caminho_mapa, int* x, int* y, int* indice, long int num_entidade);
             void percorrerMapa(); //função que vai ser chamada a cada criação
     };
 }

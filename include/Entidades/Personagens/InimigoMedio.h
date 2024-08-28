@@ -22,5 +22,6 @@ namespace Personagens
             const sf::RectangleShape getCorpo();
             void imprimir(Gerenciador::GerenciadorGrafico *gG);
             void colide(Entidade *outraEntidade, sf::Vector2f intersecao); 
+            void danificar(Personagens::Jogador* pontJogador);
     };
 }

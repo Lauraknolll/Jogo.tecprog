@@ -1,11 +1,10 @@
 #include "../../include/Fases/Fase.h"
 #define CAMINHO_MAPA "src/mapaJogo1.json"
 
-Fases::Fase::Fase() : Ente(), ListaJogadores(), ListaInimigos(), ListaObstaculos(), pGColisoes(nullptr)
+Fases::Fase::Fase() :
+    Ente(), ListaJogadores(), ListaInimigos(), ListaObstaculos(), pGColisoes(nullptr)
 {
-    ListaJogadores = new Lista::ListaEntidade();
-    ListaInimigos = new Lista::ListaEntidade();
-    ListaObstaculos = new Lista::ListaEntidade();
+    Lista_Entidades = new Lista::ListaEntidade();
     pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
 
     std::string caminho = CAMINHO_MAPA;
@@ -22,9 +21,10 @@ Fases::Fase::~Fase()
         delete pGColisoes;
         pGColisoes = nullptr;
     }
-    ListaJogadores->cleanList();
-    ListaInimigos->cleanList();
-    ListaObstaculos->cleanList();
+    ListaJogadores.clear();
+    ListaInimigos.clear();
+    ListaObstaculos.clear();
+    Lista_Entidades->cleanList();
 }
 
 void Fases::Fase::criarJogadores()
@@ -45,8 +45,8 @@ void Fases::Fase::criarJogadores()
     if ((jogador1 != nullptr) && (jogador2 != nullptr)) // mudar dps pra se for nulo ai msg de erro
     {
         pGEvento->setJogador(jogador1, jogador2);
-        ListaJogadores->addEntidade(static_cast<Entidades::Entidade *>(jogador1));
-        ListaJogadores->addEntidade(static_cast<Entidades::Entidade *>(jogador2));
+        ListaJogadores.push_back(static_cast<Entidades::Entidade *>(jogador1));
+        ListaJogadores.push_back(static_cast<Entidades::Entidade *>(jogador2));
     }
 }
 
@@ -58,7 +58,7 @@ void Fases::Fase::criarInimigosFaceis()
 
         if (ini1 != nullptr)
         {
-            ListaInimigos->addEntidade(static_cast<Entidades::Entidade *>(ini1));
+            ListaInimigos.push_back(static_cast<Entidades::Entidade *>(ini1));
         }
     }
 }
@@ -70,7 +70,7 @@ void Fases::Fase::criarInimigosMedios()
         Personagens::InimigoMedio *ini1 = new Personagens::InimigoMedio(300.0 + 100*i, 450.0);
         if (ini1 != NULL)
         {
-            ListaInimigos->addEntidade(static_cast<Entidades::Entidade *>(ini1));
+            ListaInimigos.push_back(static_cast<Entidades::Entidade *>(ini1));
             ini1->setJogador(jog1);
         }
     }
@@ -81,27 +81,24 @@ void Fases::Fase::criarPLataformas()
     Obstaculos::Plataforma *plataforma = new Obstaculos::Plataforma(100.0, 500.0, 1500.0, 25.0);
     if (plataforma != nullptr)
     {
-        ListaObstaculos->addEntidade(static_cast<Entidades::Entidade *>(plataforma));
+        ListaObstaculos.push_back(static_cast<Entidades::Entidade *>(plataforma));
     }
     Obstaculos::Plataforma *plataforma2 = new Obstaculos::Plataforma(500.0, 375.0, 500.0, 25.0);
     if (plataforma2 != nullptr)
     {
-        ListaObstaculos->addEntidade(static_cast<Entidades::Entidade *>(plataforma2));
+        ListaObstaculos.push_back(static_cast<Entidades::Entidade *>(plataforma2));
     }
 }
 
 void Fases::Fase::executar()
 {
     Gerenciador::GerenciadorGrafico *pontGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
-    ListaJogadores->percorrerLista();
-    ListaJogadores->desenharEntidades(pontGrafico);
-    ListaInimigos->percorrerLista();
-    ListaInimigos->desenharEntidades(pontGrafico);
-    ListaObstaculos->percorrerLista();
-    ListaObstaculos->desenharEntidades(pontGrafico);
+    Lista_Entidades->percorrerLista();
+    Lista_Entidades->desenharEntidades(pontGrafico);
+
 
     pGColisoes->colide();
-    if(ListaJogadores->getSize() > 1){
+    if(ListaJogadoresgetSize() > 1){
             pontGrafico->centralizarCamera(sf::Vector2f(((ListaJogadores->operator[](0)->getPosicao().x) + (ListaJogadores->operator[](1)->getPosicao().x))/2, 300.0));
 
     }else{

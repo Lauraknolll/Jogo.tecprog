@@ -26,3 +26,13 @@ unsigned int Obstaculos::Lava::tomarDano() const
 {
     return DANO_LAVA;
 }
+
+void Obstaculos::Lava::colide(Entidade *outraEntidade, sf::Vector2f intersecao)
+{
+
+}
+
+void Obstaculos::Lava::obstacular(Personagens::Jogador* ponJogador)
+{
+    
+}

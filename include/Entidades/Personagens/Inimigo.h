@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Personagem.h"
+#include "Jogador.h"
 
 #include <cmath>
 
@@ -17,5 +18,6 @@ namespace Personagens
             virtual int getNumVidas() = 0;
             virtual void imprimir(Gerenciador::GerenciadorGrafico *gG) = 0;
             virtual void colide(Entidade *outraEntidade, sf::Vector2f intersecao) = 0;
+            virtual void danificar(Personagens::Jogador* pontJogador) = 0;
     };
 }

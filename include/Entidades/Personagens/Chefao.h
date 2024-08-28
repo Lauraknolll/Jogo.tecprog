@@ -11,5 +11,7 @@ namespace Personagens
             ~Chefao();
             void executar();
             void imprimir(Gerenciador::GerenciadorGrafico* gG);
+            void colide();
+            void danificar();
     };
 }

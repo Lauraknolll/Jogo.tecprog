@@ -61,9 +61,14 @@ void Personagens::InimigoMedio::imprimir(Gerenciador::GerenciadorGrafico *gG)
 
 void Personagens::InimigoMedio::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
 {
-    if(outraEntidade->getID() == Entidades::ID::jogador)
+    danificar(static_cast<Personagens::Jogador*>(outraEntidade));
+}
+
+void Personagens::InimigoMedio::danificar(Personagens::Jogador* pontJogador)
+{
+    if(pontJogador->getID() == Entidades::ID::jogador)
     {
-        if((static_cast<Jogador*>(outraEntidade))->estaAtacando())
+        if(pontJogador->estaAtacando())
         {
             num_vidas--;
         }

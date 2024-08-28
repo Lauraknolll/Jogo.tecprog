@@ -10,5 +10,7 @@ namespace Fases
         public:
             Fase1();
             ~Fase1();
+            void criarInimigosFaceis();
+            void criarObstaculosFaceis();
     };
 }

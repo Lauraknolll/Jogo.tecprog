@@ -15,9 +15,10 @@ namespace Fases
     class Fase : public Ente
     {   
         protected:
-            Lista::ListaEntidade* ListaJogadores;
-            Lista::ListaEntidade* ListaInimigos;
-            Lista::ListaEntidade* ListaObstaculos;
+            list<Entidades::Entidade*> ListaJogadores;
+            list<Entidades::Entidade*> ListaObstaculos;
+            vector<Entidades::Entidade*> ListaInimigos;
+            Lista::ListaEntidade* Lista_Entidades;
             Gerenciador::GerenciadorColisoes* pGColisoes;
             Personagens::Jogador* jog1;
             Personagens::Jogador* jog2;

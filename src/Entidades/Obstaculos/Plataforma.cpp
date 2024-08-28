@@ -30,12 +30,11 @@ const int Obstaculos::Plataforma::getTipo() const
     return 0;
 }
 
-void Obstaculos::Plataforma::colide(Entidades::Entidade* outraEntidade, sf::Vector2f intersecao)
+void Obstaculos::Plataforma::colide(Entidade *outraEntidade, sf::Vector2f intersecao)
 {
 
 }
-
-void Obstaculos::Plataforma::obstacular(Personagens::Personagem* pP, int dir)
+void Obstaculos::Plataforma::obstacular(Personagens::Jogador* ponJogador)
 {
-
+    
 }

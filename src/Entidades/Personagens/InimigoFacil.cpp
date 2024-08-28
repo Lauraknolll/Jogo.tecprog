@@ -58,7 +58,12 @@ void Personagens::InimigoFacil::imprimir(Gerenciador::GerenciadorGrafico *gG)
 
 void Personagens::InimigoFacil::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
 {
-    if(outraEntidade->getID() == Entidades::ID::jogador)
+    danificar(static_cast<Jogador*>(outraEntidade));
+}
+
+void Personagens::InimigoFacil::danificar(Personagens::Jogador* pontJogador)
+{
+    if(pontJogador->getID() == Entidades::ID::jogador)
     {
         num_vidas--;
     }

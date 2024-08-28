@@ -53,7 +53,7 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresObstaculos()
             if (intersecao.x < 0.0f && intersecao.y < 0.0f)
             {
                 //printf("entrou");
-                static_cast<Personagens::Jogador*>(ent1)->colide(ent2, intersecao);
+                ent1->colide(ent2, intersecao);
             }
         }
     }
@@ -110,11 +110,8 @@ void Gerenciador::GerenciadorColisoes::colide()
 }
 
 // Function to deallocate entities after collision
-void Gerenciador::GerenciadorColisoes::clear()
+void Gerenciador::GerenciadorColisoes::clean()
 {
-    Jogadores.clear();
-    Inimigos.clear();
-    Obstaculos.clear();
     /*list<Entidades::Entidade *>::iterator it1;
     Personagens::Personagem* paux = nullptr;
     for(int i = 0; i < Inimigos.size(); i++)

@@ -34,13 +34,6 @@ void Fases::Fase::criarJogadores(sf::Vector2f posicao, sf::Vector2f tamanho)
     Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
 }
 
-void Fases::Fase::criarInimigosFaceis(sf::Vector2f posicao, sf::Vector2f tamanho)
-{
-    Personagens::InimigoFacil* ent = new Personagens::InimigoFacil(posicao.x, posicao.y, tamanho.x, tamanho.y);
-    ListaInimigos.push_back(static_cast<Entidades::Entidade*>(ent));
-    Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(ent));
-}
-
 void Fases::Fase::criarInimigosMedios(sf::Vector2f posicao, sf::Vector2f tamanho)
 {
     Personagens::InimigoMedio* ent = new Personagens::InimigoMedio(posicao.x, posicao.y, tamanho.x, tamanho.y);
@@ -63,19 +56,25 @@ void Fases::Fase::executar()
     Lista_Entidades->desenharEntidades(pontGrafico);
     list<Entidades::Entidade*>::iterator it;
     Entidades::Entidade* ent;
-    for( it = ListaJogadores.begin(); it != ListaJogadores.end(); it++){
+    /*for( it = ListaJogadores.begin(); it != ListaJogadores.end(); it++){
         if(static_cast<Personagens::Jogador*>(*it)){
             ent = *it;
-            pontGrafico->centralizarCamera(ent->getPosicao());
+            pontGrafico->centralizarCamera(sf::Vector2f(ent->getPosicao().x, 300));
         }
-    }
+    }*/
+    Entidades::Entidade* ent1;
+    Entidades::Entidade* ent2;
+    it = ListaJogadores.begin();
+    ent1 = *it;
+    it++;
+    ent2 = *it;
+    pontGrafico->centralizarCamera(sf::Vector2f((ent1->getPosicao().x + ent2->getPosicao().x)/2, 300));
     
     pGColisoes->colide();
 }
 
 void Fases::Fase::cria()
 {
-
     criarMapa(CAMINHO_MAPA);
     pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
 

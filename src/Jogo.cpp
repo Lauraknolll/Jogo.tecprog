@@ -6,7 +6,6 @@ Estados::Jogo::Jogo() :
     pontGEvento(Gerenciador::GerenciadorEvento::getGerenciadorEventos()),
     pontFaseProv(new Fases::Fase())
 {
-    //abrir_mapa = new Tilemap(CAMINHO_MAPA);
     pontGEvento->setGerenciadosGrafico(pontGGrafico);
 }
 
@@ -38,7 +37,6 @@ void Estados::Jogo::executar()
         sf::Event evento;
 
         pontGEvento->executar(evento); 
-        //faz a verificação dos eventos
         //printf("Funciona depois daqui");
         pontGGrafico->limpaJanela();
         //printf("Funciona depois daqui");

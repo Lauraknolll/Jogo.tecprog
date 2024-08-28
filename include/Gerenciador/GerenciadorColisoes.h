@@ -33,6 +33,6 @@ namespace Gerenciador
 
         void colide();
 
-        void clear();
+        void clean();
     };
 }

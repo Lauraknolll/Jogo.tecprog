@@ -27,18 +27,17 @@ namespace Fases
             Personagens::Jogador* jog1;
             Personagens::Jogador* jog2;
             nlohmann::json mapa; 
-            //a fins de que o inimigo precisa conhecer o jogador, mas tem que pensar num jeito melhor
            
         public:
             Fase();
             ~Fase();
             void criarJogadores(sf::Vector2f posicao, sf::Vector2f tamanho);
-            void criarInimigosFaceis(sf::Vector2f posicao, sf::Vector2f tamanho);
-            void criarInimigosMedios(sf::Vector2f posicao, sf::Vector2f tamanho);
-            void criarPLataformas(sf::Vector2f posicao, sf::Vector2f tamanho);
+            void criarInimigosMedios(sf::Vector2f posicao, sf::Vector2f tamanho); //vai ficar
+            void criarPLataformas(sf::Vector2f posicao, sf::Vector2f tamanho); //vai ficar
             void cria();
             void executar();
             void carregarMapa(std::string mapJson);
             void criarMapa(std::string caminho_mapa);
+            void percorrerMapa(); //função que vai ser chamada a cada criação
     };
 }

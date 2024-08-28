@@ -1,6 +1,3 @@
-#ifndef MENU_H
-#define MENU_H
-
 #pragma once
 
 #include "Estados.h"
@@ -47,5 +44,3 @@ namespace Menus {
     };
 
 } // namespace Menus
-
-#endif

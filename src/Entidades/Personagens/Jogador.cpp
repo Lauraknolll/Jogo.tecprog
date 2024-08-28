@@ -22,7 +22,7 @@ Personagens::Jogador::~Jogador()
 
 void Personagens::Jogador::executar()
 {
-    corpo.setFillColor(sf::Color::Magenta);
+    corpo.setFillColor(sf::Color::White);
     atualizar();
 }
 
@@ -94,6 +94,7 @@ void Personagens::Jogador::tratarEventoSoltar(const sf::Event &e){
 void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
     gG->desenhaEntidade(corpo);
+    corpo.setTexture(gG->carregaTextura("src/teste.png"));
 }
 
 void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)

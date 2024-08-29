@@ -94,7 +94,7 @@ void Personagens::Jogador::tratarEventoSoltar(const sf::Event &e){
 void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
     gG->desenhaEntidade(corpo);
-    corpo.setTexture(gG->carregaTextura("src/teste.png"));
+    corpo.setTexture(gG->carregaTextura("src/jogador.png"));
 }
 
 void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)

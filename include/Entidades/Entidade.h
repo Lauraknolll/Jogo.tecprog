@@ -12,9 +12,10 @@ namespace Entidades
         jogador,
         plataforma,
         lava,
-        inimigoFacil,
-        inimigoMedio, 
-        chefao
+        espinho,
+        fantasma,
+        galinha, 
+        rino
     };
 
     class Entidade : public Ente

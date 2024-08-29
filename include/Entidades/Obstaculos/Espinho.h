@@ -4,17 +4,18 @@
 
 namespace Obstaculos
 {
-    class Lava : public Obstaculo
+    class Espinho : public Obstaculo
     {
     private:
-        int danosidade;
+        int nivelEspinhosidade;
+
     public:
-        Lava(float x = 0.f, float y = 0.f, float ww = 100.f, float hh = 100.f);
-        ~Lava();
+        Espinho(float x = 0.f, float y = 0.f, float ww = 50.f, float hh = 50.f);
+        ~Espinho();
         void executar();
         void imprimir(Gerenciador::GerenciadorGrafico *gG);
         void colide(Entidade *outraEntidade, sf::Vector2f intersecao);
-        void obstacular(Personagens::Jogador* pontJogador);
+        void obstacular(Personagens::Jogador *pontJogador);
         unsigned int tomarDano() const;
     };
 }

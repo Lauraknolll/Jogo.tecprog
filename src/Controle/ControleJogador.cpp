@@ -11,7 +11,7 @@ namespace Controle {
     pul("W"),
     esq("A"),
     dir("D"),
-    ata("Space") {
+    ata("S") {
         teclasPrecionadas.insert(std::pair<std::string, bool>(pul, false));
         teclasPrecionadas.insert(std::pair<std::string, bool>(ata, false));
         teclasPrecionadas.insert(std::pair<std::string, bool>(dir, false));
@@ -30,7 +30,7 @@ namespace Controle {
 
         if (key == ata) {
             teclasPrecionadas[ata] = true;
-            //pJogador->ata();
+            pJogador->atacar();
         }
 
         else if (key == pul) {
@@ -57,6 +57,7 @@ namespace Controle {
 
         if(key == ata) {
             teclasPrecionadas[ata] = false;
+            pJogador->paraAtacar();
         }
 
         else if (key == pul) {

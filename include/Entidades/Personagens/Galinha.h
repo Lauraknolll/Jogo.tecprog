@@ -7,13 +7,13 @@
 
 namespace Personagens
 {
-    class InimigoMedio : public Inimigo
+    class Galinha : public Inimigo
     {
         private:
             Jogador* jogador;
         public:
-            InimigoMedio(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
-            ~InimigoMedio();
+            Galinha(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
+            ~Galinha();
             void setJogador(Jogador* pJ);
             void executar();
             void atualizarPosicao();

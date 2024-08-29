@@ -92,12 +92,13 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresInimigos()
             /*  Condição pra colisão*/
             if (intersecao.x < 0.0f && intersecao.y < 0.0f)
             {
-
-                ent2->colide(ent1, intersecao);
                 ent1->colide(ent2, intersecao);
+                ent2->colide(ent1, intersecao);
             }
         }
     }
+
+    //clean(); problemas com isso
 }
 
 void Gerenciador::GerenciadorColisoes::colide()
@@ -106,28 +107,28 @@ void Gerenciador::GerenciadorColisoes::colide()
     tratarColisoesJogadoresObstaculos();
     tratarColisoesJogadoresInimigos();
 
-    
 }
 
 // Function to deallocate entities after collision
 void Gerenciador::GerenciadorColisoes::clean()
 {
-    /*list<Entidades::Entidade *>::iterator it1;
+    vector<Entidades::Entidade *>::iterator it1;
     Personagens::Personagem* paux = nullptr;
     for(int i = 0; i < Inimigos.size(); i++)
     {
         paux = static_cast<Personagens::Personagem*>(Inimigos[i]);
+        *it1 = Inimigos[i];
         if(paux != nullptr)
         {
             if(paux->getNumVidas() <= 0)
             {
-                Inimigos.erase();
-                i--;
+                Inimigos.erase(it1);
+                //i--;
                 if(i < 0)
                     i = -1;
             }
         }
-    }*/
+    }
 //Entities::MovingEntity* pAux = nullptr;
     /*for (int i = 0; i < Jogador->getSize(); i++) {
         pAux = static_cast<Entities::MovingEntity*>((*Jogador)[i]);

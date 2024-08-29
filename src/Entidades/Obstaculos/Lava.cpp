@@ -1,6 +1,5 @@
 #include "../../../include/Entidades/Obstaculos/Lava.h"
 
-#define DANO_LAVA 10
 
 Obstaculos::Lava::Lava(float x, float y, float ww, float hh):
 Obstaculo(x, y, ww, hh, Entidades::lava)
@@ -24,7 +23,7 @@ void Obstaculos::Lava::imprimir(Gerenciador::GerenciadorGrafico* gG){
 
 unsigned int Obstaculos::Lava::tomarDano() const
 {
-    return DANO_LAVA;
+    return danosidade;
 }
 
 void Obstaculos::Lava::colide(Entidade *outraEntidade, sf::Vector2f intersecao)

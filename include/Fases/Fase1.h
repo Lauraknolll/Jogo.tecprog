@@ -25,9 +25,9 @@ namespace Fases
 
             void criarJogadores();
 
-            void criarInimigosFaceis();
+            void criarFantasmas(); //Inimigo fácil
             void criarPlataformas(); //Obstáculo Fácil
-            void criarInimigosMedios();
+            void criarGalinhas(); // Inimigo médio
             void criarLava(); //Obstáculo médio
     };
 }

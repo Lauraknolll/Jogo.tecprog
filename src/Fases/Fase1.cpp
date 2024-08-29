@@ -68,9 +68,9 @@ void Fases::Fase1::criarPlataformas()
 }
 //
 
-void Fases::Fase1::criarInimigosFaceis()
+void Fases::Fase1::criarFantasmas()
 {
-    Personagens::InimigoFacil* ini;
+    Personagens::Fantasma* ini;
     sf::Vector2f posi(0,0);
     int x = 0, y = 0, indice = 0;
 
@@ -81,7 +81,7 @@ void Fases::Fase1::criarInimigosFaceis()
         if (posi != sf::Vector2f(-1, -1))
         {
             //std::cout << "Criando plataforma em: (" << posi.x << ", " << posi.y << ")" << std::endl;
-            ini = new Personagens::InimigoFacil(posi.x, posi.y, 64.0, 64.0);
+            ini = new Personagens::Fantasma(posi.x, posi.y, 64.0, 64.0);
             ListaObstaculos.push_back(static_cast<Entidades::Entidade*>(ini));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(ini));
         }
@@ -89,9 +89,9 @@ void Fases::Fase1::criarInimigosFaceis()
 }
 
 
-void Fases::Fase1::criarInimigosMedios()
+void Fases::Fase1::criarGalinhas()
 {
-    Personagens::InimigoMedio* ini;
+    Personagens::Galinha* ini;
     sf::Vector2f posi(0,0);
     int x = 0, y = 0, indice = 0;
 
@@ -102,7 +102,7 @@ void Fases::Fase1::criarInimigosMedios()
         if (posi != sf::Vector2f(-1, -1))
         {
             //std::cout << "Criando plataforma em: (" << posi.x << ", " << posi.y << ")" << std::endl;
-            ini = new Personagens::InimigoMedio(posi.x, posi.y, 64.0, 64.0);
+            ini = new Personagens::Galinha(posi.x, posi.y, 64.0, 64.0);
             list<Entidades::Entidade*>::iterator it;
             it = ListaJogadores.begin();
             ini->setJogador(static_cast<Personagens::Jogador*>(*it));
@@ -163,9 +163,9 @@ void Fases::Fase1::criar()
 {
     criarJogadores();
     criarPlataformas();
-    criarInimigosFaceis();
+    criarFantasmas();
     criarLava();
-    criarInimigosMedios();
+    criarGalinhas();
     pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
 }
 void Fases::Fase1::resetEstado()

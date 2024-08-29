@@ -5,13 +5,13 @@
 
 namespace Personagens
 {
-    class InimigoFacil : public Inimigo
+    class Fantasma : public Inimigo
     {
         private:
             short movimentoale;
         public:
-            InimigoFacil(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
-            ~InimigoFacil();
+            Fantasma(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
+            ~Fantasma();
             void executar();
             void moveAleatorio();
             void atualizarPosicao();

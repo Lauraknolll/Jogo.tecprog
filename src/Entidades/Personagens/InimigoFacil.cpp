@@ -9,7 +9,7 @@ Personagens::InimigoFacil::InimigoFacil(float xx, float yy, float ww, float hh) 
     Inimigo(xx, yy, ww, hh, Entidades::inimigoFacil)
 {
     num_vidas = VIDAS_INIMF;
-    corpo.setFillColor(sf::Color::Red);
+    corpo.setFillColor(sf::Color::White);
     velocidade.x = VELOCIDADE_INIMF;
     velocidade.y = 0.0f;
     movimentoale = rand()%1;
@@ -54,6 +54,7 @@ const sf::RectangleShape Personagens::InimigoFacil::getCorpo()
 void Personagens::InimigoFacil::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
     gG->desenhaEntidade(corpo);
+    corpo.setTexture(gG->carregaTextura("src/testeini.png"));
 }
 
 void Personagens::InimigoFacil::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)

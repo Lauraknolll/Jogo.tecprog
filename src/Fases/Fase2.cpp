@@ -2,14 +2,18 @@
 
 #define CAMINHO_MAPA_FASE2 "src/mapaJogo2.json"//caminho para o mapa da fase 2
 
-Fases::Fase2::Fase2() :
-    Fase()
+Fases::Fase2::Fase2(Estados::GerenciadorEstado* gE, Controle::ControleJogador* cont) :
+    Fase(), Estados::Estado(gE, Estados::EstadoID::fase2)
 {
+    pInput = Gerenciador::GerenciadorInput::getInstance();
+    controle = cont;
+    pInput->Attach(static_cast<Controle::Observador*>(controle));
+    setGerenciadorEstados(gE);
     Lista_Entidades = new Lista::ListaEntidade();
     pEventos = Gerenciador::GerenciadorEvento::getGerenciadorEventos();
     mapa = CAMINHO_MAPA_FASE2;
-
     carregarMapa(mapa);
+    criar();
 }
 
 Fases::Fase2::~Fase2()
@@ -30,9 +34,9 @@ void Fases::Fase2::criarJogadores()
         
         if (posi != sf::Vector2f(-1, -1))
         {
-            //std::cout << "Criando jogador em: (" << posi.x << ", " << posi.y << ")" << std::endl;
             jog = new Personagens::Jogador(posi.x, posi.y, 64.0, 64.0);
-            pEventos->setJogador(jog);
+            controle->setJogador(jog);
+            //pEventos->setJogador(jog);
             ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
         }
@@ -124,12 +128,21 @@ void Fases::Fase2::executar()
     ent1 = *it;
     it++;
     ent2 = *it;
-    pontGrafico->centralizarCamera(sf::Vector2f((ent1->getPosicao().x + ent2->getPosicao().x)/2, 400));
+    pontGrafico->centralizarCamera(sf::Vector2f((ent1->getPosicao().x/* + ent2->getPosicao().x*/), 400));
     
     gerenciarColisoes();
 }
+void Fases::Fase2::atualizar()
+{
+    executar();
+}
 
-void Fases::Fase2::cria()
+void Fases::Fase2::render()
+{
+    
+}
+
+void Fases::Fase2::criar()
 {
     criarJogadores();
     criarPlataformas();
@@ -137,4 +150,9 @@ void Fases::Fase2::cria()
     criarChefao();
     
     pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
+}
+
+void Fases::Fase2::resetEstado()
+{
+
 }

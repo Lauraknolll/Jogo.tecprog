@@ -1,4 +1,5 @@
 #include "../../include/RecursosGraficos/Botao.h"
+#include <SFML/Graphics.hpp>
 
 #define LARGURA_BOTAO 200.0f
 #define ALTURA_BOTAO 40.0f
@@ -38,9 +39,9 @@ Botao::~Botao()
 void Botao::selecionar(bool selecionado)
 {
     if (selecionado)
-        texto.setCorTexto(255,255,255);
+        this->corpo.setFillColor(sf::Color::Blue);
     else
-        texto.setCorTexto(255,255,255);
+        this->corpo.setFillColor(sf::Color::Yellow);
 }
 
 void Botao::render()

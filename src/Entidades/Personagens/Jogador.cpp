@@ -17,7 +17,7 @@ Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
 
 Personagens::Jogador::~Jogador()
 {
-
+    
 }
 
 void Personagens::Jogador::executar()

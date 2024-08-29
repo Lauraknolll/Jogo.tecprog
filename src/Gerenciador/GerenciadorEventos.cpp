@@ -45,7 +45,7 @@ void Gerenciador::GerenciadorEvento::setJogador(Personagens::Jogador *jogador1, 
 
 void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
 {
-    /*while (pGGrafico->getJanela()->pollEvent(evento))
+    while (pGGrafico->getJanela()->pollEvent(evento))
     {
         if (evento.type == sf::Event::Closed)
         {
@@ -59,9 +59,9 @@ void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
         {
             pInputM->lidarTeclaSolta(evento.key.code);
         }
-    }*/
+    }
 
-    while (pGGrafico->getJanela()->pollEvent(evento))
+    /*while (pGGrafico->getJanela()->pollEvent(evento))
     {
         if (evento.type == sf::Event::Closed)
         {
@@ -141,5 +141,5 @@ void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
                 break;
             }
         }
-    }
+    }*/
 }

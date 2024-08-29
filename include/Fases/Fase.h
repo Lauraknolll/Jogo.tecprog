@@ -13,6 +13,7 @@
 #include "../Entidades/Obstaculos/Lava.h"
 #include "../Gerenciador/GerenciadorEventos.h"
 #include "../json.hpp"
+#include "../Gerenciador/GerenciadorInput.h"
 
 namespace Fases
 {
@@ -25,6 +26,7 @@ namespace Fases
             Lista::ListaEntidade* Lista_Entidades;
             Gerenciador::GerenciadorColisoes* pGColisoes;
             Gerenciador::GerenciadorEvento* pEventos;
+            Gerenciador::GerenciadorInput* pInput;
             Personagens::Jogador* jog1;
             Personagens::Jogador* jog2;
             nlohmann::json mapa; 

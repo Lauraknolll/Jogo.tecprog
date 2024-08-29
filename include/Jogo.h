@@ -24,6 +24,7 @@ namespace Estados
         Gerenciador::GerenciadorColisoes *pColisao;
         Gerenciador::GerenciadorInput *pInput;
         Controle::MenuControle *control_menu;
+        Controle::ControleJogador *control_jogador;
         Fases::Fase2 *pontFaseProv;
         Estados::Estado *estado;
 

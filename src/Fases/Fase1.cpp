@@ -1,21 +1,28 @@
 #include "../../include/Fases/Fase1.h"
 
+
 #define CAMINHO_MAPA_FASE1 "src/mapaJogo1.json" // camonho para o mapa da fase 1
 
-Fases::Fase1::Fase1() :
-    Fase()
+Fases::Fase1::Fase1(Estados::GerenciadorEstado* gE, Controle::ControleJogador* cont) :
+    Fase(), Estados::Estado(gE, Estados::EstadoID::fase1)
 {
+    pInput = Gerenciador::GerenciadorInput::getInstance();
+    controle = cont;
+    pInput->Attach(static_cast<Controle::Observador*>(controle));
+    setGerenciadorEstados(gE);
     Lista_Entidades = new Lista::ListaEntidade();
     pEventos = Gerenciador::GerenciadorEvento::getGerenciadorEventos();
     mapa = CAMINHO_MAPA_FASE1;
-
+    
     carregarMapa(mapa);
+    criar();
 }
 
 Fases::Fase1::~Fase1()
 {
     ListaObstaculos.clear();
     ListaInimigos.clear();
+    delete controle;
 }
 
 // apenas para fins de testes
@@ -31,9 +38,9 @@ void Fases::Fase1::criarJogadores()
         
         if (posi != sf::Vector2f(-1, -1))
         {
-            //std::cout << "Criando jogador em: (" << posi.x << ", " << posi.y << ")" << std::endl;
             jog = new Personagens::Jogador(posi.x, posi.y, 64.0, 64.0);
-            pEventos->setJogador(jog);
+            controle->setJogador(jog);
+            //pEventos->setJogador(jog);
             ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
         }
@@ -135,20 +142,33 @@ void Fases::Fase1::executar()
     Entidades::Entidade* ent2;
     it = ListaJogadores.begin();
     ent1 = *it;
-    it++;
-    ent2 = *it;
-    pontGrafico->centralizarCamera(sf::Vector2f((ent1->getPosicao().x + ent2->getPosicao().x)/2, 400));
+    /*it++;
+    ent2 = *it;*/
+    pontGrafico->centralizarCamera(sf::Vector2f((ent1->getPosicao().x/* + ent2->getPosicao().x*/), 400));
     
     gerenciarColisoes();
 }
+void Fases::Fase1::atualizar()
+{
+    executar();
+}
 
-void Fases::Fase1::cria()
+void Fases::Fase1::render()
+{
+    
+    
+}
+
+void Fases::Fase1::criar()
 {
     criarJogadores();
     criarPlataformas();
     criarInimigosFaceis();
     criarLava();
     criarInimigosMedios();
-    
     pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
+}
+void Fases::Fase1::resetEstado()
+{
+
 }

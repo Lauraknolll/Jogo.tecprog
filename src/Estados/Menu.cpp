@@ -4,18 +4,19 @@
 
 namespace Menus {
 
-    Menu::Menu(Estados::Jogo* jog) :
+    Menu::Menu(Estados::Jogo* jog, Controle::MenuControle* cont) :
     Estado(static_cast<Estados::GerenciadorEstado*>(jog), Estados::EstadoID::mainMenu),
     pJogo(jog),
     selected(0),
     min(0),
     max(2),
-    controle(this),
+    controle(cont),
     ativo(false)
     {
         // Armazene o GerenciadorGrafico em uma variável local
         auto* GM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
         float w, h;
+        controle->setMenu(this);
 
         // Obtenha o tamanho da janela
         w = GM->getJanela()->getSize().x;
@@ -93,30 +94,32 @@ namespace Menus {
     }
 
     void Menu::resetEstado() {
+        /*std::cout<<"puto";
         if (!vectorOfBotaos.empty()) {
+            std::cout<<"puto40";
             vectorOfBotaos[selected]->selecionar(false);
-            selected = 0;
+            selected = 2;
             vectorOfBotaos[selected]->selecionar(true);
             titulo.setPosicao(sf::Vector2f(titulo.getPosicao().x, 0.0f - titulo.getTamanho().y / 2));
+        }*/
+    }
+
+    void Menu::selecionarCima() {
+        if (ativo) {
+            vectorOfBotaos[selected]->selecionar(false);
+            selected++;
+            if (selected > max){
+                selected = min;}
+            vectorOfBotaos[selected]->selecionar(true);
         }
     }
 
     void Menu::selecionarBaixo() {
         if (ativo) {
             vectorOfBotaos[selected]->selecionar(false);
-            selected++;
-            if (selected > max)
-                selected = min;
-            vectorOfBotaos[selected]->selecionar(true);
-        }
-    }
-
-    void Menu::selecionarCima() {
-        if (ativo) {
-            vectorOfBotaos[selected]->selecionar(false);
             selected--;
-            if (selected < min)
-                selected = max;
+            if (selected < min){
+                selected = max;}
             vectorOfBotaos[selected]->selecionar(true);
         }
     }

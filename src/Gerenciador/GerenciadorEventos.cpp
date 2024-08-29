@@ -3,7 +3,7 @@
 Gerenciador::GerenciadorEvento *Gerenciador::GerenciadorEvento::pInstanciaGE = nullptr;
 
 Gerenciador::GerenciadorEvento::GerenciadorEvento() :
-    tem_jogador(false), pontJogador1(nullptr), pontJogador2(nullptr), pInputM(Gerenciador::GerenciadorInput::getInstance())
+    tem_jogador(false), pontJogador1(nullptr), pontJogador2(nullptr), pInputM(Gerenciador::GerenciadorInput::getGerenciadorInput())
 {
 }
 
@@ -53,7 +53,7 @@ void Gerenciador::GerenciadorEvento::executar(sf::Event evento)
         }
         if (evento.type == sf::Event::KeyPressed)
         {
-            pInputM->lidarTeclaPrecionada(evento.key.code);
+            pInputM->lidarTeclaPressionada(evento.key.code);
         }
         if (evento.type == sf::Event::KeyReleased)
         {

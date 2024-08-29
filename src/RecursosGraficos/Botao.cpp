@@ -21,8 +21,8 @@ Botao::Botao(sf::Vector2f posicao, std::string info) :
     // Corpo pode ter textura definida aqui, se necessário
     // corpo.setTexture(textura);
 
-    texto.setTamanhoFont(TAMANHO_FONTE);
-    texto.setAlinhamentoTexto(TextoAlignment::centro);
+    texto.setTamanhoFonte(TAMANHO_FONTE);
+    texto.setAlinhamentoTexto(AlinhamentoTexto::centro);
     texto.setCorTexto(255,255,0);
 
     // Definição da posição do texto (se necessário, baseada na posição do botão)

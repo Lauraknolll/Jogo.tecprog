@@ -25,9 +25,9 @@ namespace Menus
 
         // Configuração do título
         titulo.setTextoInfo("JOGO");
-        titulo.setTamanhoFont(140);
+        titulo.setTamanhoFonte(140);
         titulo.setCorTexto(77.6f, 68.2f, 44.3f); 
-        titulo.setAlinhamentoTexto(TextoAlignment::centro);
+        titulo.setAlinhamentoTexto(AlinhamentoTexto::centro);
         titulo.setPosicao(sf::Vector2f(w / 2.0f, h / 2.0f));
 
         // Adicione botões

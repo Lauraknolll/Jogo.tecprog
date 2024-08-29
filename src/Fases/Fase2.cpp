@@ -5,7 +5,7 @@
 Fases::Fase2::Fase2(Estados::GerenciadorEstado* gE, Controle::ControleJogador* cont) :
     Fase(), Estados::Estado(gE, Estados::EstadoID::fase2), maxInimigos(7), maxObstaculos(10)
 {
-    pInput = Gerenciador::GerenciadorInput::getInstance();
+    pInput = Gerenciador::GerenciadorInput::getGerenciadorInput();
     controle = cont;
     pInput->Attach(static_cast<Controle::Observador*>(controle));
     setGerenciadorEstados(gE);

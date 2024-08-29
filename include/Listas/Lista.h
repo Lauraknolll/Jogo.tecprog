@@ -34,7 +34,7 @@ namespace Lista
                 this->pProximo = pProximo; 
             }
 
-            Elemento<TE>* geProximo() 
+            Elemento<TE>* getProximo() 
             { 
                 return pProximo; 
             }
@@ -90,9 +90,10 @@ namespace Lista
         paux2 = paux1;
         int i = 0;
 
-        while (paux1 != nullptr && i < tam) {
+        while (paux1 != nullptr && i < tam) 
+        {
             delete (paux1->getInfo());
-            paux2 = paux1->getProx();
+            paux2 = paux1->getProximo();
             delete (paux1);
             paux1 = paux2;
             i++;
@@ -115,7 +116,7 @@ namespace Lista
             } 
             else 
             {
-                pUltimo->setProx(pElemento);
+                pUltimo->setProximo(pElemento);
                 pUltimo = pElemento;
             }
             tam++;
@@ -139,7 +140,7 @@ namespace Lista
         Elemento<TL>* pAux = pPrimeiro;
         for (int i = 0; i < index; i++) 
         {
-            pAux = pAux->getProx();
+            pAux = pAux->getProximo();
         }
 
         if (pAux == nullptr) 
@@ -178,16 +179,16 @@ namespace Lista
             {
                 if (pAux == pPrimeiro) 
                 {
-                    pPrimeiro = pAux->getProx();
+                    pPrimeiro = pAux->getProximo();
                 } //
                 else if (pAux == pUltimo) 
                 {
                     pUltimo = pAnte;
-                    pAnte->setProx(nullptr);
+                    pAnte->setProximo(nullptr);
                 } //
                 else 
                 {
-                    pAnte->setProx(pAux->getProx());
+                    pAnte->setProximo(pAux->getProximo());
                 }
 
                 delete (pAux);
@@ -196,7 +197,7 @@ namespace Lista
             }
 
             pAnte = pAux;
-            pAux = pAux->getProx();
+            pAux = pAux->getProximo();
         }
         return nullptr;
     }
@@ -216,21 +217,21 @@ namespace Lista
         for (int i = 0; i < index; i++) 
         {
             pAnte = pAux;
-            pAux = pAux->getProx();
+            pAux = pAux->getProximo();
         }
 
         if (pAux == pPrimeiro) 
         {
-            pPrimeiro = pAux->getProx();
+            pPrimeiro = pAux->getProximo();
         } //
         else if (pAux == pUltimo) 
         {
             pUltimo = pAnte;
-            pAnte->setProx(nullptr);
+            pAnte->setProximo(nullptr);
         } //
         else 
         {
-            pAnte->setProx(pAux->getProx());
+            pAnte->setProximo(pAux->getProximo());
         }
 
         TL* pInfo = pAux->getInfo();

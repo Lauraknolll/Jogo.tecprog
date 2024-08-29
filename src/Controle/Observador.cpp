@@ -3,7 +3,7 @@
 namespace Controle {
 
     Observador::Observador() {
-        this->pIM = Gerenciador::GerenciadorInput::getInstance();
+        this->pIM = Gerenciador::GerenciadorInput::getGerenciadorInput();
         pIM->Attach(this);
     }
 

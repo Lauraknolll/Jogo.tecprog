@@ -6,7 +6,7 @@ Estados::Jogo::Jogo() :
     pontGGrafico(Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()),
     pontGEvento(Gerenciador::GerenciadorEvento::getGerenciadorEventos())
 {
-    pInput = Gerenciador::GerenciadorInput::getInstance();
+    pInput = Gerenciador::GerenciadorInput::getGerenciadorInput();
     pontGEvento->setGerenciadosGrafico(pontGGrafico);
 
     control_menu = new Controle::MenuControle();
@@ -21,7 +21,7 @@ Estados::Jogo::Jogo() :
     inserirEstado(estado);
     control_menu->setMenu(static_cast<Menus::Menu*>(estado));
     
-    changeAtualEstado(Estados::EstadoID::mainMenu);
+    mudarEstadoAtual(Estados::EstadoID::mainMenu);
     pInput->Attach(control_menu);
 
 }
@@ -56,8 +56,8 @@ void Estados::Jogo::executar()
         
         pontGEvento->executar(evento); 
         pontGGrafico->limpaJanela();
-        renderAtualEstado();
-        updateAtualEstado();
+        renderEstadoAtual();
+        atualizarEstadoAtual();
         
        //fase->atualizar();
         pontGGrafico->monstraEntidade();

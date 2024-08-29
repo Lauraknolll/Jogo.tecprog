@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-#define CAMINHO_FONTE "./assets/Fonts/MainFont.ttf"
+#define CAMINHOFONTE "./assets/Fonts/MainFont.ttf"
 
 
 
@@ -26,7 +26,7 @@ private:
     static Gerenciador::GerenciadorGrafico* pGGrafico;
 
 public:
-    Texto(sf::Vector2f position = sf::Vector2f(0, 0), std::string info = "", const char* path = CAMINHO_FONTE);
+    Texto(sf::Vector2f position = sf::Vector2f(0, 0), std::string info = "", const char* path = CAMINHOFONTE);
 
     ~Texto();
 

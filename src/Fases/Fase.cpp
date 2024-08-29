@@ -41,9 +41,9 @@ sf::Vector2f Fases::Fase::lerMapa(std::string caminho_mapa, int* xx, int* yy, in
     int cont = 0;
     
     Entidades::Entidade* ent;
-
+    //std::cout << width << std::endl;
     // Loop de entidades com tamanho variável em X
-    for (int y = 0; y < height - 3; ++y)
+    for (int y = 0; y < height; ++y)
     {
         for (int x = 0; x < width; ++x)
         {
@@ -51,7 +51,7 @@ sf::Vector2f Fases::Fase::lerMapa(std::string caminho_mapa, int* xx, int* yy, in
             
             
             long int tileId = mapa["layers"][0]["data"][*indice];
-            
+            //std::cout << tileId;
             if(cont == *indice){
                  if (tileId != 0)
                 {
@@ -82,8 +82,10 @@ sf::Vector2f Fases::Fase::lerMapa(std::string caminho_mapa, int* xx, int* yy, in
                     ++(*indice);
                 }
             }
+            
             cont++;
         }
+        //std::cout << std::endl;
         
     }
 

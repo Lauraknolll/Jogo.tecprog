@@ -5,39 +5,42 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-namespace Controle {
+namespace Controle
+{
     class Observador;
-} // namespace Controle
+}
 
-namespace Gerenciador {
+namespace Gerenciador
+{
 
-    class GerenciadorInput {
+    class GerenciadorInput
+    {
     private:
-        std::list<Controle::Observador*> objObserving;
-        
-        std::list<Controle::Observador*>::iterator it;
+        std::list<Controle::Observador *> objObservador;
+
+        std::list<Controle::Observador *>::iterator it;
 
         std::map<sf::Keyboard::Key, std::string> keyMap;
 
-        /* Singleton design pattern */
-        static GerenciadorInput* instance;
+        /* padrão Singleton */
+        static GerenciadorInput *pInstanciaGI;
 
         GerenciadorInput();
 
     public:
         ~GerenciadorInput();
 
-        static GerenciadorInput* getInstance();
+        static GerenciadorInput *getGerenciadorInput();
 
-        void Attach(Controle::Observador* pObserver);
+        void Attach(Controle::Observador *pObservador);
 
-        void Detach(Controle::Observador* pObserver);
+        void Detach(Controle::Observador *pObservador);
 
-        void lidarTeclaPrecionada(sf::Keyboard::Key key);
+        void lidarTeclaPressionada(sf::Keyboard::Key key);
 
         void lidarTeclaSolta(sf::Keyboard::Key key);
 
         std::string getNomeTecla(sf::Keyboard::Key key);
     };
 
-} // namespace Gerenciadores
+}

@@ -1,28 +1,31 @@
 #pragma once
 
-namespace Estados {
+namespace Estados 
+{
 
     class GerenciadorEstado;
 
-    enum EstadoID {
-        unknown = -1,
+    enum EstadoID 
+    {
+        desconhecido = -1,
         mainMenu = 0,
         fase1,
         fase2
     };
 
-    class Estado {
+    class Estado 
+    {
 
     protected:
-        GerenciadorEstado* pSM;
+        GerenciadorEstado* pGEstado;
         EstadoID id;
 
     public:
-        Estado(GerenciadorEstado* pSM = nullptr, EstadoID id = unknown);
+        Estado(GerenciadorEstado* pGEstado = nullptr, EstadoID id = desconhecido);
 
         virtual ~Estado();
 
-        void setGerenciadorEstados(GerenciadorEstado* pSM);
+        void setGerenciadorEstados(GerenciadorEstado* pGEstado1);
 
         void changeEstado(EstadoID id);
 

@@ -18,19 +18,29 @@ namespace Fases
             const int maxObstaculos;
         public:
             Fase1(Estados::GerenciadorEstado* gE, Controle::ControleJogador* cont);
+
             ~Fase1();
+
             void executar();
+
             virtual void atualizar();
+
             void render();
+
             void criar();
+
             virtual void resetEstado();
 
             void criarJogadores();
 
             void criarFantasmas(); //Inimigo fácil
+
             void criarPlataformas(); 
+
             void criarGalinhas(); // Inimigo médio
+
             void criarPedras(); //Obstáculo fácil
+            
             void criarLava(); //Obstáculo médio
     };
 }

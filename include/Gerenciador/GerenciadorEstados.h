@@ -3,11 +3,13 @@
 #include "../Estados/Estados.h"
 #include <map>
 
-namespace Estados {
+namespace Estados 
+{
 
-    class GerenciadorEstado {
+    class GerenciadorEstado 
+    {
     protected:
-        EstadoID atualEstadoID;
+        EstadoID estadoAtualID;
         EstadoID ultEstadoID;
 
         std::map<EstadoID, Estado*> mapaEstado;
@@ -17,13 +19,13 @@ namespace Estados {
 
         virtual ~GerenciadorEstado();
 
-        void changeAtualEstado(EstadoID id);
+        void mudarEstadoAtual(EstadoID id);
 
-        void updateAtualEstado();
+        void atualizarEstadoAtual();
 
-        void renderAtualEstado();
+        void renderEstadoAtual();
 
-        EstadoID getAtualEstadoID() const;
+        EstadoID getEstadoAtualID() const;
 
         void inserirEstado(Estado* pestado);
 

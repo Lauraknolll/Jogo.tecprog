@@ -5,26 +5,28 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-#define FONT_PATH "./assets/Fonts/MainFont.ttf"
+#define CAMINHO_FONTE "./assets/Fonts/MainFont.ttf"
 
 
 
-enum TextoAlignment {
+enum AlinhamentoTexto
+{
     esquerda,
     centro,
     direita
 };
 
-class Texto {
+class Texto 
+{
 private:
     std::string info;
 
     sf::Text texto;
 
-    static Gerenciador::GerenciadorGrafico* pGraphicM;
+    static Gerenciador::GerenciadorGrafico* pGGrafico;
 
 public:
-    Texto(sf::Vector2f position = sf::Vector2f(0, 0), std::string info = "", const char* path = FONT_PATH);
+    Texto(sf::Vector2f position = sf::Vector2f(0, 0), std::string info = "", const char* path = CAMINHO_FONTE);
 
     ~Texto();
 
@@ -34,9 +36,9 @@ public:
 
     void setCorTexto(const unsigned int R, const unsigned int G, const unsigned int B);
 
-    void setTamanhoFont(const unsigned int size);
+    void setTamanhoFonte(const unsigned int size);
 
-    void setAlinhamentoTexto(TextoAlignment option);
+    void setAlinhamentoTexto(AlinhamentoTexto option);
 
     sf::Vector2f getTamanho() const;
 

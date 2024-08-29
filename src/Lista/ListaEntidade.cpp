@@ -4,29 +4,32 @@ namespace Lista {
 
     ListaEntidade::ListaEntidade() { }
 
-    ListaEntidade::~ListaEntidade() {
+    ListaEntidade::~ListaEntidade() 
+    {
         list.clear();
     }
 
-    void ListaEntidade::addEntidade(Entidades::Entidade* pEntidade) {
+    void ListaEntidade::addEntidade(Entidades::Entidade* pEntidade) 
+    {
         if (pEntidade == nullptr)
-            std::cout << "Pointer to Entidade nullptr on addEntidade" << std::endl;
-
+            std::cout << "ERRO : ponteiro nulo." << std::endl;
         list.push(pEntidade);
     }
 
-    Entidades::Entidade* ListaEntidade::removeEntidade(Entidades::Entidade* pEntidade) {
+    Entidades::Entidade* ListaEntidade::removeEntidade(Entidades::Entidade* pEntidade) 
+    {
         if (pEntidade == nullptr)
-            std::cout << "Pointer to Entidade nullptr on removeEntidade" << std::endl;
-
+            std::cout << "ERRO : ponteiro nulo." << std::endl;
         return list.pop(pEntidade);
     }
 
-    Entidades::Entidade* ListaEntidade::removeEntidade(unsigned int index) {
-        return list.pop(index);
+    Entidades::Entidade* ListaEntidade::removeEntidade(unsigned int indice) 
+    {
+        return list.pop(indice);
     }
 
-    void ListaEntidade::deleteEntidade(Entidades::Entidade* pEntidade) {
+    void ListaEntidade::deleteEntidade(Entidades::Entidade* pEntidade) 
+    {
         Entidades::Entidade* tmp = nullptr;
 
         tmp = list.pop(pEntidade);
@@ -35,30 +38,34 @@ namespace Lista {
             delete (pEntidade);
     }
 
-    void ListaEntidade::deleteEntidade(unsigned int index) {
+    void ListaEntidade::deleteEntidade(unsigned int indice) 
+    {
         Entidades::Entidade* tmp = nullptr;
 
-        tmp = list.pop(index);
+        tmp = list.pop(indice);
 
         if (tmp)
             delete (tmp);
     }
 
-    unsigned int ListaEntidade::getSize() {
-        return list.getSize();
+    unsigned int ListaEntidade::getTam() 
+    {
+        return list.getTam();
     }
 
-    Entidades::Entidade* ListaEntidade::operator[](int index) {
-        return list[index];
+    Entidades::Entidade* ListaEntidade::operator[](int indice) 
+    {
+        return list[indice];
     }
 
-    void ListaEntidade::cleanList(){
+    void ListaEntidade::cleanList()
+    {
         list.clear();
     }
 
     void ListaEntidade::percorrerLista()
     {
-        int tam = list.getSize();
+        int tam = list.getTam();
         Entidades::Entidade* paux = nullptr;
         for(int i = 0; i < tam; i++)
         {
@@ -72,7 +79,7 @@ namespace Lista {
 
     void ListaEntidade::desenharEntidades(Gerenciador::GerenciadorGrafico* pGG)
     {
-        int tam = list.getSize();
+        int tam = list.getTam();
         Entidades::Entidade* paux = nullptr;
         for(int i = 0; i < tam; i++)
         {
@@ -84,5 +91,4 @@ namespace Lista {
         }
     }
 
-
-} // namespace List
+} 

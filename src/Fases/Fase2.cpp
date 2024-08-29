@@ -176,6 +176,7 @@ void Fases::Fase2::executar()
     pontGrafico->centralizarCamera(sf::Vector2f((ent1->getPosicao().x/* + ent2->getPosicao().x*/), 350));
 
     gerenciarColisoes();
+    gerenciarMortos();
     
 }
 void Fases::Fase2::atualizar()
@@ -205,4 +206,34 @@ void Fases::Fase2::criar()
 void Fases::Fase2::resetEstado()
 {
 
+}
+
+void Fases::Fase2::gerenciarMortos() //substitui retira mortos do gerenciador de colisão
+{
+    if(ListaInimigos.size() > 0)
+    {
+        vector<Entidades::Entidade*>::iterator it;
+        Personagens::Inimigo* paux = nullptr;
+
+        for(int i = 0; i < ListaInimigos.size(); i++)
+        {
+            paux = static_cast<Personagens::Inimigo*>(ListaInimigos[i]);
+            if(paux != nullptr)
+            {
+                if(paux->getNumVidas() == 0)
+                {
+                    *it = ListaInimigos[i];
+                    std::cout << "Retirou alguém" << std::endl;
+                    ListaInimigos.erase(it);
+                //i--;
+                //if(i < 0)
+                //    i = -1;
+                }
+            }
+        }
+    }
+    else
+    {
+
+    }
 }

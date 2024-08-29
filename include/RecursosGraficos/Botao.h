@@ -2,19 +2,20 @@
 
 #include "Texto.h"
 
-class Botao {
+class Botao
+{
 private:
-    static Gerenciador::GerenciadorGrafico* pGGrafico;
+    static Gerenciador::GerenciadorGrafico *pGGrafico;
     sf::RectangleShape corpo;
     Texto texto;
-    sf::Texture* textura;
+    sf::Texture *textura;
 
 public:
     Botao(sf::Vector2f posicao = sf::Vector2f(0, 0), std::string info = "");
 
     ~Botao();
 
-    void selecionar(const bool selecinado);
+    void selecionar(const bool selecionado);
 
     void render();
 };

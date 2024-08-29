@@ -36,11 +36,17 @@ namespace Fases
            
         public:
             Fase();
+
             ~Fase();
+
             void cria();
+
             void executar();
+
             void gerenciarColisoes();
+
             void carregarMapa(std::string mapJson);
+            
             sf::Vector2f lerMapa(std::string caminho_mapa, int* x, int* y, int* indice, long int num_entidade);
     };
 }

@@ -1,32 +1,32 @@
 #include "../../include/Estados/Estados.h"
 #include "../../include/Gerenciador/GerenciadorEstados.h"
 
-namespace Estados {
+namespace Estados 
+{
 
-    Estado::Estado(GerenciadorEstado* pSM, EstadoID id):
-    pSM(pSM),
-    id(id)
+    Estado::Estado(GerenciadorEstado* pGEstado, EstadoID id) :
+        pGEstado(pGEstado), id(id)
     {
 
     }
 
     Estado::~Estado()
     {
-        pSM = nullptr;
+        pGEstado = nullptr;
     }
 
-    void Estado::setGerenciadorEstados(GerenciadorEstado* pSM1)
+    void Estado::setGerenciadorEstados(GerenciadorEstado* pGEstado1)
     {
-        this->pSM = pSM1;
+        this->pGEstado = pGEstado1;
     }
 
     void Estado::changeEstado(EstadoID id1)
     {
-        pSM->changeAtualEstado(id1);
+        pGEstado->mudarEstadoAtual(id1);
     }
 
     EstadoID Estado::getID() const
     {
         return id;
     }
-} // namespace Estado
+} 

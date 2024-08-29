@@ -11,8 +11,7 @@
 Gerenciador::GerenciadorGrafico* Botao::pGGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
 
 Botao::Botao(sf::Vector2f posicao, std::string info) :
-    texto(posicao, info),
-    textura(nullptr)
+    texto(posicao, info), textura(nullptr)
 {
     corpo.setSize(sf::Vector2f(LARGURA_BOTAO, ALTURA_BOTAO));
     corpo.setOrigin(sf::Vector2f(LARGURA_BOTAO / 2.0f, ALTURA_BOTAO / 2.0f));

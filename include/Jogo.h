@@ -30,7 +30,9 @@ namespace Estados
 
     public:
         Jogo();
+
         ~Jogo();
+        
         void executar();
     };
 }

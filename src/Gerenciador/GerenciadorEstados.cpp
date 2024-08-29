@@ -2,8 +2,8 @@
 
 Estados::GerenciadorEstado::GerenciadorEstado()
 {
-    ultEstadoID = EstadoID::unknown;
-    atualEstadoID = EstadoID::unknown;
+    ultEstadoID = EstadoID::desconhecido;
+    estadoAtualID = EstadoID::desconhecido;
 }
 
 Estados::GerenciadorEstado::~GerenciadorEstado()
@@ -15,27 +15,27 @@ Estados::GerenciadorEstado::~GerenciadorEstado()
     }
 }
 
-void Estados::GerenciadorEstado::changeAtualEstado(EstadoID id)
+void Estados::GerenciadorEstado::mudarEstadoAtual(EstadoID id)
 {
-    ultEstadoID = atualEstadoID;
-    atualEstadoID = id;
+    ultEstadoID = estadoAtualID;
+    estadoAtualID = id;
     
-    mapaEstado[atualEstadoID]->resetEstado();
+    mapaEstado[estadoAtualID]->resetEstado();
 }
 
-void Estados::GerenciadorEstado::updateAtualEstado()
+void Estados::GerenciadorEstado::atualizarEstadoAtual()
 {
-    mapaEstado[atualEstadoID]->atualizar();
+    mapaEstado[estadoAtualID]->atualizar();
 }
 
-void Estados::GerenciadorEstado::renderAtualEstado()
+void Estados::GerenciadorEstado::renderEstadoAtual()
 {
-    mapaEstado[atualEstadoID]->render();
+    mapaEstado[estadoAtualID]->render();
 }
 
-Estados::EstadoID Estados::GerenciadorEstado::getAtualEstadoID() const
+Estados::EstadoID Estados::GerenciadorEstado::getEstadoAtualID() const
 {
-    return atualEstadoID;
+    return estadoAtualID;
 }
 
 void Estados::GerenciadorEstado::inserirEstado(Estado* pEstado)

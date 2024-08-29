@@ -6,20 +6,23 @@
 #include "../Gerenciador/GerenciadorGrafico.h"
 #include <vector>
 
-namespace Estados{
+namespace Estados
+{
     class Jogo;
 }
 
-namespace Menus {
-    class Menu: public Estados::Estado {
+namespace Menus 
+{
+    class Menu: public Estados::Estado 
+    {
     protected:
         Estados::Jogo* pJogo;
 
         Texto titulo;
 
-        std::vector<Botao*> vectorOfBotaos;
+        std::vector<Botao*> vectorBotoes;
         std::vector<Botao*>::iterator it;
-        int selected;
+        int selecionado;
         int min;
         int max;
         Controle::MenuControle* controle;
@@ -43,4 +46,4 @@ namespace Menus {
         void selecionarCima();
     };
 
-} // namespace Menus
+} 

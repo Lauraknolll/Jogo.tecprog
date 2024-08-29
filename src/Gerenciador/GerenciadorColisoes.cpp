@@ -121,7 +121,7 @@ void Gerenciador::GerenciadorColisoes::colide()
 void Gerenciador::GerenciadorColisoes::retiraMortos()
 {
     std::cout << "Entrou na funcao retiraMortos" << std::endl;
-    vector<Entidades::Entidade *>::iterator it;
+    vector<Entidades::Entidade*>::iterator it;
     Personagens::Inimigo* paux = nullptr;
 
     for(int i = 0; i < Inimigos.size(); i++)

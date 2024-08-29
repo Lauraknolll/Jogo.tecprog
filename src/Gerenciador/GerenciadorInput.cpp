@@ -4,18 +4,21 @@
 
 #include <iostream>
 
-namespace Gerenciador {
+namespace Gerenciador 
+{
 
-    GerenciadorInput* GerenciadorInput::instance = nullptr;
+    GerenciadorInput* GerenciadorInput::pInstanciaGI = nullptr;
 
-    GerenciadorInput* GerenciadorInput::getInstance() {
-        if (instance == nullptr) {
-            instance = new GerenciadorInput();
+    GerenciadorInput* GerenciadorInput::getGerenciadorInput() 
+    {
+        if (pInstanciaGI == nullptr) {
+            pInstanciaGI = new GerenciadorInput();
         }
-        return instance;
+        return pInstanciaGI;
     }
 
-    GerenciadorInput::GerenciadorInput() {
+    GerenciadorInput::GerenciadorInput() 
+    {
         keyMap[sf::Keyboard::A] = "A";
         keyMap[sf::Keyboard::B] = "B";
         keyMap[sf::Keyboard::C] = "C";
@@ -78,34 +81,37 @@ namespace Gerenciador {
         keyMap[sf::Keyboard::Tab] = "Tab";
     }
 
-    GerenciadorInput::~GerenciadorInput() {
-        objObserving.clear();
+    GerenciadorInput::~GerenciadorInput() 
+    {
+        objObservador.clear();
         keyMap.clear();
     }
 
-    /* Subscribe a Observer to recieve a notification when something happens. */
-    void GerenciadorInput::Attach(Controle::Observador* pObserver) {
-        objObserving.push_back(pObserver);
+    void GerenciadorInput::Attach(Controle::Observador* pObservador) 
+    {
+        objObservador.push_back(pObservador);
     }
 
-    void GerenciadorInput::Detach(Controle::Observador* pObserver) {
-        objObserving.remove(pObserver);
+    void GerenciadorInput::Detach(Controle::Observador* pObservador) 
+    {
+        objObservador.remove(pObservador);
     }
 
-    /* Check for keys pressed and notify every Observer. */
-    void GerenciadorInput::lidarTeclaPrecionada(sf::Keyboard::Key key) {
-        for (it = objObserving.begin(); it != objObserving.end(); ++it)
+    void GerenciadorInput::lidarTeclaPressionada(sf::Keyboard::Key key) 
+    {
+        for (it = objObservador.begin(); it != objObservador.end(); ++it)
             (*it)->anunciaPressionado(getNomeTecla(key));
     }
 
-    /* Check for keys pressed and notify every Observer. */
-    void GerenciadorInput::lidarTeclaSolta(sf::Keyboard::Key key) {
-        for (it = objObserving.begin(); it != objObserving.end(); ++it)
+    void GerenciadorInput::lidarTeclaSolta(sf::Keyboard::Key key) 
+    {
+        for (it = objObservador.begin(); it != objObservador.end(); ++it)
             (*it)->anunciaSolto(getNomeTecla(key));
     }
 
-    std::string GerenciadorInput::getNomeTecla(sf::Keyboard::Key key) {
-        return keyMap[key] == "" ? "desconhcida" : keyMap[key];
+    std::string GerenciadorInput::getNomeTecla(sf::Keyboard::Key key) 
+    {
+        return keyMap[key] == "" ? "desconhecida" : keyMap[key];
     }
 
-} // namespace Managers
+} 

@@ -4,7 +4,7 @@
 #define CAMINHO_FONTE "arial.ttf"
 
 // Inicialização do membro estático
-Gerenciador::GerenciadorGrafico* Texto::pGraphicM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
+Gerenciador::GerenciadorGrafico* Texto::pGGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
 
 Texto::Texto(sf::Vector2f position, std::string info, const char* path) :
     info(info) 
@@ -12,47 +12,56 @@ Texto::Texto(sf::Vector2f position, std::string info, const char* path) :
     texto.setString(info);
     texto.setString("imprimir");
 
-     sf::Font font;
+    sf::Font font;
     if (!font.loadFromFile(CAMINHO_FONTE)) {  // Certifique-se de que o caminho está correto
         std::cerr << "Erro ao carregar a fonte" << std::endl;
     }
     //texto.setFont(font);
 
     texto.setCharacterSize(TEXTO_SIZE);
-    setAlinhamentoTexto(TextoAlignment::esquerda);
+    setAlinhamentoTexto(AlinhamentoTexto::esquerda);
     texto.setPosition(position);
     texto.setFillColor(sf::Color::White);
 }
 
-Texto::~Texto() { }
+Texto::~Texto() 
+{ 
+    
+}
 
-void Texto::setTextoInfo(std::string info) {
+void Texto::setTextoInfo(std::string info) 
+{
     this->info = info;
     texto.setString(this->info);
 }
 
-void Texto::setPosicao(sf::Vector2f position) {
+void Texto::setPosicao(sf::Vector2f position) 
+{
     texto.setPosition(position);
 }
 
-void Texto::setCorTexto(const unsigned int R, const unsigned int G, const unsigned int B) {
+void Texto::setCorTexto(const unsigned int R, const unsigned int G, const unsigned int B) 
+{
     texto.setFillColor(sf::Color(R, G, B));
 }
 
-void Texto::setTamanhoFont(const unsigned int size) {
+void Texto::setTamanhoFonte(const unsigned int size) 
+{
     texto.setCharacterSize(size);
 }
 
-void Texto::setAlinhamentoTexto(TextoAlignment option) {
+void Texto::setAlinhamentoTexto(AlinhamentoTexto option) 
+{
     // Ajusta a origem para o alinhamento correto
-    switch (option) {
-    case TextoAlignment::esquerda:
+    switch (option) 
+    {
+    case AlinhamentoTexto::esquerda:
         texto.setOrigin(0, 0);
         break;
-    case TextoAlignment::centro:
+    case AlinhamentoTexto::centro:
         texto.setOrigin(getTamanho().x / 2, getTamanho().y / 2);
         break;
-    case TextoAlignment::direita:
+    case AlinhamentoTexto::direita:
         texto.setOrigin(getTamanho().x, getTamanho().y);
         break;
     default:
@@ -61,19 +70,23 @@ void Texto::setAlinhamentoTexto(TextoAlignment option) {
     }
 }
 
-sf::Vector2f Texto::getTamanho() const {
+sf::Vector2f Texto::getTamanho() const 
+{
     sf::FloatRect textoRect = texto.getLocalBounds();
     return sf::Vector2f(textoRect.width, textoRect.height);
 }
 
-void Texto::render() {
-    pGraphicM->desenhaTexto(texto);
+void Texto::render() 
+{
+    pGGrafico->desenhaTexto(texto);
 }
 
-std::string Texto::getInfo() const {
+std::string Texto::getInfo() const 
+{
     return info;
 }
 
-sf::Vector2f Texto::getPosicao() const {
+sf::Vector2f Texto::getPosicao() const 
+{
     return texto.getPosition();
 }

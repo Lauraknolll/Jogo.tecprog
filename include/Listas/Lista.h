@@ -2,205 +2,243 @@
 
 #include <iostream>
 
-namespace Lista {
+namespace Lista 
+{
 
     template <class TL>
-    class Lista {
+    class Lista 
+    {
     private:
-        /* template Node to use as node of the lista */
         template <class TE>
-        class Node {
+        class Elemento 
+        {
         private:
-            Node<TE>* pNext;
+            Elemento<TE>* pProximo;
             TE* pInfo;
 
         public:
-            Node() {
-                pNext = nullptr;
+            Elemento() 
+            {
+                pProximo = nullptr;
                 pInfo = nullptr;
             }
-            ~Node() {
-                pNext = nullptr;
-                pInfo = nullptr;
-            }
-            /* Set next template Node - internal lista use */
-            void setNext(Node<TE>* pNext) { this->pNext = pNext; }
-            /* Get next node of the lista */
-            Node<TE>* getNext() { return pNext; }
-            /* Sets the pointer the template Node points to*/
-            void setInfo(TE* pInfo) { this->pInfo = pInfo; }
-            /* Returns the pointer the template Node points to. */
-            TE* getInfo() { return pInfo; }
-        };
 
-        Node<TL>* pFirst;
-        Node<TL>* pLast;
-        unsigned int size;
+            ~Elemento() 
+            {
+                pProximo = nullptr;
+                pInfo = nullptr;
+            }
+
+            void setProximo(Elemento<TE>* pProximo) 
+            {   
+                this->pProximo = pProximo; 
+            }
+
+            Elemento<TE>* geProximo() 
+            { 
+                return pProximo; 
+            }
+
+            void setInfo(TE* pInfo) 
+            { 
+                this->pInfo = pInfo; 
+            }
+
+            TE* getInfo() 
+            { 
+                return pInfo; 
+            }
+        }; // fim da class Elemento
+
+        Elemento<TL>* pPrimeiro;
+        Elemento<TL>* pUltimo;
+        unsigned int tam;
 
     public:
         Lista();
         ~Lista();
 
         void clear();
-        unsigned int getSize() { return size; }
+        unsigned int getTam() { return tam; }
         TL* operator[](int x);
         void push(TL* pInfo);
         TL* pop(TL* pInfo);
         TL* pop(int index);
 
     private:
-        void setNode(Node<TL>* pNode);
-        Node<TL>* getpFirst() { return pFirst; }
-        Node<TL>* getpLast() { return pLast; }
-    };
+        void setElemento(Elemento<TL>* pElemento);
+        Elemento<TL>* getpPrimeiro() { return pPrimeiro; }
+        Elemento<TL>* getpUltimo() { return pUltimo; }
+    }; // fim da class Lista
 
     template <class TL>
     Lista<TL>::Lista() :
-    pFirst(nullptr),
-    pLast(nullptr),
-    size(0) { }
+        pPrimeiro(nullptr), pUltimo(nullptr), tam(0) 
+    { }
 
     template <class TL>
-    Lista<TL>::~Lista() { }
+    Lista<TL>::~Lista() 
+    { }
 
-    /* Delete the whole Lista */
     template <class TL>
-    void Lista<TL>::clear() {
-        Node<TL>* paux1;
-        Node<TL>* paux2;
+    void Lista<TL>::clear() 
+    {
+        Elemento<TL>* paux1;
+        Elemento<TL>* paux2;
 
-        paux1 = pFirst;
+        paux1 = pPrimeiro;
         paux2 = paux1;
         int i = 0;
 
-        while (paux1 != nullptr && i < size) {
+        while (paux1 != nullptr && i < tam) {
             delete (paux1->getInfo());
-            paux2 = paux1->getNext();
+            paux2 = paux1->getProx();
             delete (paux1);
             paux1 = paux2;
             i++;
         }
 
-        pFirst = nullptr;
-        pLast = nullptr;
-        size = 0;
+        pPrimeiro = nullptr;
+        pUltimo = nullptr;
+        tam = 0;
     }
 
-    /* Add new Node to Lista - internal use */
     template <class TL>
-    void Lista<TL>::setNode(Node<TL>* pNode) {
-        if (pNode != nullptr) {
-            if (pFirst == nullptr) {
-                pFirst = pNode;
-                pLast = pNode;
-            } else {
-                pLast->setNext(pNode);
-                pLast = pNode;
+    void Lista<TL>::setElemento(Elemento<TL>* pElemento) 
+    {
+        if (pElemento != nullptr) 
+        {
+            if (pPrimeiro == nullptr) 
+            {
+                pPrimeiro = pElemento;
+                pUltimo = pElemento;
+            } 
+            else 
+            {
+                pUltimo->setProx(pElemento);
+                pUltimo = pElemento;
             }
-            size++;
+            tam++;
 
-        } else {
-            std::cout << "ERROR: on Lista<TL>::setNode -> Pointer pNode == nullptr. Insert not succeeded." << std::endl;
+        } 
+        else 
+        {
+            std::cout << "ERRO: ponteiro nulo" << std::endl;
         }
     }
 
-    /* Iterate through the lista, similar to a static vector. Returns the pointer the template lista points to.  */
     template <class TL>
-    TL* Lista<TL>::operator[](int index) {
-        if (index >= size || index < 0) {
-            std::cout << "ERROR: Segmentation fault on template lista. Exceeded boundaries. Index " << index << " out of " << size << " elements." << std::endl;
+    TL* Lista<TL>::operator[](int index) 
+    {
+        if (index >= tam || index < 0) 
+        {
+            std::cout << "ERRO : Limite excedido. Index " << index << " de " << tam << " elementos." << std::endl;
             exit(1);
         }
 
-        Node<TL>* pAux = pFirst;
-        for (int i = 0; i < index; i++) {
-            pAux = pAux->getNext();
+        Elemento<TL>* pAux = pPrimeiro;
+        for (int i = 0; i < index; i++) 
+        {
+            pAux = pAux->getProx();
         }
 
-        if (pAux == nullptr) {
-            std::cout << "ERROR: on template operator[] pAux == nullptr." << std::endl;
+        if (pAux == nullptr) 
+        {
+            std::cout << "ERRO : ponteiro nulo." << std::endl;
             exit(1);
         }
         return pAux->getInfo();
     }
 
-    /* push new node to the template lista */
     template <class TL>
-    void Lista<TL>::push(TL* pInfo) {
-        if (pInfo != nullptr) {
-            Node<TL>* pNode = nullptr;
-            pNode = new Node<TL>();
-            pNode->setInfo(pInfo);
-            setNode(pNode);
+    void Lista<TL>::push(TL* pInfo) 
+    {
+        if (pInfo != nullptr) 
+        {
+            Elemento<TL>* pElemento = nullptr;
+            pElemento = new Elemento<TL>();
+            pElemento->setInfo(pInfo);
+            setElemento(pElemento);
         }
 
-        else {
-            std::cout << "ERROR: on Lista<TL>::push -> pInfo == nullptr" << std::endl;
+        else 
+        {
+            std::cout << "ERRO : ponteiro nulo." << std::endl;
         }
     }
 
-    /* Pops a specific element fom lista given by the information. Returns the element popped from lista.*/
     template <class TL>
-    TL* Lista<TL>::pop(TL* pInfo) {
-        Node<TL>* pAux = pFirst;
-        Node<TL>* pPrev = nullptr;
-        while (pAux != nullptr) {
-            if (pAux->getInfo() == pInfo) {
-                if (pAux == pFirst) {
-                    pFirst = pAux->getNext();
+    TL* Lista<TL>::pop(TL* pInfo) 
+    {
+        Elemento<TL>* pAux = pPrimeiro;
+        Elemento<TL>* pAnte = nullptr;
+        while (pAux != nullptr) 
+        {
+            if (pAux->getInfo() == pInfo) 
+            {
+                if (pAux == pPrimeiro) 
+                {
+                    pPrimeiro = pAux->getProx();
                 } //
-                else if (pAux == pLast) {
-                    pLast = pPrev;
-                    pPrev->setNext(nullptr);
+                else if (pAux == pUltimo) 
+                {
+                    pUltimo = pAnte;
+                    pAnte->setProx(nullptr);
                 } //
-                else {
-                    pPrev->setNext(pAux->getNext());
+                else 
+                {
+                    pAnte->setProx(pAux->getProx());
                 }
 
                 delete (pAux);
-                size--;
+                tam--;
                 return pInfo;
             }
 
-            pPrev = pAux;
-            pAux = pAux->getNext();
+            pAnte = pAux;
+            pAux = pAux->getProx();
         }
         return nullptr;
     }
 
-    /* Pops a specific element fom lista given by its index. Returns the element popped from lista.*/
     template <class TL>
-    TL* Lista<TL>::pop(int index) {
-        if (index >= size || index < 0) {
-            std::cout << "ERROR: Segmentation fault on Lista<TL>::pop(int index). Exceeded boundaries. Index " << index << " out of " << size << " elements." << std::endl;
+    TL* Lista<TL>::pop(int index) 
+    {
+        if (index >= tam || index < 0) 
+        {
+            std::cout << "ERRO : Limite excedido. Index " << index << " de " << tam << " elementos." << std::endl;
             exit(1);
         }
 
-        Node<TL>* pAux = pFirst;
-        Node<TL>* pPrev = nullptr;
+        Elemento<TL>* pAux = pPrimeiro;
+        Elemento<TL>* pAnte = nullptr;
 
-        for (int i = 0; i < index; i++) {
-            pPrev = pAux;
-            pAux = pAux->getNext();
+        for (int i = 0; i < index; i++) 
+        {
+            pAnte = pAux;
+            pAux = pAux->getProx();
         }
 
-        if (pAux == pFirst) {
-            pFirst = pAux->getNext();
+        if (pAux == pPrimeiro) 
+        {
+            pPrimeiro = pAux->getProx();
         } //
-        else if (pAux == pLast) {
-            pLast = pPrev;
-            pPrev->setNext(nullptr);
+        else if (pAux == pUltimo) 
+        {
+            pUltimo = pAnte;
+            pAnte->setProx(nullptr);
         } //
-        else {
-            pPrev->setNext(pAux->getNext());
+        else 
+        {
+            pAnte->setProx(pAux->getProx());
         }
 
         TL* pInfo = pAux->getInfo();
 
         delete (pAux);
-        size--;
+        tam--;
 
         return pInfo;
     }
 
-} // namespace Lista
+} 

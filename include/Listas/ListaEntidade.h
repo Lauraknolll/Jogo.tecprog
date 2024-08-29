@@ -2,8 +2,10 @@
 #include "Lista.h"
 #include "../Entidades/Entidade.h"
 
-namespace Lista{
-    class ListaEntidade{
+namespace Lista
+{
+    class ListaEntidade
+    {
         private:
         Lista<Entidades::Entidade> list;
 
@@ -16,21 +18,20 @@ namespace Lista{
 
             Entidades::Entidade* removeEntidade(Entidades::Entidade* pEntidade);
 
-            Entidades::Entidade* removeEntidade(unsigned int index);
+            Entidades::Entidade* removeEntidade(unsigned int indice);
 
             void deleteEntidade(Entidades::Entidade* pEntidade);
 
-            void deleteEntidade(unsigned int index);
+            void deleteEntidade(unsigned int indice);
 
-            unsigned int getSize();
+            unsigned int getTam();
 
-            Entidades::Entidade* operator[](int index);
+            Entidades::Entidade* operator[](int indice);
 
             void cleanList();
 
             void percorrerLista();
 
             void desenharEntidades(Gerenciador::GerenciadorGrafico* pGG);
-
     };
 }

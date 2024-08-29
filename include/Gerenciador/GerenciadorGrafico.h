@@ -14,25 +14,30 @@ namespace Gerenciador
             std::map<std::string, sf::Texture*> MapaTexturas;
 
 
-            //Usando o padrão de projeto Singleton para que haja apenas uma instancia do gerenciador gráfico
+            /* padrão Singleton */
             static GerenciadorGrafico* pInstanciaGG;
-            GerenciadorGrafico(); //Constutora privada
+            GerenciadorGrafico();
         public:
             ~GerenciadorGrafico();
-            //Parte do Singleton
+
             static GerenciadorGrafico* getGerenciadorGrafico(); 
-            //Retorna a janela
+
             sf::RenderWindow* getJanela(); 
+
             void limpaJanela();
-            //Chama o draw
+
             void desenhaEntidade(sf::RectangleShape corpo);
+
             void desenhaTexto(sf::Text texto); 
-            //Chama o display
+
             void monstraEntidade(); 
+
             void fecharJanela();
+
             const bool verificarJanelaAberta();
-            //Retorna a textura 
+
             sf::Texture* carregaTextura(std::string caminho);
+            
             void centralizarCamera(sf::Vector2f centro);
     };
 }

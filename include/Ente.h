@@ -9,8 +9,11 @@ class Ente
         //static Gerenciador::GerenciadorGrafico* pGGrafico;
     public:
         Ente();
+
         virtual ~Ente();
+
         virtual void executar() = 0;
+        
         void desenhar();
 };
 

@@ -32,7 +32,7 @@ void Fases::Fase1::criarJogadores()
         if (posi != sf::Vector2f(-1, -1))
         {
             //std::cout << "Criando jogador em: (" << posi.x << ", " << posi.y << ")" << std::endl;
-            jog = new Personagens::Jogador(posi.x, posi.y, 32, 32);
+            jog = new Personagens::Jogador(posi.x, posi.y, 64.0, 64.0);
             pEventos->setJogador(jog);
             ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
@@ -63,7 +63,22 @@ void Fases::Fase1::criarPlataformas()
 
 void Fases::Fase1::criarInimigosFaceis()
 {
-    
+    Personagens::InimigoFacil* ini;
+    sf::Vector2f posi(0,0);
+    int x = 0, y = 0, indice = 0;
+
+    while (posi != sf::Vector2f(-1, -1))
+    {
+        posi = lerMapa(CAMINHO_MAPA_FASE1, &x, &y, &indice, 3);
+        
+        if (posi != sf::Vector2f(-1, -1))
+        {
+            //std::cout << "Criando plataforma em: (" << posi.x << ", " << posi.y << ")" << std::endl;
+            ini = new Personagens::InimigoFacil(posi.x, posi.y, 32.0, 32.0);
+            ListaObstaculos.push_back(static_cast<Entidades::Entidade*>(ini));
+            Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(ini));
+        }
+    }
 }
 
 void Fases::Fase1::criarObstaculosFaceis()
@@ -102,6 +117,7 @@ void Fases::Fase1::cria()
 {
     criarJogadores();
     criarPlataformas();
+    criarInimigosFaceis();
 
     /*criarInimigosFaceis();
     criarObstaculosFaceis();

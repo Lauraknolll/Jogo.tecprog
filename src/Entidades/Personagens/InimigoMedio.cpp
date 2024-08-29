@@ -57,6 +57,7 @@ const sf::RectangleShape Personagens::InimigoMedio::getCorpo()
 void Personagens::InimigoMedio::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
     gG->desenhaEntidade(corpo);
+    corpo.setTexture(gG->carregaTextura("src/testeinimedio.png"));
 }
 
 void Personagens::InimigoMedio::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)

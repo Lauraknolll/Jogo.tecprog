@@ -104,6 +104,9 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
     case Entidades::plataforma:
             moveColisao(outraEntidade, intersecao);
         break;
+    case Entidades::lava:
+            moveColisao(outraEntidade, intersecao);
+        break;
     case Entidades::inimigoFacil:
             recebaDano(1);
         break;

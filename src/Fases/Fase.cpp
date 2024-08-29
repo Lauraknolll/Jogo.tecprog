@@ -95,3 +95,8 @@ sf::Vector2f Fases::Fase::lerMapa(std::string caminho_mapa, int* xx, int* yy, in
     //std::cout << "Entidade não encontrada." << std::endl;
     return sf::Vector2f(-1, -1);
 }
+
+void Fases::Fase::gerenciarColisoes()
+{
+    pGColisoes->colide();
+}

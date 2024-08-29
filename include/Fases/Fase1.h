@@ -16,11 +16,10 @@ namespace Fases
             void cria();
 
             void criarJogadores();
-            void criarPlataformas();
 
             void criarInimigosFaceis();
-            void criarObstaculosFaceis();
+            void criarPlataformas(); //Obstáculo Fácil
             void criarInimigosMedios();
-            void criarObstaculosMedios();
+            void criarLava(); //Obstáculo médio
     };
 }

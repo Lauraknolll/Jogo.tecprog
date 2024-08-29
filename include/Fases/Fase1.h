@@ -14,6 +14,8 @@ namespace Fases
             bool esta_final;
             bool t_dois;
             Controle::ControleJogador *controle;
+            const int maxInimigos;
+            const int maxObstaculos;
         public:
             Fase1(Estados::GerenciadorEstado* gE, Controle::ControleJogador* cont);
             ~Fase1();
@@ -26,8 +28,9 @@ namespace Fases
             void criarJogadores();
 
             void criarFantasmas(); //Inimigo fácil
-            void criarPlataformas(); //Obstáculo Fácil
+            void criarPlataformas(); 
             void criarGalinhas(); // Inimigo médio
+            void criarPedras(); //Obstáculo fácil
             void criarLava(); //Obstáculo médio
     };
 }

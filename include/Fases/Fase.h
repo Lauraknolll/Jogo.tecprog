@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <string>
+#include <stdlib.h>
 #include "../Ente.h"
 #include "../Gerenciador/GerenciadorColisoes.h"
 #include "../Gerenciador/GerenciadorEventos.h"
@@ -12,6 +13,7 @@
 #include "../Entidades/Obstaculos/Plataforma.h"
 #include "../Entidades/Obstaculos/Lava.h"
 #include "../Entidades/Obstaculos/Espinho.h"
+#include "../Entidades/Obstaculos/Pedra.h"
 #include "../Gerenciador/GerenciadorEventos.h"
 #include "../json.hpp"
 #include "../Gerenciador/GerenciadorInput.h"

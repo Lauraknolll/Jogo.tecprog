@@ -3,7 +3,6 @@
 #include "Inimigo.h"
 #include "Jogador.h"
 
-#define RAIO_PERSEGUIR_X 200.0f
 
 namespace Personagens
 {
@@ -11,12 +10,15 @@ namespace Personagens
     {
         private:
             Jogador* jogador;
+            int bicada;
+            short movAle;
         public:
             Galinha(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
             ~Galinha();
             void setJogador(Jogador* pJ);
             void executar();
             void atualizarPosicao();
+            void moveAleatorio();
             int getNumVidas();
             void persegueJogador(sf::Vector2f posJog, sf::Vector2f posIni);
             const sf::RectangleShape getCorpo();

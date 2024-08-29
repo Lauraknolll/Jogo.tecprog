@@ -13,6 +13,7 @@ namespace Obstaculos
         Espinho(float x = 0.f, float y = 0.f, float ww = 50.f, float hh = 50.f);
         ~Espinho();
         void executar();
+        void atualizarPosicao();
         void imprimir(Gerenciador::GerenciadorGrafico *gG);
         void colide(Entidade *outraEntidade, sf::Vector2f intersecao);
         void obstacular(Personagens::Jogador *pontJogador);

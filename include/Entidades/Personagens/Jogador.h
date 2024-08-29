@@ -24,8 +24,6 @@ namespace Personagens
         ~Jogador();
         void executar();
         void pular();
-        void tratarEventoPressionar(const sf::Event &e);
-        void tratarEventoSoltar(const sf::Event &e);
         void atualizar();
         void imprimir(Gerenciador::GerenciadorGrafico *gG);
         void colide(Entidade *outraEntidade, sf::Vector2f intersecao); 
@@ -44,6 +42,6 @@ namespace Personagens
         void paraAtacar();
         const bool estaAtacando();
 
-        void recebaDano(const int dano);
+        void recebaDano(const int dano); 
     };
 }

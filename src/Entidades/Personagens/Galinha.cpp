@@ -1,22 +1,42 @@
 #include "../../../include/Entidades/Personagens/Galinha.h"
 
-#define GRAVIDADE 0.0001f
-#define FORÇA_SUSTENTAÇÃO -0.0001f
-#define VELOCIDADE_INIM 0.025f
-#define VIDAS_INIM 3000
+#define RAIO_PERSEGUIR_X 200.0f
+#define VELOCIDADE_GALINHA 0.025f
+#define VIDAS_GALINHA 3000
 
 Personagens::Galinha::Galinha(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::galinha)
 {
-    num_vidas = VIDAS_INIM;
+    bicada = rand()%20;
+    num_vidas = VIDAS_GALINHA;
     corpo.setFillColor(sf::Color::White);
-    velocidade.x = 0.0f;
+    velocidade.x = VELOCIDADE_GALINHA;
     velocidade.y = 0.0f;
+    movAle = rand()%2;
 }
 
 Personagens::Galinha::~Galinha()
 {
 
+}
+
+void Personagens::Galinha::moveAleatorio()
+{
+    if(movAle == 0)
+    {
+        corpo.move(sf::Vector2f(velocidade.x, velocidade.y));
+    }
+    else
+    {
+        corpo.move(sf::Vector2f(-velocidade.x, velocidade.y));
+    }
+
+    float tempo = relogio.getElapsedTime().asSeconds();
+    if(tempo >= 4.0f)
+    {
+        movAle = rand()%2;
+        relogio.restart();
+    }
 }
 
 void Personagens::Galinha::setJogador(Personagens::Jogador* pJ)
@@ -37,21 +57,25 @@ void Personagens::Galinha::executar()
     {
         persegueJogador(posicaoJogador, posicaoInimigo);
     }
+    else
+    {
+        moveAleatorio();
+    }
 }
 
 void Personagens::Galinha::persegueJogador(sf::Vector2f posJog, sf::Vector2f posIni)
 {
    if((posJog.x - posIni.x) > 0.0f)
     {
-        corpo.move(VELOCIDADE_INIM, 0.0f);
+        corpo.move(VELOCIDADE_GALINHA, 0.0f);
     }
     else 
     {
-        corpo.move(-VELOCIDADE_INIM, 0.0f);
+        corpo.move(-VELOCIDADE_GALINHA, 0.0f);
     }
 }
 
-const sf::RectangleShape Personagens::Galinha::getCorpo()
+const sf::RectangleShape Personagens::Galinha::getCorpo() 
 {
     return corpo;
 }
@@ -64,7 +88,6 @@ void Personagens::Galinha::imprimir(Gerenciador::GerenciadorGrafico *gG)
 
 void Personagens::Galinha::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
 {
-
     if(outraEntidade->getID() == Entidades::ID::jogador)
     {
         danificar(static_cast<Personagens::Jogador*>(outraEntidade));
@@ -77,6 +100,10 @@ void Personagens::Galinha::danificar(Personagens::Jogador* pontJogador)
     {
         num_vidas--;
     }
+    else
+    {
+        pontJogador->recebaDano(bicada);
+    }
 }
 
 void Personagens::Galinha::atualizarPosicao()
@@ -85,7 +112,7 @@ void Personagens::Galinha::atualizarPosicao()
     y = corpo.getPosition().y;
 
     velocidade.y += GRAVIDADE;
-    velocidade.y += FORÇA_SUSTENTAÇÃO;
+    velocidade.y += FORCA_SUSTENTACAO;
 }
 
 int Personagens::Galinha::getNumVidas()

@@ -1,20 +1,19 @@
 #include "../../../include/Entidades/Personagens/Fantasma.h"
 
-#define GRAVIDADE 0.0001f
-#define FORÇA_SUSTENTAÇÃO -0.0001f
-#define VELOCIDADE_INIMF 0.01f
-#define VIDAS_INIMF 10000
+#define VELOCIDADE_FANTASMA 0.01f
+#define VIDAS_FANTASMA 10000
 #include <stdlib.h>
 #include <iostream>
 
 Personagens::Fantasma::Fantasma(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::fantasma)
 {
-    num_vidas = VIDAS_INIMF;
+    forcaEspiritual = rand()%5;
+    num_vidas = VIDAS_FANTASMA;
     corpo.setFillColor(sf::Color::White);
-    velocidade.x = VELOCIDADE_INIMF;
+    velocidade.x = VELOCIDADE_FANTASMA;
     velocidade.y = 0.0f;
-    movimentoale = rand()%1;
+    movAle = rand()%2;
 }
 
 Personagens::Fantasma::~Fantasma()
@@ -30,7 +29,7 @@ void Personagens::Fantasma::executar()
 
 void Personagens::Fantasma::moveAleatorio()
 {
-    if(movimentoale == 0)
+    if(movAle == 0)
     {
         corpo.move(sf::Vector2f(velocidade.x, velocidade.y));
     }
@@ -42,7 +41,7 @@ void Personagens::Fantasma::moveAleatorio()
     float tempo = relogio.getElapsedTime().asSeconds();
     if(tempo >= 4.0f)
     {
-        movimentoale = rand()%2;
+        movAle = rand()%2;
         relogio.restart();
     }
 
@@ -65,13 +64,19 @@ void Personagens::Fantasma::colide(Entidades::Entidade *outraEntidade, sf::Vecto
     {
         danificar(static_cast<Jogador*>(outraEntidade));
     }
-
 }
 
 
 void Personagens::Fantasma::danificar(Personagens::Jogador* pontJogador)
 {
-    num_vidas--;   
+    if(pontJogador->estaAtacando())
+    {
+        num_vidas--;
+    }
+        else
+    {
+        pontJogador->recebaDano(forcaEspiritual);
+    }
 }
 
 void Personagens::Fantasma::atualizarPosicao()
@@ -80,7 +85,7 @@ void Personagens::Fantasma::atualizarPosicao()
     y = corpo.getPosition().y;
 
     velocidade.y += GRAVIDADE;
-    velocidade.y += FORÇA_SUSTENTAÇÃO;
+    velocidade.y += FORCA_SUSTENTACAO;
 }
 
 int Personagens::Fantasma::getNumVidas()

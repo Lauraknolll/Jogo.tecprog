@@ -52,8 +52,8 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresObstaculos()
             /*  Condição pra colisão*/
             if (intersecao.x < 0.0f && intersecao.y < 0.0f)
             {
-                //printf("entrou");
                 ent1->colide(ent2, intersecao);
+                ent2->colide(ent1, intersecao);
             }
         }
     }
@@ -98,7 +98,15 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresInimigos()
         }
     }
 
-    //clean(); problemas com isso
+    if(Inimigos.size() > 0)
+    {
+        //retiraMortos(); 
+    }
+    else 
+    {
+        //lugar pra dizer que todos os inimigos morreram
+    }
+    
 }
 
 void Gerenciador::GerenciadorColisoes::colide()
@@ -110,22 +118,25 @@ void Gerenciador::GerenciadorColisoes::colide()
 }
 
 // Function to deallocate entities after collision
-void Gerenciador::GerenciadorColisoes::clean()
+void Gerenciador::GerenciadorColisoes::retiraMortos()
 {
-    vector<Entidades::Entidade *>::iterator it1;
-    Personagens::Personagem* paux = nullptr;
+    std::cout << "Entrou na funcao retiraMortos" << std::endl;
+    vector<Entidades::Entidade *>::iterator it;
+    Personagens::Inimigo* paux = nullptr;
+
     for(int i = 0; i < Inimigos.size(); i++)
     {
-        paux = static_cast<Personagens::Personagem*>(Inimigos[i]);
-        *it1 = Inimigos[i];
+        paux = static_cast<Personagens::Inimigo*>(Inimigos[i]);
         if(paux != nullptr)
         {
-            if(paux->getNumVidas() <= 0)
+            if(paux->getNumVidas() == 0)
             {
-                Inimigos.erase(it1);
+                *it = Inimigos[i];
+                std::cout << "Retirou alguém" << std::endl;
+                Inimigos.erase(it);
                 //i--;
-                if(i < 0)
-                    i = -1;
+                //if(i < 0)
+                //    i = -1;
             }
         }
     }

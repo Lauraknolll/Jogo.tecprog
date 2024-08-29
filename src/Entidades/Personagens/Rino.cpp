@@ -1,16 +1,15 @@
 #include "../../../include/Entidades/Personagens/Rino.h"
 
-#define GRAVIDADE 0.0001f
-#define FORÇA_SUSTENTAÇÃO -0.0001f
 #define VIDAS_RINO 5000
-#define VELOCIDADE_INID 0.3f
+#define VELOCIDADE_RINO 0.03f
 #define RAIO_PERSEGUIR_X  200.0f
 
 Personagens::Rino::Rino(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::rino)
 {
+    chifrada = rand()%75;
     num_vidas = VIDAS_RINO;
-    velocidade.x = 0.0f;
+    velocidade.x = VELOCIDADE_RINO;
     velocidade.y = 0.0f;
     corpo.setFillColor(sf::Color::White);
 }
@@ -36,6 +35,29 @@ void Personagens::Rino::executar()
     {
         persegueJogador(posicaoJogador, posicaoInimigo);
     }
+    else
+    {
+        movimentoAleatorio();
+    }
+}
+
+void Personagens::Rino::movimentoAleatorio()
+{
+    if(movAle == 0)
+    {
+        corpo.move(sf::Vector2f(velocidade.x, velocidade.y));
+    }
+    else
+    {
+        corpo.move(sf::Vector2f(-velocidade.x, velocidade.y));
+    }
+
+    float tempo = relogio.getElapsedTime().asSeconds();
+    if(tempo >= 4.0f)
+    {
+        movAle = rand()%2;
+        relogio.restart();
+    }
 }
 
 void Personagens::Rino::setJogador(Jogador* pJ)
@@ -50,22 +72,32 @@ void Personagens::Rino::persegueJogador(sf::Vector2f posJog, sf::Vector2f posIni
 {
     if((posJog.x - posIni.x) > 0.0f)
     {
-        corpo.move(VELOCIDADE_INID, 0.0f);
+        corpo.move(VELOCIDADE_RINO, 0.0f);
     }
     else 
     {
-        corpo.move(-VELOCIDADE_INID, 0.0f);
+        corpo.move(-VELOCIDADE_RINO, 0.0f);
     }
 }
 
 void Personagens::Rino::colide(Entidade *outraEntidade, sf::Vector2f intersecao)
 {
-
+    if(outraEntidade->getID() == Entidades::ID::jogador)
+    {
+        danificar(static_cast<Personagens::Jogador*>(outraEntidade));
+    }
 }
 
 void Personagens::Rino::danificar(Personagens::Jogador* pontJogador)
 {
-
+    if(pontJogador->estaAtacando())
+    {
+        num_vidas--;
+    }
+    else
+    {
+        pontJogador->recebaDano(chifrada);
+    }
 }
 
 int Personagens::Rino::getNumVidas()
@@ -79,7 +111,7 @@ void Personagens::Rino::atualizarPosicao()
     y = corpo.getPosition().y;
 
     velocidade.y += GRAVIDADE;
-    velocidade.y += FORÇA_SUSTENTAÇÃO;
+    velocidade.y += FORCA_SUSTENTACAO;
 }
 
 

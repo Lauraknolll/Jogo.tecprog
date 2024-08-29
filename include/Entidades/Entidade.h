@@ -3,6 +3,9 @@
 
 #include <SFML/Graphics.hpp>
 
+#define GRAVIDADE 0.0001f
+#define FORCA_SUSTENTACAO -0.0001f
+
 namespace Entidades
 {
 
@@ -11,6 +14,7 @@ namespace Entidades
         vazio = 0,
         jogador,
         plataforma,
+        pedra,
         lava,
         espinho,
         fantasma,

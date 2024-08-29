@@ -13,7 +13,8 @@ namespace Entidades
         plataforma,
         lava,
         inimigoFacil,
-        inimigoMedio
+        inimigoMedio, 
+        chefao
     };
 
     class Entidade : public Ente

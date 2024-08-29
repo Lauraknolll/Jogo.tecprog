@@ -8,6 +8,7 @@
 #include "../Entidades/Personagens/Jogador.h"
 #include "../Entidades/Personagens/InimigoFacil.h"
 #include "../Entidades/Personagens/InimigoMedio.h"
+#include "../Entidades/Personagens/Chefao.h"
 #include "../Entidades/Obstaculos/Plataforma.h"
 #include "../Entidades/Obstaculos/Lava.h"
 #include "../Gerenciador/GerenciadorEventos.h"
@@ -36,6 +37,5 @@ namespace Fases
             void gerenciarColisoes();
             void carregarMapa(std::string mapJson);
             sf::Vector2f lerMapa(std::string caminho_mapa, int* x, int* y, int* indice, long int num_entidade);
-            void percorrerMapa(); //função que vai ser chamada a cada criação
     };
 }

@@ -1,6 +1,6 @@
 #include "../../include/Fases/Fase2.h"
 
-#define CAMINHO_MAPA_FASE2 "src/mapaJogo2.json"//caminho para o mapa da fase 2
+#define CAMINHO_MAPA_FASE2 "src/mapaFase2.json"//caminho para o mapa da fase 2
 
 Fases::Fase2::Fase2(Estados::GerenciadorEstado* gE) :
     Fase(), Estados::Estado(gE, Estados::EstadoID::fase2), maxInimigos(7), maxObstaculos(10)

@@ -2,6 +2,7 @@
 #define CAMINHO_MAPA "mapaJogo1.json"
 #include "../include/Estados/MenuPrincipal.h"
 #include "../include/Estados/GameOver.h"
+#include "../include/Estados/Placar.h"
 
 Estados::Jogo::Jogo() :
     pontGGrafico(Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()),
@@ -19,6 +20,9 @@ Estados::Jogo::Jogo() :
     inserirEstado(estado);
 
     estado = static_cast<Estados::Estado*>(new Menus::GameOver(this));
+    inserirEstado(estado);
+
+    estado = static_cast<Estados::Estado*>(new Menus::Placar(this));
     inserirEstado(estado);
     
     mudarEstadoAtual(Estados::EstadoID::mainMenu);

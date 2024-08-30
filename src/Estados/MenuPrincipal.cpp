@@ -24,7 +24,7 @@ namespace Menus {
         bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 100), "FASE 2");
         vectorBotao.push_back(bt);
 
-        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 150), "MENU");
+        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 150), "PLACAR");
         vectorBotao.push_back(bt);
 
         bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 200), "TESTE");
@@ -68,7 +68,7 @@ namespace Menus {
                 changeEstado(Estados::EstadoID::fase2);
                 break;
             case 2:
-                changeEstado(Estados::EstadoID::mainMenu);
+                changeEstado(Estados::EstadoID::placar);
                 break;
             case 3:
                 changeEstado(Estados::EstadoID::gameOver);

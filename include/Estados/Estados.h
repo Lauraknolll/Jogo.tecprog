@@ -9,6 +9,7 @@ namespace Estados
     {
         desconhecido = -1,
         mainMenu = 0,
+        placar,
         gameOver,
         fase1,
         fase2

@@ -1,7 +1,7 @@
 #include "../../../include/Entidades/Personagens/Fantasma.h"
 
 #define VELOCIDADE_FANTASMA 0.01f
-#define VIDAS_FANTASMA 10000
+#define VIDAS_FANTASMA 1000
 #include <stdlib.h>
 #include <iostream>
 

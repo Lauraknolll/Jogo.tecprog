@@ -11,7 +11,6 @@ namespace Personagens
     {
         protected:
             sf::Clock relogio;
-            bool vivo;
         public:
             Inimigo(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0, Entidades::ID id = Entidades::vazio);
 

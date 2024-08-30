@@ -99,6 +99,7 @@ void Fases::Fase::gerenciarMortos()
             }
         }
     }
+    //gerenciar se os jogadores estão vivos tbm
 }
 
 bool Fases::Fase::todosMortos()

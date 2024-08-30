@@ -3,7 +3,7 @@
 #define VELJOG 1.f
 #define VELOCIDADE_JOGADOR 0.0001f
 #define COOLDOWN_DANO 100.f
-#define VIDAS_JOGADOR 1000;
+#define VIDAS_JOGADOR 7500;
 
 
 Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
@@ -38,8 +38,11 @@ void Personagens::Jogador::pular()
 
 void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
-    gG->desenhaEntidade(corpo);
-    corpo.setTexture(gG->carregaTextura("imagens/jogador.png"));
+    if(vivo)
+    {
+        gG->desenhaEntidade(corpo);
+        corpo.setTexture(gG->carregaTextura("imagens/jogador.png"));
+    }
 }
 
 void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)

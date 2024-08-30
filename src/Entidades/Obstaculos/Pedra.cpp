@@ -3,7 +3,7 @@
 Obstaculos::Pedra::Pedra(float x, float y, float ww, float hh) :
     Obstaculo(x, y, ww, hh, Entidades::pedra)
 {
-    dureza = rand()%25;
+    dureza = rand()%15;
 }
 
 Obstaculos::Pedra::~Pedra()

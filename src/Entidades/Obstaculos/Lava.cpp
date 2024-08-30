@@ -5,7 +5,7 @@ Obstaculos::Lava::Lava(float x, float y, float ww, float hh):
 Obstaculo(x, y, ww, hh, Entidades::lava)
 {
     corpo.setFillColor(sf::Color::Red);
-    danosidade = rand()%45;
+    danosidade = rand()%35;
 }
 
 Obstaculos::Lava::~Lava()

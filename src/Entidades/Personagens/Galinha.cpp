@@ -1,8 +1,8 @@
 #include "../../../include/Entidades/Personagens/Galinha.h"
 
-#define RAIO_PERSEGUIR_X 200.0f
 #define VELOCIDADE_GALINHA 0.025f
 #define VIDAS_GALINHA 3000
+#define RAIO_PERSEGUIR_X 200.0f
 
 Personagens::Galinha::Galinha(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::galinha)

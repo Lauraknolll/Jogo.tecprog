@@ -1,8 +1,8 @@
 #include "../../../include/Entidades/Personagens/Rino.h"
 
 #define VIDAS_RINO 5000
-#define VELOCIDADE_RINO 0.03f
-#define RAIO_PERSEGUIR_X  200.0f
+#define VELOCIDADE_RINO 0.04f
+#define RAIO_PERSEGUIR_X  250.0f
 
 Personagens::Rino::Rino(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::rino)

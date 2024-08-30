@@ -19,7 +19,7 @@ void Obstaculos::Espinho::executar()
 void Obstaculos::Espinho::imprimir(Gerenciador::GerenciadorGrafico* gG)
 {
     gG->desenhaEntidade(corpo);
-    corpo.setTexture(gG->carregaTextura("src/espinho.png"));
+    corpo.setTexture(gG->carregaTextura("imagens/espinho.png"));
 }
 
 void Obstaculos::Espinho::colide(Entidade *outraEntidade, sf::Vector2f intersecao)

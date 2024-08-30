@@ -85,7 +85,7 @@ void Personagens::Galinha::imprimir(Gerenciador::GerenciadorGrafico *gG)
     if(vivo)
     {
         gG->desenhaEntidade(corpo);
-        corpo.setTexture(gG->carregaTextura("src/galinha.png"));
+        corpo.setTexture(gG->carregaTextura("imagens/galinha.png"));
     }
 }
 

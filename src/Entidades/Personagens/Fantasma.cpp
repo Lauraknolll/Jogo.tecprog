@@ -57,7 +57,7 @@ void Personagens::Fantasma::imprimir(Gerenciador::GerenciadorGrafico *gG)
     if(vivo)
     {
         gG->desenhaEntidade(corpo);
-        corpo.setTexture(gG->carregaTextura("src/fantasma.png"));
+        corpo.setTexture(gG->carregaTextura("imagens/fantasma.png"));
     }
 }
 

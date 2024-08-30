@@ -24,7 +24,7 @@ void Personagens::Rino::imprimir(Gerenciador::GerenciadorGrafico* gG)
     if(vivo)
     {
         gG->desenhaEntidade(corpo);
-        corpo.setTexture(gG->carregaTextura("src/rino.png"));
+        corpo.setTexture(gG->carregaTextura("imagens/rino.png"));
     }
 }
 

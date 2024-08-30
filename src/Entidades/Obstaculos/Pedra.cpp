@@ -19,7 +19,7 @@ void Obstaculos::Pedra::executar()
 void Obstaculos::Pedra::imprimir(Gerenciador::GerenciadorGrafico* gG)
 {
     gG->desenhaEntidade(corpo);
-    corpo.setTexture(gG->carregaTextura("src/pedra.png"));
+    corpo.setTexture(gG->carregaTextura("imagens/pedra.png"));
 }
 
 void Obstaculos::Pedra::colide(Entidade *outraEntidade, sf::Vector2f intersecao)

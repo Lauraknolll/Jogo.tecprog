@@ -30,7 +30,7 @@ namespace Menus {
         bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 200), "TESTE");
         vectorBotao.push_back(bt);
 
-        titulo.setTextoInfo("JOGO");
+        titulo.setTextoInfo("ANI++");
         titulo.setTamanhoFonte(140);
         titulo.setCorTexto(32, 79, 221);
         titulo.setAlinhamentoTexto(AlinhamentoTexto::centro);

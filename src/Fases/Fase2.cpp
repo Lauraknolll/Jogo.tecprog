@@ -21,98 +21,6 @@ Fases::Fase2::~Fase2()
     ListaInimigos.clear();
 }
 
-void Fases::Fase2::criarJogadores()
-{
-    Personagens::Jogador* jog;
-    sf::Vector2f posi(0,0);
-    int x = 0, y = 0, indice = 0;
-
-    while (posi != sf::Vector2f(-1, -1))
-    {
-        posi = lerMapa(CAMINHO_MAPA_FASE2, &x, &y, &indice, -1);
-        
-        if (posi != sf::Vector2f(-1, -1) && ListaJogadores.size() < 2)
-        {
-            jog = new Personagens::Jogador(posi.x, posi.y, 56.0, 56.0);
-            ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
-            Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
-            if(dois_jogadores){
-                jog->getControle()->setKeys("O", "J", "L", "M");
-            }
-        }
-    }
-    dois_jogadores = true;
-}
-
-
-void Fases::Fase2::criarPlataformas()
-{
-    Obstaculos::Plataforma* plat;
-    sf::Vector2f posi(0,0);
-    int x = 0, y = 0, indice = 0;
-
-    while (posi != sf::Vector2f(-1, -1))
-    {
-        posi = lerMapa(CAMINHO_MAPA_FASE2, &x, &y, &indice, 1);
-        
-        if (posi != sf::Vector2f(-1, -1))
-        {
-            //std::cout << "Criando plataforma em: (" << posi.x << ", " << posi.y << ")" << std::endl;
-            plat = new Obstaculos::Plataforma(posi.x, posi.y, 32.0*y, 16.0); 
-            ListaObstaculos.push_back(static_cast<Entidades::Entidade*>(plat));
-            Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(plat));
-        }
-    }
-}
-
-void Fases::Fase2::criarGalinhas()
-{
-    Personagens::Galinha* ini;
-    sf::Vector2f posi(0,0);
-    int x = 0, y = 0, indice = 0, cont = 0;
-
-    while (posi != sf::Vector2f(-1, -1))
-    {
-        posi = lerMapa(CAMINHO_MAPA_FASE2, &x, &y, &indice, 4);
-        
-        if (posi != sf::Vector2f(-1, -1))
-        {
-            if((rand()%10 <= 7) && cont < maxInimigos) //número aleatório de inimigos
-            {
-                ini = new Personagens::Galinha(posi.x, posi.y, 62.0, 68.0);
-                list<Entidades::Entidade*>::iterator it;
-                it = ListaJogadores.begin();
-                ini->setJogador(static_cast<Personagens::Jogador*>(*it)); //pra poder perseguir
-                ListaInimigos.push_back(static_cast<Entidades::Entidade*>(ini));
-                Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(ini));
-                cont++;
-            }
-        }
-    }
-}
-
-void Fases::Fase2::criarLava()
-{
-    Obstaculos::Lava* lava;
-    sf::Vector2f posi(0,0);
-    int x = 0, y = 0, indice = 0, cont = 0;
-
-    while (posi != sf::Vector2f(-1, -1))
-    {
-        posi = lerMapa(CAMINHO_MAPA_FASE2, &x, &y, &indice, 2);
-        
-        if (posi != sf::Vector2f(-1, -1))
-        {
-            if((rand()%10 <= 7) && cont < maxObstaculos)
-            {
-                lava = new Obstaculos::Lava(posi.x, posi.y, 32.0*y, 16.0);
-                ListaObstaculos.push_back(static_cast<Entidades::Entidade*>(lava));
-                Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(lava));
-            }
-        }
-    }
-}
-
 void Fases::Fase2::criarRinos()
 {
     Personagens::Rino* chefao;
@@ -125,7 +33,7 @@ void Fases::Fase2::criarRinos()
         
         if (posi != sf::Vector2f(-1, -1))
         {
-            if((rand()%10 <= 7) && cont < maxInimigos) //numero aleatório de inimigos
+            if(cont < 3)
             {
                 chefao = new Personagens::Rino(posi.x, posi.y, 96.0, 64.0);
                 list<Entidades::Entidade*>::iterator it;
@@ -133,6 +41,17 @@ void Fases::Fase2::criarRinos()
                 chefao->setJogador(static_cast<Personagens::Jogador*>(*it));
                 ListaInimigos.push_back(static_cast<Entidades::Entidade*>(chefao));
                 Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(chefao));
+                cont++;
+            }
+            else if((rand()%10 < 5) && (3 < cont < maxInimigos)) //numero aleatório de inimigos
+            {
+                chefao = new Personagens::Rino(posi.x, posi.y, 96.0, 64.0);
+                list<Entidades::Entidade*>::iterator it;
+                it = ListaJogadores.begin();
+                chefao->setJogador(static_cast<Personagens::Jogador*>(*it));
+                ListaInimigos.push_back(static_cast<Entidades::Entidade*>(chefao));
+                Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(chefao));
+                cont++;
             }
         }
     }
@@ -151,11 +70,19 @@ void Fases::Fase2::criarEspinhos()
         
         if (posi != sf::Vector2f(-1, -1))
         {
-            if(( rand()%10 <= 7) && cont < maxObstaculos) // numero aleatório de obstáculos (50%)
+            if(cont < 3)
+            {
+                pinho = new Obstaculos::Espinho(posi.x, posi.y, 41.0, 26.0);
+                ListaObstaculos.push_back(static_cast<Entidades::Entidade*>(pinho));
+                Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(pinho));        
+                cont++;       
+            }
+            if(( rand()%10 < 5) && (3 < cont < maxObstaculos)) // numero aleatório de obstáculos (50%)
             {
                 pinho = new Obstaculos::Espinho(posi.x, posi.y, 41.0, 26.0);
                 ListaObstaculos.push_back(static_cast<Entidades::Entidade*>(pinho));
                 Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(pinho));
+                cont++;
             }
         }
     }
@@ -176,6 +103,11 @@ void Fases::Fase2::atualizar()
     
     gerenciarColisoes();
 
+    if(todosMortos())
+    {
+        changeEstado(Estados::gameOver);
+    }
+
 }
 
 void Fases::Fase2::render()
@@ -194,11 +126,11 @@ void Fases::Fase2::render()
 
 void Fases::Fase2::criar()
 {
-    criarJogadores();
-    criarPlataformas();
+    criarJogadores(CAMINHO_MAPA_FASE2);
+    criarPlataformas(CAMINHO_MAPA_FASE2);
 
-    criarGalinhas();
-    criarLava();
+    criarGalinhas(CAMINHO_MAPA_FASE2, maxInimigos);
+    criarLava(CAMINHO_MAPA_FASE2, maxObstaculos);
 
     criarRinos();
     criarEspinhos();
@@ -242,7 +174,7 @@ void Fases::Fase2::segundoJogador()
 {
     if(ativo){
         ativo = false;
-        criarJogadores();
+        criarJogadores(CAMINHO_MAPA_FASE2);
         pGColisoes = new Gerenciador::GerenciadorColisoes(&ListaJogadores, &ListaObstaculos, &ListaInimigos);
     }
 }

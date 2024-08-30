@@ -30,20 +30,14 @@ namespace Fases
 
             virtual void resetEstado();
 
-            void criarJogadores();
-
             void criarFantasmas(); //Inimigo fácil
 
-            void criarPlataformas(); 
-
-            void criarGalinhas(); // Inimigo médio
-
             void criarPedras(); //Obstáculo fácil
-            
-            void criarLava(); //Obstáculo médio
 
             virtual void sair();
             
             virtual void segundoJogador();
+
+            void vaiPraProximoFase();
     };
 }

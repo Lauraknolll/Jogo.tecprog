@@ -14,12 +14,12 @@ Estado(static_cast<Estados::GerenciadorEstado*>(GE), Estados::EstadoID::gameOver
     w = GM->getJanela()->getSize().x;
     h = GM->getJanela()->getSize().y;
 
-    bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 150), "MENU ");
+    bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 150), "MENU");
     bt->selecionar(true);
     vectorBotao.push_back(bt);
 
     titulo.setTextoInfo("GAME OVER");
-    titulo.setTamanhoFonte(140);
+    titulo.setTamanhoFonte(120);
     titulo.setCorTexto(32, 79, 221);
     titulo.setAlinhamentoTexto(AlinhamentoTexto::centro);
 

@@ -67,7 +67,7 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresInimigos()
     Entidades::Entidade *ent2 = nullptr;
     list<Entidades::Entidade *>::iterator it1;
     vector<Entidades::Entidade *>::iterator it2;
-    std::cout << Inimigos->size() << std::endl;
+    
     /* Colisão entre os jogadores e os inimigos */
     for (it1 = Jogadores->begin(); it1 != Jogadores->end(); it1++)
     {

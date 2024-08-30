@@ -57,6 +57,16 @@ namespace Fases
             virtual void segundoJogador() = 0;
 
             void gerenciarMortos();
+
+            bool todosMortos();
+
+            void criarJogadores(std::string caminho_mapa);
+
+            void criarPlataformas(std::string caminho_mapa);
+
+            void criarGalinhas(std::string caminho_mapa, int maxIni); // Inimigo médio
+
+            void criarLava(std::string caminho_mapa, int maxObs); // Obstáculo médio
     };
 }
 //bool Fases::Fase::dois_jogadores = false;

@@ -14,6 +14,7 @@ namespace Entidades
         vazio = 0,
         jogador,
         plataforma,
+        projetil,
         pedra,
         lava,
         espinho,

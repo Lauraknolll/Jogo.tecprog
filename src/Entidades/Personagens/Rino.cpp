@@ -76,10 +76,12 @@ void Personagens::Rino::persegueJogador(sf::Vector2f posJog, sf::Vector2f posIni
     if((posJog.x - posIni.x) > 0.0f)
     {
         corpo.move(VELOCIDADE_RINO, 0.0f);
+        lancaProjetil(1);
     }
     else 
     {
         corpo.move(-VELOCIDADE_RINO, 0.0f);
+        lancaProjetil(-1);
     }
 }
 
@@ -128,6 +130,11 @@ bool Personagens::Rino::getVivo()
 void Personagens::Rino::setVivo()
 {
     vivo = false;
+}
+
+void Personagens::Rino::lancaProjetil(int direcao)
+{
+    proj = new Entidades::Projetil(corpo.getPosition().x, corpo.getPosition().y, 10.0f, 10.0f, Entidades::projetil, direcao);
 }
 
 

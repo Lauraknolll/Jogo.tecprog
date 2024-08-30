@@ -1,5 +1,6 @@
 #pragma once
 #include "Inimigo.h"
+#include "../Projetil.h"
 
 namespace Personagens
 {
@@ -9,6 +10,7 @@ namespace Personagens
             Jogador* jogador;
             int chifrada;
             short movAle;
+            Entidades::Projetil *proj;
         public:
             Rino(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
 
@@ -37,5 +39,7 @@ namespace Personagens
             void colide(Entidade *outraEntidade, sf::Vector2f intersecao);
             
             void danificar(Personagens::Jogador* pontJogador);
+
+            void lancaProjetil(int direcao);
     };
 }

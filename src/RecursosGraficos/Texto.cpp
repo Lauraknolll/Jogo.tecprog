@@ -10,18 +10,21 @@ Texto::Texto(sf::Vector2f position, std::string info, const char* path) :
     info(info) 
 {
     texto.setString(info);
-    texto.setString("imprimir");
 
-    sf::Font font;
-    if (!font.loadFromFile(CAMINHO_FONTE)) {  // Certifique-se de que o caminho está correto
-        std::cerr << "Erro ao carregar a fonte" << std::endl;
-    }
-    //texto.setFont(font);
+    font.loadFromFile(CAMINHO_FONTE);
 
-    texto.setCharacterSize(TEXTO_SIZE);
+    texto.setFont(font);
+
+
+    
+    texto.setCharacterSize(20);
+    
     setAlinhamentoTexto(AlinhamentoTexto::esquerda);
-    texto.setPosition(position);
+
+    texto.setPosition(sf::Vector2f(position.x, position.y));
+
     texto.setFillColor(sf::Color::White);
+    
 }
 
 Texto::~Texto() 
@@ -52,6 +55,7 @@ void Texto::setTamanhoFonte(const unsigned int size)
 
 void Texto::setAlinhamentoTexto(AlinhamentoTexto option) 
 {
+    
     // Ajusta a origem para o alinhamento correto
     switch (option) 
     {
@@ -59,6 +63,7 @@ void Texto::setAlinhamentoTexto(AlinhamentoTexto option)
         texto.setOrigin(0, 0);
         break;
     case AlinhamentoTexto::centro:
+        
         texto.setOrigin(getTamanho().x / 2, getTamanho().y / 2);
         break;
     case AlinhamentoTexto::direita:
@@ -78,7 +83,9 @@ sf::Vector2f Texto::getTamanho() const
 
 void Texto::render() 
 {
+    
     pGGrafico->desenhaTexto(texto);
+
 }
 
 std::string Texto::getInfo() const 

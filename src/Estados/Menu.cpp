@@ -24,22 +24,27 @@ namespace Menus
 
         // Configuração do título
         titulo.setTextoInfo("JOGO");
+        
         titulo.setTamanhoFonte(140);
-        titulo.setCorTexto(77.6f, 68.2f, 44.3f); 
+        
+        titulo.setCorTexto(255.0f, 255.0f, 255.0f); 
+        
         titulo.setAlinhamentoTexto(AlinhamentoTexto::centro);
+        
         titulo.setPosicao(sf::Vector2f(w / 2.0f, h / 2.0f));
+        
 
         // Adicione botões
         Botao* bt = nullptr;
 
-        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f), "PLAY GAME");
+        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f), "FASE 1");
         bt->selecionar(true);
         vectorBotoes.push_back(bt);
 
-        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 100), "LEADERBOARD");
+        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 100), "FASE 2");
         vectorBotoes.push_back(bt);
 
-        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 200), "SETTINGS");
+        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 200), "MENU");
         vectorBotoes.push_back(bt);
     }
 
@@ -103,14 +108,12 @@ namespace Menus
 
     void Menu::resetEstado() 
     {
-        /*std::cout<<"puto";
         if (!vectorBotoes.empty()) {
-            std::cout<<"puto40";
             vectorBotoes[selecionado]->selecionar(false);
             selecionado = 2;
             vectorBotoes[selecionado]->selecionar(true);
             titulo.setPosicao(sf::Vector2f(titulo.getPosicao().x, 0.0f - titulo.getTamanho().y / 2));
-        }*/
+        }
     }
 
     void Menu::selecionarBaixo() 

@@ -40,7 +40,7 @@ void Botao::selecionar(bool selecionado)
     if (selecionado)
         this->corpo.setFillColor(sf::Color::Blue);
     else
-        this->corpo.setFillColor(sf::Color::Yellow);
+        this->corpo.setFillColor(sf::Color::Red);
 }
 
 void Botao::render()

@@ -23,6 +23,8 @@ private:
 
     sf::Text texto;
 
+    sf::Font font;
+
     static Gerenciador::GerenciadorGrafico* pGGrafico;
 
 public:

@@ -32,7 +32,7 @@ namespace Menus {
 
         titulo.setTextoInfo("JOGO");
         titulo.setTamanhoFonte(140);
-        titulo.setCorTexto(77.6, 68.2, 44.3);
+        titulo.setCorTexto(32, 79, 221);
         titulo.setAlinhamentoTexto(AlinhamentoTexto::centro);
 
         titulo.setPosicao(sf::Vector2f(w / 2.0f, h / 2.0f));

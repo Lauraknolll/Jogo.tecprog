@@ -53,7 +53,10 @@ namespace Fases
             sf::Vector2f lerMapa(std::string caminho_mapa, int* x, int* y, int* indice, long int num_entidade);
 
             virtual void sair() = 0;
+
             virtual void segundoJogador() = 0;
+
+            void gerenciarMortos();
     };
 }
 //bool Fases::Fase::dois_jogadores = false;

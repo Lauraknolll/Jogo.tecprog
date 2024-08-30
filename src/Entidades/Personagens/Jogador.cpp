@@ -76,7 +76,7 @@ void Personagens::Jogador::atualizar()
 
     cooldownDano += 1;
 
-    std::cout << num_vidas << std::endl;
+    //std::cout << num_vidas << std::endl;
 }
 
 const bool Personagens::Jogador::estaNaEsquerda() const

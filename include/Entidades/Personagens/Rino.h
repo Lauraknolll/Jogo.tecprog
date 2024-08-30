@@ -20,6 +20,10 @@ namespace Personagens
 
             int getNumVidas();
 
+            bool getVivo();
+
+            void setVivo();
+
             void movimentoAleatorio();
 
             void imprimir(Gerenciador::GerenciadorGrafico* gG);

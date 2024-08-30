@@ -41,8 +41,6 @@ namespace Fases
             void criarGalinhas(); // Inimigo médio
 
             void criarLava(); //Obstáculo médio
-            
-            void gerenciarMortos();
 
             virtual void sair();
             

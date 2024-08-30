@@ -7,29 +7,33 @@ namespace Personagens
 {
     class Fantasma : public Inimigo
     {
-        private:
-            short movAle;
-            int forcaEspiritual;
-            
-        public:
-            Fantasma(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
+    private:
+        short movAle;
+        int forcaEspiritual;
 
-            ~Fantasma();
+    public:
+        Fantasma(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
 
-            void executar();
+        ~Fantasma();
 
-            void moveAleatorio();
+        void executar();
 
-            void atualizarPosicao();
+        void moveAleatorio();
 
-            int getNumVidas();
+        void atualizarPosicao();
 
-            const sf::RectangleShape getCorpo();
+        int getNumVidas();
 
-            void imprimir(Gerenciador::GerenciadorGrafico *gG);
+        bool getVivo();
 
-            void colide(Entidade *outraEntidade, sf::Vector2f intersecao); 
-            
-            void danificar(Personagens::Jogador* pontJogador);
+        void setVivo();
+
+        const sf::RectangleShape getCorpo();
+
+        void imprimir(Gerenciador::GerenciadorGrafico *gG);
+
+        void colide(Entidade *outraEntidade, sf::Vector2f intersecao);
+
+        void danificar(Personagens::Jogador *pontJogador);
     };
 }

@@ -11,6 +11,7 @@ namespace Personagens
     {
         protected:
             sf::Clock relogio;
+            bool vivo;
         public:
             Inimigo(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0, Entidades::ID id = Entidades::vazio);
 
@@ -19,6 +20,10 @@ namespace Personagens
             virtual void executar() = 0;
 
             virtual int getNumVidas() = 0;
+
+            virtual bool getVivo() = 0;
+
+            virtual void setVivo() = 0;
 
             virtual void imprimir(Gerenciador::GerenciadorGrafico *gG) = 0;
 

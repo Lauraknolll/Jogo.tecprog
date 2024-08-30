@@ -121,7 +121,7 @@ namespace Menus {
             txt = new Texto(sf::Vector2f(w / 2.0f, 100 + 40 * i), textString + pontoString);
             txt->setTamanhoFonte(48);
             txt->setAlinhamentoTexto(AlinhamentoTexto::centro);
-            txt->setCorTexto(77.6, 68.2, 44.3);
+            txt->setCorTexto(32, 79, 221);
             pontos.push_back(txt);
         }
 

@@ -16,6 +16,7 @@ Fases::Fase2::Fase2(Estados::GerenciadorEstado* gE) :
 
 Fases::Fase2::~Fase2()
 {
+    ListaJogadores.clear();
     ListaObstaculos.clear();
     ListaInimigos.clear();
 }
@@ -164,13 +165,17 @@ void Fases::Fase2::executar()
 {
     
 }
+
 void Fases::Fase2::atualizar()
 {
     ativo = true;
+
+    gerenciarMortos();
     
     Lista_Entidades->percorrerLista();
     
     gerenciarColisoes();
+
 }
 
 void Fases::Fase2::render()
@@ -198,7 +203,7 @@ void Fases::Fase2::criar()
     criarRinos();
     criarEspinhos();
     
-    pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
+    pGColisoes = new Gerenciador::GerenciadorColisoes(&ListaJogadores, &ListaObstaculos, &ListaInimigos);
 }
 
 void Fases::Fase2::resetEstado()
@@ -224,36 +229,6 @@ void Fases::Fase2::resetEstado()
     criar();
 }
 
-void Fases::Fase2::gerenciarMortos() //substitui retira mortos do gerenciador de colisão
-{
-    if(ListaInimigos.size() > 0)
-    {
-        vector<Entidades::Entidade*>::iterator it;
-        Personagens::Inimigo* paux = nullptr;
-
-        for(int i = 0; i < ListaInimigos.size(); i++)
-        {
-            paux = static_cast<Personagens::Inimigo*>(ListaInimigos[i]);
-            if(paux != nullptr)
-            {
-                if(paux->getNumVidas() == 0)
-                {
-                    *it = ListaInimigos[i];
-                    std::cout << "Retirou alguém" << std::endl;
-                    ListaInimigos.erase(it);
-                //i--;
-                //if(i < 0)
-                //    i = -1;
-                }
-            }
-        }
-    }
-    else
-    {
-
-    }
-}
-
 void Fases::Fase2::sair()
 {
     if(ativo){
@@ -268,6 +243,6 @@ void Fases::Fase2::segundoJogador()
     if(ativo){
         ativo = false;
         criarJogadores();
-        pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
+        pGColisoes = new Gerenciador::GerenciadorColisoes(&ListaJogadores, &ListaObstaculos, &ListaInimigos);
     }
 }

@@ -54,8 +54,11 @@ const sf::RectangleShape Personagens::Fantasma::getCorpo()
 
 void Personagens::Fantasma::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
-    gG->desenhaEntidade(corpo);
-    corpo.setTexture(gG->carregaTextura("src/fantasma.png"));
+    if(vivo)
+    {
+        gG->desenhaEntidade(corpo);
+        corpo.setTexture(gG->carregaTextura("src/fantasma.png"));
+    }
 }
 
 void Personagens::Fantasma::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
@@ -81,14 +84,27 @@ void Personagens::Fantasma::danificar(Personagens::Jogador* pontJogador)
 
 void Personagens::Fantasma::atualizarPosicao()
 {
-    x = corpo.getPosition().x;
-    y = corpo.getPosition().y;
+    if(vivo)
+    {
+        x = corpo.getPosition().x;
+        y = corpo.getPosition().y;
 
-    velocidade.y += GRAVIDADE;
-    velocidade.y += FORCA_SUSTENTACAO;
+        velocidade.y += GRAVIDADE;
+        velocidade.y += FORCA_SUSTENTACAO;
+    }
 }
 
 int Personagens::Fantasma::getNumVidas()
 {
     return num_vidas;
+}
+
+bool Personagens::Fantasma::getVivo()
+{
+    return vivo;
+}
+
+void Personagens::Fantasma::setVivo()
+{
+    vivo = false;
 }

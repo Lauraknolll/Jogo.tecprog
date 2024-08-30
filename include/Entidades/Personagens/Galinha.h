@@ -27,6 +27,10 @@ namespace Personagens
 
             int getNumVidas();
 
+            bool getVivo();
+
+            void setVivo();
+
             void persegueJogador(sf::Vector2f posJog, sf::Vector2f posIni);
 
             const sf::RectangleShape getCorpo();

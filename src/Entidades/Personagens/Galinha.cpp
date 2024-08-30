@@ -82,8 +82,11 @@ const sf::RectangleShape Personagens::Galinha::getCorpo()
 
 void Personagens::Galinha::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
-    gG->desenhaEntidade(corpo);
-    corpo.setTexture(gG->carregaTextura("src/galinha.png"));
+    if(vivo)
+    {
+        gG->desenhaEntidade(corpo);
+        corpo.setTexture(gG->carregaTextura("src/galinha.png"));
+    }
 }
 
 void Personagens::Galinha::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
@@ -108,15 +111,28 @@ void Personagens::Galinha::danificar(Personagens::Jogador* pontJogador)
 
 void Personagens::Galinha::atualizarPosicao()
 {
-    x = corpo.getPosition().x;
-    y = corpo.getPosition().y;
+    if(vivo)
+    {
+        x = corpo.getPosition().x;
+        y = corpo.getPosition().y;
 
-    velocidade.y += GRAVIDADE;
-    velocidade.y += FORCA_SUSTENTACAO;
+        velocidade.y += GRAVIDADE;
+        velocidade.y += FORCA_SUSTENTACAO;
+    }
 }
 
 int Personagens::Galinha::getNumVidas()
 {
     return num_vidas;
+}
+
+bool Personagens::Galinha::getVivo()
+{
+    return vivo;
+}
+
+void Personagens::Galinha::setVivo()
+{
+    vivo = false;
 }
 

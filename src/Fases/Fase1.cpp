@@ -165,6 +165,8 @@ void Fases::Fase1::executar()
 void Fases::Fase1::atualizar()
 {
     ativo = true;
+
+    gerenciarMortos();
     
     Lista_Entidades->percorrerLista();
     
@@ -196,7 +198,7 @@ void Fases::Fase1::criar()
     criarGalinhas();
     criarLava();
 
-    pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
+    pGColisoes = new Gerenciador::GerenciadorColisoes(&ListaJogadores, &ListaObstaculos, &ListaInimigos);
 }
 
 void Fases::Fase1::resetEstado()
@@ -236,6 +238,6 @@ void Fases::Fase1::segundoJogador()
     if(ativo){
         ativo = false;
         criarJogadores();
-        pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
+        pGColisoes = new Gerenciador::GerenciadorColisoes(&ListaJogadores, &ListaObstaculos, &ListaInimigos);
     }
 }

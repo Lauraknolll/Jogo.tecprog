@@ -21,8 +21,11 @@ Personagens::Rino::~Rino()
 
 void Personagens::Rino::imprimir(Gerenciador::GerenciadorGrafico* gG)
 {
-    gG->desenhaEntidade(corpo);
-    corpo.setTexture(gG->carregaTextura("src/rino.png"));
+    if(vivo)
+    {
+        gG->desenhaEntidade(corpo);
+        corpo.setTexture(gG->carregaTextura("src/rino.png"));
+    }
 }
 
 void Personagens::Rino::executar()
@@ -107,12 +110,24 @@ int Personagens::Rino::getNumVidas()
 
 void Personagens::Rino::atualizarPosicao()
 {
-    x = corpo.getPosition().x;
-    y = corpo.getPosition().y;
+    if(vivo)
+    {
+        x = corpo.getPosition().x;
+        y = corpo.getPosition().y;
 
-    velocidade.y += GRAVIDADE;
-    velocidade.y += FORCA_SUSTENTACAO;
+        velocidade.y += GRAVIDADE;
+        velocidade.y += FORCA_SUSTENTACAO;
+    }
 }
 
+bool Personagens::Rino::getVivo()
+{
+    return vivo;
+}
+
+void Personagens::Rino::setVivo()
+{
+    vivo = false;
+}
 
 

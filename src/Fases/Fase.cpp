@@ -83,3 +83,29 @@ void Fases::Fase::gerenciarColisoes()
 {
     pGColisoes->colide();
 }
+
+void Fases::Fase::gerenciarMortos()
+{
+    if(ListaInimigos.size() > 0)
+    {
+        vector<Entidades::Entidade*>::iterator it;
+        Personagens::Inimigo* paux = nullptr;
+
+
+        for(it = ListaInimigos.begin(); it != ListaInimigos.end(); it++)
+        {
+            paux = static_cast<Personagens::Inimigo*>(*it);
+            if(paux != nullptr)
+            {
+                if(paux->getNumVidas() == 0)
+                {
+                    paux->setVivo(); //agora tá morto
+                }
+            }
+        }
+    }
+    else
+    {
+
+    }
+}

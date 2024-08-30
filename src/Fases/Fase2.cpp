@@ -5,6 +5,7 @@
 Fases::Fase2::Fase2(Estados::GerenciadorEstado* gE) :
     Fase(), Estados::Estado(gE, Estados::EstadoID::fase2), maxInimigos(7), maxObstaculos(10)
 {
+    ativo = false;
     setGerenciadorEstados(gE);
     Lista_Entidades = new Lista::ListaEntidade();
     pEventos = Gerenciador::GerenciadorEvento::getGerenciadorEventos();
@@ -29,22 +30,19 @@ void Fases::Fase2::criarJogadores()
     {
         posi = lerMapa(CAMINHO_MAPA_FASE2, &x, &y, &indice, -1);
         
-        if (posi != sf::Vector2f(-1, -1))
+        if (posi != sf::Vector2f(-1, -1) && ListaJogadores.size() < 2)
         {
             jog = new Personagens::Jogador(posi.x, posi.y, 56.0, 56.0);
-            //pEventos->setJogador(jog);
             ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
-            
-            jog = new Personagens::Jogador(posi.x, posi.y, 56.0, 56.0);
-            //pEventos->setJogador(jog);
-            ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
-            Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
-
-            jog->getControle()->setKeys("O", "J", "L", "M");
+            if(dois_jogadores){
+                jog->getControle()->setKeys("O", "J", "L", "M");
+            }
         }
     }
+    dois_jogadores = true;
 }
+
 
 void Fases::Fase2::criarPlataformas()
 {
@@ -164,32 +162,29 @@ void Fases::Fase2::criarEspinhos()
 
 void Fases::Fase2::executar()
 {
-    Gerenciador::GerenciadorGrafico *pontGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
+    
+}
+void Fases::Fase2::atualizar()
+{
+    ativo = true;
     
     Lista_Entidades->percorrerLista();
-    Lista_Entidades->desenharEntidades(pontGrafico);
+    
+    gerenciarColisoes();
+}
 
+void Fases::Fase2::render()
+{
     list<Entidades::Entidade*>::iterator it;
     Entidades::Entidade* ent1;
     Entidades::Entidade* ent2;
     it = ListaJogadores.begin();
     ent1 = *it;
-    it++;
-    ent2 = *it;
-    pontGrafico->centralizarCamera(sf::Vector2f((ent1->getPosicao().x/* + ent2->getPosicao().x*/), 350));
-
-    gerenciarColisoes();
-    gerenciarMortos();
-    
-}
-void Fases::Fase2::atualizar()
-{
-    executar();
-}
-
-void Fases::Fase2::render()
-{
-    
+    /*it++;
+    ent2 = *it;*/
+    Gerenciador::GerenciadorGrafico *pontGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
+    Lista_Entidades->desenharEntidades(pontGrafico);
+    pontGrafico->centralizarCamera(sf::Vector2f((ent1->getPosicao().x/* + ent2->getPosicao().x*/), 400));
 }
 
 void Fases::Fase2::criar()
@@ -208,7 +203,25 @@ void Fases::Fase2::criar()
 
 void Fases::Fase2::resetEstado()
 {
+    // Limpa todas as listas de entidades
+    Lista_Entidades->cleanList();
+    ListaJogadores.clear();
+    ListaObstaculos.clear();
+    ListaInimigos.clear();
 
+    dois_jogadores = false;
+
+    // Se necessário, também limpa e redefine o gerenciador de colisões
+    if (pGColisoes != nullptr) {
+        delete pGColisoes;
+        pGColisoes = nullptr;
+    }
+
+    // Recarrega o mapa e recria os elementos da fase
+    mapa = CAMINHO_MAPA_FASE2;
+    carregarMapa(mapa);
+    
+    criar();
 }
 
 void Fases::Fase2::gerenciarMortos() //substitui retira mortos do gerenciador de colisão
@@ -238,5 +251,23 @@ void Fases::Fase2::gerenciarMortos() //substitui retira mortos do gerenciador de
     else
     {
 
+    }
+}
+
+void Fases::Fase2::sair()
+{
+    if(ativo){
+        ativo = false;
+        resetEstado();
+        changeEstado(Estados::EstadoID::mainMenu);
+    }
+}
+            
+void Fases::Fase2::segundoJogador()
+{
+    if(ativo){
+        ativo = false;
+        criarJogadores();
+        pGColisoes = new Gerenciador::GerenciadorColisoes(ListaJogadores, ListaObstaculos, ListaInimigos);
     }
 }

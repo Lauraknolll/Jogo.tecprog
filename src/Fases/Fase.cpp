@@ -2,7 +2,7 @@
 #define CAMINHO_MAPA "src/mapaJogo1.json"
 
 Fases::Fase::Fase() :
-    Ente()
+    Ente(), control(this)
 {
 
 }

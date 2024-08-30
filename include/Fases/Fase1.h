@@ -41,5 +41,9 @@ namespace Fases
             void criarPedras(); //Obstáculo fácil
             
             void criarLava(); //Obstáculo médio
+
+            virtual void sair();
+            
+            virtual void segundoJogador();
     };
 }

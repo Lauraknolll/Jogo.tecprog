@@ -17,6 +17,7 @@
 #include "../Gerenciador/GerenciadorEventos.h"
 #include "../json.hpp"
 #include "../Gerenciador/GerenciadorInput.h"
+#include "../Controle/ControleFase.h"
 
 namespace Fases
 {
@@ -30,11 +31,11 @@ namespace Fases
             Gerenciador::GerenciadorColisoes* pGColisoes;
             Gerenciador::GerenciadorEvento* pEventos;
             Gerenciador::GerenciadorInput* pInput;
-            Personagens::Jogador* jog1;
-            Personagens::Jogador* jog2;
             nlohmann::json mapa; 
+            Controle::ControleFase control;
 
-            //static bool dois_jogadores;
+            bool dois_jogadores;
+            bool ativo;
            
         public:
             Fase();
@@ -50,6 +51,9 @@ namespace Fases
             void carregarMapa(std::string mapJson);
             
             sf::Vector2f lerMapa(std::string caminho_mapa, int* x, int* y, int* indice, long int num_entidade);
+
+            virtual void sair() = 0;
+            virtual void segundoJogador() = 0;
     };
 }
 //bool Fases::Fase::dois_jogadores = false;

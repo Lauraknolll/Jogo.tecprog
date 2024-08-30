@@ -11,39 +11,30 @@ namespace Estados
     class Jogo;
 }
 
-namespace Menus 
-{
-    class Menu: public Estados::Estado 
-    {
+namespace Menus {
+
+    class Menu {
     protected:
-        Estados::Jogo* pJogo;
-
-        Texto titulo;
-
-        std::vector<Botao*> vectorBotoes;
+        std::vector<Botao*> vectorBotao;
         std::vector<Botao*>::iterator it;
         int selecionado;
         int min;
         int max;
-        Controle::MenuControle controle;
+        Controle::MenuControle control;
         bool ativo;
 
     public:
-        Menu(Estados::Jogo* jog = nullptr);
+        Menu();
 
         virtual ~Menu();
 
-        void atualizar();
+        virtual void executar() = 0;
 
-        virtual void executar();
-
-        virtual void render();
-
-        virtual void resetEstado();
+        void updateView();
 
         void selecionarBaixo();
 
         void selecionarCima();
     };
 
-} 
+}

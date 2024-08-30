@@ -43,5 +43,9 @@ namespace Fases
             void criarLava(); //Obstáculo médio
             
             void gerenciarMortos();
+
+            virtual void sair();
+            
+            virtual void segundoJogador();
     };
 }

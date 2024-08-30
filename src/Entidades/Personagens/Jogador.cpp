@@ -38,11 +38,11 @@ void Personagens::Jogador::pular()
 
 void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
-    if(vivo)
-    {
+    //if(vivo)
+    //{
         gG->desenhaEntidade(corpo);
         corpo.setTexture(gG->carregaTextura("imagens/jogador.png"));
-    }
+    //}
 }
 
 void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)

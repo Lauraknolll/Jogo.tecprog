@@ -35,6 +35,13 @@ void Fases::Fase2::criarJogadores()
             //pEventos->setJogador(jog);
             ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
+            
+            jog = new Personagens::Jogador(posi.x, posi.y, 56.0, 56.0);
+            //pEventos->setJogador(jog);
+            ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
+            Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
+
+            jog->getControle()->setKeys("O", "J", "L", "M");
         }
     }
 }

@@ -187,3 +187,8 @@ const bool Personagens::Jogador::estaAtacando()
 {
     return Atacando;
 }
+
+Controle::ControleJogador* Personagens::Jogador::getControle()
+{
+    return &controle;
+}

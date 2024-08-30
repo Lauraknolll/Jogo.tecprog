@@ -33,6 +33,8 @@ namespace Fases
             Personagens::Jogador* jog1;
             Personagens::Jogador* jog2;
             nlohmann::json mapa; 
+
+            //static bool dois_jogadores;
            
         public:
             Fase();
@@ -50,3 +52,4 @@ namespace Fases
             sf::Vector2f lerMapa(std::string caminho_mapa, int* x, int* y, int* indice, long int num_entidade);
     };
 }
+//bool Fases::Fase::dois_jogadores = false;

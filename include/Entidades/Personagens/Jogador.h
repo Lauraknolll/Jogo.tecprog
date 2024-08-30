@@ -60,5 +60,7 @@ namespace Personagens
         const bool estaAtacando();
 
         void recebaDano(const int dano); 
+
+        Controle::ControleJogador* getControle();
     };
 }

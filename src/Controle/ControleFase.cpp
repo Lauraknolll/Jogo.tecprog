@@ -1,10 +1,10 @@
 #include "../../include/Controle/ControleFase.h"
 #include "../../include/Fases/Fase.h"
 
-Controle::ControleFase::ControleFase(Fases::Fase* pM):
+Controle::ControleFase::ControleFase(Fases::Fase* pF):
 Observador()
 {
-    pFase = pM;
+    pFase = pF;
 }
 
 Controle::ControleFase::~ControleFase()
@@ -15,7 +15,7 @@ Controle::ControleFase::~ControleFase()
 void Controle::ControleFase::anunciaPressionado(std::string key)
 {
     if (pFase == NULL) {
-        std::cout << "ERROR pointer to Menu NULL on MenuControle::notify()." << std::endl;
+        std::cout << "ERRO : ponteiro nulo" << std::endl;
         exit(1);
     }
 

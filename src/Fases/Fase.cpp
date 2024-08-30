@@ -1,7 +1,7 @@
 #include "../../include/Fases/Fase.h"
-#define CAMINHO_MAPA "src/mapaJogo1.json"
 
-Fases::Fase::Fase() : Ente(), control(this)
+Fases::Fase::Fase() : 
+Ente(), control(this)
 {
 }
 
@@ -98,9 +98,6 @@ void Fases::Fase::gerenciarMortos()
                 }
             }
         }
-    }
-    else
-    {
     }
 }
 

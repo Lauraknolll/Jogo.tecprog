@@ -5,9 +5,11 @@
 #include "../RecursosGraficos/Texto.h"
 #include <vector>
 
-namespace Menus {
+namespace Menus 
+{
 
-    class Placar : public Menu, public Estados::Estado {
+    class Placar : public Menu, public Estados::Estado 
+    {
     private:
         std::vector<Texto*> pontos;
         std::vector<Texto*>::iterator itr;

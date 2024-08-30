@@ -3,13 +3,16 @@
 #include "Observador.h"
 #include <map>
 
-namespace Personagens {
+namespace Personagens 
+{
     class Jogador;
 }
 
-namespace Controle {
+namespace Controle 
+{
 
-    class ControleJogador : public Observador {
+    class ControleJogador : public Observador 
+    {
     private:
         Personagens::Jogador* pJogador;
         std::map<std::string, bool> teclasPrecionadas;
@@ -19,7 +22,7 @@ namespace Controle {
         std::string ata;
 
     public:
-        ControleJogador(Personagens::Jogador* pP = nullptr);
+        ControleJogador(Personagens::Jogador* pJ = nullptr);
 
         ~ControleJogador();
 
@@ -27,9 +30,9 @@ namespace Controle {
 
         void anunciaSolto(std::string key);
 
-        void setJogador(Personagens::Jogador* p);
+        void setJogador(Personagens::Jogador* pJ);
 
         void setKeys(std::string pular, std::string direita, std::string esquerda, std::string ataque);
     };
 
-} // namespace Control
+} 

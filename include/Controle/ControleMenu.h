@@ -2,13 +2,17 @@
 
 #include "Observador.h"
 
-namespace Menus {
+namespace Menus 
+{
     class Menu;
-} // namespace Menus
+} 
 
-namespace Controle {
 
-    class MenuControle : public Observador {
+namespace Controle 
+{
+
+    class MenuControle : public Observador 
+    {
     private:
         Menus::Menu* pMenu;
 
@@ -24,4 +28,4 @@ namespace Controle {
         void setMenu(Menus::Menu* p);
     };
 
-} // namespace Control
+} 

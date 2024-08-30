@@ -3,13 +3,16 @@
 #include "Menu.h"
 #include "Estados.h"
 
-namespace Estados {
+namespace Estados 
+{
     class Jogo;
 }
 
-namespace Menus {
+namespace Menus 
+{
 
-    class MenuPrincipal : public Menu, public Estados::Estado {
+    class MenuPrincipal : public Menu, public Estados::Estado 
+    {
     private:
         Estados::Jogo* pJogo;
         Texto titulo;

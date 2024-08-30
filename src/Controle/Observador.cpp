@@ -2,13 +2,15 @@
 
 namespace Controle {
 
-    Observador::Observador() {
-        this->pIM = Gerenciador::GerenciadorInput::getGerenciadorInput();
-        pIM->Attach(this);
+    Observador::Observador()
+    {
+        this->pGInput = Gerenciador::GerenciadorInput::getGerenciadorInput();
+        pGInput->Attach(this);
     }
 
-    Observador::~Observador() {
-        pIM->Detach(this);
+    Observador::~Observador() 
+    {
+        pGInput->Detach(this);
     }
 
 }

@@ -2,18 +2,21 @@
 
 #include "Observador.h"
 
-namespace Fases {
+namespace Fases 
+{
     class Fase;
-} // namespace Fase
+} 
 
-namespace Controle {
+namespace Controle
+{
 
-    class ControleFase : public Observador {
+    class ControleFase : public Observador 
+    {
     private:
         Fases::Fase* pFase;
 
     public:
-        ControleFase(Fases::Fase* pM = NULL);
+        ControleFase(Fases::Fase* pF = NULL);
 
         ~ControleFase();
 
@@ -24,4 +27,4 @@ namespace Controle {
         void setFase(Fases::Fase* p);
     };
 
-} // namespace Control
+} 

@@ -6,17 +6,20 @@
 namespace Controle {
 
     MenuControle::MenuControle(Menus::Menu* pM) :
-    Observador() {
+    Observador() 
+    {
         pMenu = pM;
     }
 
-    MenuControle::~MenuControle() {
+    MenuControle::~MenuControle() 
+    {
         pMenu = NULL;
     }
 
-    void MenuControle::anunciaPressionado(std::string key) {
+    void MenuControle::anunciaPressionado(std::string key) 
+    {
         if (pMenu == NULL) {
-            std::cout << "ERROR pointer to Menu NULL on MenuControle::notify()." << std::endl;
+            std::cout << "ERRO ; ponteiro nulo." << std::endl;
             exit(1);
         }
 
@@ -37,4 +40,4 @@ namespace Controle {
         pMenu = p;
     }
 
-} // namespace Control
+} 

@@ -11,9 +11,11 @@ namespace Estados
     class Jogo;
 }
 
-namespace Menus {
+namespace Menus 
+{
 
-    class Menu {
+    class Menu 
+    {
     protected:
         std::vector<Botao*> vectorBotao;
         std::vector<Botao*>::iterator it;

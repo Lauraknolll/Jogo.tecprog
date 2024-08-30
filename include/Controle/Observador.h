@@ -2,11 +2,13 @@
 
 #include "../Gerenciador/GerenciadorInput.h"
 
-namespace Controle {
+namespace Controle 
+{
 
-    class Observador {
+    class Observador 
+    {
     private:
-        Gerenciador::GerenciadorInput* pIM;
+        Gerenciador::GerenciadorInput* pGInput;
 
     public:
         Observador();
@@ -19,4 +21,4 @@ namespace Controle {
 
     };
 
-} // namespace Control
+} 

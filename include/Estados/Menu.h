@@ -25,11 +25,11 @@ namespace Menus
         int selecionado;
         int min;
         int max;
-        Controle::MenuControle* controle;
+        Controle::MenuControle controle;
         bool ativo;
 
     public:
-        Menu(Estados::Jogo* jog = nullptr, Controle::MenuControle* cont = nullptr);
+        Menu(Estados::Jogo* jog = nullptr);
 
         virtual ~Menu();
 

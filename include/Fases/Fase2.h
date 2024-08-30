@@ -13,11 +13,10 @@ namespace Fases
         private:
             bool esta_final;
             bool t_dois;
-            Controle::ControleJogador *controle;
             const int maxInimigos;
             const int maxObstaculos;
         public:
-            Fase2(Estados::GerenciadorEstado* gE, Controle::ControleJogador* cont);
+            Fase2(Estados::GerenciadorEstado* gE);
 
             ~Fase2();
 

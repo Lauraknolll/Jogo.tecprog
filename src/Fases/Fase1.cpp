@@ -3,12 +3,9 @@
 
 #define CAMINHO_MAPA_FASE1 "src/mapaJogo1.json" // camonho para o mapa da fase 1
 
-Fases::Fase1::Fase1(Estados::GerenciadorEstado* gE, Controle::ControleJogador* cont) :
+Fases::Fase1::Fase1(Estados::GerenciadorEstado* gE) :
     Fase(), Estados::Estado(gE, Estados::EstadoID::fase1), maxInimigos(5), maxObstaculos(7)
 {
-    pInput = Gerenciador::GerenciadorInput::getGerenciadorInput();
-    controle = cont;
-    pInput->Attach(static_cast<Controle::Observador*>(controle));
     setGerenciadorEstados(gE);
     Lista_Entidades = new Lista::ListaEntidade();
     pEventos = Gerenciador::GerenciadorEvento::getGerenciadorEventos();
@@ -22,7 +19,6 @@ Fases::Fase1::~Fase1()
 {
     ListaObstaculos.clear();
     ListaInimigos.clear();
-    delete controle;
 }
 
 void Fases::Fase1::criarJogadores()
@@ -38,7 +34,6 @@ void Fases::Fase1::criarJogadores()
         if (posi != sf::Vector2f(-1, -1))
         {
             jog = new Personagens::Jogador(posi.x, posi.y, 56.0, 56.0);
-            controle->setJogador(jog);
             //pEventos->setJogador(jog);
             ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));

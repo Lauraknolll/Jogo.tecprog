@@ -2,12 +2,9 @@
 
 #define CAMINHO_MAPA_FASE2 "src/mapaJogo2.json"//caminho para o mapa da fase 2
 
-Fases::Fase2::Fase2(Estados::GerenciadorEstado* gE, Controle::ControleJogador* cont) :
+Fases::Fase2::Fase2(Estados::GerenciadorEstado* gE) :
     Fase(), Estados::Estado(gE, Estados::EstadoID::fase2), maxInimigos(7), maxObstaculos(10)
 {
-    pInput = Gerenciador::GerenciadorInput::getGerenciadorInput();
-    controle = cont;
-    pInput->Attach(static_cast<Controle::Observador*>(controle));
     setGerenciadorEstados(gE);
     Lista_Entidades = new Lista::ListaEntidade();
     pEventos = Gerenciador::GerenciadorEvento::getGerenciadorEventos();
@@ -35,7 +32,6 @@ void Fases::Fase2::criarJogadores()
         if (posi != sf::Vector2f(-1, -1))
         {
             jog = new Personagens::Jogador(posi.x, posi.y, 56.0, 56.0);
-            controle->setJogador(jog);
             //pEventos->setJogador(jog);
             ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));

@@ -6,23 +6,18 @@ Estados::Jogo::Jogo() :
     pontGGrafico(Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()),
     pontGEvento(Gerenciador::GerenciadorEvento::getGerenciadorEventos())
 {
-    pInput = Gerenciador::GerenciadorInput::getGerenciadorInput();
     pontGEvento->setGerenciadosGrafico(pontGGrafico);
 
-    control_menu = new Controle::MenuControle();
-    control_jogador = new Controle::ControleJogador();
-
-    Estados::Estado* estado = static_cast<Estados::Estado*>(new Fases::Fase1(this, control_jogador));
+    Estados::Estado* estado = static_cast<Estados::Estado*>(new Fases::Fase1(this));
     inserirEstado(estado);
-    estado = static_cast<Estados::Estado*>(new Fases::Fase2(this, control_jogador));
+    
+    estado = static_cast<Estados::Estado*>(new Fases::Fase2(this));
     inserirEstado(estado);
 
-    estado = static_cast<Estados::Estado*>(new Menus::Menu(this, control_menu));
+    estado = static_cast<Estados::Estado*>(new Menus::Menu(this));
     inserirEstado(estado);
-    control_menu->setMenu(static_cast<Menus::Menu*>(estado));
     
     mudarEstadoAtual(Estados::EstadoID::mainMenu);
-    pInput->Attach(control_menu);
 
 }
 

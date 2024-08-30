@@ -7,7 +7,7 @@
 
 
 Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
-    Personagem(xx, yy, ww, hh, Entidades::jogador), pPular(false), andando(false), emEsquerda(false), lentidao(1), Atacando(false)
+    Personagem(xx, yy, ww, hh, Entidades::jogador), pPular(false), andando(false), emEsquerda(false), lentidao(1), Atacando(false), controle(this)
 {
     num_vidas = VIDAS_JOGADOR;
     cooldownDano = 0;

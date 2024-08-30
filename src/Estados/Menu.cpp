@@ -5,19 +5,18 @@
 namespace Menus 
 {
 
-    Menu::Menu(Estados::Jogo* jog, Controle::MenuControle* cont) :
+    Menu::Menu(Estados::Jogo* jog) :
     Estado(static_cast<Estados::GerenciadorEstado*>(jog), Estados::EstadoID::mainMenu),
     pJogo(jog),
     selecionado(0),
     min(0),
     max(2),
-    controle(cont),
+    controle(this),
     ativo(false)
     {
         // Armazene o GerenciadorGrafico em uma variável local
         auto* GG = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
         float w, h;
-        controle->setMenu(this);
 
         // Obtenha o tamanho da janela
         w = GG->getJanela()->getSize().x;
@@ -114,7 +113,7 @@ namespace Menus
         }*/
     }
 
-    void Menu::selecionarCima() 
+    void Menu::selecionarBaixo() 
     {
         if (ativo) 
         {
@@ -128,7 +127,7 @@ namespace Menus
         }
     }
 
-    void Menu::selecionarBaixo() 
+    void Menu::selecionarCima() 
     {
         if (ativo) 
         {

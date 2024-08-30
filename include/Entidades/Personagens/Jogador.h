@@ -1,6 +1,7 @@
 #pragma once 
 #include "Personagem.h"
 #include "math.h"
+#include "../../Controle/ControleJogador.h"
 
 namespace Personagens
 {
@@ -18,6 +19,8 @@ namespace Personagens
         
         float lentidao;
         float cooldownDano;
+
+        Controle::ControleJogador controle;
 
     public:
         Jogador(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);

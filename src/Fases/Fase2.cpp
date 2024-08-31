@@ -178,7 +178,7 @@ void Fases::Fase2::segundoJogador()
 
 void Fases::Fase2::morreu()
 {
-    if(!checarJogadores()){
+    if(checarJogadores()){
         ativo = false;
         changeEstado(Estados::EstadoID::gameOver);
     }

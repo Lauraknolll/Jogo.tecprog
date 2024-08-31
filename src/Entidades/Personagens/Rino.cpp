@@ -37,23 +37,25 @@ void Personagens::Rino::imprimir(Gerenciador::GerenciadorGrafico* gG)
 
 void Personagens::Rino::executar()
 {
-    cont++;
-    sf::Vector2f posicaoJogador = jogador->getCorpo().getPosition();
-    sf::Vector2f posicaoInimigo = corpo.getPosition();
-    atualizarPosicao();
-    if(proj){
-        proj->atualizarPosicao();
-    }
-    
+    if(vivo){
+        cont++;
+        sf::Vector2f posicaoJogador = jogador->getCorpo().getPosition();
+        sf::Vector2f posicaoInimigo = corpo.getPosition();
+        atualizarPosicao();
+        if(proj){
+            proj->atualizarPosicao();
+        }
+        
 
-    if(fabs(posicaoJogador.x - posicaoInimigo.x) <= RAIO_PERSEGUIR_X)
-    {
-        persegueJogador(posicaoJogador, posicaoInimigo);
-        cont = 0;
-    }
-    else
-    {
-        movimentoAleatorio();
+        if(fabs(posicaoJogador.x - posicaoInimigo.x) <= RAIO_PERSEGUIR_X)
+        {
+            persegueJogador(posicaoJogador, posicaoInimigo);
+            cont = 0;
+        }
+        else
+        {
+            movimentoAleatorio();
+        }
     }
 }
 

@@ -39,5 +39,7 @@ namespace Fases
             virtual void segundoJogador();
 
             void vaiPraProximoFase();
+
+            void morreu();
     };
 }

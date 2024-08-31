@@ -11,7 +11,7 @@ namespace Menus {
     titulo() {
         Gerenciador::GerenciadorGrafico* GM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
         Botao* bt = NULL;
-         float w, h;
+        float w, h;
 
         // Obtenha o tamanho da janela
         w = GM->getJanela()->getSize().x;

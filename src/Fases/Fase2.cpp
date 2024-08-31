@@ -103,10 +103,7 @@ void Fases::Fase2::atualizar()
     
     gerenciarColisoes();
 
-    if(todosMortos())
-    {
-        changeEstado(Estados::gameOver);
-    }
+    morreu();
 
 }
 
@@ -176,5 +173,22 @@ void Fases::Fase2::segundoJogador()
         ativo = false;
         criarJogadores(CAMINHO_MAPA_FASE2);
         pGColisoes = new Gerenciador::GerenciadorColisoes(&ListaJogadores, &ListaObstaculos, &ListaInimigos);
+    }
+}
+
+void Fases::Fase2::morreu()
+{
+    if(!checarJogadores()){
+        ativo = false;
+        changeEstado(Estados::EstadoID::gameOver);
+    }
+}
+
+void Fases::Fase2::venceuJogo()
+{
+    if(todosMortos())
+    {
+        ativo = false;
+        changeEstado(Estados::fase2);
     }
 }

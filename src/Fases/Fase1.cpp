@@ -100,6 +100,8 @@ void Fases::Fase1::atualizar()
     gerenciarColisoes();
 
     vaiPraProximoFase();
+
+    morreu();
 }
 
 void Fases::Fase1::render()
@@ -175,8 +177,16 @@ void Fases::Fase1::vaiPraProximoFase()
 {
     if(todosMortos())
     {
+        ativo = false;
         changeEstado(Estados::fase2);
     }
 }
 
+void Fases::Fase1::morreu()
+{
+    if(checarJogadores()){
+        ativo = false;
+        changeEstado(Estados::EstadoID::gameOver);
+    }
+}
 

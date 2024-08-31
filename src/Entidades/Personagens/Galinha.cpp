@@ -7,7 +7,7 @@
 Personagens::Galinha::Galinha(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::galinha)
 {
-    bicada = rand()%20;
+    bicada = rand()%20 + 1;
     num_vidas = VIDAS_GALINHA;
     corpo.setFillColor(sf::Color::White);
     velocidade.x = VELOCIDADE_GALINHA;
@@ -49,17 +49,19 @@ void Personagens::Galinha::setJogador(Personagens::Jogador* pJ)
 
 void Personagens::Galinha::executar()
 {
-    sf::Vector2f posicaoJogador = jogador->getCorpo().getPosition();
-    sf::Vector2f posicaoInimigo = corpo.getPosition();
-    atualizarPosicao();
+    if(vivo){
+        sf::Vector2f posicaoJogador = jogador->getCorpo().getPosition();
+        sf::Vector2f posicaoInimigo = corpo.getPosition();
+        atualizarPosicao();
 
-    if(fabs(posicaoJogador.x - posicaoInimigo.x) <= RAIO_PERSEGUIR_X)
-    {
-        persegueJogador(posicaoJogador, posicaoInimigo);
-    }
-    else
-    {
-        moveAleatorio();
+        if(fabs(posicaoJogador.x - posicaoInimigo.x) <= RAIO_PERSEGUIR_X)
+        {
+            persegueJogador(posicaoJogador, posicaoInimigo);
+        }
+        else
+        {
+            moveAleatorio();
+        }
     }
 }
 

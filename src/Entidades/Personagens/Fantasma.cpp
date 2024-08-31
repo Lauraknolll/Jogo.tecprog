@@ -23,8 +23,10 @@ Personagens::Fantasma::~Fantasma()
 
 void Personagens::Fantasma::executar()
 {
-    atualizarPosicao();
-    moveAleatorio();
+    if(vivo){
+        atualizarPosicao();
+        moveAleatorio();
+    }
 }
 
 void Personagens::Fantasma::moveAleatorio()

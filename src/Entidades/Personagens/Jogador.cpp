@@ -2,13 +2,14 @@
 
 #define VELJOG 1.f
 #define VELOCIDADE_JOGADOR 0.0001f
-#define COOLDOWN_DANO 100.f
-#define VIDAS_JOGADOR 7500;
+#define COOLDOWN_DANO 10000.f
+#define VIDAS_JOGADOR 50;
 
 
 Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
     Personagem(xx, yy, ww, hh, Entidades::jogador), pPular(false), andando(false), emEsquerda(false), lentidao(1), Atacando(false), controle(this)
 {
+    vivo = true;
     num_vidas = VIDAS_JOGADOR;
     cooldownDano = 0;
     corpo.setFillColor(sf::Color::Blue);
@@ -23,8 +24,10 @@ Personagens::Jogador::~Jogador()
 
 void Personagens::Jogador::executar()
 {
-    corpo.setFillColor(sf::Color::White);
-    atualizar();
+    if(vivo){
+        corpo.setFillColor(sf::Color::White);
+        atualizar();
+    }
 }
 
 void Personagens::Jogador::pular()
@@ -38,11 +41,11 @@ void Personagens::Jogador::pular()
 
 void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
 {
-    //if(vivo)
-    //{
+    if(vivo)
+    {
         gG->desenhaEntidade(corpo);
         corpo.setTexture(gG->carregaTextura("imagens/jogador.png"));
-    //}
+    }
 }
 
 void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector2f intersecao)
@@ -174,9 +177,10 @@ void Personagens::Jogador::calculaPontos()
 
 void Personagens::Jogador::recebaDano(const int dano) 
 {
-    //printf("%d\n", dano);
+    
     if (cooldownDano > COOLDOWN_DANO) 
     {
+        printf("%d - %d\n", dano, num_vidas);
         num_vidas -= dano;
         /*if (num_vidas <= 0)
             active = false;*/
@@ -197,6 +201,16 @@ void Personagens::Jogador::paraAtacar()
 const bool Personagens::Jogador::estaAtacando()
 {
     return Atacando;
+}
+
+void Personagens::Jogador::setVivo()
+{
+    vivo = false;
+}
+
+bool Personagens::Jogador::getVivo()
+{
+    return vivo;
 }
 
 Controle::ControleJogador* Personagens::Jogador::getControle()

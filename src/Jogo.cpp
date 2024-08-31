@@ -13,13 +13,13 @@ Estados::Jogo::Jogo() :
     Estados::Estado* estado = static_cast<Estados::Estado*>(new Fases::Fase1(this));
     inserirEstado(estado);
     
-    estado = static_cast<Estados::Estado*>(new Fases::Fase2(this));
+    Estados::Estado* estado2 = static_cast<Estados::Estado*>(new Fases::Fase2(this));
+    inserirEstado(estado2);
+
+    estado = static_cast<Estados::Estado*>(new Menus::GameOver(this, static_cast<Fases::Fase1*>(estado)->getPontuacao(), static_cast<Fases::Fase2*>(estado2)->getPontuacao()));
     inserirEstado(estado);
 
     estado = static_cast<Estados::Estado*>(new Menus::MenuPrincipal(this));
-    inserirEstado(estado);
-
-    estado = static_cast<Estados::Estado*>(new Menus::GameOver(this));
     inserirEstado(estado);
 
     estado = static_cast<Estados::Estado*>(new Menus::Placar(this));

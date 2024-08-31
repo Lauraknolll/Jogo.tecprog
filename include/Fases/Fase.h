@@ -34,6 +34,8 @@ namespace Fases
             nlohmann::json mapa; 
             Controle::ControleFase control;
 
+            int pontuacao;
+
             bool dois_jogadores;
             bool ativo;
            
@@ -67,6 +69,12 @@ namespace Fases
             void criarGalinhas(std::string caminho_mapa, int maxIni); // Inimigo médio
 
             void criarLava(std::string caminho_mapa, int maxObs); // Obstáculo médio
+
+            bool checarJogadores();
+
+            int* getPontuacao();
+
+            virtual void morreu() = 0;
     };
 }
 //bool Fases::Fase::dois_jogadores = false;

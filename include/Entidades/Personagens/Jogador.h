@@ -63,6 +63,10 @@ namespace Personagens
 
         void recebaDano(const int dano); 
 
+        void setVivo();
+
+        bool getVivo();
+
         Controle::ControleJogador* getControle();
     };
 }

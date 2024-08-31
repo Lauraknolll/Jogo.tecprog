@@ -5,6 +5,9 @@
 #include "../Gerenciador/GerenciadorEstados.h"
 #include "../RecursosGraficos/Texto.h"
 #include "../Gerenciador/GerenciadorEstados.h"
+#include "../Controle/ControleTexto.h"
+#include "../Fases/Fase1.h"
+#include "../Fases/Fase2.h"
 
 namespace Menus
 {
@@ -12,9 +15,16 @@ namespace Menus
     {
         private:
             Texto titulo;
-            Texto mensagem;
+            Texto pontos;
+            Texto nome;
+            Texto nameLabel;
+            Controle::ControleTexto input;
+            int pontuacao;
+            int *fase_1, *fase_2;
+            unsigned int pointsToIncrement;
+        
         public:
-            GameOver(Estados::GerenciadorEstado* GE);
+            GameOver(Estados::GerenciadorEstado* GE, int* fase1, int* fase2);
             
             ~GameOver();
 
@@ -25,5 +35,7 @@ namespace Menus
             void executar();
 
             void resetEstado();
+
+            void escreverNoPlacar();
     };
 }

@@ -3,6 +3,7 @@
 Fases::Fase::Fase() : 
 Ente(), control(this)
 {
+    pontuacao = 0;
 }
 
 Fases::Fase::~Fase()
@@ -82,8 +83,8 @@ void Fases::Fase::gerenciarColisoes()
 
 void Fases::Fase::gerenciarMortos()
 {
-    list<Entidades::Entidade *>::iterator it_jog;
-    it_jog = ListaJogadores.begin();
+    
+    //it_jog = ListaJogadores.begin();
     if (ListaInimigos.size() > 0)
     {
         vector<Entidades::Entidade *>::iterator it;
@@ -96,7 +97,26 @@ void Fases::Fase::gerenciarMortos()
             {
                 if (paux->getNumVidas() == 0)
                 {
-                    (static_cast<Personagens::Jogador*>((*it_jog)))->calculaPontos();
+                    //(static_cast<Personagens::Jogador*>((*it_jog)))->calculaPontos();
+                    paux->setVivo(); // agora tá morto
+                    pontuacao += 10;
+                }
+            }
+        }
+    }
+
+    if (ListaJogadores.size() > 0)
+    {
+        list<Entidades::Entidade *>::iterator it_jog;
+        Personagens::Jogador *paux = nullptr;
+
+        for (it_jog = ListaJogadores.begin(); it_jog != ListaJogadores.end(); it_jog++)
+        {
+            paux = static_cast<Personagens::Jogador *>(*it_jog);
+            if (paux != nullptr)
+            {
+                if (paux->getNumVidas() <= 0 || paux->getPosicao().y > 600.f)
+                {
                     paux->setVivo(); // agora tá morto
                 }
             }
@@ -232,4 +252,31 @@ void Fases::Fase::criarLava(std::string caminho_mapa, int maxObs)
             }
         }
     }
+}
+
+bool Fases::Fase::checarJogadores()
+{
+    if (ListaJogadores.size() > 0)
+    {
+        list<Entidades::Entidade *>::iterator it;
+        Personagens::Jogador *paux = nullptr;
+
+        for (it = ListaJogadores.begin(); it != ListaJogadores.end(); it++)
+        {
+            paux = static_cast<Personagens::Jogador *>(*it);
+            if (paux != nullptr)
+            {
+                if(paux->getVivo())
+                    
+                    return false;
+            }
+        }
+
+    }
+    return true;
+}
+
+int* Fases::Fase::getPontuacao()
+{
+    return &pontuacao;
 }

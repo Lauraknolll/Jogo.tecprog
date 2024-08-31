@@ -23,6 +23,8 @@ void Controle::ControleFase::anunciaPressionado(std::string key)
         pFase->sair();
     if (key == "T")
         pFase->segundoJogador();
+    if (key == "P")
+        pFase->pause();
 }
 
 void Controle::ControleFase::anunciaSolto(std::string key)

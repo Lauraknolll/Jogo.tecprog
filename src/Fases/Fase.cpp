@@ -1,9 +1,26 @@
 #include "../../include/Fases/Fase.h"
+#include "../../include/RecursosGraficos/Botao.h"
 
 Fases::Fase::Fase() : 
 Ente(), control(this)
 {
     pontuacao = 0;
+    pausado = false;
+
+    // Obtenha o tamanho da janela
+
+    pausar.setTextoInfo("PAUSADO");
+    pausar.setTamanhoFonte(70);
+    pausar.setCorTexto(32, 79, 221);
+
+    mensagem.setTextoInfo("pressione 'P' para continuar");
+    mensagem.setTamanhoFonte(20);
+    mensagem.setCorTexto(32, 79, 221);
+
+    mensagem2.setTextoInfo("pressione 'esc' para sair");
+    mensagem2.setTamanhoFonte(20);
+    mensagem2.setCorTexto(32, 79, 221);
+
 }
 
 Fases::Fase::~Fase()
@@ -280,3 +297,32 @@ int* Fases::Fase::getPontuacao()
 {
     return &pontuacao;
 }
+
+void Fases::Fase::pause()
+{
+    pausado = !pausado;
+}
+
+void Fases::Fase::mensagemPausado()
+{
+    sf::View camera;
+    sf::Vector2f centro;
+    Gerenciador::GerenciadorGrafico* GG = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
+    camera = GG->getCamera();
+    
+    centro = camera.getCenter();
+
+    pausar.setPosicao(sf::Vector2f(centro.x - 250, centro.y - 60));
+    mensagem.setPosicao(sf::Vector2f(centro.x - 250, centro.y + 40));
+    mensagem2.setPosicao(sf::Vector2f(centro.x - 250, centro.y + 90));
+
+    pausar.setCorTexto(255, 0, 0);
+    mensagem.setCorTexto(255, 0, 0);
+    mensagem2.setCorTexto(255, 0, 0);
+
+    pausar.render();
+    mensagem.render();
+    mensagem2.render();
+}
+
+

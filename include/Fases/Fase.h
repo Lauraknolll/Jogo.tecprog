@@ -18,6 +18,8 @@
 #include "../json.hpp"
 #include "../Gerenciador/GerenciadorInput.h"
 #include "../Controle/ControleFase.h"
+#include "../../include/RecursosGraficos/Botao.h"
+#include "../../include/RecursosGraficos/Texto.h"
 
 namespace Fases
 {
@@ -34,10 +36,17 @@ namespace Fases
             nlohmann::json mapa; 
             Controle::ControleFase control;
 
+            Botao tela_pausado;
+
+            Texto pausar;
+            Texto mensagem;
+            Texto mensagem2;
+
             int pontuacao;
 
             bool dois_jogadores;
             bool ativo;
+            bool pausado;
            
         public:
             Fase();
@@ -75,6 +84,10 @@ namespace Fases
             int* getPontuacao();
 
             virtual void morreu() = 0;
+            
+            virtual void pause();
+
+            void mensagemPausado();
     };
 }
 //bool Fases::Fase::dois_jogadores = false;

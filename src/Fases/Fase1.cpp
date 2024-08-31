@@ -93,15 +93,21 @@ void Fases::Fase1::atualizar()
 {
     ativo = true;
 
-    gerenciarMortos();
-    
-    Lista_Entidades->percorrerLista();
-    
-    gerenciarColisoes();
+    if(!pausado){
+        gerenciarMortos();
+        
+        Lista_Entidades->percorrerLista();
+        
+        gerenciarColisoes();
 
-    vaiPraProximoFase();
+        vaiPraProximoFase();
 
-    morreu();
+        morreu();
+    }else{
+        mensagemPausado();
+    }
+
+
 }
 
 void Fases::Fase1::render()
@@ -159,6 +165,7 @@ void Fases::Fase1::sair()
 {
     if(ativo){
         ativo = false;
+        pausado = false;
         resetEstado();
         changeEstado(Estados::EstadoID::mainMenu);
     }

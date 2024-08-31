@@ -94,6 +94,11 @@ void Gerenciador::GerenciadorGrafico::centralizarCamera(sf::Vector2f centro)
     janela->setView(camera);
 }
 
+sf::View Gerenciador::GerenciadorGrafico::getCamera()
+{
+    return camera;
+}
+
 
 
 

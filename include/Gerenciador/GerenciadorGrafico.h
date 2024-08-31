@@ -39,5 +39,7 @@ namespace Gerenciador
             sf::Texture* carregaTextura(std::string caminho);
             
             void centralizarCamera(sf::Vector2f centro);
+
+            sf::View getCamera();            
     };
 }

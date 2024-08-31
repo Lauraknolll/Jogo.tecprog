@@ -97,14 +97,17 @@ void Fases::Fase2::atualizar()
 {
     ativo = true;
 
-    gerenciarMortos();
+    if(!pausado){
+        gerenciarMortos();
     
-    Lista_Entidades->percorrerLista();
-    
-    gerenciarColisoes();
+        Lista_Entidades->percorrerLista();
+        
+        gerenciarColisoes();
 
-    morreu();
-
+        morreu();
+    }else{
+        mensagemPausado();
+    }
 }
 
 void Fases::Fase2::render()
@@ -162,6 +165,7 @@ void Fases::Fase2::sair()
 {
     if(ativo){
         ativo = false;
+        pausado = false;
         resetEstado();
         changeEstado(Estados::EstadoID::mainMenu);
     }
@@ -192,3 +196,4 @@ void Fases::Fase2::venceuJogo()
         changeEstado(Estados::fase2);
     }
 }
+

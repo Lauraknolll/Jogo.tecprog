@@ -21,6 +21,10 @@ Ente(), control(this)
     mensagem2.setTamanhoFonte(20);
     mensagem2.setCorTexto(32, 79, 221);
 
+    vida1.setCorTexto(255, 0, 0);
+    vida2.setCorTexto(255, 0, 0);
+    ponto.setCorTexto(255, 0, 0);
+
 }
 
 Fases::Fase::~Fase()
@@ -133,7 +137,7 @@ void Fases::Fase::gerenciarMortos()
             paux = static_cast<Personagens::Jogador *>(*it_jog);
             if (paux != nullptr)
             {
-                if (paux->getNumVidas() <= 0 || paux->getPosicao().y > 600.f)
+                if (paux->getNumVidas() <= 0 || paux->getPosicao().y > 700.f)
                 {
                     paux->setVivo(); // agora tá morto
                 }
@@ -324,6 +328,39 @@ void Fases::Fase::mensagemPausado()
     pausar.render();
     mensagem.render();
     mensagem2.render();
+}
+
+void Fases::Fase::hud()
+{
+    
+    Gerenciador::GerenciadorGrafico* GG = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
+    camera = GG->getCamera();
+    
+    centro = camera.getCenter();
+
+    vida1.setPosicao(sf::Vector2f(centro.x - 600, centro.y - 400));
+    vida2.setPosicao(sf::Vector2f(centro.x - 400, centro.y - 400));
+    ponto.setPosicao(sf::Vector2f(centro.x - 200, centro.y - 400));
+
+    list<Entidades::Entidade*>::iterator it;
+    Entidades::Entidade* ent1;
+    Entidades::Entidade* ent2;
+    it = ListaJogadores.begin();
+    ent1 = *it;
+    vida1.setTextoInfo("P1: "+std::to_string(static_cast<Personagens::Jogador*>(ent1)->getNumVidas()) + "/50");
+    
+    ponto.setTextoInfo("PONTUCAO: "+std::to_string(pontuacao));
+
+    if(ListaJogadores.size()){
+        vida1.render();
+        ponto.render();
+        if(ListaJogadores.size() > 1){
+            it++;
+            ent2 = *it;
+            vida2.setTextoInfo("P2:"+std::to_string(static_cast<Personagens::Jogador*>(ent2)->getNumVidas())+ "/50");
+            vida2.render();
+        }
+    }
 }
 
 

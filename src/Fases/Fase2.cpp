@@ -122,6 +122,7 @@ void Fases::Fase2::render()
     Gerenciador::GerenciadorGrafico *pontGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
     Lista_Entidades->desenharEntidades(pontGrafico);
     pontGrafico->centralizarCamera(sf::Vector2f((ent1->getPosicao().x/* + ent2->getPosicao().x*/), 400));
+    hud();
 }
 
 void Fases::Fase2::criar()
@@ -140,6 +141,8 @@ void Fases::Fase2::criar()
 
 void Fases::Fase2::resetEstado()
 {
+
+    pontuacao = 0;
     // Limpa todas as listas de entidades
     Lista_Entidades->cleanList();
     ListaJogadores.clear();

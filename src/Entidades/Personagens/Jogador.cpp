@@ -180,10 +180,11 @@ void Personagens::Jogador::recebaDano(const int dano)
     
     if (cooldownDano > COOLDOWN_DANO) 
     {
-        printf("%d - %d\n", dano, num_vidas);
+        
         num_vidas -= dano;
-        /*if (num_vidas <= 0)
-            active = false;*/
+        if(num_vidas < 0){
+            num_vidas = 0;
+        }
         cooldownDano = 0;
     }
 }

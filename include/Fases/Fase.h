@@ -35,12 +35,18 @@ namespace Fases
             Gerenciador::GerenciadorInput* pInput;
             nlohmann::json mapa; 
             Controle::ControleFase control;
+            
+            sf::View camera;
+            sf::Vector2f centro;
 
             Botao tela_pausado;
 
             Texto pausar;
             Texto mensagem;
             Texto mensagem2;
+            Texto vida1;
+            Texto vida2; 
+            Texto ponto;
 
             int pontuacao;
 
@@ -88,6 +94,8 @@ namespace Fases
             virtual void pause();
 
             void mensagemPausado();
+
+            void hud();
     };
 }
 //bool Fases::Fase::dois_jogadores = false;

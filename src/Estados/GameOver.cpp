@@ -1,7 +1,7 @@
 #include "../../include/Estados/GameOver.h"
 
 #define LEADERBOARD_PATH "placar.txt"
-
+#define CAMINHO_FUNDO "imagens/fundo_fase1.png"
 #include <fstream>
 #include <map>
 
@@ -17,6 +17,9 @@ namespace Menus {
     input(),
     fase_1(fase1),
     fase_2(fase2){
+        textura_fundo.loadFromFile(CAMINHO_FUNDO);
+        
+        fundo.setTexture(textura_fundo);
         Gerenciador::GerenciadorGrafico* GM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
 
         pontuacao = 0;
@@ -72,6 +75,7 @@ namespace Menus {
 
     /* Menu operation to render all it's objects. */
     void GameOver::render() {
+        Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()->getJanela()->draw(fundo);
         updateView();
         for (it = vectorBotao.begin(); it != vectorBotao.end(); ++it)
             (*it)->render();

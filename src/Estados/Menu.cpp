@@ -11,6 +11,9 @@ namespace Menus {
     control(this),
     ativo(false) {
         Gerenciador::GerenciadorGrafico* GM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
+
+        fundo.setScale(4, 4);
+        fundo.setPosition(sf::Vector2f(-200, -100));
         
     }
 

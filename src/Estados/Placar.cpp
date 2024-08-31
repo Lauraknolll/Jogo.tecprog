@@ -2,6 +2,8 @@
 
 #include <fstream>
 
+#define CAMINHO_FUNDO "imagens/fundo_fase1.png"
+
 #define CAMINHO_PLACAR "placar.txt"
 
 namespace Menus {
@@ -9,6 +11,10 @@ namespace Menus {
     Placar::Placar(Estados::GerenciadorEstado* pSM) :
     Menu(),
     Estado(pSM, Estados::EstadoID::placar) {
+        textura_fundo.loadFromFile(CAMINHO_FUNDO);
+        
+        fundo.setTexture(textura_fundo);
+
         Gerenciador::GerenciadorGrafico* GM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
         Botao* bt = NULL;
          float w, h;
@@ -33,6 +39,7 @@ namespace Menus {
 
     /* Menu operation to render all it's objects. */
     void Placar::render() {
+        Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()->getJanela()->draw(fundo);
         updateView();
         for (it = vectorBotao.begin(); it != vectorBotao.end(); ++it)
             (*it)->render();

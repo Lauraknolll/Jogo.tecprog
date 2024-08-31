@@ -19,10 +19,16 @@ namespace Menus
     protected:
         std::vector<Botao*> vectorBotao;
         std::vector<Botao*>::iterator it;
+
+        Controle::MenuControle control;
+
+        sf::Sprite fundo;
+        sf::Texture textura_fundo;
+        
         int selecionado;
         int min;
         int max;
-        Controle::MenuControle control;
+        
         bool ativo;
 
     public:

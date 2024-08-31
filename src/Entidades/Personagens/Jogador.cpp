@@ -55,6 +55,9 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
     case Entidades::lava:
             moveColisao(outraEntidade, intersecao);
         break;
+    case Entidades::projetil:
+            recebaDano(1);
+        break;
 
     default:
         break;
@@ -162,6 +165,11 @@ void Personagens::Jogador::moveColisao(Entidades::Entidade* outraEnt, sf::Vector
 int Personagens::Jogador::getNumVidas()
 {
     return num_vidas;
+}
+
+void Personagens::Jogador::calculaPontos()
+{
+    pontos++;
 }
 
 void Personagens::Jogador::recebaDano(const int dano) 

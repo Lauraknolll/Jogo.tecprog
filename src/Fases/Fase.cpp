@@ -82,6 +82,8 @@ void Fases::Fase::gerenciarColisoes()
 
 void Fases::Fase::gerenciarMortos()
 {
+    list<Entidades::Entidade *>::iterator it_jog;
+    it_jog = ListaJogadores.begin();
     if (ListaInimigos.size() > 0)
     {
         vector<Entidades::Entidade *>::iterator it;
@@ -94,6 +96,7 @@ void Fases::Fase::gerenciarMortos()
             {
                 if (paux->getNumVidas() == 0)
                 {
+                    (static_cast<Personagens::Jogador*>((*it_jog)))->calculaPontos();
                     paux->setVivo(); // agora tá morto
                 }
             }

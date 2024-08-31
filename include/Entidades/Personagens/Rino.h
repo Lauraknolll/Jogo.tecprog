@@ -10,6 +10,8 @@ namespace Personagens
             Jogador* jogador;
             int chifrada;
             short movAle;
+            int cont;
+            sf::Vector2f posicao_tiro;
             Entidades::Projetil *proj;
         public:
             Rino(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
@@ -41,5 +43,7 @@ namespace Personagens
             void danificar(Personagens::Jogador* pontJogador);
 
             void lancaProjetil(int direcao);
+
+            Entidades::Projetil* getProjetil();
     };
 }

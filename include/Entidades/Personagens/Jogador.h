@@ -53,6 +53,8 @@ namespace Personagens
 
         int getNumVidas();
 
+        void calculaPontos();
+
         void atacar();
 
         void paraAtacar();

@@ -2,8 +2,8 @@
 
 #define VELOCIDADE_PROJ 0.05f
 
-Entidades::Projetil::Projetil(float xx, float yy, float ww, float hh, Entidades::ID id, int direcao) :
-    Entidade(xx, yy, ww, hh, id), colidiu(false)
+Entidades::Projetil::Projetil(float xx, float yy, float ww, float hh, int direcao) :
+    Entidade(xx, yy, ww, hh, Entidades::ID::projetil), colidiu(false)
 {
     velocidade.x = VELOCIDADE_PROJ;
     dano = rand()%10;

@@ -6,6 +6,7 @@ using namespace std;
 // #include "States/Level.h"
 #include "math.h"
 #include "../../include/Entidades/Personagens/Jogador.h"
+#include "../../include/Entidades/Personagens/Rino.h"
 
 Gerenciador::GerenciadorColisoes::GerenciadorColisoes(list<Entidades::Entidade *> *Jogador1, list<Entidades::Entidade *> *Obstaculos1, vector<Entidades::Entidade *> *Inimigos1 /*, States::Level* plvl*/) : Jogadores(Jogador1), Obstaculos(Obstaculos1), Inimigos(Inimigos1) /*,  plvl(plvl) */ {}
 
@@ -100,6 +101,32 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresInimigos()
                 {
                     ent1->colide(ent2, intersecao);
                     ent2->colide(ent1, intersecao);
+                }
+                
+                if(dynamic_cast<Personagens::Rino*>(ent2)){
+                    if(static_cast<Personagens::Rino*>(ent2)->getProjetil()){
+                        ent2 = static_cast<Personagens::Rino*>(ent2)->getProjetil();
+                        
+                        sf::RectangleShape corpo2 = ent2->getCorpo();
+                        
+                        sf::Vector2f pos2 = corpo2.getPosition();
+                        
+                        sf::Vector2f tam2 = corpo2.getSize();
+
+                        sf::Vector2f distanciaEntreCentros(
+                            fabs((pos1.x + tam1.x / 2.0f) - (pos2.x + tam2.x / 2.0f)),
+                            fabs((pos1.y + tam1.y / 2.0f) - (pos2.y + tam2.y / 2.0f)));
+
+                        sf::Vector2f somaMetadeRetangulo(tam1.x / 2.0f + tam2.x / 2.0f, tam1.y / 2.0f + tam2.y / 2.0f);
+                        sf::Vector2f intersecao = sf::Vector2f(distanciaEntreCentros.x - somaMetadeRetangulo.x, distanciaEntreCentros.y - somaMetadeRetangulo.y);
+
+                        /*  Condição pra colisão*/
+                        if (intersecao.x < 0.0f && intersecao.y < 0.0f)
+                        {
+                            ent1->colide(ent2, intersecao);
+                            ent2->colide(ent1, intersecao);
+                        }
+                    }
                 }
             }
         }

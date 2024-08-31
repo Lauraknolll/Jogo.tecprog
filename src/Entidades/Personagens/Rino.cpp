@@ -3,10 +3,13 @@
 #define VIDAS_RINO 5000
 #define VELOCIDADE_RINO 0.04f
 #define RAIO_PERSEGUIR_X  250.0f
+#define RAIO_TIRO  1000.0f
 
 Personagens::Rino::Rino(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::rino)
 {
+    posicao_tiro = sf::Vector2f(0, 0);
+    proj = NULL;
     chifrada = rand()%75;
     num_vidas = VIDAS_RINO;
     velocidade.x = VELOCIDADE_RINO;
@@ -24,19 +27,29 @@ void Personagens::Rino::imprimir(Gerenciador::GerenciadorGrafico* gG)
     if(vivo)
     {
         gG->desenhaEntidade(corpo);
+        if(proj){
+            proj->imprimir(gG);
+        }
+        
         corpo.setTexture(gG->carregaTextura("imagens/rino.png"));
     }
 }
 
 void Personagens::Rino::executar()
 {
+    cont++;
     sf::Vector2f posicaoJogador = jogador->getCorpo().getPosition();
     sf::Vector2f posicaoInimigo = corpo.getPosition();
     atualizarPosicao();
+    if(proj){
+        proj->atualizarPosicao();
+    }
+    
 
     if(fabs(posicaoJogador.x - posicaoInimigo.x) <= RAIO_PERSEGUIR_X)
     {
         persegueJogador(posicaoJogador, posicaoInimigo);
+        cont = 0;
     }
     else
     {
@@ -134,7 +147,17 @@ void Personagens::Rino::setVivo()
 
 void Personagens::Rino::lancaProjetil(int direcao)
 {
-    proj = new Entidades::Projetil(corpo.getPosition().x, corpo.getPosition().y, 10.0f, 10.0f, Entidades::projetil, direcao);
+    
+    if(proj == NULL || abs(proj->getPosicao().x - posicao_tiro.x) > RAIO_TIRO){
+        proj = new Entidades::Projetil(corpo.getPosition().x, corpo.getPosition().y, 10.0f, 10.0f, direcao);
+        posicao_tiro = getPosicao();
+    }
+    //proj = new Entidades::Projetil(corpo.getPosition().x, corpo.getPosition().y, 10.0f, 10.0f, Entidades::projetil, direcao);
+}
+
+Entidades::Projetil* Personagens::Rino::getProjetil()
+{
+    return proj;
 }
 
 

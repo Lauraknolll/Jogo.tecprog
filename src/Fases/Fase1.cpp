@@ -163,7 +163,7 @@ void Fases::Fase1::resetEstado()
 
 void Fases::Fase1::sair()
 {
-    if(ativo){
+    if(ativo && pausado){
         ativo = false;
         pausado = false;
         resetEstado();

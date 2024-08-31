@@ -112,11 +112,12 @@ void Fases::Fase::gerenciarMortos()
             paux = static_cast<Personagens::Inimigo *>(*it);
             if (paux != nullptr)
             {
-                if (paux->getNumVidas() == 0)
+                if (paux->getNumVidas() <= 0)
                 {
-                    //(static_cast<Personagens::Jogador*>((*it_jog)))->calculaPontos();
-                    paux->setVivo(); // agora tá morto
-                    pontuacao += 10;
+                    if(paux->getVivo()){
+                        paux->setVivo(); // agora tá morto
+                        pontuacao += 100;
+                    }
                 }
             }
         }

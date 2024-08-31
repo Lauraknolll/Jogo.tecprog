@@ -111,7 +111,7 @@ namespace Menus {
 
     void GameOver::escreverNoPlacar() {
         //unsigned int playerpontos = plvl->getPlayerpontos();
-
+        printf("fase1: %d | Fase 2: %d", *fase_1, *fase_2);
         pontuacao = *fase_1 + *fase_2;
 
         /* ================================= Reading File ================================= */

@@ -8,7 +8,8 @@ private:
     static Gerenciador::GerenciadorGrafico *pGGrafico;
     sf::RectangleShape corpo;
     Texto texto;
-    sf::Texture *textura;
+    sf::Texture textura;
+    sf::Texture textura_des;
 
 public:
     Botao(sf::Vector2f posicao = sf::Vector2f(0, 0), std::string info = "");

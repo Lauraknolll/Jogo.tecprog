@@ -6,17 +6,21 @@
 #define COR_TEXTO_DEFAULT (225, 225, 225)
 #define COR_TEXTO_SELECIONADO (0, 0, 0)
 #define TAMANHO_FONTE 29
+#define SELECIONADO "imagens/madeira.jpg"
+#define NAO_SELECIONADO "imagens/madeira_escura.jpg"
 
 // Inicialização do membro estático
 Gerenciador::GerenciadorGrafico* Botao::pGGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
 
 Botao::Botao(sf::Vector2f posicao, std::string info) :
-    texto(posicao, info), textura(nullptr)
+    texto(posicao, info)
 {
+    textura.loadFromFile(SELECIONADO);
+    textura_des.loadFromFile(NAO_SELECIONADO);
     corpo.setSize(sf::Vector2f(LARGURA_BOTAO, ALTURA_BOTAO));
     corpo.setOrigin(sf::Vector2f(LARGURA_BOTAO / 2.0f, ALTURA_BOTAO / 2.0f));
     corpo.setPosition(posicao);
-    corpo.setFillColor(sf::Color::White);
+    corpo.setTexture(&textura_des);
 
     // Corpo pode ter textura definida aqui, se necessário
     // corpo.setTexture(textura);
@@ -38,13 +42,13 @@ Botao::~Botao()
 void Botao::selecionar(bool selecionado)
 {
     if (selecionado)
-    {    
-        this->corpo.setFillColor(sf::Color::Blue);
+    {   
+        this->corpo.setTexture(&textura);
         this->texto.setCorTexto(255, 255, 255); 
     }
     else
     {  
-        this->corpo.setFillColor(sf::Color::White);
+        this->corpo.setTexture(&textura_des);
         this->texto.setCorTexto(32, 79, 221); 
     }
 }

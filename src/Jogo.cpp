@@ -41,11 +41,6 @@ Estados::Jogo::~Jogo()
         delete pontGEvento;
         pontGEvento = nullptr;
     }
-    if(pontFaseProv != nullptr)
-    {
-        delete pontFaseProv;
-        pontFaseProv = nullptr;
-    }
 }
 
 void Estados::Jogo::executar()

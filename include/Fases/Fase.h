@@ -59,8 +59,6 @@ namespace Fases
 
             ~Fase();
 
-            void cria();
-
             void executar();
 
             void gerenciarColisoes();

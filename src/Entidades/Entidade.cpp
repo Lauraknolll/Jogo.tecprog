@@ -1,5 +1,10 @@
 #include "../../include/Entidades/Entidade.h"
 
+Entidades::Entidade::Entidade()
+{
+
+}
+
 Entidades::Entidade::Entidade(float xx, float yy, float ww, float hh, ID idd) :
     Ente(), x(xx), y(yy), w(ww), h(hh), id(idd)
 {

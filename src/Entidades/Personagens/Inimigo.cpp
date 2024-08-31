@@ -10,3 +10,8 @@ Personagens::Inimigo::~Inimigo()
 {
     
 }
+
+int Personagens::Inimigo::getNumVidas()
+{
+    return 0; 
+}

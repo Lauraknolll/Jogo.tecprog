@@ -34,6 +34,8 @@ namespace Entidades
         sf::Vector2f velocidade;
 
     public:
+        Entidade();
+        
         Entidade(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0, ID idd = vazio);
 
         virtual ~Entidade();

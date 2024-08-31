@@ -1,7 +1,7 @@
 #include "../../include/Estados/GameOver.h"
 
 #define LEADERBOARD_PATH "placar.txt"
-#define CAMINHO_FUNDO "imagens/fundo_fase1.png"
+#define CAMINHO_FUNDO "imagens/fundo.png"
 #include <fstream>
 #include <map>
 
@@ -45,21 +45,21 @@ namespace Menus {
         titulo.setPosicao(sf::Vector2f(w / 2.0f, h / 2 - 200));
         titulo.setTamanhoFonte(100);
         titulo.setAlinhamentoTexto(AlinhamentoTexto::centro);
-        titulo.setCorTexto(77.6, 68.2, 44.3);
+        titulo.setCorTexto(32, 79, 221);
 
         pontos.setPosicao(sf::Vector2f(w / 2.0f - 100, h / 2));
         pontos.setTamanhoFonte(40);
-        pontos.setCorTexto(77.6, 68.2, 44.3);
+        pontos.setCorTexto(32, 79, 221);
         pontos.setAlinhamentoTexto(AlinhamentoTexto::centro);
 
         nameLabel.setPosicao(sf::Vector2f(w / 2.0f - 200, h / 2 + 100));
         nameLabel.setTamanhoFonte(40);
-        nameLabel.setCorTexto(77.6, 68.2, 44.3);
+        nameLabel.setCorTexto(32, 79, 221);
         nameLabel.setAlinhamentoTexto(AlinhamentoTexto::centro);
 
         nome.setPosicao(sf::Vector2f(w / 2.0f + nameLabel.getTamanho().x - 200, h / 2 + 100 - nameLabel.getTamanho().y));
         nome.setTamanhoFonte(40);
-        nome.setCorTexto(77.6, 68.2, 44.3);
+        nome.setCorTexto(32, 79, 221);
         nome.setAlinhamentoTexto(AlinhamentoTexto::centro);
 
     }

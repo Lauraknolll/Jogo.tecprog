@@ -19,7 +19,7 @@ Texto::Texto(sf::Vector2f position, std::string info, const char* path) :
     
     texto.setCharacterSize(20);
     
-    setAlinhamentoTexto(AlinhamentoTexto::esquerda);
+    setAlinhamentoTexto(AlinhamentoTexto::centro);
 
     texto.setPosition(sf::Vector2f(position.x, position.y));
 
@@ -62,8 +62,7 @@ void Texto::setAlinhamentoTexto(AlinhamentoTexto option)
     case AlinhamentoTexto::esquerda:
         texto.setOrigin(0, 0);
         break;
-    case AlinhamentoTexto::centro:
-        
+    case AlinhamentoTexto::centro:   
         texto.setOrigin(getTamanho().x / 2, getTamanho().y / 2);
         break;
     case AlinhamentoTexto::direita:

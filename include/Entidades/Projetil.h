@@ -11,6 +11,7 @@ namespace Entidades
             int dano;
             int dir;
         public:
+
             Projetil(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0,  int direcao = 0);
 
             ~Projetil();

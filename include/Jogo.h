@@ -23,7 +23,6 @@ namespace Estados
         Gerenciador::GerenciadorEvento *pontGEvento;
         Gerenciador::GerenciadorColisoes *pColisao;
         Gerenciador::GerenciadorInput *pInput;
-        Fases::Fase2 *pontFaseProv;
         Estados::Estado *estado;
 
     public:

@@ -25,7 +25,7 @@ void Entidades::Projetil::imprimir(Gerenciador::GerenciadorGrafico* gG)
     if(!colidiu)
     {
         gG->desenhaEntidade(corpo);
-        corpo.setTexture(gG->carregaTextura("imagens/pedra.png"));
+        corpo.setTexture(gG->carregaTextura("imagens/projetil.png"));
     }
 }
 

@@ -2,7 +2,7 @@
 
 #include <fstream>
 
-#define CAMINHO_FUNDO "imagens/fundo_fase1.png"
+#define CAMINHO_FUNDO "imagens/fundo.png"
 
 #define CAMINHO_PLACAR "placar.txt"
 

@@ -13,6 +13,7 @@ namespace Personagens
             int bicada;
             short movAle;
         public:
+
             Galinha(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
 
             ~Galinha();

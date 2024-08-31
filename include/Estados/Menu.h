@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../Ente.h"
 #include "Estados.h"
 #include "../Controle/ControleMenu.h"
 #include "../RecursosGraficos/Botao.h"
@@ -14,7 +15,7 @@ namespace Estados
 namespace Menus 
 {
 
-    class Menu 
+    class Menu : public Ente
     {
     protected:
         std::vector<Botao*> vectorBotao;

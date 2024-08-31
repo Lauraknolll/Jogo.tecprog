@@ -13,7 +13,7 @@ namespace Personagens
             int cont;
             sf::Vector2f posicao_tiro;
             Entidades::Projetil *proj;
-        public:
+        public:            
             Rino(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
 
             ~Rino();

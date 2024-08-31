@@ -6,7 +6,7 @@ class Ente
 {
     protected:
         int id;
-        //static Gerenciador::GerenciadorGrafico* pGGrafico;
+        static Gerenciador::GerenciadorGrafico* pPrincipalGGrafico;
     public:
         Ente();
 
@@ -14,7 +14,7 @@ class Ente
 
         virtual void executar() = 0;
         
-        void desenhar();
+        virtual void imprimir();
 };
 
 

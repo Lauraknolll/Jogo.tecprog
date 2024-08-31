@@ -27,7 +27,7 @@ Botao::Botao(sf::Vector2f posicao, std::string info) :
 
     texto.setTamanhoFonte(TAMANHO_FONTE);
     texto.setAlinhamentoTexto(AlinhamentoTexto::centro);
-    texto.setCorTexto(32, 79, 221);
+    texto.setCorTexto(211, 211, 211);
 
     // Definição da posição do texto (se necessário, baseada na posição do botão)
     // texto.setPosition(sf::Vector2f(posicao.x, posicao.y));
@@ -44,12 +44,12 @@ void Botao::selecionar(bool selecionado)
     if (selecionado)
     {   
         this->corpo.setTexture(&textura);
-        this->texto.setCorTexto(255, 255, 255); 
+        this->texto.setCorTexto(32, 79, 221); 
     }
     else
     {  
         this->corpo.setTexture(&textura_des);
-        this->texto.setCorTexto(32, 79, 221); 
+        this->texto.setCorTexto(211, 211, 211); 
     }
 }
 

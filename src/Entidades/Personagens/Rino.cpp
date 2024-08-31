@@ -5,6 +5,7 @@
 #define RAIO_PERSEGUIR_X  250.0f
 #define RAIO_TIRO  1000.0f
 
+
 Personagens::Rino::Rino(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::rino)
 {

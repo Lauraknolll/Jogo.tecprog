@@ -97,15 +97,20 @@ void Fases::Fase2::atualizar()
 {
     ativo = true;
 
-    if(!pausado){
+    if(!pausado)
+    {
         gerenciarMortos();
     
         Lista_Entidades->percorrerLista();
         
         gerenciarColisoes();
 
+    
+
         morreu();
-    }else{
+    }
+    else
+    {
         mensagemPausado();
     }
 }

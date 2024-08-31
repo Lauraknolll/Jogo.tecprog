@@ -103,7 +103,9 @@ void Fases::Fase1::atualizar()
         vaiPraProximoFase();
 
         morreu();
-    }else{
+    }
+    else
+    {
         mensagemPausado();
     }
 

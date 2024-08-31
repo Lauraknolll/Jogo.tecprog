@@ -13,17 +13,17 @@ Ente(), control(this)
     pausar.setTamanhoFonte(70);
     pausar.setCorTexto(32, 79, 221);
 
-    mensagem.setTextoInfo("pressione 'P' para continuar");
+    mensagem.setTextoInfo("pressione ' P ' para continuar");
     mensagem.setTamanhoFonte(20);
     mensagem.setCorTexto(32, 79, 221);
 
-    mensagem2.setTextoInfo("pressione 'esc' para sair");
+    mensagem2.setTextoInfo("pressione ' esc ' para sair");
     mensagem2.setTamanhoFonte(20);
     mensagem2.setCorTexto(32, 79, 221);
 
-    vida1.setCorTexto(255, 0, 0);
-    vida2.setCorTexto(255, 0, 0);
-    ponto.setCorTexto(255, 0, 0);
+    vida1.setCorTexto(32, 79, 221);
+    vida2.setCorTexto(32, 79, 221);
+    ponto.setCorTexto(32, 79, 221);
 
 }
 
@@ -144,7 +144,6 @@ void Fases::Fase::gerenciarMortos()
             }
         }
     }
-    //gerenciar se os jogadores estão vivos tbm
 }
 
 bool Fases::Fase::todosMortos()
@@ -321,9 +320,9 @@ void Fases::Fase::mensagemPausado()
     mensagem.setPosicao(sf::Vector2f(centro.x - 250, centro.y + 40));
     mensagem2.setPosicao(sf::Vector2f(centro.x - 250, centro.y + 90));
 
-    pausar.setCorTexto(255, 0, 0);
-    mensagem.setCorTexto(255, 0, 0);
-    mensagem2.setCorTexto(255, 0, 0);
+    pausar.setCorTexto(32, 79, 221);
+    mensagem.setCorTexto(32, 79, 221);
+    mensagem2.setCorTexto(32, 79, 221);
 
     pausar.render();
     mensagem.render();

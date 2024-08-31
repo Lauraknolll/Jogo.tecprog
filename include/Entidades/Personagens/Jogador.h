@@ -23,6 +23,7 @@ namespace Personagens
         Controle::ControleJogador controle;
 
     public:
+
         Jogador(float xx = 0, float yy = 0, float ww = 50.0, float hh = 50.0);
 
         ~Jogador();
@@ -31,7 +32,7 @@ namespace Personagens
 
         void pular();
 
-        void atualizar();
+        void atualizarPosicao();
 
         void imprimir(Gerenciador::GerenciadorGrafico *gG);
 

@@ -1,6 +1,6 @@
 #include "../include/Ente.h"
 
-//Gerenciador::GerenciadorGrafico* Gerenciador::GerenciadorGrafico::pGGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
+Gerenciador::GerenciadorGrafico* pPrinciapalGGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
 
 Ente::Ente()
 {
@@ -11,7 +11,7 @@ Ente::~Ente()
 
 }
 
-void Ente::desenhar()
+void Ente::imprimir()
 {
 
 }

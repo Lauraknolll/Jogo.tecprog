@@ -1,6 +1,6 @@
 #include "../../include/Estados/MenuPrincipal.h"
 
-#define CAMINHO_FUNDO "imagens/fundo_fase1.png"
+#define CAMINHO_FUNDO "imagens/fundo.png"
 
 #include "../../include/Jogo.h"
 

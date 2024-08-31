@@ -26,7 +26,7 @@ void Personagens::Jogador::executar()
 {
     if(vivo){
         corpo.setFillColor(sf::Color::White);
-        atualizar();
+        atualizarPosicao();
     }
 }
 
@@ -67,7 +67,7 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
     }
 }
 
-void Personagens::Jogador::atualizar()
+void Personagens::Jogador::atualizarPosicao()
 {
     if (andando) {
         if (emEsquerda)

@@ -117,6 +117,7 @@ void Fases::Fase2::atualizar()
 
 void Fases::Fase2::render()
 {
+    fundo();
     list<Entidades::Entidade*>::iterator it;
     Entidades::Entidade* ent1;
     Entidades::Entidade* ent2;

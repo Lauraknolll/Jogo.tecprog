@@ -17,9 +17,9 @@ namespace Menus {
     input(),
     fase_1(fase1),
     fase_2(fase2){
-        textura_fundo.loadFromFile(CAMINHO_FUNDO);
+        Ente::textura.loadFromFile(CAMINHO_FUNDO);
         
-        fundo.setTexture(textura_fundo);
+        fundo.setTexture(Ente::textura);
         Gerenciador::GerenciadorGrafico* GM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
 
         pontuacao = 0;

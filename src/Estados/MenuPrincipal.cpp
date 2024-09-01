@@ -11,9 +11,9 @@ namespace Menus {
     Estado(pG, Estados::EstadoID::mainMenu),
     titulo() {
         
-        textura_fundo.loadFromFile(CAMINHO_FUNDO);
+        Ente::textura.loadFromFile(CAMINHO_FUNDO);
         
-        fundo.setTexture(textura_fundo);
+        fundo.setTexture(Ente::textura);
         Gerenciador::GerenciadorGrafico* GM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
         Botao* bt = NULL;
         float w, h;

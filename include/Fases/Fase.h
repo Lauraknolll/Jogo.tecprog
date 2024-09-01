@@ -38,6 +38,7 @@ namespace Fases
             
             sf::View camera;
             sf::Vector2f centro;
+            sf::Sprite sprite_fundo;
 
             Botao tela_pausado;
 
@@ -94,5 +95,7 @@ namespace Fases
             void mensagemPausado();
 
             void hud();
+
+            void fundo();
     };
 }

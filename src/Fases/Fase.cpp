@@ -1,5 +1,6 @@
 #include "../../include/Fases/Fase.h"
 #include "../../include/RecursosGraficos/Botao.h"
+#define CAMINHO_FUNDO "imagens/fundo.png"
 
 Fases::Fase::Fase() : 
 Ente(), control(this)
@@ -24,6 +25,10 @@ Ente(), control(this)
     vida1.setCorTexto(32, 79, 221);
     vida2.setCorTexto(32, 79, 221);
     ponto.setCorTexto(32, 79, 221);
+
+    Ente::textura.loadFromFile(CAMINHO_FUNDO);
+        
+    sprite_fundo.setTexture(Ente::textura);
 
 }
 
@@ -203,7 +208,7 @@ void Fases::Fase::criarPlataformas(std::string caminho_mapa)
         
         if (posi != sf::Vector2f(-1, -1))
         {
-            plat = new Obstaculos::Plataforma(posi.x, posi.y, 32.0*y, 16.0);
+            plat = new Obstaculos::Plataforma(posi.x, posi.y, 32.0*y, 32.0);
             ListaObstaculos.push_back(static_cast<Entidades::Entidade*>(plat));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(plat));
         }
@@ -260,14 +265,14 @@ void Fases::Fase::criarLava(std::string caminho_mapa, int maxObs)
         {
             if(cont < 3)
             {
-                lava = new Obstaculos::Lava(posi.x, posi.y, 32.0*y, 16.0);
+                lava = new Obstaculos::Lava(posi.x, posi.y, 32.0*y, 32.0);
                 ListaObstaculos.push_back(static_cast<Entidades::Entidade*>(lava));
                 Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(lava));
                 cont++;
             }
             if((rand()%10 < 5) && (3 < cont < maxObs))
             {
-                lava = new Obstaculos::Lava(posi.x, posi.y, 32.0*y, 16.0);
+                lava = new Obstaculos::Lava(posi.x, posi.y, 32.0*y, 32.0);
                 ListaObstaculos.push_back(static_cast<Entidades::Entidade*>(lava));
                 Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(lava));
                 cont++;
@@ -361,6 +366,15 @@ void Fases::Fase::hud()
             vida2.render();
         }
     }
+}
+
+void Fases::Fase::fundo()
+{
+    sf::Vector2f posi = camera.getCenter();
+    
+    sprite_fundo.setScale(4, 4);
+    sprite_fundo.setPosition(sf::Vector2f(posi.x - 600, posi.y - 400));
+    Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()->getJanela()->draw(sprite_fundo);
 }
 
 

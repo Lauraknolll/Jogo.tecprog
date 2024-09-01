@@ -11,9 +11,9 @@ namespace Menus {
     Placar::Placar(Estados::Mediator* pSM) :
     Menu(),
     Estado(pSM, Estados::EstadoID::placar) {
-        textura_fundo.loadFromFile(CAMINHO_FUNDO);
+        Ente::textura.loadFromFile(CAMINHO_FUNDO);
         
-        fundo.setTexture(textura_fundo);
+        fundo.setTexture(Ente::textura);
 
         Gerenciador::GerenciadorGrafico* GM = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
         Botao* bt = NULL;

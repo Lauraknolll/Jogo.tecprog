@@ -114,16 +114,24 @@ void Fases::Fase1::atualizar()
 
 void Fases::Fase1::render()
 {
+    
     list<Entidades::Entidade*>::iterator it;
     Entidades::Entidade* ent1;
     Entidades::Entidade* ent2;
     it = ListaJogadores.begin();
     ent1 = *it;
-    /*it++;
-    ent2 = *it;*/
+    fundo();
+
     Gerenciador::GerenciadorGrafico *pontGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
     Lista_Entidades->desenharEntidades(pontGrafico);
-    pontGrafico->centralizarCamera(sf::Vector2f((ent1->getPosicao().x/* + ent2->getPosicao().x*/), 400));
+
+    if(ListaJogadores.size() > 1){
+        it++;
+        ent2 = *it;
+        pontGrafico->centralizarCamera(sf::Vector2f((ent1->getPosicao().x + ent2->getPosicao().x), 400));
+    }
+    pontGrafico->centralizarCamera(sf::Vector2f(ent1->getPosicao().x, 400));
+
     hud();
 }
 

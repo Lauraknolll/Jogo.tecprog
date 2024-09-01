@@ -24,7 +24,6 @@ namespace Menus
         Controle::MenuControle control;
 
         sf::Sprite fundo;
-        sf::Texture textura_fundo;
         
         int selecionado;
         int min;

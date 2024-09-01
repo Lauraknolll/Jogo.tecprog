@@ -6,6 +6,7 @@ class Ente
 {
     protected:
         int id;
+        sf::Texture textura;
         static Gerenciador::GerenciadorGrafico* pPrincipalGGrafico;
     public:
         Ente();

@@ -1,11 +1,18 @@
 #include "../../../include/Entidades/Obstaculos/Lava.h"
 
+#define CAMINHO_TEXTURA "imagens/madeira_escura.jpg"
+
 
 Obstaculos::Lava::Lava(float x, float y, float ww, float hh):
 Obstaculo(x, y, ww, hh, Entidades::lava)
 {
-    corpo.setFillColor(sf::Color::Red);
     danosidade = rand()%35;
+
+    textura.loadFromFile(CAMINHO_TEXTURA);
+    textura.setRepeated(true);
+
+    corpo.setTexture(&textura);
+    corpo.setTextureRect(sf::IntRect(0, 0, 800, 800));
 }
 
 Obstaculos::Lava::~Lava()

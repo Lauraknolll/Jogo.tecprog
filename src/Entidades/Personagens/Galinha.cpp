@@ -2,7 +2,7 @@
 
 #define VELOCIDADE_GALINHA 0.025f
 #define VIDAS_GALINHA 3000
-#define RAIO_PERSEGUIR_X 200.0f
+#define RAIO_PERSEGUIR_X 150.0f
 
 Personagens::Galinha::Galinha(float xx, float yy, float ww, float hh) :
     Inimigo(xx, yy, ww, hh, Entidades::galinha)
@@ -32,7 +32,7 @@ void Personagens::Galinha::moveAleatorio()
     }
 
     float tempo = relogio.getElapsedTime().asSeconds();
-    if(tempo >= 4.0f)
+    if(tempo >= 2.0f)
     {
         movAle = rand()%2;
         relogio.restart();

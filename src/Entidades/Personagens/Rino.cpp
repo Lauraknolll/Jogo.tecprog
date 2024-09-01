@@ -2,7 +2,7 @@
 
 #define VIDAS_RINO 5000
 #define VELOCIDADE_RINO 0.04f
-#define RAIO_PERSEGUIR_X  250.0f
+#define RAIO_PERSEGUIR_X  200.0f
 #define RAIO_TIRO  1000.0f
 
 

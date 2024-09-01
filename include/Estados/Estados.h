@@ -12,7 +12,8 @@ namespace Estados
         placar,
         gameOver,
         fase1,
-        fase2
+        fase2,
+        telaFim
     };
 
     class Estado 

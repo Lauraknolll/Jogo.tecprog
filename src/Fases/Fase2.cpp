@@ -104,9 +104,9 @@ void Fases::Fase2::atualizar()
         Lista_Entidades->percorrerLista();
         
         gerenciarColisoes();
-
     
-
+        venceuJogo();
+        
         morreu();
     }
     else
@@ -201,7 +201,7 @@ void Fases::Fase2::venceuJogo()
     if(todosMortos())
     {
         ativo = false;
-        changeEstado(Estados::fase2);
+        changeEstado(Estados::telaFim);
     }
 }
 

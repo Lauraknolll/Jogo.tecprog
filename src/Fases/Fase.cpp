@@ -339,15 +339,15 @@ void Fases::Fase::hud()
     centro = camera.getCenter();
 
     vida1.setPosicao(sf::Vector2f(centro.x - 600, centro.y - 400));
-    vida2.setPosicao(sf::Vector2f(centro.x - 400, centro.y - 400));
-    ponto.setPosicao(sf::Vector2f(centro.x - 200, centro.y - 400));
+    vida2.setPosicao(sf::Vector2f(centro.x - 350, centro.y - 400));
+    ponto.setPosicao(sf::Vector2f(centro.x - 100, centro.y - 400));
 
     list<Entidades::Entidade*>::iterator it;
     Entidades::Entidade* ent1;
     Entidades::Entidade* ent2;
     it = ListaJogadores.begin();
     ent1 = *it;
-    vida1.setTextoInfo("P1: "+std::to_string(static_cast<Personagens::Jogador*>(ent1)->getNumVidas()) + "/50");
+    vida1.setTextoInfo("P1: "+std::to_string(static_cast<Personagens::Jogador*>(ent1)->getNumVidas()) + "/500");
     
     ponto.setTextoInfo("PONTUCAO: "+std::to_string(pontuacao));
 
@@ -357,7 +357,7 @@ void Fases::Fase::hud()
         if(ListaJogadores.size() > 1){
             it++;
             ent2 = *it;
-            vida2.setTextoInfo("P2:"+std::to_string(static_cast<Personagens::Jogador*>(ent2)->getNumVidas())+ "/50");
+            vida2.setTextoInfo("P2:"+std::to_string(static_cast<Personagens::Jogador*>(ent2)->getNumVidas())+ "/500");
             vida2.render();
         }
     }

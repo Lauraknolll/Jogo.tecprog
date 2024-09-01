@@ -1,10 +1,10 @@
 #include "../../include/Fases/Fase1.h"
 
 
-#define CAMINHO_MAPA_FASE1 "src/mapaFase1.json" // camonho para o mapa da fase 1
+#define CAMINHO_MAPA_FASE1 "src/mapaFase1.json" // caminho para o mapa da fase 1
 
 Fases::Fase1::Fase1(Estados::GerenciadorEstado* gE) :
-    Fase(), Estados::Estado(gE, Estados::EstadoID::fase1), maxInimigos(5), maxObstaculos(7)
+    Fase(), Estados::Estado(gE, Estados::EstadoID::fase1), maxInimigos(5), maxObstaculos(9)
 {
     ativo = false;
     dois_jogadores = false;

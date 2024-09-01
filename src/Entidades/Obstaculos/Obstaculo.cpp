@@ -15,11 +15,8 @@ void Obstaculos::Obstaculo::executar()
 {
     
 }
-void Obstaculos::Obstaculo::imprimir(Gerenciador::GerenciadorGrafico *gG)
+void Obstaculos::Obstaculo::desenhar(Gerenciador::GerenciadorGrafico *gG)
 {
     
 }
-int const Obstaculos::Obstaculo::getTipo() const
-{
-    return 0;
-}
+

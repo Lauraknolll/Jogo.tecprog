@@ -18,12 +18,10 @@ namespace Obstaculos
 
         void atualizarPosicao();
 
-        void imprimir(Gerenciador::GerenciadorGrafico *gG);
+        void desenhar(Gerenciador::GerenciadorGrafico *gG);
 
         void colide(Entidade *outraEntidade, sf::Vector2f intersecao);
 
         void obstacular(Personagens::Jogador *pontJogador);
-        
-        unsigned int tomarDano() const;
     };
 }

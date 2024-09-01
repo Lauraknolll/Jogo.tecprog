@@ -12,7 +12,6 @@ Personagens::Jogador::Jogador(float xx, float yy, float ww, float hh) :
     vivo = true;
     num_vidas = VIDAS_JOGADOR;
     cooldownDano = 0;
-    corpo.setFillColor(sf::Color::Blue);
     velocidade.x = 0.0f;
     velocidade.y = 0.0f;
 }
@@ -24,7 +23,8 @@ Personagens::Jogador::~Jogador()
 
 void Personagens::Jogador::executar()
 {
-    if(vivo){
+    if(vivo)
+    {
         corpo.setFillColor(sf::Color::White);
         atualizarPosicao();
     }
@@ -39,7 +39,7 @@ void Personagens::Jogador::pular()
    
 }
 
-void Personagens::Jogador::imprimir(Gerenciador::GerenciadorGrafico *gG)
+void Personagens::Jogador::desenhar(Gerenciador::GerenciadorGrafico *gG)
 {
     if(vivo)
     {
@@ -74,7 +74,6 @@ void Personagens::Jogador::atualizarPosicao()
             velocidade.x -= VELOCIDADE_JOGADOR * lentidao;
         else
             velocidade.x += VELOCIDADE_JOGADOR * lentidao;
-        //velocidade.x *= lentidao;
     } 
     else
         velocidade.x *= 0.05;
@@ -85,7 +84,6 @@ void Personagens::Jogador::atualizarPosicao()
 
     cooldownDano += 1;
 
-    //std::cout << num_vidas << std::endl;
 }
 
 const bool Personagens::Jogador::estaNaEsquerda() const
@@ -118,11 +116,6 @@ unsigned int Personagens::Jogador::getPontos() const
 {
     return pontos;
 }
-
-/*
-void Personagens::Jogador::incrementaPontos(unsigned int pont) {
-    this->pontos += pont;
-}*/
 
 void Personagens::Jogador::moveColisao(Entidades::Entidade* outraEnt, sf::Vector2f intersecao)
 {

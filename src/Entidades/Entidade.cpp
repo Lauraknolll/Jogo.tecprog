@@ -18,10 +18,7 @@ Entidades::Entidade::~Entidade()
 {
     
 }
-void Entidades::Entidade::executar()
-{
 
-}
 sf::Vector2f Entidades::Entidade::getPosicao() const
 {
     sf::Vector2f posicao = sf::Vector2f(corpo.getPosition().x, corpo.getPosition().y);
@@ -34,19 +31,13 @@ sf::Vector2f Entidades::Entidade::getTamanho() const
     return tamanho;
 }
 
-Entidades::ID Entidades::Entidade::getID()
+Entidades::ID Entidades::Entidade::getID() const
 {
     return id;
 }
 
-sf::RectangleShape Entidades::Entidade::getCorpo()
+sf::RectangleShape Entidades::Entidade::getCorpo() const 
 {
     return corpo;
 }
 
-
-
-/*void Entidade::salvar()
-{
-
-}*/

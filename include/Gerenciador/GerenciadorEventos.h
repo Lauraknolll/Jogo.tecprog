@@ -13,7 +13,6 @@ namespace Gerenciador
         bool tem_jogador;
 
         Gerenciador::GerenciadorInput* pInputM;
-
         GerenciadorGrafico* pGGrafico;
         Personagens::Jogador* pontJogador1;
         Personagens::Jogador* pontJogador2;
@@ -24,8 +23,6 @@ namespace Gerenciador
         
         public:
         ~GerenciadorEvento();
-
-        //void setJogador(Jogador jog);
         
         static GerenciadorEvento* getGerenciadorEventos();
 

@@ -18,13 +18,9 @@ void Obstaculos::Lava::executar()
     atualizarPosicao();
 }
 
-void Obstaculos::Lava::imprimir(Gerenciador::GerenciadorGrafico* gG){
-    gG->desenhaEntidade(corpo);
-}
-
-unsigned int Obstaculos::Lava::tomarDano() const //pra que essa função?
+void Obstaculos::Lava::desenhar(Gerenciador::GerenciadorGrafico* gG)
 {
-    return danosidade;
+    gG->desenhaEntidade(corpo);
 }
 
 void Obstaculos::Lava::colide(Entidade *outraEntidade, sf::Vector2f intersecao)

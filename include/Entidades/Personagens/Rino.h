@@ -30,7 +30,7 @@ namespace Personagens
 
             void movimentoAleatorio();
 
-            void imprimir(Gerenciador::GerenciadorGrafico* gG);
+            void desenhar(Gerenciador::GerenciadorGrafico* gG);
 
             const sf::RectangleShape getCorpo();
 

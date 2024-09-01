@@ -104,8 +104,7 @@ void Fases::Fase::gerenciarColisoes()
 
 void Fases::Fase::gerenciarMortos()
 {
-    
-    //it_jog = ListaJogadores.begin();
+    //verifica se há inimigos mortos na lista
     if (ListaInimigos.size() > 0)
     {
         vector<Entidades::Entidade *>::iterator it;
@@ -126,7 +125,7 @@ void Fases::Fase::gerenciarMortos()
             }
         }
     }
-
+    // verifica se há jogadores mortos 
     if (ListaJogadores.size() > 0)
     {
         list<Entidades::Entidade *>::iterator it_jog;
@@ -148,6 +147,7 @@ void Fases::Fase::gerenciarMortos()
 
 bool Fases::Fase::todosMortos()
 {
+    //verifica se todos os inimigos morreram
     if (ListaInimigos.size() > 0)
     {
         vector<Entidades::Entidade *>::iterator it;
@@ -182,8 +182,9 @@ void Fases::Fase::criarJogadores(std::string caminho_mapa)
             jog = new Personagens::Jogador(posi.x, posi.y, 56.0, 56.0);
             ListaJogadores.push_back(static_cast<Entidades::Entidade*>(jog));
             Lista_Entidades->addEntidade(static_cast<Entidades::Entidade*>(jog));
-            if(dois_jogadores){
-                jog->getControle()->setKeys("O", "J", "L", "M");
+            if(dois_jogadores)
+            {
+                jog->getControle()->setKeys("O", "J", "L", "K");
             }
         }
     }

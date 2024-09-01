@@ -96,4 +96,3 @@ namespace Fases
             void hud();
     };
 }
-//bool Fases::Fase::dois_jogadores = false;

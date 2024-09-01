@@ -10,10 +10,6 @@ using namespace std;
 #include "../Entidades/Personagens/Inimigo.h"
 #include "../Listas/ListaEntidade.h"
 
-namespace States {
-    class Level;
-} // namespace States
-
 namespace Gerenciador
 {
     class GerenciadorColisoes {
@@ -21,7 +17,6 @@ namespace Gerenciador
         list<Entidades::Entidade*> *Jogadores;
         list<Entidades::Entidade*> *Obstaculos;
         vector<Entidades::Entidade*> *Inimigos;
-        //States::Level* plvl;
 
     public:
         GerenciadorColisoes(list<Entidades::Entidade*> *Jogador1, list<Entidades::Entidade*> *Obstaculos1, vector<Entidades::Entidade*> *Inimigos1/*, States::Level* plvl*/);
@@ -33,7 +28,5 @@ namespace Gerenciador
         void tratarColisoesJogadoresInimigos();
 
         void colide();
-
-        void retiraMortos();
     };
 }

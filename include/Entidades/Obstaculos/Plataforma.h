@@ -7,23 +7,21 @@ namespace Obstaculos
 {
     class Plataforma : public Obstaculo
     {
-        private:
-            //tem que ter algum atributo
-        public:
-            Plataforma(float x = 0.f, float y = 0.f, float ww = 100.f, float hh = 100.f);
+    private:
+        // tem que ter algum atributo
+    public:
+        Plataforma(float x = 0.f, float y = 0.f, float ww = 100.f, float hh = 100.f);
 
-            virtual ~Plataforma();
+        virtual ~Plataforma();
 
-            void executar();
+        void executar();
+        
+        void atualizarPosicao();
 
-            virtual void imprimir(Gerenciador::GerenciadorGrafico *gG);
+        virtual void desenhar(Gerenciador::GerenciadorGrafico *gG);
 
-            void atualizarPosicao();
+        virtual void colide(Entidade *outraEntidade, sf::Vector2f intersecao);
 
-            virtual const int getTipo() const;
-
-            virtual void colide(Entidade* outraEntidade, sf::Vector2f intersecao);
-            
-            void obstacular(Personagens::Jogador* ponJogador);
+        void obstacular(Personagens::Jogador *ponJogador);
     };
 }

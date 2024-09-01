@@ -16,7 +16,7 @@ void Obstaculos::Pedra::executar()
     atualizarPosicao();
 }
 
-void Obstaculos::Pedra::imprimir(Gerenciador::GerenciadorGrafico* gG)
+void Obstaculos::Pedra::desenhar(Gerenciador::GerenciadorGrafico* gG)
 {
     gG->desenhaEntidade(corpo);
     corpo.setTexture(gG->carregaTextura("imagens/pedra.png"));

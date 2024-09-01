@@ -86,7 +86,7 @@ namespace Lista {
             paux = list.operator[](i);
             if(paux)
             {
-                paux->imprimir(pGG);
+                paux->desenhar(pGG);
             }
         }
     }

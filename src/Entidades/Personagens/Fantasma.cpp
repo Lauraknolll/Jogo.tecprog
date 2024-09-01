@@ -54,7 +54,7 @@ const sf::RectangleShape Personagens::Fantasma::getCorpo()
     return corpo;
 }
 
-void Personagens::Fantasma::imprimir(Gerenciador::GerenciadorGrafico *gG)
+void Personagens::Fantasma::desenhar(Gerenciador::GerenciadorGrafico *gG)
 {
     if(vivo)
     {

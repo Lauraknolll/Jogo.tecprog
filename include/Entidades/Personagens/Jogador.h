@@ -30,13 +30,15 @@ namespace Personagens
 
         void executar();
 
-        void pular();
-
         void atualizarPosicao();
 
-        void imprimir(Gerenciador::GerenciadorGrafico *gG);
+        void desenhar(Gerenciador::GerenciadorGrafico *gG);
 
         void colide(Entidade *outraEntidade, sf::Vector2f intersecao); 
+
+        void moveColisao(Entidades::Entidade* outraEnt, sf::Vector2f intersecao);
+
+        void pular();
         
         const bool estaNaEsquerda() const;
 
@@ -49,8 +51,6 @@ namespace Personagens
         void pararAndar();
 
         unsigned int getPontos() const;
-
-        void moveColisao(Entidades::Entidade* outraEnt, sf::Vector2f intersecao);
 
         int getNumVidas();
 

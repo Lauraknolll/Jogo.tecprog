@@ -23,13 +23,13 @@ Personagens::Rino::~Rino()
 
 }
 
-void Personagens::Rino::imprimir(Gerenciador::GerenciadorGrafico* gG)
+void Personagens::Rino::desenhar(Gerenciador::GerenciadorGrafico* gG)
 {
     if(vivo)
     {
         gG->desenhaEntidade(corpo);
         if(proj){
-            proj->imprimir(gG);
+            proj->desenhar(gG);
         }
         
         corpo.setTexture(gG->carregaTextura("imagens/rino.png"));

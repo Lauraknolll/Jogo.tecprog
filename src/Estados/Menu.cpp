@@ -2,7 +2,8 @@
 #include "../../include/Gerenciador/GerenciadorGrafico.h"
 #include "../../include/Jogo.h"
 
-namespace Menus {
+namespace Menus 
+{
 
     Menu::Menu() :
     selecionado(0),
@@ -57,4 +58,4 @@ namespace Menus {
         }
     }
 
-} // namespace Menus
+} 

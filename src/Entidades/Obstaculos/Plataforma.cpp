@@ -20,13 +20,9 @@ void Obstaculos::Plataforma::executar()
     atualizarPosicao();
 }
 
-void Obstaculos::Plataforma::imprimir(Gerenciador::GerenciadorGrafico *gG)
+void Obstaculos::Plataforma::desenhar(Gerenciador::GerenciadorGrafico *gG)
 {
-    //sf::RectangleShape r(sf::Vector2f(100.f, 100.f));
-    //r.setFillColor(sf::Color::Blue);
-    //r.setTexture((*gG)[5]);
     gG->desenhaEntidade(corpo);
-    //corpo.setTexture(gG->carregaTextura("src/chao.png"));
 }
 
 void Obstaculos::Plataforma::atualizarPosicao()
@@ -36,10 +32,7 @@ void Obstaculos::Plataforma::atualizarPosicao()
     corpo.move(velocidade.x, velocidade.y);
 }
 
-const int Obstaculos::Plataforma::getTipo() const
-{
-    return 0;
-}
+
 
 void Obstaculos::Plataforma::colide(Entidade *outraEntidade, sf::Vector2f intersecao)
 {

@@ -2,8 +2,7 @@
 
 #include <iostream>
 using namespace std;
-// #include "Entities/MovingEntity.h"
-// #include "States/Level.h"
+
 #include "math.h"
 #include "../../include/Entidades/Personagens/Jogador.h"
 #include "../../include/Entidades/Personagens/Rino.h"
@@ -46,7 +45,6 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresObstaculos()
                 sf::Vector2f distanciaEntreCentros(
                     fabs((pos1.x + tam1.x / 2.0f) - (pos2.x + tam2.x / 2.0f)),
                     fabs((pos1.y + tam1.y / 2.0f) - (pos2.y + tam2.y / 2.0f)));
-                // printf("Distancia entre centros: %f\n", distanciaEntreCentros.y);
 
                 sf::Vector2f somaMetadeRetangulo(tam1.x / 2.0f + tam2.x / 2.0f, tam1.y / 2.0f + tam2.y / 2.0f);
                 sf::Vector2f intersecao = sf::Vector2f(distanciaEntreCentros.x - somaMetadeRetangulo.x, distanciaEntreCentros.y - somaMetadeRetangulo.y);
@@ -103,8 +101,10 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresInimigos()
                     ent2->colide(ent1, intersecao);
                 }
                 
-                if(dynamic_cast<Personagens::Rino*>(ent2)){
-                    if(static_cast<Personagens::Rino*>(ent2)->getProjetil()){
+                if(dynamic_cast<Personagens::Rino*>(ent2))
+                {
+                    if(static_cast<Personagens::Rino*>(ent2)->getProjetil())
+                    {
                         ent2 = static_cast<Personagens::Rino*>(ent2)->getProjetil();
                         
                         sf::RectangleShape corpo2 = ent2->getCorpo();
@@ -131,15 +131,6 @@ void Gerenciador::GerenciadorColisoes::tratarColisoesJogadoresInimigos()
             }
         }
     }
-
-    if (Inimigos->size() > 0)
-    {
-        // retiraMortos();
-    }
-    else
-    {
-        // lugar pra dizer que todos os inimigos morreram
-    }
 }
 
 void Gerenciador::GerenciadorColisoes::colide()
@@ -147,43 +138,4 @@ void Gerenciador::GerenciadorColisoes::colide()
 
     tratarColisoesJogadoresObstaculos();
     tratarColisoesJogadoresInimigos();
-}
-
-// Function to deallocate entities after collision
-void Gerenciador::GerenciadorColisoes::retiraMortos()
-{
-    std::cout << "Entrou na funcao retiraMortos" << std::endl;
-    vector<Entidades::Entidade *>::iterator it;
-    Personagens::Inimigo *paux = nullptr;
-
-    for (int i = 0; i < Inimigos->size(); i++)
-    {
-        // paux = static_cast<Personagens::Inimigo*>(Inimigos[i]);
-        if (paux != nullptr)
-        {
-            if (paux->getNumVidas() == 0)
-            {
-                //*it = Inimigos[i];
-                std::cout << "Retirou alguém" << std::endl;
-                // Inimigos.erase(it);
-                // i--;
-                // if(i < 0)
-                //     i = -1;
-            }
-        }
-    }
-    // Entities::MovingEntity* pAux = nullptr;
-    /*for (int i = 0; i < Jogador->getSize(); i++) {
-        pAux = static_cast<Entities::MovingEntity*>((*Jogador)[i]);
-        if (pAux != nullptr) {
-            if (!pAux->isActive()) {
-                if (pAux->getId() != Entities::ID::coin)
-                    plvl->coinBomb(pAux->getPosition());
-                Jogador->deleteEntity(pAux);
-                i--;
-                if (i < 0)
-                    i = -1;
-            }
-        }
-    }*/
 }

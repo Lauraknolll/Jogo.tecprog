@@ -82,7 +82,7 @@ const sf::RectangleShape Personagens::Galinha::getCorpo()
     return corpo;
 }
 
-void Personagens::Galinha::imprimir(Gerenciador::GerenciadorGrafico *gG)
+void Personagens::Galinha::desenhar(Gerenciador::GerenciadorGrafico *gG)
 {
     if(vivo)
     {

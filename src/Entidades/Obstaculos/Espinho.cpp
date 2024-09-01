@@ -16,7 +16,7 @@ void Obstaculos::Espinho::executar()
     atualizarPosicao();
 }
 
-void Obstaculos::Espinho::imprimir(Gerenciador::GerenciadorGrafico* gG)
+void Obstaculos::Espinho::desenhar(Gerenciador::GerenciadorGrafico* gG)
 {
     gG->desenhaEntidade(corpo);
     corpo.setTexture(gG->carregaTextura("imagens/espinho.png"));
@@ -33,11 +33,6 @@ void Obstaculos::Espinho::colide(Entidade *outraEntidade, sf::Vector2f interseca
 void Obstaculos::Espinho::obstacular(Personagens::Jogador* pontJogador)
 {
     pontJogador->recebaDano(nivelEspinhosidade);
-}
-
-unsigned int Obstaculos::Espinho::tomarDano() const
-{
-    return nivelEspinhosidade;
 }
 
 void Obstaculos::Espinho::atualizarPosicao()

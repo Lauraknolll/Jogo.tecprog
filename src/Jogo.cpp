@@ -1,5 +1,4 @@
 #include "../include/Jogo.h"
-#define CAMINHO_MAPA "mapaJogo1.json"
 #include "../include/Estados/MenuPrincipal.h"
 #include "../include/Estados/GameOver.h"
 #include "../include/Estados/Placar.h"
@@ -41,13 +40,15 @@ Estados::Jogo::~Jogo()
         delete pontGEvento;
         pontGEvento = nullptr;
     }
+    if(estado != nullptr)
+    {
+        delete estado;
+        estado = nullptr;
+    }
 }
 
 void Estados::Jogo::executar()
 {
-    
-    //pontFaseProv->render(); // cria todo mundo
-    //Fases::Fase1 * fase = new Fases::Fase1(this, control_jogador);
     while (pontGGrafico->verificarJanelaAberta())
     {
         sf::Event evento;
@@ -56,8 +57,6 @@ void Estados::Jogo::executar()
         pontGGrafico->limpaJanela();
         renderEstadoAtual();
         atualizarEstadoAtual();
-        
-       //fase->atualizar();
         pontGGrafico->monstraEntidade();
     }
 }

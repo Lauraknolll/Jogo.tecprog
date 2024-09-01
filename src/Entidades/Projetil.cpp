@@ -20,7 +20,7 @@ void Entidades::Projetil::executar()
     atualizarPosicao();
 }
 
-void Entidades::Projetil::imprimir(Gerenciador::GerenciadorGrafico* gG)
+void Entidades::Projetil::desenhar(Gerenciador::GerenciadorGrafico* gG)
 {
     if(!colidiu)
     {

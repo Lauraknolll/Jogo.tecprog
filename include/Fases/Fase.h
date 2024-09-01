@@ -32,7 +32,6 @@ namespace Fases
             Lista::ListaEntidade* Lista_Entidades;
             Gerenciador::GerenciadorColisoes* pGColisoes;
             Gerenciador::GerenciadorEvento* pEventos;
-            Gerenciador::GerenciadorInput* pInput;
             nlohmann::json mapa; 
             Controle::ControleFase control;
             

@@ -3,7 +3,7 @@ namespace Estados{
 class Mediator
 {
     private:
-
+        //tem que ter algum atributo
     public:
         Mediator();
         ~Mediator();

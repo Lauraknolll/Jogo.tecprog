@@ -7,8 +7,6 @@
 
 #define CAMINHOFONTE "./assets/Fonts/MainFont.ttf"
 
-
-
 enum AlinhamentoTexto
 {
     esquerda,

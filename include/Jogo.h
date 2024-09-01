@@ -22,7 +22,6 @@ namespace Estados
         Gerenciador::GerenciadorGrafico *pontGGrafico;
         Gerenciador::GerenciadorEvento *pontGEvento;
         Gerenciador::GerenciadorColisoes *pColisao;
-        Gerenciador::GerenciadorInput *pInput;
         Estados::GerenciadorEstado pEst;
         Estados::Estado *estado;
 

@@ -11,12 +11,10 @@ namespace Fases
     class Fase2 : public Fase, public Estados::Estado
     {
         private:
-            bool esta_final;
-            bool t_dois;
             const int maxInimigos;
             const int maxObstaculos;
         public:
-            Fase2(Estados::GerenciadorEstado* gE);
+            Fase2(Estados::Mediator* gE);
 
             ~Fase2();
 

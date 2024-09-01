@@ -40,8 +40,6 @@ namespace Fases
             sf::Vector2f centro;
             sf::Sprite sprite_fundo;
 
-            Botao tela_pausado;
-
             Texto pausar;
             Texto mensagem;
             Texto mensagem2;

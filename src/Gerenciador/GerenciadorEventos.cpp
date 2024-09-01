@@ -3,7 +3,7 @@
 Gerenciador::GerenciadorEvento *Gerenciador::GerenciadorEvento::pInstanciaGE = nullptr;
 
 Gerenciador::GerenciadorEvento::GerenciadorEvento() :
-    tem_jogador(false), pontJogador1(nullptr), pontJogador2(nullptr), pInputM(Gerenciador::GerenciadorInput::getGerenciadorInput())
+    pInputM(Gerenciador::GerenciadorInput::getGerenciadorInput())
 {
 }
 
@@ -11,8 +11,6 @@ Gerenciador::GerenciadorEvento::~GerenciadorEvento()
 {
     pGGrafico = nullptr;
     pInputM = nullptr;
-    pontJogador1 = nullptr;
-    pontJogador2 = nullptr;
 }
 
 Gerenciador::GerenciadorEvento *Gerenciador::GerenciadorEvento::getGerenciadorEventos()
@@ -27,26 +25,6 @@ Gerenciador::GerenciadorEvento *Gerenciador::GerenciadorEvento::getGerenciadorEv
 void Gerenciador::GerenciadorEvento::setGerenciadosGrafico(GerenciadorGrafico *pGG)
 {
     pGGrafico = pGG;
-}
-
-void Gerenciador::GerenciadorEvento::setJogador(Personagens::Jogador *jogador1, Personagens::Jogador *jogador2)
-{
-
-    if(!tem_jogador)
-    {
-        if(jogador1 != nullptr)
-        {
-            pontJogador1 = jogador1;
-            tem_jogador = true;
-        }
-    }
-    else
-    {
-        if(jogador2 != nullptr)
-        {
-            pontJogador2 = jogador1;
-        }
-    }
 }
 
 void Gerenciador::GerenciadorEvento::executar(sf::Event evento)

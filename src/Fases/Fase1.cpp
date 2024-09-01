@@ -3,7 +3,7 @@
 
 #define CAMINHO_MAPA_FASE1 "src/mapaFase1.json" // caminho para o mapa da fase 1
 
-Fases::Fase1::Fase1(Estados::GerenciadorEstado* gE) :
+Fases::Fase1::Fase1(Estados::Mediator* gE) :
     Fase(), Estados::Estado(gE, Estados::EstadoID::fase1), maxInimigos(5), maxObstaculos(9)
 {
     ativo = false;

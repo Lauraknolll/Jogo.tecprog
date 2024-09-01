@@ -21,7 +21,6 @@ namespace Menus
             Controle::ControleTexto input;
             int pontuacao;
             int *fase_1, *fase_2;
-            unsigned int pointsToIncrement;
         
         public:
             GameOver(Estados::Mediator* GE, int* fase1, int* fase2);

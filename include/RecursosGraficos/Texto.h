@@ -39,7 +39,7 @@ public:
     void setCorTexto(const unsigned int R, const unsigned int G, const unsigned int B);
 
     void setTamanhoFonte(const unsigned int size);
-
+    
     void setAlinhamentoTexto(AlinhamentoTexto option);
 
     sf::Vector2f getTamanho() const;

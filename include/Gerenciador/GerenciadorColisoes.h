@@ -19,7 +19,7 @@ namespace Gerenciador
         vector<Entidades::Entidade*> *Inimigos;
 
     public:
-        GerenciadorColisoes(list<Entidades::Entidade*> *Jogador1, list<Entidades::Entidade*> *Obstaculos1, vector<Entidades::Entidade*> *Inimigos1/*, States::Level* plvl*/);
+        GerenciadorColisoes(list<Entidades::Entidade*> *Jogador1, list<Entidades::Entidade*> *Obstaculos1, vector<Entidades::Entidade*> *Inimigos1);
 
         ~GerenciadorColisoes();
 

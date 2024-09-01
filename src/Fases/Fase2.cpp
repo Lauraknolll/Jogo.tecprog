@@ -6,7 +6,7 @@ Fases::Fase2::Fase2(Estados::GerenciadorEstado* gE) :
     Fase(), Estados::Estado(gE, Estados::EstadoID::fase2), maxInimigos(7), maxObstaculos(10)
 {
     ativo = false;
-    setGerenciadorEstados(gE);
+    setMediator(gE);
     Lista_Entidades = new Lista::ListaEntidade();
     pEventos = Gerenciador::GerenciadorEvento::getGerenciadorEventos();
     mapa = CAMINHO_MAPA_FASE2;
@@ -165,7 +165,7 @@ void Fases::Fase2::resetEstado()
     // Recarrega o mapa e recria os elementos da fase
     mapa = CAMINHO_MAPA_FASE2;
     carregarMapa(mapa);
-    
+    pausado = false;
     criar();
 }
 

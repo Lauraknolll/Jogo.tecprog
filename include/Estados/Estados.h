@@ -3,7 +3,7 @@
 namespace Estados 
 {
 
-    class GerenciadorEstado;
+    class Mediator;
 
     enum EstadoID 
     {
@@ -19,15 +19,15 @@ namespace Estados
     {
 
     protected:
-        GerenciadorEstado* pGEstado;
+        Mediator* pGEstado;
         EstadoID id;
 
     public:
-        Estado(GerenciadorEstado* pGEstado = nullptr, EstadoID id = desconhecido);
+        Estado(Mediator* pGEstado = nullptr, EstadoID id = desconhecido);
 
         virtual ~Estado();
 
-        void setGerenciadorEstados(GerenciadorEstado* pGEstado1);
+        void setMediator(Mediator* pGEstado1);
 
         void changeEstado(EstadoID id);
 

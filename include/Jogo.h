@@ -16,13 +16,14 @@ using namespace std;
 
 namespace Estados
 {
-    class Jogo : public Estados::GerenciadorEstado
+    class Jogo
     {
     private:
         Gerenciador::GerenciadorGrafico *pontGGrafico;
         Gerenciador::GerenciadorEvento *pontGEvento;
         Gerenciador::GerenciadorColisoes *pColisao;
         Gerenciador::GerenciadorInput *pInput;
+        Estados::GerenciadorEstado pEst;
         Estados::Estado *estado;
 
     public:

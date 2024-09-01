@@ -8,7 +8,7 @@ Fases::Fase1::Fase1(Estados::GerenciadorEstado* gE) :
 {
     ativo = false;
     dois_jogadores = false;
-    setGerenciadorEstados(gE);
+    setMediator(gE);
     Lista_Entidades = new Lista::ListaEntidade();
     pEventos = Gerenciador::GerenciadorEvento::getGerenciadorEventos();
     mapa = CAMINHO_MAPA_FASE1;
@@ -161,7 +161,7 @@ void Fases::Fase1::resetEstado()
     // Recarrega o mapa e recria os elementos da fase
     mapa = CAMINHO_MAPA_FASE1;
     carregarMapa(mapa);
-    
+    pausado = false;
     criar();
 }
 

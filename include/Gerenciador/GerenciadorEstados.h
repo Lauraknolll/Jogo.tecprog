@@ -1,12 +1,13 @@
 #pragma once
 
 #include "../Estados/Estados.h"
+#include "../Estados/Mediator.h"
 #include <map>
 
 namespace Estados 
 {
 
-    class GerenciadorEstado 
+    class GerenciadorEstado : public Mediator
     {
     protected:
         EstadoID estadoAtualID;

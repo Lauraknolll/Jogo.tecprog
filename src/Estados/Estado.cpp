@@ -1,10 +1,10 @@
 #include "../../include/Estados/Estados.h"
-#include "../../include/Gerenciador/GerenciadorEstados.h"
+#include "../../include/Estados/Mediator.h"
 
 namespace Estados 
 {
 
-    Estado::Estado(GerenciadorEstado* pGEstado, EstadoID id) :
+    Estado::Estado(Mediator* pGEstado, EstadoID id) :
         pGEstado(pGEstado), id(id)
     {
 
@@ -15,7 +15,7 @@ namespace Estados
         pGEstado = nullptr;
     }
 
-    void Estado::setGerenciadorEstados(GerenciadorEstado* pGEstado1)
+    void Estado::setMediator(Mediator* pGEstado1)
     {
         this->pGEstado = pGEstado1;
     }

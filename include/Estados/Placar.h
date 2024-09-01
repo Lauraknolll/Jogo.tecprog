@@ -15,7 +15,7 @@ namespace Menus
         std::vector<Texto*>::iterator itr;
 
     public:
-        Placar(Estados::GerenciadorEstado* pSM = nullptr);
+        Placar(Estados::Mediator* pSM = nullptr);
 
         ~Placar();
 

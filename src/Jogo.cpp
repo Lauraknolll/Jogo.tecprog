@@ -6,25 +6,26 @@
 Estados::Jogo::Jogo() :
     pontGGrafico(Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()),
     pontGEvento(Gerenciador::GerenciadorEvento::getGerenciadorEventos())
+    
 {
     pontGEvento->setGerenciadosGrafico(pontGGrafico);
 
-    Estados::Estado* estado = static_cast<Estados::Estado*>(new Fases::Fase1(this));
-    inserirEstado(estado);
+    Estados::Estado* estado = static_cast<Estados::Estado*>(new Fases::Fase1(&pEst));
+    pEst.inserirEstado(estado);
     
-    Estados::Estado* estado2 = static_cast<Estados::Estado*>(new Fases::Fase2(this));
-    inserirEstado(estado2);
+    Estados::Estado* estado2 = static_cast<Estados::Estado*>(new Fases::Fase2(&pEst));
+    pEst.inserirEstado(estado2);
 
-    estado = static_cast<Estados::Estado*>(new Menus::GameOver(this, static_cast<Fases::Fase1*>(estado)->getPontuacao(), static_cast<Fases::Fase2*>(estado2)->getPontuacao()));
-    inserirEstado(estado);
+    estado = static_cast<Estados::Estado*>(new Menus::GameOver(&pEst, static_cast<Fases::Fase1*>(estado)->getPontuacao(), static_cast<Fases::Fase2*>(estado2)->getPontuacao()));
+    pEst.inserirEstado(estado);
 
-    estado = static_cast<Estados::Estado*>(new Menus::MenuPrincipal(this));
-    inserirEstado(estado);
+    estado = static_cast<Estados::Estado*>(new Menus::MenuPrincipal(&pEst));
+    pEst.inserirEstado(estado);
 
-    estado = static_cast<Estados::Estado*>(new Menus::Placar(this));
-    inserirEstado(estado);
+    estado = static_cast<Estados::Estado*>(new Menus::Placar(&pEst));
+    pEst.inserirEstado(estado);
     
-    mudarEstadoAtual(Estados::EstadoID::mainMenu);
+    pEst.mudarEstadoAtual(Estados::EstadoID::mainMenu);
 
 }
 
@@ -55,8 +56,8 @@ void Estados::Jogo::executar()
         
         pontGEvento->executar(evento); 
         pontGGrafico->limpaJanela();
-        renderEstadoAtual();
-        atualizarEstadoAtual();
+        pEst.renderEstadoAtual();
+        pEst.atualizarEstadoAtual();
         pontGGrafico->monstraEntidade();
     }
 }

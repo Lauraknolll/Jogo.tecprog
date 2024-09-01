@@ -7,7 +7,7 @@
 
 namespace Menus {
 
-    GameOver::GameOver(Estados::GerenciadorEstado* pSM, int* fase1, int* fase2) :
+    GameOver::GameOver(Estados::Mediator* pSM, int* fase1, int* fase2) :
     Menu(),
     Estado(pSM, Estados::EstadoID::gameOver),
     titulo(sf::Vector2f(0, 0), "GAME OVER"),

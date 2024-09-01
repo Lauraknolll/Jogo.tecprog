@@ -8,7 +8,7 @@
 
 namespace Menus {
 
-    Placar::Placar(Estados::GerenciadorEstado* pSM) :
+    Placar::Placar(Estados::Mediator* pSM) :
     Menu(),
     Estado(pSM, Estados::EstadoID::placar) {
         textura_fundo.loadFromFile(CAMINHO_FUNDO);

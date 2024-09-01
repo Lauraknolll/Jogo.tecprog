@@ -24,7 +24,7 @@ namespace Menus
             unsigned int pointsToIncrement;
         
         public:
-            GameOver(Estados::GerenciadorEstado* GE, int* fase1, int* fase2);
+            GameOver(Estados::Mediator* GE, int* fase1, int* fase2);
             
             ~GameOver();
 

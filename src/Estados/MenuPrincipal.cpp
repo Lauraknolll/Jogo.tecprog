@@ -6,10 +6,9 @@
 
 namespace Menus {
 
-    MenuPrincipal::MenuPrincipal(Estados::Jogo* pG) :
+    MenuPrincipal::MenuPrincipal(Estados::Mediator* pG) :
     Menu(),
-    Estado(static_cast<Estados::GerenciadorEstado*>(pG), Estados::EstadoID::mainMenu),
-    pJogo(pG),
+    Estado(pG, Estados::EstadoID::mainMenu),
     titulo() {
         
         textura_fundo.loadFromFile(CAMINHO_FUNDO);
@@ -33,9 +32,6 @@ namespace Menus {
         bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 150), "PLACAR");
         vectorBotao.push_back(bt);
 
-        bt = new Botao(sf::Vector2f(w / 2.0f, h / 2.0f + 200), "TESTE");
-        vectorBotao.push_back(bt);
-
         titulo.setTextoInfo("ANI++");
         titulo.setTamanhoFonte(140);
         titulo.setCorTexto(32, 79, 221);
@@ -43,7 +39,7 @@ namespace Menus {
 
         titulo.setPosicao(sf::Vector2f(w / 2.0f, h / 2.0f));
 
-        max = 3;
+        max = 2;
     }
 
     MenuPrincipal::~MenuPrincipal() {

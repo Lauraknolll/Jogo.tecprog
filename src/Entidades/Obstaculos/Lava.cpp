@@ -1,6 +1,6 @@
 #include "../../../include/Entidades/Obstaculos/Lava.h"
 
-#define CAMINHO_TEXTURA "imagens/madeira_escura.jpg"
+#define CAMINHO_TEXTURA "imagens/chao.png"
 
 
 Obstaculos::Lava::Lava(float x, float y, float ww, float hh):

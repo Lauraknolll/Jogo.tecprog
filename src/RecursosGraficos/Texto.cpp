@@ -1,7 +1,7 @@
 #include "../../include/RecursosGraficos/Texto.h"
 
 #define TEXTO_SIZE 24
-#define CAMINHO_FONTE "pcsenior.ttf"
+#define CAMINHO_FONTE "fonte/pcsenior.ttf"
 
 // Inicialização do membro estático
 Gerenciador::GerenciadorGrafico* Texto::pGGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();

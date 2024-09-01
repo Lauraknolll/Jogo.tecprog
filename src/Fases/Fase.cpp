@@ -1,6 +1,6 @@
 #include "../../include/Fases/Fase.h"
 #include "../../include/RecursosGraficos/Botao.h"
-#define CAMINHO_FUNDO "imagens/fundo.png"
+#define CAMINHO_FUNDO "imagens/fundoAzul.png"
 
 Fases::Fase::Fase() : 
 Ente(), control(this)
@@ -22,9 +22,9 @@ Ente(), control(this)
     mensagem2.setTamanhoFonte(20);
     mensagem2.setCorTexto(32, 79, 221);
 
-    vida1.setCorTexto(32, 79, 221);
-    vida2.setCorTexto(32, 79, 221);
-    ponto.setCorTexto(32, 79, 221);
+    vida1.setCorTexto(211, 211, 211);
+    vida2.setCorTexto(211, 211, 211);
+    ponto.setCorTexto(211, 211, 211);
 
     Ente::textura.loadFromFile(CAMINHO_FUNDO);
         

@@ -69,5 +69,7 @@ namespace Personagens
         bool getVivo();
 
         Controle::ControleJogador* getControle();
+
+        void setLentidao(float l);
     };
 }

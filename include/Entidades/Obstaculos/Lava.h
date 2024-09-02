@@ -18,6 +18,8 @@ namespace Obstaculos
 
         void atualizarPosicao();
 
+        void darLentidao();
+
         void desenhar(Gerenciador::GerenciadorGrafico *gG);
 
         void colide(Entidade *outraEntidade, sf::Vector2f intersecao);

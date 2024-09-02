@@ -3,6 +3,7 @@
 Obstaculos::Espinho::Espinho(float x, float y, float ww, float hh) :
     Obstaculo(x, y, ww, hh, Entidades::espinho)
 {
+    lentidao = 0;
     nivelEspinhosidade = rand()%65;
 }
 

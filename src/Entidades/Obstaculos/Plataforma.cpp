@@ -4,9 +4,12 @@
 #define CAMINHO_TEXTURO "imagens/madeira.jpg"
 
 
+
 Obstaculos::Plataforma::Plataforma(float x, float y, float ww, float hh): 
 Obstaculo(x, y, ww, hh, Entidades::plataforma)
 {
+    nivel_obstacularidade = 0;
+    lentidao = 0;
     velocidade.x = 0.0f;
     velocidade.y = 0.0f;
     

@@ -6,6 +6,7 @@
 Obstaculos::Lava::Lava(float x, float y, float ww, float hh):
 Obstaculo(x, y, ww, hh, Entidades::lava)
 {
+    lentidao = 1;
     danosidade = rand()%35;
 
     textura.loadFromFile(CAMINHO_TEXTURA);
@@ -40,7 +41,9 @@ void Obstaculos::Lava::colide(Entidade *outraEntidade, sf::Vector2f intersecao)
 
 void Obstaculos::Lava::obstacular(Personagens::Jogador* pontJogador)
 {
+    darLentidao();
     pontJogador->recebaDano(danosidade);
+    pontJogador->setLentidao(lentidao);
 }
 
 void Obstaculos::Lava::atualizarPosicao()
@@ -48,4 +51,9 @@ void Obstaculos::Lava::atualizarPosicao()
     velocidade.y += GRAVIDADE;
     velocidade.y += FORCA_SUSTENTACAO;
     corpo.move(velocidade.x, velocidade.y);
+}
+
+void Obstaculos::Lava::darLentidao()
+{
+    lentidao = (rand()%10 + 1) / 10;
 }

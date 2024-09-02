@@ -66,9 +66,12 @@ namespace Menus {
     void Placar::construiPlacar() {
         std::ifstream file;
 
-        file.open(CAMINHO_PLACAR, std::ios::binary | std::ios::in);
-
-        if (!file) {
+        try
+        {
+            file.open(CAMINHO_PLACAR, std::ios::binary | std::ios::in);
+        }
+        catch(const std::exception& e)
+        {
             std::ofstream writeFile(CAMINHO_PLACAR, std::ios::out | std::ios::trunc);
             writeFile.close();
         }

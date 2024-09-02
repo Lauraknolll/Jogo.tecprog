@@ -3,6 +3,7 @@
 Obstaculos::Pedra::Pedra(float x, float y, float ww, float hh) :
     Obstaculo(x, y, ww, hh, Entidades::pedra)
 {
+    lentidao = 0;
     dureza = rand()%15;
 }
 

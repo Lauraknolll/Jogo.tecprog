@@ -8,7 +8,7 @@ namespace Obstaculos
     class Plataforma : public Obstaculo
     {
     private:
-        // tem que ter algum atributo
+        int nivel_obstacularidade;
     public:
         Plataforma(float x = 0.f, float y = 0.f, float ww = 100.f, float hh = 100.f);
 

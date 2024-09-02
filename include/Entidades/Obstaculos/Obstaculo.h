@@ -9,7 +9,7 @@ namespace Obstaculos
     class Obstaculo : public Entidades::Entidade
     {
     protected:
-        //tem que colocar algum atributo
+        float lentidao;
     public:
         Obstaculo(float xxx = 0.f, float y = 0.f, float ww = 100.f, float hh = 100.f, Entidades::ID id = Entidades::vazio);
 

@@ -54,6 +54,7 @@ void Personagens::Jogador::colide(Entidades::Entidade *outraEntidade, sf::Vector
     {
     case Entidades::plataforma:
             moveColisao(outraEntidade, intersecao);
+            lentidao = 1;
         break;
     case Entidades::lava:
             moveColisao(outraEntidade, intersecao);
@@ -210,4 +211,9 @@ bool Personagens::Jogador::getVivo()
 Controle::ControleJogador* Personagens::Jogador::getControle()
 {
     return &controle;
+}
+
+void Personagens::Jogador::setLentidao(float l)
+{
+    lentidao = l;
 }

@@ -1,21 +1,21 @@
 #include "../../include/Gerenciador/GerenciadorEstados.h"
 
-Estados::GerenciadorEstado::GerenciadorEstado()
+Gerenciador::GerenciadorEstado::GerenciadorEstado()
 {
-    ultEstadoID = EstadoID::desconhecido;
-    estadoAtualID = EstadoID::desconhecido;
+    ultEstadoID = Estados::EstadoID::desconhecido;
+    estadoAtualID = Estados::EstadoID::desconhecido;
 }
 
-Estados::GerenciadorEstado::~GerenciadorEstado()
+Gerenciador::GerenciadorEstado::~GerenciadorEstado()
 {
-    std::map<EstadoID, Estado*>::iterator it;
+    std::map<Estados::EstadoID, Estados::Estado*>::iterator it;
 
     for (it = mapaEstado.begin(); it != mapaEstado.end(); ++it) {
         delete (it->second);
     }
 }
 
-void Estados::GerenciadorEstado::mudarEstadoAtual(EstadoID id)
+void Gerenciador::GerenciadorEstado::mudarEstadoAtual(Estados::EstadoID id)
 {
     ultEstadoID = estadoAtualID;
     estadoAtualID = id;
@@ -23,27 +23,27 @@ void Estados::GerenciadorEstado::mudarEstadoAtual(EstadoID id)
     mapaEstado[estadoAtualID]->resetEstado();
 }
 
-void Estados::GerenciadorEstado::atualizarEstadoAtual()
+void Gerenciador::GerenciadorEstado::atualizarEstadoAtual()
 {
     mapaEstado[estadoAtualID]->atualizar();
 }
 
-void Estados::GerenciadorEstado::renderEstadoAtual()
+void Gerenciador::GerenciadorEstado::renderEstadoAtual()
 {
     mapaEstado[estadoAtualID]->render();
 }
 
-Estados::EstadoID Estados::GerenciadorEstado::getEstadoAtualID() const
+Estados::EstadoID Gerenciador::GerenciadorEstado::getEstadoAtualID() const
 {
     return estadoAtualID;
 }
 
-void Estados::GerenciadorEstado::inserirEstado(Estado* pEstado)
+void Gerenciador::GerenciadorEstado::inserirEstado(Estados::Estado* pEstado)
 {
     mapaEstado.insert(std::make_pair(pEstado->getID(), pEstado));
 }
 
-Estados::EstadoID Estados::GerenciadorEstado::getUltEstadoID() const
+Estados::EstadoID Gerenciador::GerenciadorEstado::getUltEstadoID() const
 {
     return ultEstadoID;
 }

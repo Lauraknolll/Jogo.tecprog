@@ -4,33 +4,34 @@
 #include "../Estados/Mediator.h"
 #include <map>
 
-namespace Estados 
+
+namespace Gerenciador
 {
 
-    class GerenciadorEstado : public Mediator
+    class GerenciadorEstado : public Estados::Mediator
     {
     protected:
-        EstadoID estadoAtualID;
-        EstadoID ultEstadoID;
+        Estados::EstadoID estadoAtualID;
+        Estados::EstadoID ultEstadoID;
 
-        std::map<EstadoID, Estado*> mapaEstado;
+        std::map<Estados::EstadoID, Estados::Estado*> mapaEstado;
 
     public:
         GerenciadorEstado();
 
         virtual ~GerenciadorEstado();
 
-        void mudarEstadoAtual(EstadoID id);
+        void mudarEstadoAtual(Estados::EstadoID id);
 
         void atualizarEstadoAtual();
 
         void renderEstadoAtual();
 
-        EstadoID getEstadoAtualID() const;
+        Estados::EstadoID getEstadoAtualID() const;
 
-        void inserirEstado(Estado* pestado);
+        void inserirEstado(Estados::Estado* pestado);
 
-        EstadoID getUltEstadoID() const;
+        Estados::EstadoID getUltEstadoID() const;
     };
 
 }

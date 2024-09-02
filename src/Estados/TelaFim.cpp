@@ -101,11 +101,17 @@ namespace Menus {
 
         std::ifstream readFile;
 
-        readFile.open(LEADERBOARD_PATH, std::ios::in);
+        try
+        {
+            readFile.open(LEADERBOARD_PATH, std::ios::in);
+        }
+        catch(const std::exception& e)
+        {
+            readFile.close();
+        }
+        
 
         std::multimap<int, std::string> pontosEnomes;
-
-        if (readFile) {
 
             unsigned int ponto;
             std::string nome;
@@ -118,8 +124,6 @@ namespace Menus {
                     pontosEnomes.insert(std::pair<int, std::string>(std::stoi(pontosString), nome));
             }
 
-            readFile.close();
-        }
 
         if (pontuacao != 0 && input.getString().length() > 1)
             pontosEnomes.insert(std::pair<int, std::string>(pontuacao, input.getString()));

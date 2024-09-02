@@ -354,7 +354,7 @@ void Fases::Fase::hud()
     ent1 = *it;
     vida1.setTextoInfo("P1: "+std::to_string(static_cast<Personagens::Jogador*>(ent1)->getNumVidas()) + "/500");
     
-    ponto.setTextoInfo("PONTUCAO: "+std::to_string(pontuacao));
+    ponto.setTextoInfo("PONTUACAO: "+std::to_string(pontuacao));
 
     if(ListaJogadores.size()){
         vida1.render();

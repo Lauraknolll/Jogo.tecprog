@@ -1,3 +1,4 @@
+//codigo usado de referencia proveniente de https://github.com/MatheusBurda/Desert/tree/master
 #include "../../include/RecursosGraficos/Texto.h"
 
 #define TEXTO_SIZE 24

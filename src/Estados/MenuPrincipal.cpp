@@ -1,3 +1,4 @@
+//codigo usado de referencia proveniente de https://github.com/MatheusBurda/Desert/tree/master
 #include "../../include/Estados/MenuPrincipal.h"
 
 #define CAMINHO_FUNDO "imagens/fundo.png"

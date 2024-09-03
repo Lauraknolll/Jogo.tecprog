@@ -1,3 +1,4 @@
+//codigo usado de referencia proveniente de https://github.com/MatheusBurda/Desert/tree/master
 #include "../../include/Estados/Menu.h"
 #include "../../include/Gerenciador/GerenciadorGrafico.h"
 #include "../../include/Jogo.h"

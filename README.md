@@ -1,4 +1,4 @@
-﻿# Jogo ANI++ tecprog
+﻿# ANI++ Jogo TecProg
 Jogo de plataforma implementado para a disciplina de Técnicas de Programação do curso de Engenharia de Computação da UTFPR. 
 Desenvolvido por Laura Knoll Garcia de Oliveira e Vitor Ribeiro Gomes.
 SO : Windows 11.
